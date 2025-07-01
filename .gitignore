@@ -817,3 +817,8 @@ FodyWeavers.xsd
 /bin/Debug/net8.0/WebForm.runtimeconfig.json
 /bin/Debug/net8.0/runtimes/win-x64/native/sni.dll
 /bin/Debug/net8.0/runtimes/win-x86/native/sni.dll
+/obj/Debug/net8.0/staticwebassets/msbuild.WebForm.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+/obj/Debug/net8.0/staticwebassets/msbuild.WebForm.Microsoft.AspNetCore.StaticWebAssets.props
+/obj/Debug/net8.0/staticwebassets.pack.json
+/obj/Debug/net8.0/WebForm.csproj.CoreCompileInputs.cache
+/obj/Debug/net8.0/WebForm.GeneratedMSBuildEditorConfig.editorconfig
