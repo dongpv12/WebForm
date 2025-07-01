@@ -822,3 +822,4 @@ FodyWeavers.xsd
 /obj/Debug/net8.0/staticwebassets.pack.json
 /obj/Debug/net8.0/WebForm.csproj.CoreCompileInputs.cache
 /obj/Debug/net8.0/WebForm.GeneratedMSBuildEditorConfig.editorconfig
+/DataSymbol/data.txt
