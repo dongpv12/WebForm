@@ -13,7 +13,7 @@ ConfigFolder = "Config";
 #endif
 
 var path = Path.Combine(Directory.GetCurrentDirectory(), ConfigFolder, "appsettings.json");
-
+//test
 // Cấu hình đọc cấu hình từ file appsettings.json
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile(path, optional: true, reloadOnChange: true)
