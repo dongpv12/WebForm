@@ -823,3 +823,6 @@ FodyWeavers.xsd
 /obj/Debug/net8.0/WebForm.csproj.CoreCompileInputs.cache
 /obj/Debug/net8.0/WebForm.GeneratedMSBuildEditorConfig.editorconfig
 /DataSymbol/data.txt
+/bin/Debug/net8.0/log/web-error.log
+/bin/Debug/net8.0/log/web-info.log
+/.gitignore
