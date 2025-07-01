@@ -654,6 +654,16 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet]
+    [Route("chi-tiet-bao-cao/{id}")]
+    public ActionResult ChitietBaoCao(string id)
+    {
+        var ds = _newsDa.GetById(Convert.ToInt32(id));
+        var news = (News)CBO.FillObjectFromDataSet(ds, typeof(News));
+        ViewBag.New = news;
+        return View();
+    }
+
 
 
     [HttpGet]
@@ -955,6 +965,21 @@ public class HomeController : Controller
         return PartialView("DataReportPages");
     }
 
+
+    [HttpGet]
+    [Route("co-phieu-tu-van")]
+    public ActionResult CoPhieuTuVan()
+    {
+        try
+        {
+            return View();
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return View();
+        }
+    }
 
 
 

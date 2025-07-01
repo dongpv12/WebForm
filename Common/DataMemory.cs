@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using WebForm.DataAccess;
 using System.Data;
 using System.Linq;
+using System.Text.Json;
 
 namespace WebForm.Common
 {
@@ -16,15 +17,17 @@ namespace WebForm.Common
         public static List<Project> c_lstProject = new List<Project>();
         public static List<Page> c_lstPage = new List<Page>();
 
-        public static void LoadDbMem()
+        public static List<Symbol_Notify_Info> c_lstSymbol = new List<Symbol_Notify_Info>();
+
+        public async Task LoadDbMem()
         {
             try
             {
+
                 LoadNews();
 
-                LoadProject();
 
-                LoadPage();
+
             }
             catch (Exception ex)
             {
@@ -55,6 +58,79 @@ namespace WebForm.Common
                 Logger.Log.Error(ex.ToString());
             }
         }
+
+
+        public static void LoadSymbol()
+        {
+            try
+            {
+                //List<Symbol_Notify_Info> _newsDa = new List<Symbol_Notify_Info>();
+
+              
+                //var pTotal = 0;
+                //var ds = _newsDa.GetForPortalDetail(portalSearchNews, ref pTotal);
+
+                //c_lstNew = CBO<News>.FillCollectionFromDataSet(ds);
+                //c_lstNew = c_lstNew.OrderByDescending(m => m.Id).ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+            }
+        }
+
+
+
+
+        public static void ReadDataSymbol()
+        {
+            try
+            {
+                string path = "DataSymbol/data.txt";
+                c_lstSymbol = new List<Symbol_Notify_Info>();
+
+                var symbolMap = new Dictionary<string, Symbol_Notify_Info>();
+
+                if (!File.Exists(path))
+                {
+                    c_lstSymbol = new List<Symbol_Notify_Info>();
+                }
+                else
+                {
+                    foreach (var line in File.ReadLines(path))
+                    {
+                        try
+                        {
+                            // Bước 1: Deserialize dòng đầu tiên
+                            var wrapper = JsonSerializer.Deserialize<Notify_WebSocket_Info>(line);
+
+                            // Bước 2: Deserialize tiếp trường 'data' (vì nó là chuỗi JSON lồng)
+                            if (!string.IsNullOrEmpty(wrapper?.data))
+                            {
+                                var dataModel = JsonSerializer.Deserialize<Symbol_Notify_Info>(wrapper.data);
+                                if (dataModel != null && !string.IsNullOrEmpty(dataModel.Symbol))
+                                {
+                                    symbolMap[dataModel.Symbol] = dataModel;
+                                }
+                                    
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"⚠️ Lỗi khi đọc dòng: {ex.Message}");
+                        }
+                    }
+                    c_lstSymbol = symbolMap.Values.ToList();
+                }
+                    
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+            }
+        }
+
 
         public static void LoadProject()
         {

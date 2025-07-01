@@ -13,7 +13,7 @@ ConfigFolder = "Config";
 #endif
 
 var path = Path.Combine(Directory.GetCurrentDirectory(), ConfigFolder, "appsettings.json");
-// test git .
+
 // Cấu hình đọc cấu hình từ file appsettings.json
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile(path, optional: true, reloadOnChange: true)
@@ -39,7 +39,12 @@ WebForm.Common.ConfigInfo.ContentRootPath = builder.Environment.ContentRootPath;
 
 WebForm.Common.ConfigInfo.GetConfig(configuration);
 
-DataMemory.LoadDbMem();
+//DataMemory.LoadDbMem();
+
+builder.Services.AddSingleton<IHostedService, DataMemoryService>();
+
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews()
@@ -86,6 +91,8 @@ builder.Services.AddResponseCompression(options =>
                 });
 });
 
+builder.Services.AddSignalR();
+builder.Services.AddHostedService<WebSocketReceiverService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -97,6 +104,8 @@ app.UseStaticFiles();
 app.UseSession(); // Additional
 app.UseRouting();
 
+
+app.MapHub<MessageHub>("/messageHub");
 // nén dữ liệu
 app.UseResponseCompression();
 app.UseCookiePolicy();

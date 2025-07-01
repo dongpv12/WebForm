@@ -325,25 +325,22 @@
 	<script src="~/assets/js/main.js"></script>
 
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 	<script>
-		const socket = new WebSocket("wss://apichecking.navisoft.com.vn/api/checking-symbol/WebSocket?username=hello");
+		const connection = new signalR.HubConnectionBuilder()
+			.withUrl("/messageHub")
+			.build();
 
-		socket.onopen = () => {
-		  console.log("WebSocket connected");
-		};
+		connection.on("ReceiveMessage", function (message) {
+			console.log("📩 Client received:", message);
+			// alert("Received message: " + message);
+		});
 
-		socket.onmessage = (event) => {
-		  console.log("Message received:", event.data);
-		};
-
-		socket.onerror = (error) => {
-		  console.error("WebSocket error:", error);
-		};
-
-		socket.onclose = () => {
-		  console.log("WebSocket close:");
-		};
+		connection.start().catch(function (err) {
+			console.error("SignalR connection error:", err.toString());
+		});
 	</script>
+
 
 </body>
 </html>

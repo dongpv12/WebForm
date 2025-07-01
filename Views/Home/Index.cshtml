@@ -28,7 +28,7 @@
 
                     <!-- Nút "Danh mục tư vấn" -->
                     <div class="col-auto" style="margin:0!important">
-                        <button class="custom-advice-btn btn btn-outline-primary btn-lg d-inline-flex align-items-center gap-2  shadow-sm">
+                        <button class="custom-advice-btn btn btn-outline-primary btn-lg d-inline-flex align-items-center gap-2  shadow-sm" onclick="gotoDanhMuc();" >
                             <i class="bi bi-journal-text fs-5"></i>
                             Danh mục tư vấn
                         </button>
@@ -179,3 +179,9 @@
 
 </section><!-- /Call To Action Section -->
 <!-- Portfolio Section -->
+
+<script>
+    function gotoDanhMuc(){
+       window.location = '/co-phieu-tu-van';
+    }
+</script>

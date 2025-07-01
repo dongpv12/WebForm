@@ -1,4 +1,4 @@
-2025-06-30 12:08:45.9215 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+2025-07-01 08:18:41.9380 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
@@ -6,7 +6,126 @@
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
    at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 12:09:43.4735 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+2025-07-01 08:18:56.8700 [1] ERROR | WebForm.DataAccess.NewsDA.GetForPortalDetail | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetForPortalDetail(PortalSearchNewsIndex request, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 352
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:18:56.8822 [1] ERROR | WebForm.DataAccess.ProjectDa.Search | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.ProjectDa.Search(SearchProjectRequest model, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\Project.cs:line 204
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:18:56.8822 [1] ERROR | WebForm.DataAccess.PageDA.Search | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.PageDA.Search(SearchProjectRequest model, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\Page.cs:line 189
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:28:53.9268 [17] ERROR | WebForm.DataAccess.NewsDA.GetById | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetById(Int32 id) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 304
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:28:53.9268 [22] ERROR | WebForm.DataAccess.NewsDA.GetById | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetById(Int32 id) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 304
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:28:53.9696 [26] ERROR | WebForm.DataAccess.NewsDA.GetById | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetById(Int32 id) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 304
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:28:57.4467 [23] ERROR | WebForm.DataAccess.NewsDA.GetById | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetById(Int32 id) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 304
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:28:57.4467 [29] ERROR | WebForm.DataAccess.NewsDA.GetById | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetById(Int32 id) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 304
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:37:26.5131 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
@@ -14,7 +133,51 @@
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
    at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:01:30.6340 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+2025-07-01 08:37:41.4460 [1] ERROR | WebForm.DataAccess.NewsDA.GetForPortalDetail | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetForPortalDetail(PortalSearchNewsIndex request, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 352
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:37:41.4599 [1] ERROR | WebForm.DataAccess.ProjectDa.Search | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.ProjectDa.Search(SearchProjectRequest model, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\Project.cs:line 204
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:37:41.4599 [1] ERROR | WebForm.DataAccess.PageDA.Search | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (1326): The user name or password is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.PageDA.Search(SearchProjectRequest model, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\Page.cs:line 189
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20
+2025-07-01 08:38:16.4370 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
@@ -22,7 +185,51 @@
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
    at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:02:05.1664 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+2025-07-01 08:38:31.2094 [1] ERROR | WebForm.DataAccess.NewsDA.GetForPortalDetail | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 25 - Connection string is not valid)
+ ---> System.ComponentModel.Win32Exception (87): The parameter is incorrect.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetForPortalDetail(PortalSearchNewsIndex request, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 352
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:87,State:0,Class:20
+2025-07-01 08:38:31.2219 [1] ERROR | WebForm.DataAccess.ProjectDa.Search | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 25 - Connection string is not valid)
+ ---> System.ComponentModel.Win32Exception (87): The parameter is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.ProjectDa.Search(SearchProjectRequest model, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\Project.cs:line 204
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:87,State:0,Class:20
+2025-07-01 08:38:31.2219 [1] ERROR | WebForm.DataAccess.PageDA.Search | System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 25 - Connection string is not valid)
+ ---> System.ComponentModel.Win32Exception (87): The parameter is incorrect.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.PageDA.Search(SearchProjectRequest model, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\Page.cs:line 189
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:87,State:0,Class:20
+2025-07-01 08:39:30.0934 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
@@ -30,515 +237,149 @@
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
    at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:07:50.0706 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+2025-07-01 09:01:18.5007 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:10:24.9145 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-07-01 09:03:32.3436 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:11:44.9746 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-07-01 09:04:28.0831 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:18:46.8322 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-07-01 09:09:39.7241 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:30:32.7212 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-07-01 09:11:58.7030 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:30:42.7676 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-07-01 09:12:59.3213 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:33:43.5031 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-07-01 09:20:13.8840 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:34:16.9363 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 180
+2025-07-01 09:36:59.4382 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:34:40.0321 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 180
+2025-07-01 09:40:45.7484 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:35:15.7746 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 194
+2025-07-01 09:49:53.5820 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:36:01.7532 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 226
+2025-07-01 09:50:26.4216 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:36:51.4972 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 226
+2025-07-01 09:51:21.2043 [10] ERROR | WebForm.DataAccess.NewsDA.GetForPortalDetail | System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=46534; handshake=14; 
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WebForm.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\DANGTQ\Desktop\WebForm\Common\SQLHelper.cs:line 521
+   at WebForm.DataAccess.NewsDA.GetForPortalDetail(PortalSearchNewsIndex request, Int32& pTotal) in C:\Users\DANGTQ\Desktop\WebForm\DataAccess\News.cs:line 352
+ClientConnectionId:d1e00e75-d86e-45cb-b630-a78e122ba981
+Error Number:-2,State:0,Class:11
+2025-07-01 10:11:27.9835 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:37:41.7906 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 232
+2025-07-01 10:12:35.7143 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:38:17.9535 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 232
+2025-07-01 10:14:20.1615 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:38:51.2361 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 232
+2025-07-01 10:17:33.5939 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:41:10.9702 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 232
+2025-07-01 10:46:39.5311 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
    at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
    at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
    at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 13:43:03.2850 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:07:42.3098 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:20:41.5944 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:24:35.9298 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:38:16.7716 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:39:16.9566 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:41:40.8925 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:42:38.8356 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:42:53.8447 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:43:35.6734 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:45:52.3004 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:46:22.9891 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:47:45.8246 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:48:38.0160 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 14:48:43.3334 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 15:00:43.5308 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 15:59:30.4510 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:14:25.2928 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:14:39.3449 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:16:22.7211 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:17:31.0227 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:19:09.4532 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:20:15.7341 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:23:37.2231 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:24:33.7130 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:28:12.2599 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:30:14.0234 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:31:05.4613 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:37:01.9719 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:39:30.0921 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:51:27.4670 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:54:37.4346 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 16:57:33.7795 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:00:56.1552 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:02:42.5662 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:04:50.7206 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:06:23.5860 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:07:03.5019 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:15:34.0737 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:16:10.9579 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:18:17.6542 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:19:05.3359 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:21:03.6510 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:30:26.7132 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:30:41.4934 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:32:04.8178 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:33:36.1059 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
-2025-06-30 17:37:54.6019 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
-   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
-   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.File.ReadAllText(String path, Encoding encoding)
-   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 254
