@@ -9,309 +9,309 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebForm
 build_property.RootNamespace = WebForm
-build_property.ProjectDir = C:\Users\Admin\Desktop\New folder (6)\WebForm\
+build_property.ProjectDir = C:\Users\Admin\Desktop\New folder (9)\WebForm\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\Desktop\New folder (6)\WebForm
+build_property.MSBuildProjectDirectory = C:\Users\Admin\Desktop\New folder (9)\WebForm
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Admin/Login.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Admin/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/ColorWarehouse/Create.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/ColorWarehouse/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29sb3JXYXJlaG91c2VcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/ColorWarehouse/Edit.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/ColorWarehouse/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29sb3JXYXJlaG91c2VcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/ColorWarehouse/List.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/ColorWarehouse/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29sb3JXYXJlaG91c2VcTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/ColorWarehouse/_listColor.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/ColorWarehouse/_listColor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29sb3JXYXJlaG91c2VcX2xpc3RDb2xvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/News/Create.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/News/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTmV3c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/News/Edit.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/News/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTmV3c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/News/List.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/News/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTmV3c1xMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/News/_listNews.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/News/_listNews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTmV3c1xfbGlzdE5ld3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Page/AboutUs.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Page/AboutUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZVxBYm91dFVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Page/AgencyPolicy.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Page/AgencyPolicy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZVxBZ2VuY3lQb2xpY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Page/ContactUs.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Page/ContactUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZVxDb250YWN0VXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Page/Recruitment.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Page/Recruitment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZVxSZWNydWl0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/CreateGroup.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/CreateGroup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDcmVhdGVHcm91cC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/CreateProduct.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/CreateProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDcmVhdGVQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/EditGroup.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/EditGroup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxFZGl0R3JvdXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/EditProduct.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/EditProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxFZGl0UHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/GroupList.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/GroupList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxHcm91cExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/ListProduct.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/ListProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxMaXN0UHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/_listGroupProduct.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/_listGroupProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxfbGlzdEdyb3VwUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Product/_listProduct.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Product/_listProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxfbGlzdFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Project/Create.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Project/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Project/Edit.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Project/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Project/List.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Project/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdFxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Areas/Admin/Views/Project/_listProject.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Areas/Admin/Views/Project/_listProject.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdFxfbGlzdFByb2plY3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/CkfinderToServer/Browse.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/CkfinderToServer/Browse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2tmaW5kZXJUb1NlcnZlclxCcm93c2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/CkfinderToServer/BrowseImage.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/CkfinderToServer/BrowseImage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2tmaW5kZXJUb1NlcnZlclxCcm93c2VJbWFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/AboutUs.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/AboutUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/AgencyPolicy.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/AgencyPolicy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZ2VuY3lQb2xpY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/CalculatorPaint.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/CalculatorPaint.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYWxjdWxhdG9yUGFpbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ChitietTinTuc.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ChitietTinTuc.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGl0aWV0VGluVHVjLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ColorBoard.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ColorBoard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb2xvckJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ColorBoard_Out.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ColorBoard_Out.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb2xvckJvYXJkX091dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ColorBoard_QuatMau.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ColorBoard_QuatMau.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb2xvckJvYXJkX1F1YXRNYXUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ColorWarehouse.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ColorWarehouse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb2xvcldhcmVob3VzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ContactUs.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ContactUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0VXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/DataNewsPages.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/DataNewsPages.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXRhTmV3c1BhZ2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/DataReportPages.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/DataReportPages.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXRhUmVwb3J0UGFnZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/Index.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ListNews.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ListNews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0TmV3cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/MemberCompanies.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/MemberCompanies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZW1iZXJDb21wYW5pZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/NewsDetail.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/NewsDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdzRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/OutstandingProject - Copy.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/OutstandingProject - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPdXRzdGFuZGluZ1Byb2plY3QgLSBDb3B5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/OutstandingProject.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/OutstandingProject.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPdXRzdGFuZGluZ1Byb2plY3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/PhongThuy.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/PhongThuy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQaG9uZ1RodXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/Privacy.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ProductCertification.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ProductCertification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0Q2VydGlmaWNhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ProductCertification_bk.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ProductCertification_bk.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0Q2VydGlmaWNhdGlvbl9iay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ProductDetail.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ProductDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0RGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/Products.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/Products.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/Products_Old.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/Products_Old.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0c19PbGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/Recruitment.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/Recruitment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWNydWl0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/RegisterAdvisory.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/RegisterAdvisory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlckFkdmlzb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ReportArt.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ReportArt.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXBvcnRBcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ReportCTCK.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ReportCTCK.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXBvcnRDVENLLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/ReportNganh.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/ReportNganh.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXBvcnROZ2FuaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/Video.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/Video.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWRlby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/XHN.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/XHN.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxYSE4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/XHTT.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/XHTT.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxYSFRULmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/XH_CPDD.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/XH_CPDD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxYSF9DUERELmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/XH_LCP.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/XH_LCP.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxYSF9MQ1AuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/_listProducts.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/_listProducts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfbGlzdFByb2R1Y3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/_listProducts_Old.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/_listProducts_Old.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfbGlzdFByb2R1Y3RzX09sZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/_listView.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/_listView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfbGlzdFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Home/_newsSuggest.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Home/_newsSuggest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfbmV3c1N1Z2dlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Shared/Error.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Shared/_Footer.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Shared/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Shared/_Header.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Shared/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Shared/_Menu_Admin.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Shared/_Menu_Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51X0FkbWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/_ViewImports.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/_ViewStart.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Shared/_Layout.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cyxznblwuy
 
-[C:/Users/Admin/Desktop/New folder (6)/WebForm/Views/Shared/_Layout_Admin.cshtml]
+[C:/Users/Admin/Desktop/New folder (9)/WebForm/Views/Shared/_Layout_Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-1vpvfx1zsn
