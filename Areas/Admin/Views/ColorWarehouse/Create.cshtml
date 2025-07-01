@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Tạo mới";
+   Layout = "_Layout_Admin";
+}
+
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="/ckfinder/ckfinder.js"></script>
+
+<div class="container-fluid">
+    <div class="form-group row">
+        <label for="txtName" class="col-sm-2 col-form-label">Tên</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control"  id="txtName" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtDescription" class="col-sm-2 col-form-label">Mô tả</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="5" id="txtDescription"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtAvatar" class="col-sm-2 col-form-label">Ảnh</label>
+        <div class="col-sm-10">
+            <img id="imgAvatar" src="/Images/img-not-available.jpg" style="width: 100px; height: 100px" />
+            <input type="hidden" class="form-control" id="txtAvatar" />
+            <input type="button" value="Chọn ảnh" class="btn" onclick="ShowImage()" />
+        </div>
+    </div>
+    <div class="form-group row" style="display: none">
+        <label class="col-sm-2 col-form-label">&nbsp;</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="cbxSpecial" value="">  <label class="checkbox-inline">Đặc biệt</label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">&nbsp;</label>
+        <div class="col-sm-10">
+            <input type="button" class="btn btn-primary" id="btnCreate" value="Tạo kho màu" onclick="return Create()" />
+            <input type="button" class="btn" id="btnCancel" value="Hủy" />
+        </div>
+    </div>
+</div>
+
+<script>
+     
+    var lockSubmit = false;
+    function ShowImage() {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (url) {
+            $('#imgAvatar').attr('src', url);
+            $('#txtAvatar').val(url);
+        }
+        finder.popup();
+    }
+    function Create() {
+  
+        if (lockSubmit) {
+            return;
+        }
+        lockSubmit = true;
+        var request = {
+            name: $('#txtName').val(),
+            avatar: $('#txtAvatar').val(),
+            description: $('#txtDescription').val()
+        };
+
+        axios.post("/color/create-color", request).then(function (response) {
+            var data = response.data;
+            if (data.Status) {
+                swal({
+                    title: "Thành công",
+                    text: "Tạo kho màu thành công",
+                    icon: "success",
+                    buttons: true
+                }).then((value) => {
+
+                });
+            } else {
+                swal({
+                    title: "Lỗi",
+                    text: "Vui lòng thử lại vào lúc khác",
+                    icon: "warning",
+                    buttons: true
+                });
+            }
+            lockSubmit = false;
+        }).catch(error => {
+            swal({
+                title: "Lỗi",
+                text: "Vui lòng thử lại vào lúc khác",
+                icon: "warning",
+                buttons: true
+            });
+            lockSubmit = false;
+        });
+    }
+
+
+</script>
+

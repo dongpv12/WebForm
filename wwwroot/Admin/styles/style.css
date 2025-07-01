@@ -1,0 +1,19 @@
+.div-action, .div-search {
+  padding-bottom: 1rem; }
+
+.div-search-text {
+  position: relative; }
+  .div-search-text .fa-search {
+    position: absolute;
+    right: 0.3rem;
+    top: 0.6rem; }
+
+.col-ht-3 {
+  width: 30%; }
+
+.form-inline-ht {
+  display: flex;
+  flex-direction: row;
+  width: 100%; }
+  .form-inline-ht .div-search-text {
+    margin-left: auto; }

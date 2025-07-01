@@ -1,0 +1,108 @@
+﻿ @using WebForm.Common
+@model WebForm.Models.ListNews
+
+@{
+    ViewBag.Title = "Danh sách bài viết";
+   Layout = "_Layout_Admin";
+}
+<input type="hidden" id="txtRecordOnPage" value="@ConfigInfo.RecordOnPage" />
+<div class="container-fluid div-search">
+    <div class="form-inline-ht">
+        <input type="button" value="Tạo bài mới" id="btnCreateNews" class="btn" onclick="return  window.location.href='/News/Create'" />
+        <div class="div-search-text col-ht-3">
+            <input id="txtSearch" type="text" class="form-control" placeholder="Tìm kiếm"/>
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+</div>
+<div id="data_news" class="container-fluid dataTables_wrapper container-fluid">
+    @Html.Partial("~/Areas/Admin/Views/News/_listNews.cshtml", Model)
+</div>
+<script>
+
+    $(document).ready(function() {
+        $("#txtSearch").keypress(function (e) {
+            if(e.which === 13) {
+                page(1);
+            }
+        });
+    });
+    function page(index) {
+        try {
+            var recordOnPage = $('#txtRecordOnPage').val();
+            var totalPage = $('#txtTotalPage').val();
+            var title = $('#txtSearch').val();
+            var start = 1;
+            var end = recordOnPage;
+            if (index === 'new') {
+                index = totalPage;
+            } else if (index === 'prew') {
+                index = 1;
+            }
+            if (index > 1) {
+                end = index * recordOnPage;
+                start = end - recordOnPage + 1;
+            }
+            var request = {
+                currentPage: index,
+                start: start,
+                end: end,
+                orderBy: 'CreateDate',
+                orderByType: 'DESC',
+                createDate: '',
+                title: title
+            };
+
+            axios.post("/News/Search", request).then(function (response) {
+                $('#data_news').html(response.data);
+            }).catch(error => {
+
+            });
+        } catch (e) {
+            console.log();
+        }
+    }
+
+    function deleteNews(id) {
+
+        swal({
+            title: "Bạn chắc chắn?",
+            text: "Bạn sẽ xóa bài viết này. Sẽ không thể khôi phục được",
+            icon: "warning",
+            buttons: [
+                'Không!',
+                'Có!'
+            ],
+            dangerMode: true
+        }).then(function (isConfirm) {
+            var request = {
+                id: id
+            };
+
+            if (isConfirm) {
+                axios.post("/News/Delete", request).then(function (response) {
+                    var data = response.data;
+                    if (data.Status) {
+                        swal({
+                            title: "Thành công",
+                            text: "Xóa bài viết thành công",
+                            icon: "success",
+                            buttons: true
+                        }).then((value) => {
+                            page($('#txtCurrentPage').val());
+                        });
+                    } else {
+                        swal({
+                            title: "Lỗi",
+                            text: "Vui lòng thử lại vào lúc khác",
+                            icon: "warning",
+                            buttons: true
+                        });
+                    }
+                }).catch(error => {
+
+                });
+            } 
+        });
+    }
+</script>

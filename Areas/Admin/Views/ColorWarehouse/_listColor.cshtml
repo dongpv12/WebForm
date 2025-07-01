@@ -1,0 +1,38 @@
+﻿@model WebForm.Models.ListColorWarehouse
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên</th>
+                <th>Ảnh</th>
+                <th>Ngày tạo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Collection)
+            {
+            <tr>
+                <td> @Model.Start </td>
+                <td> @item.Name</td>
+                <td><img style="width: 50px; height: 50px;" src="@item.Avatar" /> </td>
+                <td> @item.CreateDate</td>
+                <td>
+                    <a href="@("/color/edit-color-" +item.Id + ".htm")" class="btn btn-warning  ">
+                        <span class="glyphicon glyphicon glyphicon-pencil"></span> Sửa
+                    </a>
+                    <a href="#" class="btn btn-danger" onclick="deleteProject('@item.Id')">
+                        <span class="glyphicon glyphicon-trash"></span> Xóa
+                    </a>
+                </td>
+            </tr>
+                Model.Start++;
+            }
+        </tbody>
+    </table>
+</div>
+@Html.Raw(Model.Paging)
+<input type="hidden" id="txtTotalPage" value="@Model.TotalPage" />
+<input type="hidden" id="txtCurrentPage" value="@Model.CurrentPage" />

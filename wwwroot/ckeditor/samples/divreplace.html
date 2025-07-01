@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+-->
+<html>
+<head>
+	<title>Replace DIV &mdash; CKEditor Sample</title>
+	<meta charset="utf-8">
+	<script src="../ckeditor.js"></script>
+	<link href="sample.css" rel="stylesheet">
+	<style>
+
+		div.editable
+		{
+			border: solid 2px Transparent;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		div.editable:hover
+		{
+			border-color: black;
+		}
+
+	</style>
+	<script>
+
+		// Uncomment the following code to test the "Timeout Loading Method".
+		// CKEDITOR.loadFullCoreTimeout = 5;
+
+		window.onload = function() {
+			// Listen to the double click event.
+			if ( window.addEventListener )
+				document.body.addEventListener( 'dblclick', onDoubleClick, false );
+			else if ( window.attachEvent )
+				document.body.attachEvent( 'ondblclick', onDoubleClick );
+
+		};
+
+		function onDoubleClick( ev ) {
+			// Get the element which fired the event. This is not necessarily the
+			// element to which the event has been attached.
+			var element = ev.target || ev.srcElement;
+
+			// Find out the div that holds this element.
+			var name;
+
+			do {
+				element = element.parentNode;
+			}
+			while ( element && ( name = element.nodeName.toLowerCase() ) &&
+				( name != 'div' || element.className.indexOf( 'editable' ) == -1 ) && name != 'body' );
+
+			if ( name == 'div' && element.className.indexOf( 'editable' ) != -1 )
+				replaceDiv( element );
+		}
+
+		var editor;
+
+		function replaceDiv( div ) {
+			if ( editor )
+				editor.destroy();
+
+			editor = CKEDITOR.replace( div );
+		}
+
+	</script>
+</head>
+<body>
+	<h1 class="samples">
+		<a href="index.html">CKEditor Samples</a> &raquo; Replace DIV with CKEditor on the Fly
+	</h1>
+	<div class="description">
+	</div>
+	 
+	<div class="editable">
+	 
+	</div>
+	<div class="editable">
+		 
+	</div>
+	<div class="editable">
+		 
+	</div>
+	<div id="footer">
+		<hr>
+		<p>
+			 
+		</p>
+		<p id="copy">
+			Copyright &copy; 2003-2013, <a class="samples" href="http://cksource.com/">CKSource</a> - Frederico
+			Knabben. All rights reserved.
+		</p>
+	</div>
+</body>
+</html>

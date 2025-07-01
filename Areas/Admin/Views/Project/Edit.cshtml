@@ -1,0 +1,123 @@
+﻿@model WebForm.Models.Project
+
+@{
+    ViewBag.Title = "Sửa công trình";
+   Layout = "_Layout_Admin";
+}
+<script src="/ckfinder/ckfinder.js"></script>
+<input type="hidden" id="txtId" value="@Model.Id"/>
+<div class="container-fluid">
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Tên</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtName" value="@Model.Name" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtDescription" class="col-sm-2 col-form-label">Mô tả</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="5" id="txtDescription">@Model.Description</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtAvatar" class="col-sm-2 col-form-label">Ảnh đại diện</label>
+        <div class="col-sm-10">
+            @{
+                var url = "/Images/img-not-available.jpg";
+                if (!string.IsNullOrEmpty(Model.Avatar))
+                {
+                    url = Model.Avatar;
+                }
+                <img id="imgAvatar" src="@url" style="width: 100px; height: 100px" />
+            }
+
+            <input type="hidden" class="form-control" id="txtAvatar" value="@Model.Avatar" />
+            <input type="button" value="Chọn ảnh" class="btn" onclick="showImage()" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">&nbsp;</label>
+        <div class="col-sm-10">
+            @{
+                var check = "checked";
+                if (Model.Special == "N" || Model.Special == string.Empty)
+                {
+                    check = string.Empty;
+                }
+                <input type="checkbox" id="cbxSpecial"  @check><label class="checkbox-inline">Đặc biệt</label>
+            }
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">&nbsp;</label>
+        <div class="col-sm-10">
+            <input type="button" class="btn btn-primary" id="btnCreate" value="Lưu lại" onclick="return Edit()" />
+            <input type="button" class="btn" id="btnCancel" value="Hủy" />
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var lockSubmit = false;
+
+    function showImage() {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (url) {
+            $('#imgAvatar').attr('src', url);
+            $('#txtAvatar').val(url);
+        }
+        finder.popup();
+    }
+
+    function Edit() {
+        var isSpecial = 'N';
+        if ($('#cbxSpecial').is(':checked')) {
+            isSpecial = 'Y';
+        }
+        if (lockSubmit) {
+            return;
+        }
+        var request = {
+            id: $('#txtId').val(),
+            name: $('#txtName').val(),
+            avatar: $('#txtAvatar').val(),
+            description: $('#txtDescription').val(),
+            special: isSpecial
+        };
+        lockSubmit = true;
+        axios.post("/Project/Edit", request).then(function (response) {
+            var data = response.data;
+            if (data.Status) {
+                swal({
+                    title: "Thành công",
+                    text: "Sửa công trình thành công",
+                    icon: "success",
+                    buttons: true
+                }).then((value) => {
+
+                });
+            } else {
+                swal({
+                    title: "Lỗi",
+                    text: "Vui lòng thử lại vào lúc khác",
+                    icon: "warning",
+                    buttons: true
+                });
+            }
+            lockSubmit = false;
+        }).catch(error => {
+            swal({
+                title: "Lỗi",
+                text: "Vui lòng thử lại vào lúc khác",
+                icon: "warning",
+                buttons: true
+            });
+            lockSubmit = false;
+        });
+    }
+
+
+</script>
+

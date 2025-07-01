@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Chứng nhận sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="/css/default.css" rel="stylesheet" />
+<link href="/css/component.css" rel="stylesheet" />
+<script src="/js/modernizr.custom.js"></script>
+
+<h2 class="color-main text-center" style="margin-bottom: 45px; margin-top: 100px;">
+    <span>
+        Chứng nhận, chứng chỉ
+    </span>
+</h2>
+
+<div class="container">
+    <div id="cbp-fwslider" class="cbp-fwslider">
+        <ul>
+            <li><a href="#"><img src="/Images/Certification/1.CN ISO IN.jpg" alt="img01" /></a></li>
+            <li><a href="#"><img src="/Images/Certification/1.CNHQ.jpg" alt="img01" /></a></li>
+            <li><a href="#"><img src="/Images/Certification/2.QD ISO.jpg" alt="img01" /></a></li>
+            <li><a href="#"><img src="/Images/Certification/CHUNG NHAN MA VACH 001.jpg" alt="img01" /></a></li>
+            <li><a href="#"><img src="/Images/Certification/CHUNG NHAN MA VACH 002.jpg" alt="img01" /></a></li>
+        </ul>
+    </div>
+</div>
+<script src="/js/jquery.min.js"></script>
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*@
+<script src="/js/jquery.cbpFWSlider.min.js"></script>
+
+<script>
+    $(function () {
+        $('#cbp-fwslider').cbpFWSlider();
+    });
+</script>

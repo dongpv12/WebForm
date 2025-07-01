@@ -1,0 +1,181 @@
+﻿@using WebForm.Helpers
+@model WebForm.Models.IndexPortal
+
+@{
+    var lstNews = Model.LstNews;
+    var lstProject = Model.LstProject;
+}
+<style>
+    .input_search_home:focus {
+        outline: none;
+        box-shadow: none;
+    }
+</style>
+
+<section id="hero" class="hero section accent-background">
+
+    <img src="~/assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+
+    <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+        <h2>Welcome to FinArt</h2>
+        <p>Nền tảng phân tích tài chính và đầu tư thông minh</p>
+        <div class="div-search" style="margin-top:30px;">
+
+
+
+            <div class="container py-4">
+                <div class="row justify-content-center align-items-center g-3">
+
+                    <!-- Nút "Danh mục tư vấn" -->
+                    <div class="col-auto" style="margin:0!important">
+                        <button class="custom-advice-btn btn btn-outline-primary btn-lg d-inline-flex align-items-center gap-2  shadow-sm">
+                            <i class="bi bi-journal-text fs-5"></i>
+                            Danh mục tư vấn
+                        </button>
+                    </div>
+
+                    <!-- Ô tìm kiếm dài hơn -->
+                    <div class="col-auto">
+                        <form>
+                            <div class="input-group input-group-lg custom-search-group">
+                                <input type="text" class="form-control input_search_home" placeholder="">
+                                <button class="btn btn-light px-4" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+</section><!-- /Hero Section -->
+
+<!-- About Section -->
+<section class="about section">
+
+    <div class="container">
+
+        <div class="row gy-5">
+
+            <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
+                <h3>Xu hướng</h3>
+                <p>
+                    Nhận diện chuyển động lớn trong thị trường và ngành nghề để dẫn đầu trong quyết định đầu tư và chiến lược tài chính
+                </p>
+                @* <a href="#" class="about-btn align-self-center align-self-xl-start"><span>About us</span> <i class="bi bi-chevron-right"></i></a> *@
+            </div>
+
+            <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
+                <div class="row gy-4">
+
+                    <div class="col-md-6 icon-box position-relative">
+                        <i class="bi bi-briefcase"></i>
+                        <h4><a href="/danh-sach-tin-xhtt" class="stretched-link">Xu hướng thị trường</a></h4>
+                        <p>Phân tích diễn biến và xu hướng thị trường qua số liệu thực tế – hỗ trợ xây dựng chiến lược đầu tư hiệu quả</p>
+                    </div><!-- Icon-Box -->
+
+                    <div class="col-md-6 icon-box position-relative">
+                        <i class="bi bi-gem"></i>
+                        <h4><a href="/danh-sach-tin-xhn" class="stretched-link">Xu hướng ngành</a></h4>
+                        <p>Phân tích các xu hướng phát triển nổi bật trong từng ngành – nền tảng quan trọng để đánh giá cơ hội đầu tư và định vị chiến lược dài hạn</p>
+                    </div><!-- Icon-Box -->
+
+                    <div class="col-md-6 icon-box position-relative">
+                        <i class="bi bi-broadcast"></i>
+                        <h4><a href="/danh-sach-tin-xh-cpdd" class="stretched-link">Cổ phiếu dẫn dắt</a></h4>
+                        <p>Danh mục các cổ phiếu dẫn dắt thị trường, đại diện cho các ngành tăng trưởng mạnh và thu hút dòng tiền lớn</p>
+                    </div><!-- Icon-Box -->
+
+                    <div class="col-md-6 icon-box position-relative">
+                        <i class="bi bi-easel"></i>
+                        <h4><a href="/danh-sach-tin-xh-lcp" class="stretched-link">Lọc cổ phiếu</a></h4>
+                        <p>Công cụ lọc cổ phiếu theo các tiêu chí tài chính, kỹ thuật và ngành nghề giúp bạn tìm ra mã phù hợp chiến lược đầu tư</p>
+                    </div><!-- Icon-Box -->
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- /About Section -->
+<!-- Services Section -->
+<section id="services" class="services section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Báo cáo phân tích</h2>
+        @* <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> *@
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-activity icon"></i></div>
+                    <h4><a href="/danh-sach-bao-cao-art" class="stretched-link">Báo cáo Fin Art</a></h4>
+                    <p>Tổng hợp các báo cáo phân tích chuyên sâu được thực hiện bởi Fin Art – giúp bạn nắm bắt thông tin thị trường một cách toàn diện</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+                    <h4><a href="/danh-sach-tin-xhtt" class="stretched-link">Báo cáo công ty chứng khoán</a></h4>
+                    <p>Tổng hợp các báo cáo phân tích, nhận định và khuyến nghị từ các công ty chứng khoán</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+                    <h4><a href="/danh-sach-tin-xhtt" class="stretched-link">Báo cáo ngành</a></h4>
+                    <p>Phân tích toàn cảnh ngành với số liệu, xu hướng và đánh giá chuyên sâu, giúp bạn hiểu rõ bối cảnh và tiềm năng phát triển</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            @*  <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-item position-relative">
+                            <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+                            <h4><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                        </div>
+                    </div> *@
+            <!-- End Service Item -->
+
+        </div>
+
+    </div>
+
+</section><!-- /Services Section -->
+<!-- Stats Section -->
+<!-- Call To Action Section -->
+<section id="about" class="call-to-action section accent-background">
+
+    <img src="~/assets/img/cta-bg.jpg" alt="">
+
+    <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-xl-10">
+                <div class="text-center">
+                    <h3>Về chúng tôi</h3>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a class="cta-btn" href="#">Call To Action</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!-- /Call To Action Section -->
+<!-- Portfolio Section -->

@@ -1,0 +1,91 @@
+﻿@using WebForm.Common
+@model WebForm.Models.ListProject
+
+@{
+    ViewBag.Title = "Danh sách công trình";
+   Layout = "_Layout_Admin";
+}
+<input type="hidden" id="txtRecordOnPage" value="@ConfigInfo.RecordOnPage" />
+<div class="container-fluid div-search">
+    <div class="form-inline-ht">
+        <input type="button" value="Tạo công trình" id="btnCreateNews" class="btn" onclick="return window.location.href = '/Project/Create'"/>
+    </div>
+</div>
+<div id="data_news" class="container-fluid dataTables_wrapper container-fluid">
+    @Html.Partial("~/Areas/Admin/Views/Project/_listProject.cshtml", Model)
+</div>
+
+<script>
+    function page(index) {
+        try {
+            var recordOnPage = $('#txtRecordOnPage').val();
+            var totalPage = $('#txtTotalPage').val();
+            var start = 1;
+            var end = recordOnPage;
+            if (index === 'new') {
+                index = totalPage;
+            } else if (index === 'prew') {
+                index = 1;
+            }
+            if (index > 1) {
+                end = index * recordOnPage;
+                start = end - recordOnPage + 1;
+            }
+            var request = {
+                currentPage: index,
+                start: start,
+                end: end               
+            };
+
+            axios.post("/Project/Search", request).then(function (response) {
+                $('#data_news').html(response.data);
+            }).catch(error => {
+
+            });
+        } catch (e) {
+            console.log();
+        }
+    }
+
+    function deleteProject(id) {
+        swal({
+            title: "Bạn chắc chắn?",
+            text: "Bạn sẽ xóa công trình này. Sẽ không thể khôi phục được",
+            icon: "warning",
+            buttons: [
+                'Không!',
+                'Có!'
+            ],
+            dangerMode: true
+        }).then(function (isConfirm) {
+            var request = {
+                id: id
+            };
+
+            if (isConfirm) {
+                axios.post("/Project/Delete", request).then(function (response) {
+                    var data = response.data;
+                    if (data.Status) {
+                        swal({
+                            title: "Thành công",
+                            text: "Xóa công trình thành công",
+                            icon: "success",
+                            buttons: true
+                        }).then((value) => {
+                            page($('#txtCurrentPage').val());
+                        });
+                    } else {
+                        swal({
+                            title: "Lỗi",
+                            text: "Vui lòng thử lại vào lúc khác",
+                            icon: "warning",
+                            buttons: true
+                        });
+                    }
+                }).catch(error => {
+
+                });
+            } 
+        });
+    }
+</script>

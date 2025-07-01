@@ -1,0 +1,47 @@
+﻿
+
+
+@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@using WebForm.Models;
+@{
+
+    List<News> list = new List<News>();
+    if (ViewBag.List != null)
+    {
+        list = ViewBag.List;
+    }
+
+}
+@if (list != null && list.Count > 0)
+{
+    @foreach (var item in list)
+    {
+        <div class="item_news">
+            <p class="title_news">
+                <a href="/chi-tiet/@item.Id" target="_blank">@item.Title</a>
+            </p>
+            <p class="date_new">
+                @item.CreateDate
+            </p>
+        </div>
+
+
+    }
+}
+else
+{
+
+}
+@if (list != null && list.Count > 0)
+{
+    <div> @Html.Raw(ViewBag.Paging) </div>
+}
+
+
+
+
+

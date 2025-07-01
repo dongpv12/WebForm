@@ -1,0 +1,79 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="/Index">Sơn Ichi</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tin tức">
+                <a class="nav-link" href="/News/List">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Tin tức</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sản phẩm">
+                <a class="nav-link" href="/Product/ListProduct">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Công trình">
+                <a class="nav-link" href="/Project/List">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Công trình</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kho màu">
+                <a class="nav-link" href="/color/danh-sach-kho-mau.htm">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Kho màu</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Trang tĩnh">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#pageStatic" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Trang tĩnh</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="pageStatic">
+                    <li>
+                        <a href="/Page/AboutUs">Giới thiệu</a>
+                    </li>
+                    <li>
+                        <a href="/Page/AgencyPolicy">Chính sách đại lý</a>
+                    </li>
+                    <li>
+                        <a href="/Page/ContactUs">Liên hệ</a>
+                    </li>
+                    <li>
+                        <a href="/Page/Recruitment">Tuyển dụng</a>
+                    </li>
+                </ul>
+            </li>
+            @* <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Thiết lập">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Thiết lập</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a href="/Page/IndexSetting">Trang chủ</a>
+                    </li>
+                </ul>
+            </li> *@
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/dang-xuat">
+                    <i class="fa fa-fw fa-sign-out"></i> Đăng xuất
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

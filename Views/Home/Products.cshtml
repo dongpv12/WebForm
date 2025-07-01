@@ -1,0 +1,31 @@
+﻿@model WebForm.Models.ListProductsPortal
+
+@{
+    ViewBag.Title = @Model.PageName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main_container">
+    <div class="container" style="padding-top: 50px;">
+        <div class="page-title">
+            <h1 class="title"> <span>@Model.PageName</span></h1>
+        </div>
+        @Html.Partial("_listProducts", Model)
+    </div>
+</div>
+
+<script>
+    function page(index) {
+        try {
+            var totalPage = $('#txtTotalPage').val();
+            if (index === 'new') {
+                index = totalPage;
+            } else if (index === 'prev') {
+                index = 1;
+            }
+            window.location.href = "/san-pham-moi/" + '@Model.Router' + "/page=" + index;
+        } catch (e) {
+            console.log();
+        }
+    }
+</script>

@@ -1,0 +1,203 @@
+﻿@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@using WebForm.Models;
+@{
+    ViewBag.Title = "Xu hướng thị trường";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string _Header = "";
+    if (ViewBag.Header != null)
+    {
+        _Header = ViewBag.Header;
+    }
+
+    // danh sách tin
+    List<News> list = new List<News>();
+    if (ViewBag.List != null)
+    {
+        list = ViewBag.List;
+    }
+
+
+
+
+    List<News> list_1 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+    List<News> list_2 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+    List<News> list_3 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+
+}
+
+<!-- Page Title -->
+<div class="page-title accent-background">
+    <div class="container position-relative">
+        <h1>@_Header</h1>
+        @* <nav class="breadcrumbs">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li class="current">Service Details</li>
+            </ol>
+        </nav> *@
+    </div>
+</div><!-- End Page Title -->
+<!-- Service Details Section -->
+<section id="service-details" class="service-details section">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+
+
+
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" id="data_news">
+
+                @Html.Partial("DataNewsPages")
+
+
+            </div>
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="" style="margin-bottom: 30px;">
+
+                    <div class="analysis-card">
+                        <div class="analysis-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Báo cáo Fin Art</h5>
+                            <a href="#" class="viewmore">xem thêm >></a>
+                        </div>
+
+                        <!-- Tin 1 -->
+                        <div class="analysis-item">
+                            <div class="analysis-meta">
+                                <span class="badge badge-update">CẬP NHẬT</span>
+                                <span class="date">20/06/2025</span>
+                            </div>
+                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
+                            <div class="analysis-source">Nguồn: VCBS</div>
+                        </div>
+
+                        <!-- Tin 2 -->
+                        <div class="analysis-item">
+                            <div class="analysis-meta">
+                                <span class="badge badge-analysis">PHÂN TÍCH</span>
+                                <span class="date">16/06/2025</span>
+                            </div>
+                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
+                            <div class="analysis-source">Nguồn: FPTS</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="" style="margin-bottom: 30px;">
+
+                    <div class="analysis-card">
+                        <div class="analysis-header">
+                            <h5>Báo cáo công ty Chứng khoán</h5>
+                        </div>
+
+                        <!-- Tin 1 -->
+                        <div class="analysis-item">
+                            <div class="analysis-meta">
+                                <span class="badge badge-update">CẬP NHẬT</span>
+                                <span class="date">20/06/2025</span>
+                            </div>
+                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
+                            <div class="analysis-source">Nguồn: VCBS</div>
+                        </div>
+
+                        <!-- Tin 2 -->
+                        <div class="analysis-item">
+                            <div class="analysis-meta">
+                                <span class="badge badge-analysis">PHÂN TÍCH</span>
+                                <span class="date">16/06/2025</span>
+                            </div>
+                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
+                            <div class="analysis-source">Nguồn: FPTS</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="" style="margin-bottom: 30px;">
+
+                    <div class="analysis-card">
+                        <div class="analysis-header">
+                            <h5>Báo cáo ngành</h5>
+                        </div>
+
+                        <!-- Tin 1 -->
+                        <div class="analysis-item">
+                            <div class="analysis-meta">
+                                <span class="badge badge-update">CẬP NHẬT</span>
+                                <span class="date">20/06/2025</span>
+                            </div>
+                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
+                            <div class="analysis-source">Nguồn: VCBS</div>
+                        </div>
+
+                        <!-- Tin 2 -->
+                        <div class="analysis-item">
+                            <div class="analysis-meta">
+                                <span class="badge badge-analysis">PHÂN TÍCH</span>
+                                <span class="date">16/06/2025</span>
+                            </div>
+                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
+                            <div class="analysis-source">Nguồn: FPTS</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- /Service Details Section -->
+<input type="hidden" id="txtRecordOnPage" value="@ConfigInfo.RecordOnPage" />
+<script>
+    function page(index) {
+     
+        try {
+            var recordOnPage = $('#txtRecordOnPage').val();
+            var start = 1;
+            var end = recordOnPage;
+            
+
+            
+
+            if (index === 'next') {
+               let pageht = $('li.active span.page-link').attr('id');
+               index = (parseInt(pageht) || 0) + 1;
+            } else if (index === 'prew') {
+               let pageht = $('li.active span.page-link').attr('id');
+               index = (parseInt(pageht) || 0) - 1;
+            }
+
+            if (index > 1) {
+                end = index * recordOnPage;
+                start = end - recordOnPage + 1;
+            }
+            var request = {
+                currentPage: index,
+                start: start,
+                end: end
+            };
+            axios.post("/Home/SearchXHTT", request).then(function (response) {
+                $('#data_news').html(response.data);
+            }).catch(error => {
+                 console.log(error);
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+</script>

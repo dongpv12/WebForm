@@ -1,0 +1,31 @@
+﻿@using WebForm.Helpers
+@model WebForm.Models.ListNews
+@{
+    // var baseUrl = "http://" + Request.Url.Authority + "/tin-tuc/{0}/{1}";
+    var baseUrl = Context.Request.Scheme + "://" + Context.Request.Host + "/tin-tuc/{0}/{1}";
+}
+<div class="row block-1">
+    
+    @foreach (var item in Model.Collection)
+    {
+        var url = string.Format(baseUrl, item.Id, HtmlControllHelpers.ReplaceUnicodeUrl(item.Title));
+
+        <div class="col-sm-4 col-md-4">
+            <div class="item">
+                <a href="@url" class="item_img">
+                    <img src="@item.FeatureImage" alt="@item.Title">
+                </a>
+                <div class="item_content">
+                    <p class="item_date">@item.CreateDate.Substring(0,10)</p>
+                    <a href="@url" class="item_title">
+                        @item.Title
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@Html.Raw(Model.Paging)
+
+<input type="hidden" id="txtTotalPage" value="@Model.TotalPage" />

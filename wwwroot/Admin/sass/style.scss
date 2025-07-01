@@ -1,0 +1,29 @@
+﻿$padding-bottom: 1rem;
+
+.div-action, .div-search {
+    padding-bottom: $padding-bottom;
+}
+
+.div-search-text {
+    position: relative;
+
+    .fa-search {
+        position: absolute;
+        right: 0.3rem;
+        top: 0.6rem;
+    }
+}
+
+.col-ht-3 {
+    width: 30%;
+}
+
+
+.form-inline-ht {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .div-search-text{
+        margin-left: auto;
+    }
+}

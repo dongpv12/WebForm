@@ -1,0 +1,182 @@
+D:\WebForm\WebForm\bin\Debug\net8.0\Config\nlog.config
+D:\WebForm\WebForm\bin\Debug\net8.0\Config\appsettings.Development.json
+D:\WebForm\WebForm\bin\Debug\net8.0\Config\appsettings.json
+D:\WebForm\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.runtime.json
+D:\WebForm\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.endpoints.json
+D:\WebForm\WebForm\bin\Debug\net8.0\WebForm.exe
+D:\WebForm\WebForm\bin\Debug\net8.0\WebForm.deps.json
+D:\WebForm\WebForm\bin\Debug\net8.0\WebForm.runtimeconfig.json
+D:\WebForm\WebForm\bin\Debug\net8.0\WebForm.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\WebForm.pdb
+D:\WebForm\WebForm\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\NLog.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\System.Data.SqlClient.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+D:\WebForm\WebForm\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.csproj.AssemblyReference.cache
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.GeneratedMSBuildEditorConfig.editorconfig
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfoInputs.cache
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfo.cs
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.csproj.CoreCompileInputs.cache
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.MvcApplicationPartsAssemblyInfo.cache
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cache
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cs
+D:\WebForm\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\WebForm\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout_Admin.cshtml.rz.scp.css
+D:\WebForm\WebForm\obj\Debug\net8.0\scopedcss\bundle\WebForm.styles.css
+D:\WebForm\WebForm\obj\Debug\net8.0\scopedcss\projectbundle\WebForm.bundle.scp.css
+D:\WebForm\WebForm\obj\Debug\net8.0\staticwebassets.build.json
+D:\WebForm\WebForm\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\WebForm\WebForm\obj\Debug\net8.0\staticwebassets.development.json
+D:\WebForm\WebForm\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\WebForm\WebForm\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.csproj.Up2Date
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.dll
+D:\WebForm\WebForm\obj\Debug\net8.0\refint\WebForm.dll
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.pdb
+D:\WebForm\WebForm\obj\Debug\net8.0\WebForm.genruntimeconfig.cache
+D:\WebForm\WebForm\obj\Debug\net8.0\ref\WebForm.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\Config\nlog.config
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\Config\appsettings.Development.json
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\Config\appsettings.json
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.runtime.json
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.endpoints.json
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\WebForm.exe
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\WebForm.deps.json
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\WebForm.runtimeconfig.json
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\WebForm.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\WebForm.pdb
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\NLog.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\WebForm\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfo.cs
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cache
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cs
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout_Admin.cshtml.rz.scp.css
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\scopedcss\bundle\WebForm.styles.css
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\scopedcss\projectbundle\WebForm.bundle.scp.css
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.WebForm.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.WebForm.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.build.WebForm.props
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WebForm.props
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WebForm.props
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.csproj.Up2Date
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.dll
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\refint\WebForm.dll
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.pdb
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\WebForm.genruntimeconfig.cache
+C:\Users\Admin\Desktop\WebForm\obj\Debug\net8.0\ref\WebForm.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\Config\nlog.config
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\Config\appsettings.Development.json
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\Config\appsettings.json
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.endpoints.json
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.runtime.json
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\WebForm.exe
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\WebForm.deps.json
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\WebForm.runtimeconfig.json
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\WebForm.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\WebForm.pdb
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\NLog.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\DANGTQ\Desktop\WebForm\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.csproj.AssemblyReference.cache
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfoInputs.cache
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfo.cs
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.csproj.CoreCompileInputs.cache
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cache
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cs
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout_Admin.cshtml.rz.scp.css
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\scopedcss\bundle\WebForm.styles.css
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\scopedcss\projectbundle\WebForm.bundle.scp.css
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.WebForm.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.WebForm.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.build.WebForm.props
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WebForm.props
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WebForm.props
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.csproj.Up2Date
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.dll
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\refint\WebForm.dll
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.pdb
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\WebForm.genruntimeconfig.cache
+C:\Users\DANGTQ\Desktop\WebForm\obj\Debug\net8.0\ref\WebForm.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.AssemblyInfo.cs
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cache
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.RazorAssemblyInfo.cs
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout_Admin.cshtml.rz.scp.css
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\scopedcss\bundle\WebForm.styles.css
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\scopedcss\projectbundle\WebForm.bundle.scp.css
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\refint\WebForm.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.pdb
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\Config\nlog.config
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\Config\appsettings.Development.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\Config\appsettings.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.runtime.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\WebForm.staticwebassets.endpoints.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\WebForm.exe
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\WebForm.deps.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\WebForm.runtimeconfig.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\WebForm.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\WebForm.pdb
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\NLog.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.csproj.Up2Date
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\WebForm.genruntimeconfig.cache
+C:\Users\Admin\Desktop\New folder (6)\WebForm\obj\Debug\net8.0\ref\WebForm.dll

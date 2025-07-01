@@ -1,0 +1,544 @@
+2025-06-30 12:08:45.9215 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 12:09:43.4735 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:01:30.6340 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:02:05.1664 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\DANGTQ\Desktop\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\DANGTQ\Desktop\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:07:50.0706 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:10:24.9145 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:11:44.9746 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:18:46.8322 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:30:32.7212 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:30:42.7676 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:33:43.5031 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:34:16.9363 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:34:40.0321 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:35:15.7746 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:36:01.7532 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:36:51.4972 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:37:41.7906 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:38:17.9535 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:38:51.2361 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:41:10.9702 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 13:43:03.2850 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:07:42.3098 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:20:41.5944 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:24:35.9298 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:38:16.7716 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:39:16.9566 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:41:40.8925 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:42:38.8356 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:42:53.8447 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:43:35.6734 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:45:52.3004 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:46:22.9891 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:47:45.8246 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:48:38.0160 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 14:48:43.3334 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 15:00:43.5308 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 15:59:30.4510 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:14:25.2928 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:14:39.3449 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:16:22.7211 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:17:31.0227 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:19:09.4532 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:20:15.7341 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:23:37.2231 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:24:33.7130 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:28:12.2599 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:30:14.0234 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:31:05.4613 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:37:01.9719 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:39:30.0921 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:51:27.4670 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:54:37.4346 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 16:57:33.7795 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:00:56.1552 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:02:42.5662 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:04:50.7206 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:06:23.5860 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:07:03.5019 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:15:34.0737 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:16:10.9579 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:18:17.6542 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:19:05.3359 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:21:03.6510 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:30:26.7132 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:30:41.4934 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:32:04.8178 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:33:36.1059 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178
+2025-06-30 17:37:54.6019 [1] ERROR | WebForm.Common.ConfigInfo.GetConfig | System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Admin\Desktop\New folder (6)\WebForm\Template\Product.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at WebForm.Common.ConfigInfo.GetConfig(IConfiguration configuration) in C:\Users\Admin\Desktop\New folder (6)\WebForm\Common\DataMemory.cs:line 178

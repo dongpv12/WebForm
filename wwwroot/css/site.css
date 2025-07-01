@@ -1,0 +1,180 @@
+﻿.project {
+    background-color: white;
+}
+
+    .project .item_content {
+        background-color: #f7f2f2;
+    }
+
+.form-control {
+    font-size: 18px;
+}
+
+.sub-content {
+    margin: 0 auto;
+}
+
+.btn-ht {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+    .btn-ht:hover {
+        color: #fff;
+        background-color: #286090;
+        border-color: #204d74;
+    }
+
+.div-btn {
+    text-align: center;
+}
+
+.sp-require {
+    padding-left: 2px;
+    color: #de7676;
+}
+
+.ichi01, .ichi02 {
+    color: #fff;
+    background-color: #fff;
+    position: relative;
+    background-size: cover;
+    line-height: 27px;
+}
+
+    .ichi01 .block_decs {
+        color: #102344;
+        font-weight: bold;
+    }
+
+    .ichi01.row-2 {
+        background-color: #FFF;
+    }
+
+        .ichi01.row-2 .btn-thirdary:after, .ichi01.row-2 .btn-thirdary:before, .ichi01.row-2 .btn-thirdary > .inner {
+            background-color: #e27335;
+            border-color: #e27335;
+        }
+
+        .ichi01.row-2 .btn-1,
+        .ichi02.row-2 .btn-1 {
+            display: flex;
+            padding-bottom: 20px;
+            justify-content: space-around;
+        }
+
+        .ichi01.row-2 .btn-2,
+        .ichi02.row-2 .btn-2 {
+            text-align: center;
+        }
+
+    .ichi01 h2.color-thirdary {
+        color: #fff;
+    }
+
+.btn-thirdary:not(.nothover):hover:after,
+.btn-thirdary:not(.nothover):hover:before,
+.btn-thirdary:not(.nothover):hover > .inner {
+    background-color: #F6DC6B;
+    border-color: #F6DC6B;
+}
+
+.ichi02 h2.color-thirdary {
+    color: #fff;
+}
+.ichi02 .block_decs {
+        color: #102344;
+        font-weight: bold;
+    }
+
+.ichi-description {
+    color: #294a28;
+    text-transform: uppercase;
+    font-size: 33px;
+    font-weight: bold;
+    line-height: 39px;
+    text-align: center;
+    padding: 50px 0;
+    border: 1px solid;
+    border-color: #f3c0c0;
+    border-radius: 7px;
+}
+/*#b4c2c3*/
+/*
+.ichi02.row-2 .btn-thirdary:after, .btn-thirdary:before, .btn-thirdary > .inner {
+    background-color: #0869A2;
+    border-color: #0869A2;
+}*/
+@media only screen and (max-width: 350px) {
+    .div-two-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .div-two-btn .btn {
+            margin-top: 10px;
+        }
+
+            .div-two-btn .btn > .inner {
+                width: 110px;
+                padding: 0 !important;
+            }
+}
+
+@media (max-width: 767px) {
+    .ichi-description {
+        font-size: 26px;
+        line-height: 30px;
+        padding: 30px 0;
+    }
+
+    .ichi01.row-2 {
+        background: none !important;
+        background-color: #2a9864 !important;
+    }
+
+    .ichi02.row-2 {
+        background: none !important;
+        background-color: #da8844 !important;
+    }
+    /*#da8844*/
+}
+
+.pinner {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+    background-color: #251463;
+    color: white;
+    padding: 10px 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#header ul.mainmenu > li > a .text, #header ul.mainmenu ul li.active > a,
+#header ul.mainmenu ul li:hover > a {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+}

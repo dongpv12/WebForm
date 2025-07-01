@@ -1,0 +1,64 @@
+﻿@using WebForm.Common
+@using WebForm.Helpers
+@using WebForm.Models
+@model WebForm.Models.ListNews
+
+@{
+
+    ViewBag.Title = "Tin tức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var specialNews = new News();
+    if (ViewBag.SpecialNews != null)
+    {
+        specialNews = ViewBag.SpecialNews;
+    }
+    //var baseUrl = "http://" + Request.Url.Authority + "/tin-tuc/{0}/{1}";
+    var baseUrl = Context.Request.Scheme + "://" + Context.Request.Host + "/tin-tuc/{0}/{1}";
+}
+<div id="main_container">
+    <div class="container">
+        <div class="page-list-news">
+            <div class="feature-post block-3" style="    margin-top: 50px;">
+                <div class="item"  style="background: url('@specialNews.FeatureImage'); background-size: 100% 100%; background-repeat: no-repeat;">
+                    @{
+                        var urlSpecial = string.Format(baseUrl, specialNews.Id, HtmlControllHelpers.ReplaceUnicodeUrl(specialNews.Title));
+                    }
+
+                    <a href="@urlSpecial" class="item_img">
+                        @*<img src="@specialNews.FeatureImage" alt="@specialNews.Title">*@
+                    </a>
+                    <div class="item_content">
+                        <a href="@urlSpecial" class="item_title">
+                            @specialNews.Title
+                        </a>
+                        <div class="item_decs">
+                            @specialNews.Description
+                        </div>
+                        <a href="@urlSpecial" class="btn  btn-primary">
+                            <span class="inner">Xem thêm</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_listView", Model)
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function page(index) {
+        try {
+            var totalPage = $('#txtTotalPage').val();
+            if (index === 'new') {
+                index = totalPage;
+            } else if (index === 'prev') {
+                index = 1;
+            }
+            window.location.href = "/tin-tuc/page=" + index;
+        } catch (e) {
+            console.log();
+        }
+    }
+</script>

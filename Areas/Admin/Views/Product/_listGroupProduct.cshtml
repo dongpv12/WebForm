@@ -1,0 +1,34 @@
+﻿@model WebForm.Models.ListGroupProducts
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên nhóm</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Collection)
+        {
+            <tr>
+                <td> @Model.Start </td>
+                <td> @item.GroupName</td>
+                <td>
+                    <a href="@("/Product/EditGroup/" +item.GroupId)" class="btn btn-warning  ">
+                        <span class="glyphicon glyphicon glyphicon-pencil"></span> Sửa
+                    </a>
+                    <a href="#" class="btn btn-danger" onclick="deleteGroup('@item.GroupId')">
+                        <span class="glyphicon glyphicon-trash"></span> Xóa
+                    </a>
+                </td>
+            </tr>
+            Model.Start++;
+        }
+        </tbody>
+    </table>
+</div>
+@Html.Raw(Model.Paging)
+<input type="hidden" id="txtTotalPage" value="@Model.TotalPage" />
+<input type="hidden" id="txtCurrentPage" value="@Model.CurrentPage" />

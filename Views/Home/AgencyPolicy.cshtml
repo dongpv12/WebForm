@@ -1,0 +1,25 @@
+﻿@model WebForm.Models.Page
+@{
+    ViewBag.Title = "Chính sách đại lý";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main_container">
+    <div class="container" style="padding-bottom: 50px;">
+        <div class="page-title" style="margin-top: 50px;">
+            <h1 class="title ">
+                <span>@Model.Title</span>
+            </h1>
+        </div>
+        <div class="row max-830">
+            @Html.Raw(Model.Content)
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#main_container p, #main_container span').css('font-family', 'fs');
+        $('#main_container p, #main_container span').css('font-size', '18px');
+        $('h2.h2-title span').removeAttr('style');
+    });
+</script>

@@ -1,0 +1,74 @@
+﻿@model WebForm.Models.News
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main_container">
+    <div class="container">
+        <div class="share"></div>
+        <div class="max-830">
+            <h2 class="h2-title color-main text-center" style="margin-bottom: 45px; margin-top: 45px;">
+                <span>
+                    @Model.Title
+                </span>
+            </h2>
+            @Html.Raw(Model.Content)
+
+        </div>
+    </div>
+    <div class="bottom-content bg-1 TOA001">
+        <div id="dataSuggest" class="container">
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+
+    .max-830 img {
+        max-width: 650px !important;
+        height: auto !important;
+    }
+
+    @@media (max-width: 767px) {
+        .no-mobile {
+            display: none;
+        }
+
+        #maincontent .share {
+            position: initial;
+            display: flex;
+            width: 100%;
+            text-align: right;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .share a {
+            margin-bottom: 0;
+            margin-top: 15px;
+            padding-left: 15px;
+        }
+    }
+</style>
+
+<script>
+    var id = '@Model.Id';
+    $(document).ready(function() {
+        loadSuggest();
+        $('#main_container p, #main_container span').css('font-family', 'fs');
+        $('#main_container p, #main_container span').css('font-size', '18px');
+        $('h2.h2-title span').removeAttr('style');
+    });
+    function loadSuggest() {
+        var request = {
+            id: id
+        };
+        axios.post("/get-suggest-news", request).then(function (response) {
+            console.log(response.data);
+            $('#dataSuggest').html(response.data);
+        }).catch(error => {
+
+        });
+    }
+</script>

@@ -1,0 +1,228 @@
+﻿@model List<Filett>
+@{
+	Layout = null;
+	// string _fileDir = Configuration.c_FTP_FolderReceive + "/Image/";
+	// string _fileUrl = Configuration.c_HTTPFTP_Address + "/" + _fileDir;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Browse</title>
+	<script src="~/js/jquery-3.3.1.min.js"></script>
+	<script src="/ckeditor/ckeditor.js"></script>
+	<style>
+		body {
+			font-family: 'Segoe UI', sans-serif;
+			background-color: #f9fafb;
+			padding: 20px;
+		}
+
+		#uploadForm {
+			background-color: #fff;
+			padding: 16px 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+			max-width: 600px;
+			margin: 0 auto 30px auto;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.custom-file-upload {
+			position: relative;
+			display: inline-block;
+			padding: 10px 16px;
+			background-color: #f3f4f6;
+			color: #111827;
+			cursor: pointer;
+			font-size: 14px;
+			transition: background-color 0.2s ease;
+		}
+
+			.custom-file-upload:hover {
+				background-color: #e5e7eb;
+			}
+
+			.custom-file-upload input[type="file"] {
+				display: none;
+			}
+
+		.file-name {
+			font-size: 14px;
+			color: #374151;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100%;
+		}
+
+		button[type="submit"] {
+			background-color: #10b981;
+			color: white;
+			border: none;
+			padding: 10px 16px;
+			border-radius: 6px;
+			font-size: 14px;
+			cursor: pointer;
+			align-self: flex-end;
+			transition: background-color 0.2s ease;
+		}
+
+			button[type="submit"]:hover {
+				background-color: #059669;
+			}
+
+
+
+
+
+
+		.img-list-container {
+			/* display: grid; */
+			/* grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); */
+			/* gap: 16px; */
+		}
+
+		.box-img {
+			background-color: white;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+			text-align: center;
+			padding: 10px;
+			max-width: 150px;
+			float: left;
+			width: 130px;
+			margin-left: 15px;
+			height: 181px;
+			margin-top: 15px;
+		}
+
+			.box-img img {
+				width: 100%;
+				height: 120px;
+				object-fit: cover;
+				border-radius: 6px;
+			}
+
+			.box-img p {
+				margin: 8px 0 0;
+				font-size: 13px;
+				color: #374151;
+				word-break: break-all;
+			}
+
+		.file-name_text {
+			font-size: 13px;
+			margin: 6px 0;
+			padding: 0 8px 8px;
+			color: #333;
+			display: -webkit-box;
+			-webkit-line-clamp: 3; /* Số dòng muốn hiển thị */
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+	</style>
+	<script type="text/javascript">
+		$(function () {
+			
+			$("img").on("dblclick",function () {
+				var _src = $(this).attr('src');
+				if (window.opener && typeof window.opener.SetImageFromPopup === "function") {
+					window.opener.SetImageFromPopup(_src);
+				}
+				window.close();
+			});
+		});
+
+
+
+
+
+	</script>
+</head>
+<body>
+
+	<div>
+		<!-- Upload Form -->
+		<form id="uploadForm" enctype="multipart/form-data" style="position: relative">
+			<div style="position: relative; width: 75%; border: 1px solid #f1f0f0; float: left;">
+				<label class="custom-file-upload">
+					<img src="~/images/attchment.png" style="width:15px;" /> Chọn tệp
+					<input type="file" name="upload" id="fileInput" accept="image/*" />
+				</label>
+				<span class="file-name" id="fileName">Chưa chọn tệp nào</span>
+
+				
+
+			</div>
+			<button type="submit" style="width: 20%; position: absolute">
+
+				Tải lên
+			</button>
+		</form>
+	</div>
+	@* <div>
+		<img src="~/images/grid.png" />
+		<img src="~/images/list.png" />
+	</div> *@
+	<!-- Image Grid -->
+	<div class="img-list-container">
+		@if (Model != null)
+		{
+			foreach (var item in Model.OrderByDescending(x => x.CreatedTime).ToList())
+			{
+				<div class="box-img">
+					<img src="@(item.FileUrl)" alt="thumb" title="ảnh" />
+					<p style="" class="file-name_text">@System.IO.Path.GetFileName(item.FileName)</p>
+				</div>
+			}
+		}
+	</div>
+
+
+
+	<script>
+
+		const fileInput = document.getElementById("fileInput");
+		const fileNameDisplay = document.getElementById("fileName");
+
+		fileInput.addEventListener("change", function () {
+		  const file = fileInput.files[0];
+		  fileNameDisplay.textContent = file ? file.name : "Chưa chọn tệp nào";
+		});
+
+
+		$(document).ready(function () {
+			$('#uploadForm').on('submit', function (e) {
+				e.preventDefault(); // Ngăn form submit mặc định
+				var formData = new FormData(this); // Tạo FormData từ form
+				$.ajax({
+					url: '/ckfinder-ftp/uploadImage', // Route Controller bạn xử lý
+					type: 'POST',
+					data: formData,
+					processData: false, // Quan trọng: không xử lý dữ liệu
+					contentType: false, // Quan trọng: để browser tự đặt header
+					success: function (response) {
+						// Chèn response từ server (script gọi CKEditor)
+						// window.parent.document.write(response);
+						// window.parent.document.close();
+						alert('Tải file lên thành công ');
+						window.location.reload();
+					},
+					error: function (xhr) {
+						alert('Tải lên thất bại: ' + xhr.responseText);
+					}
+				});
+			});
+		});
+	</script>
+
+</body>
+</html>

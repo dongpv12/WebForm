@@ -1,0 +1,191 @@
+﻿@using WebForm.Models
+@model WebForm.Models.Products
+
+@{
+    ViewBag.Title = "Sửa sản phẩm";
+   Layout = "_Layout_Admin";
+}
+
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="/ckfinder/ckfinder.js"></script>
+<script src="/js/Validate.js"></script>
+
+<input type="hidden" id="txtId" value="@Model.Id" />
+<input type="hidden" id="txtCurrentContent" value="@Model.Detail" />
+
+<div class="container-fluid">
+    <div class="form-group row">
+        <label for="txtFullName" class="col-sm-2 col-form-label">Tên đầy đủ</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtFullName" value="@Model.FullName" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtShortName" class="col-sm-2 col-form-label">Tên rút gọn</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtShortName" value="@Model.ShortName" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtDescription" class="col-sm-2 col-form-label">Mô tả</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="5" id="txtDescription">@Model.Description</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtDescription" class="col-sm-2 col-form-label">Diện tích phủ</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtCoatingThickness" onkeypress="return isNumber(event)" value="@Model.CoatingThickness" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtDescription" class="col-sm-2 col-form-label">Giá</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtPrice" onkeypress="return isNumber(event)" value="@Model.Price" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtDescription" class="col-sm-2 col-form-label">Tính năng</label>
+        <div class="col-sm-10">
+            <div class="wrap-content option-product" style="padding: 0px 15px;">
+                <div class="form-group row">
+                    <input type="text" class="form-control" id="txtFeatures1" placeholder="Tính năng 1" value="@Model.Features1" />
+                </div>
+                <div class="form-group row">
+                    <input type="text" class="form-control" id="txtFeatures2" placeholder="Tính năng 2" value="@Model.Features2" />
+                </div>
+                <div class="form-group row">
+                    <input type="text" class="form-control" id="txtFeatures3" placeholder="Tính năng 3" value="@Model.Features3" />
+                </div>
+                <div class="form-group row">
+                    <input type="text" class="form-control" id="txtFeatures4" placeholder="Tính năng 4" value="@Model.Features4" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtAvatar" class="col-sm-2 col-form-label">Ảnh đại diện</label>
+        <div class="col-sm-10">
+            @{
+                var url = "/Images/img-not-available.jpg";
+                if (Model.Avatar != null && Model.Avatar != string.Empty)
+                {
+                    url = Model.Avatar;
+                }
+                <img id="imgAvatar" src="@url" style="width: 100px; height: 100px" />
+            }
+            <input type="hidden" class="form-control" id="txtAvatar" value="@Model.Avatar" />
+            <input type="button" value="Chọn ảnh" class="btn" onclick="showImage()" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Nhóm</label>
+        <div class="col-sm-3">
+            <select class="form-control" id="slGroupId">
+                <option value="0">Chọn nhóm</option>
+                @{
+                    List<GroupProducts> lstGroupProducts = new List<GroupProducts>();
+                    if (ViewBag.GroupProduct != null)
+                    {
+                        lstGroupProducts = ViewBag.GroupProduct;
+                    }
+
+                    foreach (var item in lstGroupProducts)
+                    {
+                        if (item.GroupId == Model.GroupId)
+                        {
+                            <option value="@item.GroupId" selected="selected">@item.GroupName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.GroupId">@item.GroupName</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtContent" class="col-sm-2 col-form-label">Nội dung</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="txtContent" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">&nbsp;</label>
+        <div class="col-sm-10">
+            <input type="button" class="btn btn-primary" id="btnCreate" value="Lưu lại" onclick="return editProduct()" />
+            <input type="button" class="btn" id="btnCancel" value="Hủy" />
+        </div>
+    </div>
+</div>
+
+<script>
+    var editor1 = CKEDITOR.replace('txtContent');
+    CKEDITOR.instances['txtContent'].setData($('#txtCurrentContent').val());
+    CKFinder.setupCKEditor(editor1);
+    var lockSubmit = false;
+
+    function showImage() {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (url) {
+            $('#imgAvatar').attr('src', url);
+            $('#txtAvatar').val(url);
+        }
+        finder.popup();
+    }
+
+    function editProduct() {
+        if (lockSubmit) {
+            return;
+        }
+        var request = {
+            id: $('#txtId').val(),
+            fullName: $('#txtFullName').val(),
+            shortName: $('#txtShortName').val(),
+            detail: editor1.getData(),
+            avatar: $('#txtAvatar').val(),
+            description: $('#txtDescription').val(),
+            groupId: $('#slGroupId').val(),
+            coatingThickness: $('#txtCoatingThickness').val(),
+            features1: $('#txtFeatures1').val(),
+            features2: $('#txtFeatures2').val(),
+            features3: $('#txtFeatures3').val(),
+            features4: $('#txtFeatures4').val(),
+            price: $('#txtPrice').val()
+        };
+        lockSubmit = true;
+        axios.post("/Product/EditProduct", request).then(function (response) {
+            var data = response.data;
+            if (data.Status) {
+                swal({
+                    title: "Thành công",
+                    text: "Sửa sản phẩm thành công",
+                    icon: "success",
+                    buttons: true
+                }).then((value) => {
+
+                });
+            } else {
+                swal({
+                    title: "Lỗi",
+                    text: "Vui lòng thử lại vào lúc khác",
+                    icon: "warning",
+                    buttons: true
+                });
+            }
+            lockSubmit = false;
+        }).catch(error => {
+            swal({
+                title: "Lỗi",
+                text: "Vui lòng thử lại vào lúc khác",
+                icon: "warning",
+                buttons: true
+            });
+            lockSubmit = false;
+        });
+    }
+
+
+</script>
+

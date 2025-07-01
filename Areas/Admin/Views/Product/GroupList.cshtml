@@ -1,0 +1,92 @@
+﻿@using WebForm.Common
+@model WebForm.Models.ListGroupProducts
+
+@{
+    ViewBag.Title = "Nhóm sản phẩm";
+   Layout = "_Layout_Admin";
+}
+
+<input type="hidden" id="txtRecordOnPage" value="@ConfigInfo.RecordOnPage" />
+<div class=" container-fluid">
+    <input type="button" value="Tạo nhóm mới" id="btnCreateNews" class="btn" onclick="return  window.location.href='/Admin/Product/CreateGroup'" />
+</div>
+<div id="show_content" class="container-fluid dataTables_wrapper container-fluid">
+    @Html.Partial("~/Areas/Admin/Views/Product/_listGroupProduct.cshtml", Model)
+</div>
+
+<script>
+    function page(index) {
+        try {
+            var recordOnPage = $('#txtRecordOnPage').val();
+            var totalPage = $('#txtTotalPage').val();
+            var start = 1;
+            var end = recordOnPage;
+            if (index === 'new') {
+                index = totalPage;
+            } else if (index === 'prew') {
+                index = 1;
+            }
+            if (index > 1) {
+                end = index * recordOnPage;
+                start = end - recordOnPage + 1;
+            }
+            var request = {
+                currentPage: index,
+                start: start,
+                end: end,
+                orderBy: 'GroupName',
+                orderByType: 'ASC',
+                createDate: ''
+            };
+
+            axios.post("/Product/SearchGroup", request).then(function (response) {
+                $('#show_content').html(response.data);
+            }).catch(error => {
+
+            });
+        } catch (e) {
+            console.log();
+        }
+    }
+
+    function deleteGroup(id) {
+        swal({
+            title: "Bạn chắc chắn?",
+            text: "Bạn sẽ xóa nhóm này. Sẽ không thể khôi phục được",
+            icon: "warning",
+            buttons: [
+                'Không!',
+                'Có!'
+            ],
+            dangerMode: true
+        }).then(function (isConfirm) {
+            var request = {
+                id: id
+            };
+            if (isConfirm) {
+                axios.post("/Product/DeleteGroup", request).then(function (response) {
+                    var data = response.data;
+                    if (data.Status) {
+                        swal({
+                            title: "Thành công",
+                            text: "Xóa nhóm thành công",
+                            icon: "success",
+                            buttons: true
+                        }).then((value) => {
+                            page($('#txtCurrentPage').val());
+                        });
+                    } else {
+                        swal({
+                            title: "Lỗi",
+                            text: "Vui lòng thử lại vào lúc khác",
+                            icon: "warning",
+                            buttons: true
+                        });
+                    }
+                }).catch(error => {
+
+                });
+            }  
+        });
+    }
+</script>

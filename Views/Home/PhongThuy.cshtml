@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "PhongThuy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main_container">
+    <div class="container">
+        <div class="max-830" style="max-width: 1100px;">
+            @*<div class="col-sm-12">*@
+                <h2 class="color-main text-center" style="margin-bottom: 45px; margin-top: 45px;">
+                    <span>
+                        Xem màu phong thủy
+                    </span>
+                </h2>
+                <div class="row ">
+                    <div class="col-sm-7">
+                        <div class="form-group row">
+                            <label for="txtYear" class="col-sm-4 col-form-label">Chọn năm sinh</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtYear" onkeypress="return isNumber(event)" />
+                            </div>
+                            <div class="col-sm-3 col-form-label">
+                                <input style="padding: 0 20px" type="button" value="Tra cứu" onclick="tinhToanPhongThuy()" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Can chi</label>
+                            <div class="col-sm-7">
+                                <span id="txtCanChi"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Mệnh</label>
+                            <div class="col-sm-7">
+                                <span id="txtMenh"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Màu tương sinh</label>
+                            <div class="col-sm-7">
+                                <span id="txtMauTuongSinh"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Màu tương khắc</label>
+                            <div class="col-sm-7">
+                                <span id="txtMauTuongKhac"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 form-group row">
+                        <img src="/Images/phong-thuy.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+    $('#txtYear').keypress(function (e) {
+        if (e.which === 13) {
+            tinhToanPhongThuy();
+        }
+    });
+
+    function tinhToanPhongThuy() {
+        try {
+            var year = $('#txtYear').val().trim();
+            var request = {
+                year: year
+            };
+            axios.post("/tinh-toan-phong-thuy", request).then(function (response) {
+                var data = response.data;
+                if (data.Status === true) {
+                    $('#txtCanChi').text(data.Menh.CanChi);
+                    $('#txtMenh').text(data.Menh.Ten);
+                    $('#txtMauTuongSinh').text(data.Menh.MauTuongSinh);
+                    $('#txtMauTuongKhac').text(data.Menh.MauTuongKhac);
+                }
+            }).catch(error => {
+
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+</script>

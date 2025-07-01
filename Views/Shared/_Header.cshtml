@@ -1,0 +1,129 @@
+﻿@{
+    var baseUrl = Context.Request.Scheme + "://" + Context.Request.Host;
+}
+
+<header id="header">
+    <div class="container">
+        <a href="@baseUrl" id="logo">
+            <img class="hidden-xs" src="/Images/Logo.png" alt="" style="width: 90px">
+            <img class="visible-xs" src="/Images/Logo.png" alt="">
+        </a>
+        <div class="menu-mainmenu">
+            <ul class="mainmenu">
+                <li class="">
+                    <a href="@baseUrl" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Trang Chủ </span>
+                    </a>
+                </li>
+                <li class="parent">
+                    <a href="/gioi-thieu.htm" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Về ICHI</span>
+                    </a>
+                    <ul>
+                        <li class="active"> <a href="/gioi-thieu.htm">Giới Thiệu Chung</a></li>
+                        <li class="active"> <a href="/chung-nhan-san-pham.htm">Chứng nhận, chứng chỉ</a></li>
+                        <li class="active"> <a href="/chinh-sach-dai-ly.htm">Chính sách đại lý</a></li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a href="/bang-mau-noi-that.htm" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Bảng Màu </span>
+                    </a>
+                    <ul>
+                        <li class="active"> <a href="/bang-mau-noi-that.htm">Bảng màu nội thất</a></li>
+                        <li class="active"> <a href="/bang-mau-ngoai-that.htm">Bảng màu ngoại thất</a></li>
+                        <li class="active"> <a href="/quat-mau.htm">Quạt màu</a></li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a href="/san-pham-moi/son-noi-that.htm" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Sản Phẩm mới</span>
+                    </a>
+                    <ul>
+                        <li class="active"> <a href="/san-pham-moi/son-noi-that.htm">Sơn trang trí nội thất</a></li>
+                        <li class="active"> <a href="/san-pham-moi/son-ngoai-that.htm">Sơn trang trí ngoại thất</a></li>
+                        <li class="active"> <a href="/san-pham-moi/san-pham-khac.htm">Hệ sản phẩm khác</a></li>
+                    </ul>
+                </li>
+
+                <li class="parent">
+                    <a href="/san-pham/son-noi-that.htm" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Sản Phẩm</span>
+                    </a>
+                    <ul>
+                        <li class="active"> <a href="/san-pham/son-noi-that.htm">Sơn trang trí nội thất</a></li>
+                        <li class="active"> <a href="/san-pham/son-ngoai-that.htm">Sơn trang trí ngoại thất</a></li>
+                        <li class="active"> <a href="/san-pham/san-pham-khac.htm">Hệ sản phẩm khác</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/cong-trinh-tieu-bieu.htm" class="btnT">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Công trình tiêu biểu</span>
+                    </a>
+                </li>
+
+                <li class="parent">
+                    <a href="/dich-vu/xem-mau-phong-thuy.htm" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Tư vấn màu sắc</span>
+                    </a>
+                    <ul>
+                        <li class="active"><a href="/dich-vu/xem-mau-phong-thuy.htm">Xem màu phong thủy</a></li>
+                        <li class="active"><a href="/dich-vu/kho-du-lieu-phoi-mau.htm">Kho dữ liệu phối màu</a></li>
+                        <li class="active"><a href="/dich-vu/cong-cu-tinh-luong-son.htm">Công thức tính tương đối m2</a></li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a href="/tin-tuc.htm" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Tin Tức</span>
+                    </a>
+                    <ul>
+                        <li class="active"><a href="/dich-vu/xem-mau-phong-thuy.htm">Tin Tức</a></li>
+                        <li class="active"><a href="/video.htm">Video</a></li>
+                    </ul>
+                </li>
+
+                <li class="parent">
+                    <a href="/lien-he.htm" class="btnT ">
+                        <span class="btnL"></span>
+                        <span class="btnR"></span>
+                        <span class="text">Liên hệ</span>
+                    </a>
+                    <ul>
+                        <li class="active"><a href="/lien-he.htm">Liên hệ đại lý</a></li>
+                        <li class="active"><a href="/tuyen-dung.htm">Tuyển dụng</a></li>
+                        <li class="active"><a href="/cong-ty-thanh-vien.htm">Công ty thành viên</a></li>
+                    </ul>
+                </li>
+
+                @*<li>
+
+            <a href="/lien-he.htm" class="btnT">
+                <span class="btnL"></span>
+                <span class="btnR"></span>
+                <span class="text">Liên Hệ </span>
+            </a>
+        </li>*@
+            </ul>
+        </div>
+        <div class="header-right">
+            <span class="menu-btn"><span></span></span>
+        </div>
+    </div>
+</header>
