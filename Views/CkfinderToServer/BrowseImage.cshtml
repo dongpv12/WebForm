@@ -134,6 +134,9 @@
 			
 			$("img").on("dblclick",function () {
 				var _src = $(this).attr('src');
+
+				alert(_src)
+
 				if (window.opener && typeof window.opener.SetImageFromPopup === "function") {
 					window.opener.SetImageFromPopup(_src);
 				}

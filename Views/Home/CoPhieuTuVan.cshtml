@@ -33,7 +33,7 @@
 </div><!-- End Page Title -->
 
 <section id="service-details" class="service-details section">
-    <div class="container mt-5">
+    <div class="container mt-5" id="app">
         <h3 class="mb-4 text-center">📊 Danh Mục Cổ Phiếu Tư Vấn</h3>
         <table class="table table-bordered table-hover">
             <thead>
@@ -50,7 +50,7 @@
                 <!-- Dữ liệu mẫu -->
                 <tr class="text-center">
                     <td>1</td>
-                    <td>CTD</td>
+                    <td>FRT</td>
                     <td>COTECCONS</td>
                     <td>84,000</td>
                     <td>87,500</td>
@@ -58,7 +58,7 @@
                 </tr>
                 <tr class="text-center">
                     <td>2</td>
-                    <td>DPM</td>
+                    <td>HVN</td>
                     <td>Đạm Phú Mỹ</td>
                     <td>38,000</td>
                     <td>36,500</td>
@@ -66,7 +66,23 @@
                 </tr>
                 <tr class="text-center">
                     <td>3</td>
-                    <td>HVN</td>
+                    <td>MBB</td>
+                    <td>Vietnam Airlines</td>
+                    <td>37,750</td>
+                    <td>38,000</td>
+                    <td class="profit-positive">+0.66%</td>
+                </tr>
+                <tr class="text-center">
+                    <td>3</td>
+                    <td>BCG</td>
+                    <td>Vietnam Airlines</td>
+                    <td>37,750</td>
+                    <td>38,000</td>
+                    <td class="profit-positive">+0.66%</td>
+                </tr>
+                <tr class="text-center">
+                    <td>3</td>
+                    <td>FPT</td>
                     <td>Vietnam Airlines</td>
                     <td>37,750</td>
                     <td>38,000</td>
@@ -76,25 +92,87 @@
             </tbody>
         </table>
 
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <div id="chart"></div>
 
-        <script>
-            var options = {
-              chart: { type: 'bar' },
-              series: [{
-                name: 'Tỷ Suất',
-                data: [4.17, -3.95, 0.66] // từ danh sách cổ phiếu
-              }],
-              xaxis: {
-                categories: ['CTD', 'DPM', 'HVN']
-              }
-            };
-            var chart = new ApexCharts(document.querySelector("#chart"), options);
-            chart.render();
-        </script>
-
+        <h2>🧮 Count: {{ count }}</h2>
+        <h3>📩 Last Message: {{ message }}</h3>
 
     </div>
 
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
+<!-- Vue App (phải là module) -->
+<script type="module">
+    import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+  
+    window.__vueState = {
+      count: ref(0),
+      message: ref("Chưa có tin nhắn")
+    }
+
+    createApp({
+      setup() {
+        return window.__vueState
+      }
+    }).mount('#app')
+</script>
+
+<!-- Kết nối SignalR riêng (bên ngoài module) -->
+<script>
+    const interval = setInterval(() => {
+      if (!window.__vueState) return;
+
+      clearInterval(interval);
+
+      const { count, message } = window.__vueState;
+
+      const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/messageHub")
+        .build();
+
+      connection.on("ReceiveMessage", function (msg) {
+        console.log("📩 Client received:", msg);
+       
+
+        // Parse lần 1: toàn bộ message
+        const outer = JSON.parse(msg);
+        // Parse lần 2: phần `data` bên trong
+        const parsedData = JSON.parse(outer.data);
+
+
+        const symbol = parsedData.Symbol;
+        const newPrice = parsedData.Current_Price;
+
+        const rows = document.querySelectorAll("#app tbody tr");
+
+        rows.forEach((row) => {
+          const cells = row.querySelectorAll("td");
+          if (cells.length >= 6 && cells[1].textContent.trim() === symbol) {
+            // ✅ Cập nhật giá hiện tại
+            cells[4].textContent = formatPrice(newPrice);
+
+            // ✅ Lấy giá mua từ cột 4
+            const buyPrice = parseFloat(cells[3].textContent.replace(/[^0-9.-]+/g, ''));
+            const profitPercent = ((newPrice - buyPrice) / buyPrice) * 100;
+
+            // ✅ Cập nhật cột tỷ suất (cột 6)
+            const profitCell = cells[5];
+            profitCell.textContent = (profitPercent >= 0 ? "+" : "") + profitPercent.toFixed(2) + "%";
+
+            // ✅ Gắn class màu
+            profitCell.className = profitPercent >= 0 ? "profit-positive" : "profit-negative";
+          }
+        });
+
+        message.value = parsedData.Symbol + " - " + parsedData.Current_Price;
+
+        count.value++;
+      });
+
+      connection.start().catch(function (err) {
+        console.error("❌ SignalR connection error:", err.toString());
+      });
+    }, 100); // đợi Vue load xong
+</script>

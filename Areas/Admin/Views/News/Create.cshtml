@@ -78,12 +78,13 @@
 		
 
 
-
 	});
 
 	var editor = CKEDITOR.replace('txtContent', {
 		filebrowserBrowseUrl: '/ckfinder-ftp/browse',
-		filebrowserUploadUrl: '/ckfinder-ftp/upload'
+		filebrowserUploadUrl: '/ckfinder-ftp/upload',
+		extraAllowedContent: 'iframe[*]',
+		allowedContent: true
 		});
 		CKFinder.setupCKEditor(editor);
 

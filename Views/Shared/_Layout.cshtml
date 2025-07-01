@@ -325,21 +325,7 @@
 	<script src="~/assets/js/main.js"></script>
 
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-	<script>
-		const connection = new signalR.HubConnectionBuilder()
-			.withUrl("/messageHub")
-			.build();
-
-		connection.on("ReceiveMessage", function (message) {
-			console.log("📩 Client received:", message);
-			// alert("Received message: " + message);
-		});
-
-		connection.start().catch(function (err) {
-			console.error("SignalR connection error:", err.toString());
-		});
-	</script>
+	
 
 
 </body>
