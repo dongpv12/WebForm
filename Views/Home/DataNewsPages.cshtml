@@ -1,7 +1,4 @@
-﻿
-
-
-@using WebForm.Common;
+﻿@using WebForm.Common;
 @using System.Data;
 @using System.Diagnostics;
 @using Microsoft.AspNetCore.Mvc;
@@ -18,15 +15,40 @@
 }
 @if (list != null && list.Count > 0)
 {
+  
     @foreach (var item in list)
     {
         <div class="item_news">
-            <p class="title_news">
-                <a href="/chi-tiet/@item.Id" target="_blank">@item.Title</a>
-            </p>
-            <p class="date_new">
-                @item.CreateDate
-            </p>
+
+
+
+            <div class="featureimage">
+                @if (item.FeatureImage != null && item.FeatureImage != "")
+                {
+                    <img src="@item.FeatureImage" />
+                }
+                else
+                {
+                   
+                    <img src="~/assets/img/bg_03.jpg" />
+                }
+            </div>
+            <div class="newtomtat">
+                <p class="title_news">
+                    <a href="/chi-tiet/@item.Id" target="_blank">@(item.Title ?? "")</a>
+                </p>
+                @if (item.Description != null && item.Description != "")
+                {
+                    <P class="Description_list">
+                        @item.Description
+                    </P>
+                }
+
+                <p class="date_new" style="">
+                    @item.CreateDate
+                </p>
+            </div>
+           
         </div>
 
 

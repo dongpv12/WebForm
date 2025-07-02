@@ -1,9 +1,12 @@
-﻿@using WebForm.Helpers
+﻿@using WebForm.Common
+@using WebForm.Helpers
 @model WebForm.Models.IndexPortal
 
 @{
     var lstNews = Model.LstNews;
     var lstProject = Model.LstProject;
+
+    List<News> list = DataMemory.c_lstNew.Where(x => x.CategoryType == "1").OrderByDescending(i => i.Id).Take(5).ToList();
 }
 <style>
     .hero-section {
@@ -187,7 +190,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <article>
-                               @*  <h2 class="animate a_01">
+                                @*  <h2 class="animate a_01">
                                     <img src="https://timetradingfx.com/output/images/arrow-up.png?v=1.0" alt="arrow"> Semi Gold
                                 </h2> *@
                                 <div class="frame-base animate a_02">
@@ -200,7 +203,7 @@
                                     <li class="animate a_05">Symbol <span>XAUUSD.s</span></li>
                                     <li class="animate a_06">Profit <span>0.3-0.5% per day</span></li>
                                     <li class="animate a_07">Max Drawdown <span>20%</span></li>
-                                   
+
                                 </ul>
                                 @* <div class="text_a animate a_10">
                                     <a class="btn-action bg-cyan" href="#trading">Get Started for Free <img src="https://timetradingfx.com/output/images/icon-user3.png?=v1.0" alt="start-user"></a>
@@ -236,11 +239,63 @@
         <div class="row gy-5">
 
             <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
-                <h3>Xu hướng</h3>
-                <p>
-                    Nhận diện chuyển động lớn trong thị trường và ngành nghề để dẫn đầu trong quyết định đầu tư và chiến lược tài chính
-                </p>
-                @* <a href="#" class="about-btn align-self-center align-self-xl-start"><span>About us</span> <i class="bi bi-chevron-right"></i></a> *@
+                <h5 style="    border-bottom: 2px solid #e9430f;color: #e9430f; font-weight: bold">
+                    Tin tức mới nhất
+                </h5>
+                @if (list != null && list.Count > 0)
+                {
+                    @foreach (var item in list)
+                    {
+                        <div class="item_news" style="padding:7px 10px;">
+                           
+                            <div class="newtomtat" style="padding-left: 0 !important">
+                                <div class="title_news">
+                                    <a href="/chi-tiet/@item.Id" target="_blank" style="display: -webkit-box;
+                  -webkit-line-clamp: 2;       /* 👈 Giới hạn 3 dòng */
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+
+                  line-height: 1.4;
+                  max-height: calc(1.4em * 2); /* Giới hạn chiều cao 3 dòng */">@(item.Title ?? "") @(item.Title ?? "") @(item.Title ?? "")</a>
+                                </div>
+                                <div class="date_new" style="">
+                                    @item.CreateDate
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="item_news" style="padding:7px 10px;">
+                           
+                            <div class="newtomtat" style="padding-left: 0 !important">
+                                <div class="title_news">
+                                    <a href="/chi-tiet/@item.Id" target="_blank" style="display: -webkit-box;
+                  -webkit-line-clamp: 2;       /* 👈 Giới hạn 3 dòng */
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+
+                  line-height: 1.4;
+                  max-height: calc(1.4em * 2); /* Giới hạn chiều cao 3 dòng */">@(item.Title ?? "") @(item.Title ?? "") @(item.Title ?? "")</a>
+                                </div>
+                                <div class="date_new" style="">
+                                    @item.CreateDate
+                                </div>
+                            </div>
+
+                        </div>
+
+                         
+
+                    }
+                }
+                else
+                {
+
+                }
+
+
             </div>
 
             <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
@@ -248,27 +303,23 @@
 
                     <div class="col-md-6 icon-box position-relative">
                         <i class="bi bi-briefcase"></i>
-                        <h4><a href="/danh-sach-tin-xhtt" class="stretched-link">Xu hướng thị trường</a></h4>
+                        <h4><a href="/danh-sach-tin/2" class="stretched-link">Xu hướng thị trường</a></h4>
                         <p>Phân tích diễn biến và xu hướng thị trường qua số liệu thực tế – hỗ trợ xây dựng chiến lược đầu tư hiệu quả</p>
                     </div><!-- Icon-Box -->
 
                     <div class="col-md-6 icon-box position-relative">
                         <i class="bi bi-gem"></i>
-                        <h4><a href="/danh-sach-tin-xhn" class="stretched-link">Xu hướng ngành</a></h4>
+                        <h4><a href="/danh-sach-tin/3" class="stretched-link">Xu hướng ngành</a></h4>
                         <p>Phân tích các xu hướng phát triển nổi bật trong từng ngành – nền tảng quan trọng để đánh giá cơ hội đầu tư và định vị chiến lược dài hạn</p>
                     </div><!-- Icon-Box -->
 
                     <div class="col-md-6 icon-box position-relative">
                         <i class="bi bi-broadcast"></i>
-                        <h4><a href="/danh-sach-tin-xh-cpdd" class="stretched-link">Cổ phiếu dẫn dắt</a></h4>
+                        <h4><a href="/danh-sach-tin/4" class="stretched-link">Cổ phiếu dẫn dắt</a></h4>
                         <p>Danh mục các cổ phiếu dẫn dắt thị trường, đại diện cho các ngành tăng trưởng mạnh và thu hút dòng tiền lớn</p>
                     </div><!-- Icon-Box -->
 
-                    <div class="col-md-6 icon-box position-relative">
-                        <i class="bi bi-easel"></i>
-                        <h4><a href="/danh-sach-tin-xh-lcp" class="stretched-link">Lọc cổ phiếu</a></h4>
-                        <p>Công cụ lọc cổ phiếu theo các tiêu chí tài chính, kỹ thuật và ngành nghề giúp bạn tìm ra mã phù hợp chiến lược đầu tư</p>
-                    </div><!-- Icon-Box -->
+
 
                 </div>
             </div>
@@ -314,7 +365,6 @@
                     <p>Phân tích toàn cảnh ngành với số liệu, xu hướng và đánh giá chuyên sâu, giúp bạn hiểu rõ bối cảnh và tiềm năng phát triển</p>
                 </div>
             </div><!-- End Service Item -->
-
             @*  <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
                         <div class="service-item position-relative">
                             <div class="icon"><i class="bi bi-broadcast icon"></i></div>
@@ -356,7 +406,7 @@
     }
 
     const heroCarousel = new bootstrap.Carousel('#heroCarousel', {
-      interval: 4000,
+      interval: 10000,
       ride: 'carousel'
     });
 </script>

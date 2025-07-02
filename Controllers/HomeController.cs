@@ -667,14 +667,24 @@ public class HomeController : Controller
 
 
     [HttpGet]
-    [Route("danh-sach-tin-xhtt")]
-    public ActionResult XHTT()
+    [Route("danh-sach-tin/{type}")]
+    public ActionResult XHTT(decimal type = 1)
     {
-        
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+
+        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
+
+        var HotNews = list.FirstOrDefault();
+
+        if (type != 1)
+        {
+            list = list.Where(i => i.Id != HotNews?.Id).ToList();
+        }
+
+        ViewBag.HotNews = HotNews;
+
         var total = list.Count();
         var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-        
+
         // danh sách tin
 
         int start = 1;
@@ -685,13 +695,17 @@ public class HomeController : Controller
         {
             int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
             list = list.Skip(start - 1).Take(numberTake).ToList();
-         
-        }
 
-        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Xu hướng thị trường";
+        }
+        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
+
+        ViewBag.Header = typeNews.CdContent;
+
+        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "tin " + typeNews.CdContent);
+
         ViewBag.Paging = paging;
         ViewBag.List = list;
+        ViewBag.CategoryType = type;
         return View();
     }
 
@@ -699,7 +713,8 @@ public class HomeController : Controller
     public ActionResult SearchXHTT([FromBody] SearchNewsRequest request)
     {
 
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType)).OrderByDescending(i => i.Id).ToList();
+
         var total = list.Count();
         var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
         // danh sách tin
@@ -714,9 +729,11 @@ public class HomeController : Controller
             list = list.Skip(start - 1).Take(numberTake).ToList();
 
         }
+        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == Convert.ToDecimal(request.CategoryType)).FirstOrDefault();
+        ViewBag.Header = typeNews.CdContent;
 
-        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage,"Tin tức");
-        ViewBag.Header = "Xu hướng thị trường";
+        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "tin " + ViewBag.Header);
+        
         ViewBag.Paging = paging;
         ViewBag.List = list;
 
@@ -725,186 +742,7 @@ public class HomeController : Controller
 
 
 
-    [HttpGet]
-    [Route("danh-sach-tin-xhn")]
-    public ActionResult XHN()
-    {
-
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-
-        // danh sách tin
-
-        int start = 1;
-        int end = ConfigInfo.RecordOnPage;
-
-
-        if (list?.Count > 0 && list.Count >= start)
-        {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
-        }
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Xu hướng ngành";
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-        return View();
-    }
-
-    [HttpPost]
-    public ActionResult SearchXHN([FromBody] SearchNewsRequest request)
-    {
-
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-        // danh sách tin
-
-        int start = request.Start;
-        int end = request.End;
-
-
-        if (list?.Count > 0 && list.Count >= start)
-        {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
-        }
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Xu hướng ngành";
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-
-        return PartialView("DataNewsPages");
-    }
-
-    //XH_LCP
-
-
-    [HttpGet]
-    [Route("danh-sach-tin-xh-lcp")]
-    public ActionResult XH_LCP()
-    {
-
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-
-        // danh sách tin
-
-        int start = 1;
-        int end = ConfigInfo.RecordOnPage;
-
-
-        if (list?.Count > 0 && list.Count >= start)
-        {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
-        }
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Lọc cổ phiếu";
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-        return View();
-    }
-
-    [HttpPost]
-    public ActionResult SearchXH_LCP([FromBody] SearchNewsRequest request)
-    {
-
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-        // danh sách tin
-
-        int start = request.Start;
-        int end = request.End;
-
-
-        if (list?.Count > 0 && list.Count >= start)
-        {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
-        }
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Lọc cổ phiếu";
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-
-        return PartialView("DataNewsPages");
-    }
-
-
-    //XH_LCP
-
-
-    [HttpGet]
-    [Route("danh-sach-tin-xh-cpdd")]
-    public ActionResult XH_CPDD()
-    {
-
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-
-        // danh sách tin
-
-        int start = 1;
-        int end = ConfigInfo.RecordOnPage;
-
-
-        if (list?.Count > 0 && list.Count >= start)
-        {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
-        }
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Cổ phiếu dẫn dắt";
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-        return View();
-    }
-
-    [HttpPost]
-    public ActionResult SearchXH_CPDD([FromBody] SearchNewsRequest request)
-    {
-
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-        // danh sách tin
-
-        int start = request.Start;
-        int end = request.End;
-
-
-        if (list?.Count > 0 && list.Count >= start)
-        {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
-        }
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Cổ phiếu dẫn dắt";
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-
-        return PartialView("DataNewsPages");
-    }
-
-
-
+    
 
 
 

@@ -21,13 +21,16 @@
         list = ViewBag.List;
     }
 
-
-
-
-    List<News> list_1 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-    List<News> list_2 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-    List<News> list_3 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-
+    News _hotNew = new News();
+    if (ViewBag.HotNews != null)
+    {
+        _hotNew = ViewBag.HotNews;
+    }
+    string CategoryType = "1";
+    if (ViewBag.CategoryType != null)
+    {
+        CategoryType = ViewBag.CategoryType.ToString();
+    }
 }
 
 <!-- Page Title -->
@@ -43,117 +46,62 @@
     </div>
 </div><!-- End Page Title -->
 <!-- Service Details Section -->
+
+
+
 <section id="service-details" class="service-details section">
 
     <div class="container">
 
         <div class="row gy-4">
 
+            @if (CategoryType == "1")
+            {
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" id="data_news">
+
+                    @Html.Partial("DataNewsPages")
 
 
+                </div>
+            }
+            else
+            {
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" id="data_news">
 
-            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" id="data_news">
 
-                @Html.Partial("DataNewsPages")
+                    <div id="noidung">
+                        <h3 class="titleDetail">
+                            @(_hotNew.Title ?? "")
+                        </h3>
+                        <div class="dateTime">
+                            @(_hotNew.CreateDate ?? "")
+                        </div>
+                        <div id="des_detail">
+                            @(_hotNew.Description ?? "")
+                        </div>
+                        <div>
+                            @(Html.Raw(_hotNew.Content ?? ""))
+                        </div>
+                    </div>
+
+                    @if (list != null && list.Count > 0)
+                    {
+                        <div class="tinlienquan">
+                            <h3>Tin liên quan</h3>
+                        </div>
+                        @Html.Partial("DataNewsPages")
+                    }
+
+                   
 
 
-            </div>
+                </div>
+            }
+
+           
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="" style="margin-bottom: 30px;">
-
-                    <div class="analysis-card">
-                        <div class="analysis-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Báo cáo Fin Art</h5>
-                            <a href="#" class="viewmore">xem thêm >></a>
-                        </div>
-
-                        <!-- Tin 1 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-update">CẬP NHẬT</span>
-                                <span class="date">20/06/2025</span>
-                            </div>
-                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
-                            <div class="analysis-source">Nguồn: VCBS</div>
-                        </div>
-
-                        <!-- Tin 2 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-analysis">PHÂN TÍCH</span>
-                                <span class="date">16/06/2025</span>
-                            </div>
-                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
-                            <div class="analysis-source">Nguồn: FPTS</div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="" style="margin-bottom: 30px;">
-
-                    <div class="analysis-card">
-                        <div class="analysis-header">
-                            <h5>Báo cáo công ty Chứng khoán</h5>
-                        </div>
-
-                        <!-- Tin 1 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-update">CẬP NHẬT</span>
-                                <span class="date">20/06/2025</span>
-                            </div>
-                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
-                            <div class="analysis-source">Nguồn: VCBS</div>
-                        </div>
-
-                        <!-- Tin 2 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-analysis">PHÂN TÍCH</span>
-                                <span class="date">16/06/2025</span>
-                            </div>
-                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
-                            <div class="analysis-source">Nguồn: FPTS</div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div class="" style="margin-bottom: 30px;">
-
-                    <div class="analysis-card">
-                        <div class="analysis-header">
-                            <h5>Báo cáo ngành</h5>
-                        </div>
-
-                        <!-- Tin 1 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-update">CẬP NHẬT</span>
-                                <span class="date">20/06/2025</span>
-                            </div>
-                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
-                            <div class="analysis-source">Nguồn: VCBS</div>
-                        </div>
-
-                        <!-- Tin 2 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-analysis">PHÂN TÍCH</span>
-                                <span class="date">16/06/2025</span>
-                            </div>
-                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
-                            <div class="analysis-source">Nguồn: FPTS</div>
-                        </div>
-                    </div>
-
-
-                </div>
+                @Html.Partial("NewsOtherTab", CategoryType)
 
             </div>
 
@@ -162,17 +110,22 @@
     </div>
 
 </section><!-- /Service Details Section -->
+
+
+
+
+
 <input type="hidden" id="txtRecordOnPage" value="@ConfigInfo.RecordOnPage" />
 <script>
     function page(index) {
-     
+
         try {
             var recordOnPage = $('#txtRecordOnPage').val();
             var start = 1;
             var end = recordOnPage;
-            
 
-            
+
+
 
             if (index === 'next') {
                let pageht = $('li.active span.page-link').attr('id');

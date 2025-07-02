@@ -189,6 +189,9 @@
 		}
 
 
+		
+
+
 		var request = {
 			 content: editor.getData(),
 			 featureImage: $('#txtFeatureImage').val(),
@@ -200,7 +203,9 @@
 			 Issue : $("#txtIssue").val().trim(),
 			 Suggestion : $("#txtSuggestion").val().trim(),
 			 Industry : $("#txtIndustry").val().trim(),
-			 Link : $("#txtLink").val().trim()
+			 Link : $("#txtLink").val().trim(),
+			 Tag : $("#txtTag").val().trim(),
+			 CategoryType : $("#txtType").val()
 		};
 
 		axios.post("/News/DoCreate", request).then(function (response) {
@@ -251,12 +256,20 @@
 		if(type == "1" || type == "2" || type == "3" || type == "4" || type == "5"){
 			$("#f_txtSymbol").addClass("displaynone");
 			$("#f_txtSymbolName").addClass("displaynone");
-			
 			$("#f_txtIssue").addClass("displaynone");
 			$("#f_txtSuggestion").addClass("displaynone");
 			$("#f_txtIndustry").addClass("displaynone");
 			$("#f_txtTag").addClass("displaynone");
 			$("#f_txtLink").addClass("displaynone");
+
+			$("#txtSymbol").val("");
+			$("#txtSymbolName").val("");
+			$("#txtIssue").val("");
+			$("#txtSuggestion").val("");
+			$("#txtIndustry").val("");
+			$("#txtTag").val("");
+			$("#txtLink").val("");
+
 		}else if(type == "6" ){
 			$("#f_txtSymbol").removeClass("displaynone");
 			$("#f_txtSymbolName").removeClass("displaynone");
@@ -265,6 +278,10 @@
 			$("#f_txtIndustry").addClass("displaynone");
 			$("#f_txtTag").addClass("displaynone");
 			$("#f_txtLink").addClass("displaynone");
+
+			$("#txtIndustry").val("");
+			$("#txtTag").val("");
+			$("#txtLink").val("");
 		}
 		else if(type == "7" ){
 			$("#f_txtSymbol").addClass("displaynone");
@@ -272,8 +289,15 @@
 			$("#f_txtIssue").addClass("displaynone");
 			$("#f_txtSuggestion").addClass("displaynone");
 			$("#f_txtIndustry").addClass("displaynone");
-			$("#f_txtTag").addClass("displaynone");
-			$("#f_txtLink").addClass("displaynone");
+			$("#f_txtTag").removeClass("displaynone");
+			$("#f_txtLink").removeClass("displaynone");
+
+			$("#txtSymbol").val("");
+			$("#txtSymbolName").val("");
+			$("#txtIssue").val("");
+			$("#txtSuggestion").val("");
+			$("#txtIndustry").val("");
+
 		}else if(type == "8" ){
 			$("#f_txtSymbol").removeClass("displaynone");
 			$("#f_txtSymbolName").removeClass("displaynone");
@@ -282,6 +306,8 @@
 			$("#f_txtIndustry").removeClass("displaynone");
 			$("#f_txtTag").removeClass("displaynone");
 			$("#f_txtLink").removeClass("displaynone");
+
+			
 		}
 	}
 </script>

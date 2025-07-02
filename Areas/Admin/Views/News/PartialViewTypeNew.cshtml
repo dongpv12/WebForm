@@ -10,12 +10,17 @@
 	{
 		typeNews = typeNews.Where(x => x.CdValue == "6" || x.CdValue == "7" || x.CdValue == "8").ToList();
 	}
+
+	
+
 }
 
 <select class="form-control" id="txtType" onchange="ChangeType()">
 	@foreach (var item in typeNews)
 	{
-		<option value="@item.CdValue">@item.CdContent</option>
+		
+			<option value="@item.CdValue">@item.CdContent</option>
+	
 	}
 	
 	
@@ -23,9 +28,7 @@
 </select>
 <script>
 
-	$( document ).ready(function() {
-
-
+	$(document).ready(function() {
 	   ChangeType();
 	});
 </script>
