@@ -54,7 +54,7 @@ namespace WebForm.DataAccess
                 parameter = new SqlParameter("@P_CategoryType", SqlDbType.VarChar)
                 {
                     Direction = ParameterDirection.Input,
-                    Value = 0
+                    Value = request.CategoryType
                 };
                 spParameter[5] = parameter;
 
@@ -179,7 +179,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[9];
+                var spParameter = new SqlParameter[15];
 
                 #region Set param
 
@@ -239,19 +239,66 @@ namespace WebForm.DataAccess
                 };
                 spParameter[7] = parameter;
 
+
+                parameter = new SqlParameter("@P_Symbol", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Symbol
+                };
+                spParameter[8] = parameter;
+
+
+                parameter = new SqlParameter("@P_SymbolName", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.SymbolName
+                };
+                spParameter[9] = parameter;
+
+                parameter = new SqlParameter("@P_Issue", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Issue
+                };
+                spParameter[10] = parameter;
+
+
+                parameter = new SqlParameter("@P_Suggestion", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Suggestion
+                };
+                spParameter[11] = parameter;
+
+
+                parameter = new SqlParameter("@P_Industry", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Industry
+                };
+                spParameter[12] = parameter;
+
+                parameter = new SqlParameter("@P_Link", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Link
+                };
+                spParameter[13] = parameter;
+
+
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[8] = parameter;
+                spParameter[14] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_NEWS_EDIT",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[8].Value);
+                return Convert.ToDecimal(spParameter[14].Value);
             }
             catch (Exception ex)
             {
@@ -264,7 +311,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[7];
+                var spParameter = new SqlParameter[8];
 
                 #region Set param
 
@@ -310,19 +357,26 @@ namespace WebForm.DataAccess
                 };
                 spParameter[5] = parameter;
 
+                parameter = new SqlParameter("@P_CATEGORYTYPE", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.CategoryType
+                };
+                spParameter[6] = parameter;
+
                 parameter = new SqlParameter("@P_TOTAL", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[6] = parameter;
+                spParameter[7] = parameter;
 
                 #endregion
 
                 var ds = SqlHelper.ExecuteDataset(ConfigInfo.ConnectString, CommandType.StoredProcedure,
                     "PROC_NEWS_SEARCH", spParameter);
 
-                pTotal = Convert.ToInt32(spParameter[6].Value);
+                pTotal = Convert.ToInt32(spParameter[7].Value);
 
                 return ds;
             }

@@ -1,0 +1,238 @@
+﻿@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@model string
+@{
+
+
+    List<News> list_1 = new List<News>();
+    List<News> list_2 = new List<News>();
+    List<News> list_3 = new List<News>();
+    List<News> list_4 = new List<News>();
+
+    if (Model == "1")
+    {
+        list_2 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 2).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_3 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 3).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_4 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 4).OrderByDescending(i => i.Id).Take(5).ToList();
+
+
+    }
+    else if (Model == "2")
+    {
+        list_1 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 1).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_3 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 3).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_4 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 4).OrderByDescending(i => i.Id).Take(5).ToList();
+
+    }
+    else if (Model == "3")
+    {
+        list_1 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 1).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_2 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 2).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_4 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 4).OrderByDescending(i => i.Id).Take(5).ToList();
+
+    }
+    else if (Model == "4")
+    {
+        list_1 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 1).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_2 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 2).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_3 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 3).OrderByDescending(i => i.Id).Take(5).ToList();
+
+    }
+
+
+}
+
+@* // danh sách 2 laoij tin khác *@
+<style>
+    .symbol-table {
+        width: 100%;
+        border-collapse: collapse;
+        /* font-family: 'Segoe UI', Tahoma, sans-serif; */
+        /* margin-top: 10px; */
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgb(243 255 254);
+        backdrop-filter: blur(4px);
+        border: 1px solid #ccc; /* 👈 Viền ngoài bảng */
+    }
+
+        .symbol-table thead {
+            background-color: #007c71;
+        }
+
+        .symbol-table th, .symbol-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 15px;
+            color: #008000;
+            text-align: center;
+        }
+
+        .symbol-table th {
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .symbol-table td a {
+            color: #4b99bb;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .symbol-table td:last-child {
+            color: #017a00;
+            font-weight: 600;
+        }
+
+        .symbol-table tbody tr:hover {
+            background-color: #f0f8ff;
+        }
+
+    @@media (max-width: 600px) {
+        .symbol-table th, .symbol-table td {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+
+</style>
+<div class="" style="margin-bottom: 30px;    margin-bottom: 30px;
+    border: 2px solid #007c71;
+    border-radius: 10px;">
+    <table class="symbol-table">
+        <thead>
+            <tr>
+                <th>Mã TP</th>
+                <th>Chỉ số</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="/chi-tiet/TP/AAA">AAA</a></td>
+                <td>34%</td>
+            </tr>
+            <tr>
+                <td><a href="/chi-tiet/TP/BBB">BBB</a></td>
+                <td>42%</td>
+            </tr>
+            <tr>
+                <td><a href="/chi-tiet/TP/CCC">CCC</a></td>
+                <td>12%</td>
+            </tr>
+            <tr>
+                <td><a href="/chi-tiet/TP/CCC">CCC</a></td>
+                <td>12%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+@if (list_2.Count > 0)
+{
+    <div class="" style="margin-bottom: 30px;">
+        <div class="analysis-card">
+            <div class="analysis-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Xu hướng thị trường</h5>
+                <a href="/danh-sach-tin/2" class="viewmore">xem thêm >></a>
+            </div>
+
+            @foreach (var item in list_2)
+            {
+                <div class="analysis-item">
+                    <div class="analysis-meta">
+                        <span class="date">@item.CreateDate</span>
+                    </div>
+                    <div class="analysis-title"><a href="/chi-tiet/@item.Id">@(item.Title ?? "")</a></div>
+                </div>
+            }
+
+
+
+
+        </div>
+    </div>
+}
+
+@if (list_3.Count > 0)
+{
+    <div class="" style="margin-bottom: 30px;">
+        <div class="analysis-card">
+            <div class="analysis-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Xu hướng ngành</h5>
+                <a href="/danh-sach-tin/3" class="viewmore">xem thêm >></a>
+            </div>
+
+            @foreach (var item in list_3)
+            {
+                <div class="analysis-item">
+                    <div class="analysis-meta">
+                        <span class="date">@item.CreateDate</span>
+                    </div>
+                    <div class="analysis-title"><a href="/chi-tiet/@item.Id">@(item.Title ?? "")</a></div>
+                </div>
+            }
+
+
+
+
+        </div>
+    </div>
+}
+
+@if (list_4.Count > 0)
+{
+    <div class="" style="margin-bottom: 30px;">
+        <div class="analysis-card">
+            <div class="analysis-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Cổ phiếu dẫn dắt</h5>
+                <a href="/danh-sach-tin/4" class="viewmore">xem thêm >></a>
+            </div>
+
+            @foreach (var item in list_4)
+            {
+                <div class="analysis-item">
+                    <div class="analysis-meta">
+                        <span class="date">@item.CreateDate</span>
+                    </div>
+                    <div class="analysis-title"><a href="/chi-tiet/@item.Id">@(item.Title ?? "")</a></div>
+                </div>
+            }
+
+
+
+
+        </div>
+    </div>
+}
+
+
+@if (list_1.Count > 0)
+{
+    <div class="" style="margin-bottom: 30px;">
+        <div class="analysis-card">
+            <div class="analysis-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Tin tức mới nhất</h5>
+                <a href="/danh-sach-tin/1" class="viewmore">xem thêm >></a>
+            </div>
+
+            @foreach (var item in list_1)
+            {
+                <div class="analysis-item">
+                    <div class="analysis-meta">
+                        <span class="date">@item.CreateDate</span>
+                    </div>
+                    <div class="analysis-title"><a href="/chi-tiet/@item.Id">@(item.Title ?? "")</a></div>
+                </div>
+            }
+
+        </div>
+    </div>
+}
+

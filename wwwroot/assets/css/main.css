@@ -1,4 +1,4 @@
-/**
+﻿/**
 * Template Name: Squadfree
 * Template URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
 * Updated: Aug 07 2024 with Bootstrap v5.3.3
@@ -22,7 +22,7 @@
     --background-color: #ffffff; /* Background color for the entire website, including individual sections */
     --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
     --heading-color: #2f4d5a; /* Color for headings, subheadings and title throughout the website */
-    --accent-color: #67b0d1; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+    --accent-color: #1476C6; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
     --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
     --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -214,7 +214,7 @@ h6 {
             padding: 10px 15px;
             margin-left: 2px;
             font-size: 16px;
-            font-family: var(--nav-font);
+            font-family: var(--default-font);
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -1739,6 +1739,7 @@ section,
     padding: 18px 10px;
     /*border-bottom: 1px solid #e0e0e0;*/
     transition: background-color 0.3s;
+    overflow: hidden;
 }
 
     .item_news:hover {
@@ -1754,17 +1755,17 @@ section,
 
     .title_news a {
         /*font-size: 16px;*/
-        font-weight: 400;
+        font-weight: 500;
         margin: 0;
         /*color: var(--heading-color);*/
     }
 
 .date_new {
-    font-size: 13px !important;
+    font-size: 11px !important;
     color: #888;
     margin: 4px 0 0;
     /*text-align: right;*/
-    font-style: italic !important;
+    /*font-style: italic !important;*/
 }
 
 
@@ -1900,3 +1901,65 @@ section,
         background-color: #4ba5d5 !important;
         border-color: #4ba5d5 !important;
     }
+
+#noidung img {
+    max-width: 100%;
+    height: auto !important;
+}
+#des_detail {
+    margin: 10px 0;
+    font-weight: 500;
+    text-align: justify;
+}
+.tinlienquan {
+    border-bottom: 2px solid #e9430f;
+    color: #e9430f;
+    margin-top: 50px;
+}
+.tinlienquan h3 {
+    color: #e9430f;
+}
+.Description_list {
+    font-weight: 500;
+    text-align: justify;
+    margin: 0;
+    font-size: 13px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Số dòng muốn hiển thị */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.featureimage{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+    .featureimage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ✅ Quan trọng: phủ kín div, cắt phần dư */
+        display: block;
+    }
+
+.newtomtat{
+    padding-left: 115px;
+}
+.titleDetail {
+    color: #e9430f !important;
+}
+.titleNews {
+    color: #e9430f !important;
+}
+.dateTime {
+    font-size: 11px !important;
+    text-align: right;
+    font-style: italic;
+    color: #888
+}
+
+.Orcolor {
+    color: #e9430f !important;
+}

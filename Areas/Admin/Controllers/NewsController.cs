@@ -89,8 +89,7 @@ namespace WebForm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit([FromBody] News request)
         {
-            //var result = _newsDa.Edit(request);
-            var result = 1;
+            var result = _newsDa.Edit(request);
             if (result > 0)
             {
                 DataMemory.LoadNews();
@@ -111,9 +110,9 @@ namespace WebForm.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete([FromBody] int id)
+        public ActionResult Delete([FromBody] News request)
         {
-            var result = _newsDa.Delete(id);
+            var result = _newsDa.Delete(request.Id);
             if (result > 0)
             {
                 DataMemory.LoadNews();
@@ -155,9 +154,10 @@ namespace WebForm.Areas.Admin.Controllers
 
 
 
-        public IActionResult GetTypeNew(int TypeGroup)
+        public IActionResult GetTypeNew(int TypeGroup, string CategoryType = "")
         {
             ViewBag.TypeGroup = TypeGroup;
+            ViewBag.CategoryType = CategoryType;
             return PartialView("~/Areas/Admin/Views/News/PartialViewTypeNew.cshtml");
         }
     }

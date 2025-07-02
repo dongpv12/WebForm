@@ -1,19 +1,57 @@
-﻿ @using WebForm.Common
+﻿@using WebForm.Common
 @model WebForm.Models.ListNews
+@using WebForm.Models;
 
 @{
     ViewBag.Title = "Danh sách bài viết";
-   Layout = "_Layout_Admin";
+    Layout = "_Layout_Admin";
+    List<Allcode_Info> typeNewsSearch = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE");
 }
+<style>
+    .div-search-text {
+        width: 220px;
+    }
+
+    .form-inline-search {
+        display: flex;
+        gap: 25px; /* khoảng cách giữa các div */
+    }
+
+    .btn-search{
+       
+        margin-top: auto;
+        padding: 6px 20px;
+        color: #fff;
+        background: #009688;
+    }
+</style>
 <input type="hidden" id="txtRecordOnPage" value="@ConfigInfo.RecordOnPage" />
 <div class="container-fluid div-search">
-    <div class="form-inline-ht">
-        <input type="button" value="Tạo bài mới" id="btnCreateNews" class="btn" onclick="return  window.location.href='/News/Create'" />
-        <div class="div-search-text col-ht-3">
-            <input id="txtSearch" type="text" class="form-control" placeholder="Tìm kiếm"/>
-            <i class="fas fa-search"></i>
+    <div class="form-inline-search">
+
+        <div class="div-search-text">
+            <label>Từ khóa</label>
+            <input id="txtSearch" type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm" />
         </div>
+        <div class="div-search-text">
+            <label>Loại</label>
+            <select class="form-control" id="txtTypeSearch">
+                <option value="-1">--Tất cả--</option>
+                @foreach (var item in typeNewsSearch)
+                {
+                    <option value="@item.CdValue">@item.CdContent</option>
+                }
+            </select>
+
+        </div>
+
+        <input type="button" value="Tìm kiếm" id="btnSearchNews" class="btn btn-search" onclick="page(1);" />
+
+        <input type="button" value="Tạo bài mới" id="btnCreateNews" class="btn  btn-search" onclick="return  window.location.href='/News/Create'" />
+
+
     </div>
+
 </div>
 <div id="data_news" class="container-fluid dataTables_wrapper container-fluid">
     @Html.Partial("~/Areas/Admin/Views/News/_listNews.cshtml", Model)
@@ -32,6 +70,7 @@
             var recordOnPage = $('#txtRecordOnPage').val();
             var totalPage = $('#txtTotalPage').val();
             var title = $('#txtSearch').val();
+            var type = $('#txtTypeSearch').val();
             var start = 1;
             var end = recordOnPage;
             if (index === 'new') {
@@ -50,7 +89,8 @@
                 orderBy: 'CreateDate',
                 orderByType: 'DESC',
                 createDate: '',
-                title: title
+                title: title,
+                CategoryType: type
             };
 
             axios.post("/News/Search", request).then(function (response) {
@@ -64,7 +104,6 @@
     }
 
     function deleteNews(id) {
-
         swal({
             title: "Bạn chắc chắn?",
             text: "Bạn sẽ xóa bài viết này. Sẽ không thể khôi phục được",
@@ -89,7 +128,7 @@
                             icon: "success",
                             buttons: true
                         }).then((value) => {
-                            page($('#txtCurrentPage').val());
+                            page(1);
                         });
                     } else {
                         swal({
@@ -102,7 +141,7 @@
                 }).catch(error => {
 
                 });
-            } 
+            }
         });
     }
 </script>
