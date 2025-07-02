@@ -16,6 +16,8 @@
 
 bin/
 obj/
+Run/
+.vs/
 
 # Build results
 [Dd]ebug/
