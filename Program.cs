@@ -12,6 +12,8 @@ ConfigFolder = "Config";
             ConfigFolder = "../Config";
 #endif
 
+///x
+
 var path = Path.Combine(Directory.GetCurrentDirectory(), ConfigFolder, "appsettings.json");
 //test
 // Cấu hình đọc cấu hình từ file appsettings.json
