@@ -1,0 +1,87 @@
+﻿body, html {
+    background: #000;
+}
+
+.chart-page {
+    background: #000;
+    font-family: Arial, sans-serif;
+}
+
+    .chart-page .chart-container {
+        border-color: #494B4C;
+        background: unset !important;
+    }
+
+.bottom-widgetbar-content.backtesting .button, .header-chart-panel .button, .hotlist-controls .button, .symbol-edit-widget .button {
+    background: transparent;
+    color: #000;
+    border-color: #494B4C;
+}
+
+    .feature-no-touch .header-chart-panel .button.disabled:active, .feature-touch .header-chart-panel .button.disabled:active, .header-chart-panel .button.disabled, .header-chart-panel .button.disabled.active {
+        background: transparent;
+    }
+
+.bottom-widgetbar-content.backtesting svg, .header-chart-panel svg, .hotlist-controls svg, .symbol-edit-widget svg {
+    fill: #7ba3b4;
+}
+
+.header-chart-panel .group, .header-chart-panel .group span {
+    color: #7ba3b4;
+}
+
+    .header-chart-panel .group svg {
+        fill: #7ba3b4 !important;
+    }
+
+
+.feature-no-touch .favored-list-container span:hover {
+}
+
+.feature-no-touch .header-chart-panel .button:hover:not(.disabled),
+.feature-no-touch .symbol-edit-widget .button:hover:not(.disabled) {
+    background: #f2f3f5;
+}
+
+    .feature-no-touch .header-chart-panel .button:hover:not(.disabled) svg,
+    .feature-no-touch .symbol-edit-widget .button:hover:not(.disabled) svg {
+        fill: #68696b;
+    }
+
+.favored-list-container span {
+    background: transparent;
+    border-color: #494B4C;
+}
+
+    .favored-list-container span.submenu.interval-dialog-button i {
+        background: #7ba3b4;
+    }
+
+        .favored-list-container span.submenu.interval-dialog-button i:before,
+        .favored-list-container span.submenu.interval-dialog-button i:after {
+            background: #7ba3b4;
+        }
+
+.header-chart-panel--compact .group.header-group-back-button, .header-chart-panel--compact .group.header-group-bars-style, .header-chart-panel--compact .group.header-group-compare, .header-chart-panel--compact .group.header-group-create-alert, .header-chart-panel--compact .group.header-group-eot-pro, .header-chart-panel--compact .group.header-group-properties, .header-chart-panel--compact .group.header-group-publishing, .header-chart-panel--compact .group.header-group-screenshot, .header-chart-panel--compact .group.header-group-select-layout, .header-chart-panel--compact .group.header-group-undo-redo, .header-chart-panel--compact .layout-toggle-container, .header-chart-panel--compact .save-load-buttons .title, .header-chart-panel--compact .save-load-buttons .titled .separator {
+    display: inline-block;
+}
+
+
+.tv-close-panel {
+    background-color: #494B4C;
+    border-color: #494B4C;
+}
+
+.drawingToolbar-2CoOuCv8- {
+    background-color: #000;
+}
+
+.loading-indicator {
+    background-color: #000;
+}
+
+@media only screen and (max-width: 750px) {
+    .header-chart-panel .group.header-group-back-button, .header-chart-panel .group.header-group-compare, .header-chart-panel .group.header-group-properties, .header-chart-panel .group.header-group-screenshot, .header-chart-panel .group.header-group-select-layout, .header-chart-panel .group.header-group-undo-redo, .header-chart-panel .layout-toggle-container {
+        display: inline-block !important;
+    }
+}

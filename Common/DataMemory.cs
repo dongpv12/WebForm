@@ -260,11 +260,16 @@ namespace WebForm.Common
         public static string EmailTemplate { get; set; } = "";
         public static string ContactPhone { get; set; } = "";
         public static string EmailBusiness { get; set; } = "";
-
+        public static string ChartProtocal { get; set; } = "";
+        public static string WebSocketData { get; set; } = "";
+        
         public static void GetConfig(IConfiguration configuration)
         {
             try
             {
+                ChartProtocal = configuration["ChartProtocal"]?.ToString() ?? "";
+                WebSocketData = configuration["WebSocketData"]?.ToString() ?? "";
+
                 BaseDir = configuration["BaseDir"]?.ToString() ?? "";
                 BaseUrl = configuration["BaseUrl"]?.ToString() ?? "";
                 RecordOnPage = Convert.ToInt32(configuration["RecordOnPage"]?.ToString() ?? "10");

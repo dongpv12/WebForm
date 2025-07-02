@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
+using WebForm;
+using WebForm.Common;
 
 public class WebSocketReceiverService : BackgroundService
 {
-    private readonly Uri _uri = new Uri("wss://apichecking.navisoft.com.vn/api/checking-symbol/WebSocket?username=hello");
+    private readonly Uri _uri = new Uri(ConfigInfo.WebSocketData);
     private readonly IHubContext<MessageHub> _hubContext;
 
     public WebSocketReceiverService(IHubContext<MessageHub> hubContext)
@@ -40,13 +43,14 @@ public class WebSocketReceiverService : BackgroundService
                 else
                 {
                     var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    Console.WriteLine($"📩 Received: {message}");
+                    //Console.WriteLine($"📩 Received: {message}");
 
                     // ✅ Gửi tới client qua SignalR
                     await _hubContext.Clients.All.SendAsync("ReceiveMessage", message, stoppingToken);
 
                     // Ghi log nếu cần
-                    AppendMessageToFile(message);
+                    StockMem.c_queueMessage.Enqueue(message);
+                    //AppendMessageToFile(message);
                 }
             }
         }
@@ -56,15 +60,5 @@ public class WebSocketReceiverService : BackgroundService
         }
     }
 
-    private void AppendMessageToFile(string json, string path = "DataSymbol/data.txt")
-    {
-        // Tạo thư mục nếu chưa tồn tại
-        var directory = Path.GetDirectoryName(path);
-        if (!Directory.Exists(directory))
-        {
-            Directory.CreateDirectory(directory!);
-        }
-        using StreamWriter writer = new StreamWriter(path, append: true);
-        writer.WriteLine(json);
-    }
+
 }

@@ -46,6 +46,15 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet, Route("chart")]
+    public IActionResult Chart(string symbol, string language, string p_username)
+    {
+        ViewBag.symbol = symbol;
+        ViewBag.language = language;
+        ViewBag.username = p_username;
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

@@ -1,0 +1,179 @@
+﻿@using WebForm.Common
+@{
+    Layout = null;
+    var code = (string)ViewBag.symbol;
+    if (!string.IsNullOrEmpty(code))
+    {
+        code = code.ToUpper();
+    }
+    const string version = "3.0.0";
+
+    var host = Context.Request.IsHttps ? ConfigInfo.ChartProtocal : ConfigInfo.ChartProtocal;
+    host += "://" + Context.Request.Host.Value.ToLower();
+
+    string _language = "vi";
+    if (ViewBag.language != null)
+    {
+        _language = ViewBag.language;
+    }
+
+    string _username = "";
+    if (ViewBag.username != null)
+    {
+        _username = ViewBag.username;
+    }
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>FinArt</title>
+    <link rel="shortcut icon" href="~/Content/img/circle-o.png" />
+    <!--  -->
+    <script type="text/javascript" src="/tvchart/charting_library/charting_library.min.js"></script>
+    <script type="text/javascript" src="/tvchart/datafeeds/udf/dist/polyfills.js"></script>
+    <script type="text/javascript" src="/tvchart/datafeeds/udf/dist/bundle.js"></script>
+</head>
+<body>
+    <!--  -->
+    <div id="tv_chart_container" class="dv-draw-chart"></div>
+    <script>
+        var host = '@host';
+        var symbol = '@code';
+
+        // mảng màu :up xanh; down đỏ dùng riêng cho chat
+        var colorPrice = ["#0FA316", "#CC2939"];
+        // overrides giá trên
+        var objOverrides = {
+            "mainSeriesProperties.barStyle.upColor": colorPrice[0],
+            "mainSeriesProperties.barStyle.downColor": colorPrice[1],
+            //
+            "mainSeriesProperties.candleStyle.upColor": colorPrice[0],
+            "mainSeriesProperties.candleStyle.borderUpColor": colorPrice[0],
+            "mainSeriesProperties.candleStyle.wickUpColor": colorPrice[0],
+            "mainSeriesProperties.candleStyle.downColor": colorPrice[1],
+            "mainSeriesProperties.candleStyle.borderDownColor": colorPrice[1],
+            "mainSeriesProperties.candleStyle.wickDownColor": colorPrice[1],
+            "mainSeriesProperties.candleStyle.drawBorder": false,
+            //
+            "mainSeriesProperties.hollowCandleStyle.upColor": colorPrice[0],
+            "mainSeriesProperties.hollowCandleStyle.borderUpColor": colorPrice[0],
+            "mainSeriesProperties.hollowCandleStyle.wickUpColor": colorPrice[0],
+            "mainSeriesProperties.hollowCandleStyle.downColor": colorPrice[1],
+            "mainSeriesProperties.hollowCandleStyle.borderDownColor": colorPrice[1],
+            "mainSeriesProperties.hollowCandleStyle.wickDownColor": colorPrice[1],
+            "mainSeriesProperties.hollowCandleStyle.drawBorder": false,
+            //#7f4d52 :red,#3a613c
+            "mainSeriesProperties.haStyle.upColor": colorPrice[0],
+            "mainSeriesProperties.haStyle.borderUpColor": colorPrice[0],
+            "mainSeriesProperties.haStyle.wickUpColor": colorPrice[0],
+            "mainSeriesProperties.haStyle.downColor": colorPrice[1],
+            "mainSeriesProperties.haStyle.borderDownColor": colorPrice[1],
+            "mainSeriesProperties.haStyle.wickDownColor": colorPrice[1],
+            "mainSeriesProperties.haStyle.drawBorder": false,
+            //
+            "mainSeriesProperties.baselineStyle.topLineColor": colorPrice[0],
+            "mainSeriesProperties.baselineStyle.bottomLineColor": colorPrice[1],
+            "paneProperties.background": "#000",
+            "paneProperties.topMargin": 6,
+            "paneProperties.bottomMargin": 5,
+            "paneProperties.vertGridProperties.color": "#22282D",
+            "paneProperties.horzGridProperties.color": "#22282D",
+            "paneProperties.crossHairProperties.color": "#FFF",
+            "symbolWatermarkProperties.transparency": 90,
+            "scalesProperties.textColor": "#7ba3b4"
+            //
+
+        };
+
+        var widget = null;
+        var setlang = '@_language';
+
+        TradingView.onready(function () {
+            widget = window.tvWidget = new TradingView.widget({
+                "width": "100%",
+                "height": "100%",
+                symbol: "@code",
+                interval: 'D',
+                timezone: "Asia/Bangkok",
+                container_id: "tv_chart_container",
+                //	BEWARE: no trailing slash is expected in feed URL
+                datafeed: new Datafeeds.UDFCompatibleDatafeed(host),
+                library_path: host + "/tvchart/charting_library/",
+                locale: setlang,
+                theme: "dark",
+                custom_css_url: host + "/tvchart/custom_css/customCssTvChart.css?v='@version'",
+                disabled_features: ['use_localstorage_for_settings', 'header_settings', 'show_chart_property_page', 'chart_property_page'],
+                client_id: 'tradingview.com',
+                user_id: '@_username',
+                overrides: objOverrides,
+                mobile: {
+                    disabled_features: ["study_market_minimized", "header_symbol_search", "header_fullscreen_button", 'use_localstorage_for_settings', 'header_settings', 'show_chart_property_page', 'chart_property_page'],
+                    enabled_features: ["header_chart_type", "left_toolbar"],
+                },
+
+                //volume overrides: KL dưới
+                studies_overrides: {
+                    "volume.volume.color.0": "#d22133",
+                    "volume.volume.color.1": "#11b319"
+                },
+                charts_storage_url: host + "/charts",
+                charts_storage_api_version: "1.1",
+            });
+
+            widget.onChartReady(function () {
+                widget.chart().onSymbolChanged().subscribe(null, function (e) {
+                    window.top.postMessage({
+                        source: "tradingviewembedded",
+                        payload: {
+                            symbol: e.symbol,
+                            type: e.type,
+                        }
+                    }, '*');
+                });
+                widget.chart().createStudy('Bollinger Bands', false, false, null, null, {
+                    styles: {
+                        plot_0: {
+                            color: "#FCD535"
+                        },
+                        plot_1: {
+                            color: "#6788ff"
+                        },
+                        plot_2: {
+                            color: "#6788ff"
+                        }
+                    },
+                    filledAreasStyle: {
+                        fill_0: {
+                            color: "#000080"
+                        }
+                    }
+                });
+
+                const arrObj = widget.chart().getAllStudies();
+                const lenArr = arrObj.length;
+                if (lenArr > 0) {
+                    for (let i = 0; i < lenArr; i++) {
+                        if (arrObj[i].name === "Volume") {
+                            const objVolume = widget.chart().getStudyById(arrObj[i].id);
+                            objVolume.unmergeDown();
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+
+        function SetTradingViewSymbol($value) {
+            try {
+                if (widget != null) {
+                    widget.chart().setSymbol($value, null);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    </script>
+</body>
+</html>

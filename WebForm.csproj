@@ -20,6 +20,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NLog" Version="6.0.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="6.0.0" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 
@@ -31,6 +32,72 @@
     <None Include="wwwroot\Admin\sass\style.scss" />
     <None Include="wwwroot\Admin\styles\login.css" />
     <None Include="wwwroot\Admin\styles\style.css" />
+    <None Include="wwwroot\tvchart\charting_library\charting_library.min.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\13.416855bb3e77f54b85bc.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\crosshair.6c091f7d5427d0c5e6d9dc3a90eb2b20.cur" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\dot.ed68e83c16f77203e73dbc4c3a7c7fa1.cur" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\ds-property-pages.1d6127a623f51513ea4f.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\editobjectdialog.25fa62e6b4f8125e697e.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\eraser.0579d40b812fa2c3ffe72e5803a6e14c.cur" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\go-to-date-dialog-impl.62cf944ccbbc265f35d6.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\grab.bc156522a6b55a60be9fae15c14b66c5.cur" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\grabbing.1c0862a8a8c0fb02885557bc97fdafe7.cur" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\ie-fallback-logos.1e0142e3b30300ec0153.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\lazy-jquery-ui.8a95a81e0b032b2d76df.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\lazy-velocity.97588d47c84409f2bc4b.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\library.3a1dac88649135c71a7d.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\library.3a1dac88649135c71a7d.rar" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\library.a8de6f8cf4dda6895071c6ec45f900d9.css" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\lt-pane-views.58e294a05422f60f49f9.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\objecttreedialog.e036091976a3fed3c8c9.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\propertypagesfactory.54b21a18753b2d8c83c2.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\symbol-info-dialog-impl.a3697f845094a08295ab.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\take-chart-image-dialog-impl.53880c50752269d86d3a.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\vendors.a94ef44ed5c201cefcf6ad7460788c1a.css" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\vendors.e76774664d65ba2c90ff.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\bundles\zoom.e21f24dd632c7069139bc47ae89c54b5.cur" />
+    <None Include="wwwroot\tvchart\charting_library\static\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\tvchart\charting_library\static\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\tvchart\charting_library\static\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\balloon.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\bar-loader.gif" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\button-bg.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\charting_library\logo-widget-copyright-faded.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\charting_library\logo-widget-copyright.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\controlll.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\delayed.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\dialogs\checkbox.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\dialogs\close-flat.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\dialogs\large-slider-handle.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\dialogs\linewidth-slider.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\dialogs\opacity-slider.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\icons.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\prediction-clock-black.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\prediction-clock-white.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\prediction-failure-white.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\prediction-success-white.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\select-bg.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\sidetoolbar\instruments.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\sidetoolbar\toolgroup.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\svg\chart\bucket2.svg" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\svg\chart\font.svg" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\svg\chart\large-slider-handle.svg" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\svg\chart\pencil2.svg" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\svg\question-mark-rounded.svg" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\tvcolorpicker-bg-gradient.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\tvcolorpicker-bg.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\tvcolorpicker-check.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\tvcolorpicker-sprite.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\images\warning-icon.png" />
+    <None Include="wwwroot\tvchart\charting_library\static\js\external\spin.min.js" />
+    <None Include="wwwroot\tvchart\charting_library\static\localization\translations\widgets-copyrights.json.example" />
+    <None Include="wwwroot\tvchart\charting_library\static\tv-chart.e816a7a6edc9de3ed709.html" />
+    <None Include="wwwroot\tvchart\charting_library\static\tv-chart.e816a7a6edc9de3ed709_o.html" />
+    <None Include="wwwroot\tvchart\custom_css\customCssTvChart.css" />
+    <None Include="wwwroot\tvchart\datafeeds\udf\dist\bundle.js" />
+    <None Include="wwwroot\tvchart\datafeeds\udf\dist\bundle.rar" />
+    <None Include="wwwroot\tvchart\datafeeds\udf\dist\polyfills.js" />
+    <None Include="wwwroot\tvchart\datafeeds\udf\dist\polyfills.rar" />
   </ItemGroup>
 
   <ItemGroup>
