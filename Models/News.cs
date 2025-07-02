@@ -12,6 +12,15 @@ namespace WebForm.Models
         public string CreateBy { get; set; }
         public string Special { get; set; }
         public string CategoryType { get; set; }
+
+        public string Symbol { get; set; }
+        public string SymbolName { get; set; }
+        public string Issue { get; set; }
+        public string Suggestion { get; set; }
+        public string Industry { get; set; }
+        public string Link { get; set; }
+
+
     }
 
     public class News : NewsRequest

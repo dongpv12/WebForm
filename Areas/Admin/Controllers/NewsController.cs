@@ -32,7 +32,7 @@ namespace WebForm.Areas.Admin.Controllers
             return View("~/Areas/Admin/Views/News/List.cshtml", SearchNews(request));
         }
 
-        [HttpGet] 
+        [HttpGet]
         public ActionResult Create()
         {
             var user = this.HttpContext.CurrentUser();
@@ -47,8 +47,7 @@ namespace WebForm.Areas.Admin.Controllers
         //[Route("Do-Create")]
         public ActionResult DoCreate([FromBody] NewsRequest model)
         {
-            //var ketqua = _newsDa.Create(model);
-            var ketqua = 1;
+            var ketqua = _newsDa.Create(model);
             if (ketqua > 0)
             {
                 DataMemory.LoadNews();
@@ -152,6 +151,14 @@ namespace WebForm.Areas.Admin.Controllers
                 CurrentPage = request.CurrentPage
             };
             return listNews;
+        }
+
+
+
+        public IActionResult GetTypeNew(int TypeGroup)
+        {
+            ViewBag.TypeGroup = TypeGroup;
+            return PartialView("~/Areas/Admin/Views/News/PartialViewTypeNew.cshtml");
         }
     }
 }

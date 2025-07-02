@@ -55,5 +55,22 @@ namespace WebForm.DataAccess
             }
         }
 
+
+        public DataSet GetAllcode()
+        {
+            try
+            {
+                var ds = SqlHelper.ExecuteDataset(ConfigInfo.ConnectString, CommandType.StoredProcedure,
+                    "PROC_NEWS_ALLCODE");
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+                return new DataSet();
+            }
+        }
+
     }
 }

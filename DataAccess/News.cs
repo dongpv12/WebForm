@@ -12,7 +12,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[10];
+                var spParameter = new SqlParameter[16];
 
                 #region Set param
 
@@ -79,19 +79,65 @@ namespace WebForm.DataAccess
                 };
                 spParameter[8] = parameter;
 
+
+                parameter = new SqlParameter("@P_Symbol", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Symbol
+                };
+                spParameter[9] = parameter;
+
+
+                parameter = new SqlParameter("@P_SymbolName", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.SymbolName
+                };
+                spParameter[10] = parameter;
+
+                parameter = new SqlParameter("@P_Issue", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Issue
+                };
+                spParameter[11] = parameter;
+
+
+                parameter = new SqlParameter("@P_Suggestion", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Suggestion
+                };
+                spParameter[12] = parameter;
+
+
+                parameter = new SqlParameter("@P_Industry", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Industry
+                };
+                spParameter[13] = parameter;
+
+                parameter = new SqlParameter("@P_Link", SqlDbType.VarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Link
+                };
+                spParameter[14] = parameter;
+
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[9] = parameter;
+                spParameter[15] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_NEWS_INSERT",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[9].Value);
+                return Convert.ToDecimal(spParameter[15].Value);
             }
             catch (Exception ex)
             {

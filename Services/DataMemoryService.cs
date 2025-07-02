@@ -21,11 +21,8 @@ public class DataMemoryService : IHostedService
         {
             try
             {
-
-
                 DataMemory.LoadNews();
-                  
-               
+                DataMemory.GetAllcode();
             }
             catch (Exception ex)
             {
@@ -34,6 +31,10 @@ public class DataMemoryService : IHostedService
             await Task.Delay(TimeSpan.FromSeconds(30));
         }
     }
+
+
+  
+    
 
     private async Task LoadSymbolMemory()
     {

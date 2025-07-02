@@ -136,7 +136,6 @@
 
 			$("img").on("dblclick",function () {
 				var _src = $(this).attr('src');
-				alert(_src)
 				window.opener.CKEDITOR.tools.callFunction(funcNum, _src);
 				window.close();
 			});
@@ -156,7 +155,7 @@
 			<div style="position: relative; width: 75%; border: 1px solid #f1f0f0; float: left;">
 				<label class="custom-file-upload">
 					<img src="~/images/attchment.png" style="width:15px;"/> Chọn tệp
-					<input type="file" name="upload" id="fileInput" accept="image/*,application/pdf" />
+					<input type="file" name="upload" id="fileInput" accept="image/*" />
 				</label>
 				<span class="file-name" id="fileName">Chưa chọn tệp nào</span>
 

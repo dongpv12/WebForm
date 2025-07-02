@@ -6,58 +6,228 @@
     var lstProject = Model.LstProject;
 }
 <style>
-    .input_search_home:focus {
-        outline: none;
-        box-shadow: none;
+    .hero-section {
+        position: relative;
+        height: 400px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+        .hero-bg .carousel-inner {
+            height: 100%;
+        }
+
+        .hero-bg .carousel-item {
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        pointer-events: none;
+    }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+        }
+
+        .hero-content p {
+            max-width: 600px;
+            margin-top: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+    .search-box {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        pointer-events: auto;
+    }
+
+        .search-box input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            width: 250px;
+        }
+
+        .search-box button {
+            padding: 8px 15px;
+            border: none;
+            background-color: #267d36;
+            color: white;
+            border-radius: 0 5px 5px 0;
+        }
+
+    .tag-buttons {
+        margin: 30px auto;
+        text-align: center;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        z-index: 3;
+    }
+
+    #highlight article {
+        padding: 30px;
+        border: 2px solid #10cfc9;
+        margin: 20px 0;
+        border-radius: 15px;
+        position: relative;
+    }
+
+        #highlight article h2 img {
+            width: 26px;
+        }
+
+    #highlight .text_a img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .frame-base img {
+        float: right;
+        width: 160px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .only-img {
+        float: left !important;
+        width: 200px !important;
+        background: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+    }
+
+    #highlight ul li {
+        list-style-type: none;
+        position: relative;
+        padding: 7px 0 7px 30px;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    #highlight article h2 {
+        font-size: 48px;
+        line-height: 1.1;
+        letter-spacing: -1px;
+        color: var(--cyan);
+    }
+
+    .a_01 {
+        animation-delay: 0.1s;
+    }
+
+    .animate {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeInUp;
     }
 </style>
 
 <section id="hero" class="hero section accent-background">
 
-    <img src="~/assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
-    <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
-        <h2>Welcome to FinArt</h2>
-        <p>Nền tảng phân tích tài chính và đầu tư thông minh</p>
-        <div class="div-search" style="margin-top:30px;">
-
-
-
-            <div class="container py-4">
-                <div class="row justify-content-center align-items-center g-3">
-
-                    <!-- Nút "Danh mục tư vấn" -->
-                    <div class="col-auto" style="margin:0!important">
-                        <button class="custom-advice-btn btn btn-outline-primary btn-lg d-inline-flex align-items-center gap-2  shadow-sm" onclick="gotoDanhMuc();" >
-                            <i class="bi bi-journal-text fs-5"></i>
-                            Danh mục tư vấn
-                        </button>
-                    </div>
-
-                    <!-- Ô tìm kiếm dài hơn -->
-                    <div class="col-auto">
-                        <form>
-                            <div class="input-group input-group-lg custom-search-group">
-                                <input type="text" class="form-control input_search_home" placeholder="">
-                                <button class="btn btn-light px-4" type="submit">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
+    <div class="hero-section">
+        <div id="heroCarousel" class="carousel slide hero-bg carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('/assets/img/bg_01.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('/assets/img/bg_02.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('/assets/img/bg_03.jpg');"></div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
 
+        <!-- Overlay Content -->
+        <div class="hero-content" id="highlight">
+
+            <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
 
 
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 bg-primary text-white text-center">
+                                <button class="custom-advice-btn btn btn-outline-primary btn-lg d-inline-flex align-items-center gap-2  shadow-sm" onclick="gotoDanhMuc();">
+                                    <i class="bi bi-journal-text fs-5"></i>
+                                    Danh mục tư vấn
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <article>
+                               @*  <h2 class="animate a_01">
+                                    <img src="https://timetradingfx.com/output/images/arrow-up.png?v=1.0" alt="arrow"> Semi Gold
+                                </h2> *@
+                                <div class="frame-base animate a_02">
+                                    <img class="only-img" src="https://timetradingfx.com/output/images/shape-bg3.png?v=1.0" alt="shape" style="height: auto">
+                                    <img src="https://timetradingfx.com/output/images/mt5.png?v=1.0" alt="MetaTrader 5" style="height: auto">
+                                    <div class="clearfix"></div>
+                                </div> <ul>
+                                    <li class="animate a_03">Provider Number <span>1713241</span></li>
+                                    <li class="animate a_04">Strategy <span> Scalping</span></li>
+                                    <li class="animate a_05">Symbol <span>XAUUSD.s</span></li>
+                                    <li class="animate a_06">Profit <span>0.3-0.5% per day</span></li>
+                                    <li class="animate a_07">Max Drawdown <span>20%</span></li>
+                                   
+                                </ul>
+                                @* <div class="text_a animate a_10">
+                                    <a class="btn-action bg-cyan" href="#trading">Get Started for Free <img src="https://timetradingfx.com/output/images/icon-user3.png?=v1.0" alt="start-user"></a>
+                                    <a class="btn-action bg-cyan-outline" target="_blank" href="https://www.mql5.com/en/signals/2266788?source=Site+Signals+My#!tab=account">
+                                        View Detail
+                                        <img src="https://timetradingfx.com/output/images/arrow-detail.png?v=1.0" alt="icon-telegram" style="    width: 13px !important;
+    height: 13px !important;">
+                                    </a>
+                                </div> *@
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
     </div>
 
 
 
-</section><!-- /Hero Section -->
 
+
+
+
+</section><!-- /Hero Section -->
 <!-- About Section -->
 <section class="about section">
 
@@ -184,4 +354,9 @@
     function gotoDanhMuc(){
        window.location = '/co-phieu-tu-van';
     }
+
+    const heroCarousel = new bootstrap.Carousel('#heroCarousel', {
+      interval: 4000,
+      ride: 'carousel'
+    });
 </script>

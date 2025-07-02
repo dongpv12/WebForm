@@ -1,0 +1,31 @@
+﻿@using WebForm.Common
+@using WebForm.Models;
+@{
+	List<Allcode_Info> typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE");
+	if (ViewBag.TypeGroup == 1)
+	{
+		typeNews = typeNews.Where(x => x.CdValue == "1" || x.CdValue == "2" || x.CdValue == "3" || x.CdValue == "4" || x.CdValue == "5").ToList();
+	}
+	else
+	{
+		typeNews = typeNews.Where(x => x.CdValue == "6" || x.CdValue == "7" || x.CdValue == "8").ToList();
+	}
+}
+
+<select class="form-control" id="txtType" onchange="ChangeType()">
+	@foreach (var item in typeNews)
+	{
+		<option value="@item.CdValue">@item.CdContent</option>
+	}
+	
+	
+
+</select>
+<script>
+
+	$( document ).ready(function() {
+
+
+	   ChangeType();
+	});
+</script>
