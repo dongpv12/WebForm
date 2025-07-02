@@ -16,24 +16,11 @@ namespace WebForm.Common
         public static List<News> c_lstNew = new List<News>();
         public static List<Project> c_lstProject = new List<Project>();
         public static List<Page> c_lstPage = new List<Page>();
+        public static List<Allcode_Info> c_lstAllcode = new List<Allcode_Info>();
 
         public static List<Symbol_Notify_Info> c_lstSymbol = new List<Symbol_Notify_Info>();
 
-        public async Task LoadDbMem()
-        {
-            try
-            {
-
-                LoadNews();
-
-
-
-            }
-            catch (Exception ex)
-            {
-                Logger.Log.Error(ex.ToString());
-            }
-        }
+     
 
         public static void LoadNews()
         {
@@ -57,6 +44,40 @@ namespace WebForm.Common
             {
                 Logger.Log.Error(ex.ToString());
             }
+        }
+        public static void GetAllcode()
+        {
+            try
+            {
+                UsersDA _da = new UsersDA();
+
+               
+                var ds = _da.GetAllcode();
+
+                c_lstAllcode = CBO<Allcode_Info>.FillCollectionFromDataSet(ds);
+                c_lstAllcode = c_lstAllcode.OrderBy(m => m.Lstodr).ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+            }
+        }
+
+        public static List<Allcode_Info> GetAllcodeByName(string cdType, string cdName)
+        {
+            List<Allcode_Info> lst = new List<Allcode_Info>();
+            try
+            {
+                if (c_lstAllcode != null)
+                {
+                    lst = c_lstAllcode.Where(x => x.CdType == cdType && x.CdName == cdName).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+            }
+            return lst;
         }
 
 
