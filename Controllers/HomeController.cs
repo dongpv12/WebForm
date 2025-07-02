@@ -47,10 +47,10 @@ public class HomeController : Controller
     }
 
     [HttpGet, Route("chart")]
-    public IActionResult Chart(string symbol, string language, string p_username)
+    public IActionResult Chart(string symbol, string p_username)
     {
         ViewBag.symbol = symbol;
-        ViewBag.language = language;
+        ViewBag.language = "vi";
         ViewBag.username = p_username;
         return View();
     }

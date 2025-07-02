@@ -125,6 +125,12 @@ namespace WebForm.Controllers
                             _symboName = _stockInfo.SymbolName;
                             _type = c_Type_Stock;
                         }
+                        else
+                        {
+                            _symboCode = symbol;
+                            _symboName = symbol;
+                            _type = c_Type_Stock;
+                        }    
                     }
                 }
             }
