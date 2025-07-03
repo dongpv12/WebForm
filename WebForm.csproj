@@ -101,6 +101,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="wwwroot\ImgUpload\" />
   </ItemGroup>
 

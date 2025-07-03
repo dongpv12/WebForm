@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using Newtonsoft.Json;
+using System.Collections.Concurrent;
 using WebForm.Common;
 
 namespace WebForm
@@ -68,6 +69,25 @@ namespace WebForm
                 return new List<StockHistoryInfo>();
             }
         }
+
+        public static void Read_SymbolFile()
+        {
+            try
+            {
+                string _accountFile = System.IO.Path.Combine(ConfigInfo.ContentRootPath, "Data", "Symbol_Info.json");
+                string jsonString = File.ReadAllText(_accountFile);
+                List<StockMemInfo> _lstAccount = JsonConvert.DeserializeObject<List<StockMemInfo>>(jsonString);
+                foreach (var item in _lstAccount)
+                {
+                    c_dicStocks[item.Symbol] = item;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+            }
+        }
+
     }
 
     public class IndexMem

@@ -1,9 +1,20 @@
-﻿using System.Reflection;
+﻿using Newtonsoft.Json;
+using System.Reflection;
 
 namespace WebForm
 {
-    public static class ObjectExtension
+    public static class ObjectExtensions
     {
+        public static T CloneObjectT<T>(this T obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+            return JsonConvert.DeserializeObject<T>(json);
+        }
+    }
+
+    public static class ObjectExtension
+    { 
+
         public static object CloneObject(this object objSource)
         {
             //Get the type of source object and create a new instance of that type
