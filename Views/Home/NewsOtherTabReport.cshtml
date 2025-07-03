@@ -1,0 +1,286 @@
+﻿@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@model string
+@{
+
+
+    List<News> list_6 = new List<News>();
+    List<News> list_7 = new List<News>();
+    List<News> list_8 = new List<News>();
+
+    if (Model == "6")
+    {
+        list_7 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 7).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_8 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 8).OrderByDescending(i => i.Id).Take(5).ToList();
+
+
+    }
+    else if (Model == "7")
+    {
+        list_6 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 6).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_8 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 8).OrderByDescending(i => i.Id).Take(5).ToList();
+
+    }
+    else if (Model == "8")
+    {
+        list_6 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 6).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_7 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 7).OrderByDescending(i => i.Id).Take(5).ToList();
+
+    }
+
+
+
+}
+
+@* // danh sách 2 laoij tin khác *@
+<style>
+    .symbol-table {
+        width: 100%;
+        border-collapse: collapse;
+        /* font-family: 'Segoe UI', Tahoma, sans-serif; */
+        /* margin-top: 10px; */
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgb(243 255 254);
+        backdrop-filter: blur(4px);
+        border: 1px solid #ccc; /* 👈 Viền ngoài bảng */
+    }
+
+        .symbol-table thead {
+            background-color: #007c71;
+        }
+
+        .symbol-table th, .symbol-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 15px;
+            color: #008000;
+            text-align: center;
+        }
+
+        .symbol-table th {
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .symbol-table td a {
+            color: #4b99bb;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .symbol-table td:last-child {
+            color: #017a00;
+            font-weight: 600;
+        }
+
+        .symbol-table tbody tr:hover {
+            background-color: #f0f8ff;
+        }
+
+    @@media (max-width: 600px) {
+        .symbol-table th, .symbol-table td {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+
+</style>
+<div class="" style="margin-bottom: 30px;    margin-bottom: 30px;
+    border: 2px solid #007c71;
+    border-radius: 10px;">
+    <table class="symbol-table">
+        <thead>
+            <tr>
+                <th>Mã TP</th>
+                <th>Chỉ số</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="/chi-tiet/TP/AAA">AAA</a></td>
+                <td>34%</td>
+            </tr>
+            <tr>
+                <td><a href="/chi-tiet/TP/BBB">BBB</a></td>
+                <td>42%</td>
+            </tr>
+            <tr>
+                <td><a href="/chi-tiet/TP/CCC">CCC</a></td>
+                <td>12%</td>
+            </tr>
+            <tr>
+                <td><a href="/chi-tiet/TP/CCC">CCC</a></td>
+                <td>12%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@if (list_6 != null && list_6.Count > 0)
+{
+    <div class="" style="margin-bottom: 30px;">
+
+        <div class="analysis-card">
+            <div class="analysis-header">
+                <h5>Báo cáo FinArt</h5>
+            </div>
+            @foreach (var item in list_6)
+            {
+                <!-- Tin 1 -->
+                <div class="analysis-item">
+                    <div class="analysis-meta">
+                        @if (item.Symbol == null || item.Symbol == "")
+                        {
+
+                        }
+                        else
+                        {
+                            <span class="badge badge-update">@item.Symbol.ToUpper()</span>
+                        }
+                        <span class="date">@item.CreateDate</span>
+                    </div>
+                    <div class="analysis-title"><a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title</a></div>
+                    @if (item.Tag == null || item.Tag == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="analysis-source">Nguồn: @item.Tag</div>
+                    }
+
+                    @if (item.Suggestion == null || item.Suggestion == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="analysis-source">@item.Suggestion</div>
+                    }
+                </div>
+            }
+
+
+        </div>
+
+
+    </div>
+
+
+}
+
+
+@if (list_7 != null && list_7.Count > 0)
+{
+    <div class="" style="margin-bottom: 30px;">
+
+        <div class="analysis-card">
+            <div class="analysis-header">
+                <h5>Báo cáo CTCK</h5>
+            </div>
+            @foreach (var item in list_7)
+            {
+                <!-- Tin 1 -->
+                <div class="analysis-item">
+                    <div class="analysis-meta">
+                        @if (item.Symbol == null || item.Symbol == "")
+                        {
+
+                        }
+                        else
+                        {
+                            <span class="badge badge-update onerow">@item.Symbol.ToUpper()</span>
+                        }
+                        <span class="date">@item.CreateDate</span>
+                    </div>
+                    <div class="analysis-title"><a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title</a></div>
+                    @if (item.Tag == null || item.Tag == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="analysis-source onerow">Nguồn: @item.Tag</div>
+                    }
+
+                    @if (item.Suggestion == null || item.Suggestion == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="analysis-source onerow">@item.Suggestion</div>
+                    }
+                </div>
+            }
+
+
+        </div>
+
+
+    </div>
+
+
+}
+
+
+
+@if (list_8 != null && list_8.Count > 0)
+{
+    <div class="" style="margin-bottom: 30px;">
+
+        <div class="analysis-card">
+            <div class="analysis-header">
+                <h5>Báo cáo ngành</h5>
+            </div>
+            @foreach (var item in list_8)
+            {
+                <!-- Tin 1 -->
+                <div class="analysis-item">
+                    <div class="analysis-meta">
+                        @if (item.Symbol == null || item.Symbol == "")
+                        {
+
+                        }
+                        else
+                        {
+                            <span class="badge badge-update onerow">@item.Symbol.ToUpper()</span>
+                        }
+                        <span class="date">@item.CreateDate</span>
+                    </div>
+                    <div class="analysis-title"><a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title</a></div>
+                    @if (item.Tag == null || item.Tag == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="analysis-source onerow">Nguồn: @item.Tag</div>
+                    }
+
+                    @if (item.Suggestion == null || item.Suggestion == "")
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="analysis-source onerow">@item.Suggestion</div>
+                    }
+                </div>
+            }
+
+
+        </div>
+
+
+    </div>
+
+
+}

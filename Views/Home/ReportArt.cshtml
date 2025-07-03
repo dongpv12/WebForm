@@ -20,12 +20,12 @@
         list = ViewBag.List;
     }
 
+    string CategoryType = "1";
+    if (ViewBag.CategoryType != null)
+    {
+        CategoryType = ViewBag.CategoryType.ToString();
+    }
 
-
-
-    List<News> list_1 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-    List<News> list_2 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
-    List<News> list_3 = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
 
 }
 
@@ -44,12 +44,7 @@
 <div class="page-title accent-background">
     <div class="container position-relative">
         <h1>@_Header</h1>
-        @* <nav class="breadcrumbs">
-            <ol>
-                <li><a href="index.html">Home</a></li>
-                <li class="current">Service Details</li>
-            </ol>
-        </nav> *@
+      
     </div>
 </div><!-- End Page Title -->
 <!-- Service Details Section -->
@@ -83,69 +78,8 @@
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
 
-
-                <div class="" style="margin-bottom: 30px;">
-
-                    <div class="analysis-card">
-                        <div class="analysis-header">
-                            <h5>Báo cáo công ty Chứng khoán</h5>
-                        </div>
-
-                        <!-- Tin 1 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-update">CẬP NHẬT</span>
-                                <span class="date">20/06/2025</span>
-                            </div>
-                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
-                            <div class="analysis-source">Nguồn: VCBS</div>
-                        </div>
-
-                        <!-- Tin 2 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-analysis">PHÂN TÍCH</span>
-                                <span class="date">16/06/2025</span>
-                            </div>
-                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
-                            <div class="analysis-source">Nguồn: FPTS</div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div class="" style="margin-bottom: 30px;">
-
-                    <div class="analysis-card">
-                        <div class="analysis-header">
-                            <h5>Báo cáo ngành</h5>
-                        </div>
-
-                        <!-- Tin 1 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-update">CẬP NHẬT</span>
-                                <span class="date">20/06/2025</span>
-                            </div>
-                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
-                            <div class="analysis-source">Nguồn: VCBS</div>
-                        </div>
-
-                        <!-- Tin 2 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-analysis">PHÂN TÍCH</span>
-                                <span class="date">16/06/2025</span>
-                            </div>
-                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn r</div>
-                            <div class="analysis-source">Nguồn: FPTS</div>
-                        </div>
-                    </div>
-
-
-                </div>
+                @Html.Partial("NewsOtherTabReport", CategoryType)
+               
 
             </div>
 
@@ -176,6 +110,7 @@
                 start = end - recordOnPage + 1;
             }
             var request = {
+                 CategoryType: '@CategoryType',
                 currentPage: index,
                 start: start,
                 end: end

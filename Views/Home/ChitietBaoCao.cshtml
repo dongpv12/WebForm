@@ -5,7 +5,7 @@
 @using WebForm.Helpers;
 @using WebForm.Models;
 @{
-   
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     News news = new News();
@@ -15,7 +15,7 @@
     }
     ViewBag.Title = news.CategoryName;
 
-    List<News> listLienQuan = DataMemory.c_lstNew.Where(x => x.Id != news.Id).OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+    List<News> listLienQuan = DataMemory.c_lstNew.Where(x => x.Id != news.Id && x.CategoryType == news.CategoryType).OrderByDescending(i => i.Id).Take(4).ToList();
 
 }
 
@@ -35,122 +35,117 @@
 
 
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-
-
-                <h3>@news.Title</h3>
-                <div class="dateTime" style="    font-size: 13px; text-align: right; font-style: italic;">
-                    @news.CreateDate
-                </div>
-                <div>@Html.Raw(news.Content)</div>
-
-
-                <div style="margin-top: 100px ; border-bottom: 1px solid #4b99bb">
-                    <div class="analysis-header d-flex justify-content-between align-items-center" style="border:none; background: none; padding-left: 0px;">
-                        <h5 class="mb-0">BÁO CÁO LIÊN QUAN</h5>
-                        <a href="#" class="viewmore">xem thêm >></a>
-                    </div>
-                </div>
-
-                <div class="analysis-card" style="border:none; box-shadow: none">
-
-
-                    <!-- Tin 1 -->
-                    @foreach (var item in listLienQuan)
+                <div id="noidung">
+                    @if (news.Title != null && news.Title != "")
                     {
-                        <div class="analysis-item" style="border:none; padding-left: 0px;">
-                            <div class="analysis-meta" style="display: inline;">
-                                <div class="analysis-title">@item.Title</div>
+                        <h3 class="titleDetail">@(news.Title ?? "")</h3>
+                    }
 
-                                <span class="date">@item.CreateDate</span>
-                            </div>
-
+                    <div class="dateTime" style="    font-size: 13px; text-align: right; font-style: italic;">
+                        @news.CreateDate
+                    </div>
+                    @if (news.Description != null && news.Description != "")
+                    {
+                        <div id="des_detail">
+                            @(news.Description ?? "")
                         </div>
+                    }
+                    
+
+                    @if (news.Content != null && news.Content != "")
+                    {
+                        <div>@Html.Raw(news.Content)</div>
+                    }
+
+                    @if (news.Link != null && news.Link != "")
+                    {
+                        <iframe src="@news.Link"
+                                width="100%"
+                                height="600px"
+                                style="border: none;">
+                        </iframe>
                     }
 
 
+                </div>
+
+
+
+
+                <div class="analysis-card" style="border:none; box-shadow: none">
+
+                    @if (listLienQuan.Count > 0)
+                    {
+                        <div class="tinlienquan  d-flex justify-content-between align-items-center">
+                            <h3>Báo cáo liên quan</h3>
+                            <a href="/danh-sach-bao-cao-art/@news.CategoryType" class="viewmore Orcolor">xem thêm >></a>
+                        </div>
+                        @foreach (var item in listLienQuan)
+                        {
+                            <div class="item_news">
+
+
+
+                                <div class="featureimage">
+                                    @if (item.FeatureImage != null && item.FeatureImage != "")
+                                    {
+                                        <img src="@item.FeatureImage" />
+                                    }
+                                    else
+                                    {
+
+                                        <img src="~/assets/img/bg_03.jpg" />
+                                    }
+                                </div>
+                                <div class="newtomtat">
+                                    @if (item.Symbol == null || item.Symbol == "")
+                                    {
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-update">@item.Symbol.ToUpper()</span>
+                                    }
+                                    <span class="date_new">@item.CreateDate</span>
+                                    <p class="title_news">
+                                        <a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title ?? ""</a>
+                                    </p>
+                                  
+
+                                    @if (item.Tag == null || item.Tag == "")
+                                    {
+                                    }
+                                    else
+                                    {
+                                        <div class="analysis-source onerow">Nguồn: @item.Tag</div>
+                                    }
+
+                                    @if (item.Suggestion == null || item.Suggestion == "")
+                                    {
+                                    }
+                                    else
+                                    {
+                                        <div class="analysis-source onerow" style="color: #ff2222; font-weight: bold">@item.Suggestion</div>
+                                    }
+
+
+                                </div>
+
+                            </div>
+                        }
+
+                    }
+                    <!-- Tin 1 -->
+
+
 
                 </div>
+
 
             </div>
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="" style="margin-bottom: 30px;">
 
-                    <div class="analysis-card">
-                        <div class="analysis-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Báo cáo Fin Art</h5>
-                            @if (news.CategoryType == "1")
-                            {
-                                <a href="/danh-sach-bao-cao-art" class="viewmore">xem thêm >></a>
-                            }
-                            else if (news.CategoryType == "3")
-                            {
-                                <a href="/danh-sach-bao-cao-art" class="viewmore">xem thêm >></a>
-                            }
-                            else
-                            {
-                                <a href="/danh-sach-bao-cao-art" class="viewmore">xem thêm >></a>
-                            }
-
-                        </div>
-
-                        <!-- Tin 1 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-update">CẬP NHẬT</span>
-                                <span class="date">20/06/2025</span>
-                            </div>
-                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
-                            <div class="analysis-source">Nguồn: VCBS</div>
-                        </div>
-
-                        <!-- Tin 2 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-analysis">PHÂN TÍCH</span>
-                                <span class="date">16/06/2025</span>
-                            </div>
-                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
-                            <div class="analysis-source">Nguồn: FPTS</div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="" style="margin-bottom: 30px;">
-
-                    <div class="analysis-card">
-                        <div class="analysis-header">
-                            <h5>Báo cáo công ty Chứng khoán</h5>
-                        </div>
-
-                        <!-- Tin 1 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-update">CẬP NHẬT</span>
-                                <span class="date">20/06/2025</span>
-                            </div>
-                            <div class="analysis-title">MWG – TĂNG TỐC SAU GIAI ĐOẠN TÁI CẤU TRÚC</div>
-                            <div class="analysis-source">Nguồn: VCBS</div>
-                        </div>
-
-                        <!-- Tin 2 -->
-                        <div class="analysis-item">
-                            <div class="analysis-meta">
-                                <span class="badge badge-analysis">PHÂN TÍCH</span>
-                                <span class="date">16/06/2025</span>
-                            </div>
-                            <div class="analysis-title">VCB – Nội lực vững vàng, định giá hấp dẫn</div>
-                            <div class="analysis-source">Nguồn: FPTS</div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-              
+                @Html.Partial("NewsOtherTabReport", @news.CategoryType)
 
             </div>
 

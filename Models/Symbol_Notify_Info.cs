@@ -14,6 +14,9 @@ namespace WebForm.Models
 
     public class Symbol_Notify_Info
     {
+
+        public int Id { get; set; }
+
         public int ChangeType { get; set; }
 
         /// <summary>
@@ -198,6 +201,41 @@ namespace WebForm.Models
         /// Kiểm tra xem boling band có bị thắt lại hay không
         /// </summary>
         public int Is_Choke_BolingBand { get; set; }
+
+
+        public string Issue { get; set; }
+        public string Description { get; set; }
+        public string Status { get; set; }
+        public string Status_Text { get; set; }
+        public string Conditions { get; set; }
+        public decimal F_PRICE_Exp { get; set; }
+
+        public decimal T_PRICE_Exp { get; set; }
+        public decimal F_PRICE_Target { get; set; }
+        public decimal T_PRICE_Target { get; set; }
+        public decimal T_Pause { get; set; }
+        public decimal DoanhThu { get; set; }
+        public decimal LoiNhuan { get; set; }
+
     }
 
+    public class SearchSymbolRequest
+    {
+        public int CurrentPage { get; set; }
+        public int Start { get; set; }
+        public int End { get; set; }
+        public string OrderBy { get; set; }
+        public string OrderByType { get; set; }
+        public string Code { get; set; }
+    }
+
+    public class ListSymbol
+    {
+        public List<Symbol_Notify_Info> Collection { get; set; }
+        public int Start { get; set; }
+        public string Paging { get; set; }
+        public int TotalRecord { get; set; }
+        public decimal TotalPage { get; set; }
+        public int CurrentPage { get; set; }
+    }
 }

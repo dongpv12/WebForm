@@ -1,0 +1,199 @@
+﻿@using WebForm.Common
+@using WebForm.Models;
+@{
+	ViewBag.Title = "Tạo mới";
+	Layout = "_Layout_Admin";
+
+	List<Allcode_Info> status = DataMemory.GetAllcodeByName("SYMBOL", "STATUS");
+
+
+}
+<style>
+	.displaynone {
+		display: none;
+	}
+</style>
+
+
+<div class="container-fluid">
+
+	
+
+
+	
+	
+
+
+	<div class="form-group row" id="f_txtSymbol">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Mã cổ phiếu</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="txtSymbol" maxlength="100" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtSymbolName">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Tên cổ phiếu</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="txtSymbolName" maxlength="1000" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Tên Doanh nghiệp</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="txtIssue" maxlength="1000" />
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label for="txtType" class="col-sm-2 col-form-label">Trạng thái</label>
+		<div class="col-sm-10">
+			<select class="form-control" id="txtStatus" >
+				@foreach (var item in status)
+				{
+					<option value="@item.CdValue">@item.CdContent</option>
+				}
+			</select>
+		</div>
+	</div>
+
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (từ)</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtF_PRICE_Exp" maxlength="20" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (đến)</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtT_PRICE_Exp" maxlength="20" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu (từ)</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtF_PRICE_Target" maxlength="20" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu (đến)</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtT_PRICE_Target" maxlength="20" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Giá dừng lỗ</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtT_Pause" maxlength="20" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Tăng trưởng Doanh thu (%)</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtDoanhThu" maxlength="20" />
+		</div>
+	</div>
+
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Tăng trưởng Lợi nhuận (%)</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtLoinhuan" maxlength="20" />
+		</div>
+	</div>
+
+
+	
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label">&nbsp;</label>
+		<div class="col-sm-10">
+			<input type="button" class="btn btn-primary" id="btnCreate" value="Thêm mới" onclick="return CreateNews()" />
+			<input type="button" class="btn" id="btnCancel" value="Hủy" />
+		</div>
+	</div>
+</div>
+<div id="browseImageContainer"></div>
+<script>
+
+
+	$( document ).ready(function() {
+	  
+	});
+
+	var lockSubmit = false;
+	
+
+	function CreateNews() {
+		
+		if (lockSubmit) {
+			return;
+		}
+		lockSubmit = true;
+
+		var title = $('#txtSymbol').val();
+		if(title == null || title == ""){
+			alert("Mã cổ phiếu không được để trống");
+			$('#txtSymbol').focus();
+			return;
+		}
+		alert($("#txtF_PRICE_Exp").val())
+		var request = {
+			
+			 Symbol: $('#txtSymbol').val().trim(),
+			 Name: $('#txtSymbolName').val(),
+			 Issue: $('#txtIssue').val(),
+			 Status : $("#txtStatus").val(),
+
+			 F_PRICE_Exp : $("#txtF_PRICE_Exp").val(),
+			 T_PRICE_Exp : $("#txtT_PRICE_Exp").val(),
+
+			 F_PRICE_Target : $("#txtF_PRICE_Target").val(),
+
+
+			 T_PRICE_Target : $("#txtT_PRICE_Target").val(),
+			 T_Pause : $("#txtT_Pause").val(),
+			 DoanhThu : $("#txtDoanhThu").val(),
+			 LoiNhuan : $("#txtLoinhuan").val()
+		};
+
+		axios.post("/Symbol/DoCreate", request).then(function (response) {
+			var data = response.data;
+			if (data.Status) {
+				swal({
+					title: "Thành công",
+					text: "Tạo cổ phiếu thành công",
+					icon: "success",
+					buttons: true
+				}).then((value) => {
+					window.location = "/Symbol/List";
+				});
+			} else {
+				swal({
+					title: "Lỗi",
+					text: "Vui lòng thử lại vào lúc khác",
+					icon: "warning",
+					buttons: true
+				});
+			}
+			lockSubmit = false;
+		}).catch(error => {
+			swal({
+				title: "Lỗi",
+				text: "Vui lòng thử lại vào lúc khác",
+				icon: "warning",
+				buttons: true
+			});
+			lockSubmit = false;
+		});
+	}
+
+	
+
+	
+</script>
+

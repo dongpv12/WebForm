@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -125,12 +125,9 @@
 
         /* Responsive spacing on smaller screens */
         @@media (max-width: 992px) {
-            .navmenu .search-form
-
-        {
-            display: none !important;
-        }
-
+            .navmenu .search-form {
+                display: none !important;
+            }
         }
     </style>
     <header id="header" class="header d-flex align-items-center fixed-top">
@@ -139,25 +136,28 @@
             <a href="/" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1 class="sitename" style="color: forestgreen">FinArt</h1>
+                @* <h1 class="sitename" style="color: forestgreen">FinArt</h1> *@
+                <img src="~/assets/img/logo.jpg" />
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="/" class="active">Trang chủ</a></li>
                     <li><a href="javascript:;">Về chúng tôi</a></li>
-                    <li><a href="javascript:;">Kinh tế vĩ mô</a></li>
-                    <li><a href="javascript:;">Đầu tư</a></li>
+                    <li><a href="javascript:;">Chỉ số FinArt</a></li>
+                    <li><a href="/danh-sach-tin/5">FAQ</a></li>
                     <li>
                         <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
                             <input class="form-control" type="search" placeholder="Search..." style="height: 30px;">
                             <span class="position-absolute top-50 end-0 translate-middle-y pe-3 text-success">
-                              
+
                             </span>
                         </form>
                     </li>
-                   
-                    <li><a href="javascript:;">Đăng nhập</a></li>
+
+                    <li>
+                        <a href="javascript:;" style="padding: 0;font-weight: 300;">login</a>
+                    </li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -365,6 +365,18 @@
         });
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
+            const navLinks = document.querySelectorAll("#navmenu a");
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    navLinks.forEach(l => l.classList.remove("active")); // Bỏ active khỏi tất cả
+                    this.classList.add("active"); // Thêm active vào link vừa click
+                });
+            });
+        });
+    </script>
 </body>
 </html>

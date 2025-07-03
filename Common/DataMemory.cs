@@ -20,7 +20,7 @@ namespace WebForm.Common
 
         public static List<Symbol_Notify_Info> c_lstSymbol = new List<Symbol_Notify_Info>();
 
-     
+        public static List<Symbol_Notify_Info> c_lstSymbolData = new List<Symbol_Notify_Info>();
 
         public static void LoadNews()
         {
@@ -85,9 +85,12 @@ namespace WebForm.Common
         {
             try
             {
-                //List<Symbol_Notify_Info> _newsDa = new List<Symbol_Notify_Info>();
+                List<Symbol_Notify_Info> _lst = new List<Symbol_Notify_Info>();
 
-              
+                SymbolDA _da = new SymbolDA();
+                var data = _da.SymbolGetAll();
+                c_lstSymbolData = CBO<Symbol_Notify_Info>.FillCollectionFromDataSet(data);
+
                 //var pTotal = 0;
                 //var ds = _newsDa.GetForPortalDetail(portalSearchNews, ref pTotal);
 
@@ -100,6 +103,20 @@ namespace WebForm.Common
             }
         }
 
+
+
+        public static List<Symbol_Notify_Info> GetAllSymbol()
+        {
+            try
+            {
+                return c_lstSymbolData;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+                return new List<Symbol_Notify_Info>();
+            }
+        }
 
 
 

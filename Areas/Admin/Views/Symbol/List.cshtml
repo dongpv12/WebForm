@@ -1,11 +1,11 @@
 ﻿@using WebForm.Common
-@model WebForm.Models.ListNews
+@model WebForm.Models.ListSymbol
 @using WebForm.Models;
 
 @{
-    ViewBag.Title = "Danh sách bài viết";
+    ViewBag.Title = "Danh sách cổ phiếu";
     Layout = "_Layout_Admin";
-    List<Allcode_Info> typeNewsSearch = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE");
+    List<Allcode_Info> typeNewsSearch = DataMemory.GetAllcodeByName("SYMBOL", "STATUS");
 }
 <style>
     .div-search-text {
@@ -17,8 +17,7 @@
         gap: 25px; /* khoảng cách giữa các div */
     }
 
-    .btn-search{
-       
+    .btn-search {
         margin-top: auto;
         padding: 6px 20px;
         color: #fff;
@@ -33,28 +32,18 @@
             <label>Từ khóa</label>
             <input id="txtSearch" type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm" />
         </div>
-        <div class="div-search-text">
-            <label>Loại</label>
-            <select class="form-control" id="txtTypeSearch">
-                <option value="-1">--Tất cả--</option>
-                @foreach (var item in typeNewsSearch)
-                {
-                    <option value="@item.CdValue">@item.CdContent</option>
-                }
-            </select>
-
-        </div>
+       
 
         <input type="button" value="Tìm kiếm" id="btnSearchNews" class="btn btn-search" onclick="page(1);" />
 
-        <input type="button" value="Tạo bài mới" id="btnCreateNews" class="btn  btn-search" onclick="return  window.location.href='/News/Create'" />
+        <input type="button" value="Tạo cổ phiếu" id="btnCreateNews" class="btn  btn-search" onclick="return  window.location.href='/Symbol/Create'" />
 
 
     </div>
 
 </div>
 <div id="data_news" class="container-fluid dataTables_wrapper container-fluid">
-    @Html.Partial("~/Areas/Admin/Views/News/_listNews.cshtml", Model)
+    @Html.Partial("~/Areas/Admin/Views/Symbol/_listNews.cshtml", Model)
 </div>
 <script>
 
@@ -69,8 +58,8 @@
         try {
             var recordOnPage = $('#txtRecordOnPage').val();
             var totalPage = $('#txtTotalPage').val();
-            var title = $('#txtSearch').val();
-            var type = $('#txtTypeSearch').val();
+            var Code = $('#txtSearch').val();
+            
             var start = 1;
             var end = recordOnPage;
             if (index === 'next') {
@@ -82,18 +71,17 @@
                 end = index * recordOnPage;
                 start = end - recordOnPage + 1;
             }
+
+            alert(index + "  " + start + "   " + end + "   " +Code)
+
             var request = {
                 currentPage: index,
                 start: start,
                 end: end,
-                orderBy: 'CreateDate',
-                orderByType: 'DESC',
-                createDate: '',
-                title: title,
-                CategoryType: type
+                Code: Code
             };
 
-            axios.post("/News/Search", request).then(function (response) {
+            axios.post("/Symbol/Search", request).then(function (response) {
                 $('#data_news').html(response.data);
             }).catch(error => {
 
@@ -106,7 +94,7 @@
     function deleteNews(id) {
         swal({
             title: "Bạn chắc chắn?",
-            text: "Bạn sẽ xóa bài viết này. Sẽ không thể khôi phục được",
+            text: "Bạn sẽ xóa cổ phiếu này. Sẽ không thể khôi phục được",
             icon: "warning",
             buttons: [
                 'Không!',
@@ -119,12 +107,12 @@
             };
 
             if (isConfirm) {
-                axios.post("/News/Delete", request).then(function (response) {
+                axios.post("/Symbol/Delete", request).then(function (response) {
                     var data = response.data;
                     if (data.Status) {
                         swal({
                             title: "Thành công",
-                            text: "Xóa bài viết thành công",
+                            text: "Xóa cổ phiếu thành công",
                             icon: "success",
                             buttons: true
                         }).then((value) => {

@@ -28,6 +28,28 @@ namespace WebForm.Models
         public int Id { get; set; }
         public string CategoryName { get; set; }
         public string CreateDate { get; set; }
+
+        public DateTime? Create_Date
+        {
+            get
+            {
+                if (DateTime.TryParseExact(CreateDate, "dd/MM/yyyy HH:mm:ss",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None, out var dt))
+                {
+                    return dt;
+                }
+                return null; // hoặc DateTime.MinValue tùy bạn
+            }
+            set
+            {
+                if (value.HasValue)
+                    CreateDate = value.Value.ToString("dd/MM/yyyy HH:mm:ss");
+                else
+                    CreateDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            }
+        }
+
     }
 
     public class ListNews

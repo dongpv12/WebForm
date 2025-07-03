@@ -5,7 +5,7 @@
 @using WebForm.Helpers;
 @using WebForm.Models;
 @{
-    ViewBag.Title = "Xu hướng thị trường";
+   
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     string _Header = "";
@@ -13,7 +13,7 @@
     {
         _Header = ViewBag.Header;
     }
-
+    ViewBag.Title = _Header;
     // danh sách tin
     List<News> list = new List<News>();
     if (ViewBag.List != null)
@@ -55,7 +55,7 @@
 
         <div class="row gy-4">
 
-            @if (CategoryType == "1")
+            @if (CategoryType == "1" || CategoryType == "5")
             {
                 <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" id="data_news">
 
@@ -66,7 +66,7 @@
             }
             else
             {
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" id="data_news">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" >
 
 
                     <div id="noidung">
@@ -86,10 +86,13 @@
 
                     @if (list != null && list.Count > 0)
                     {
-                        <div class="tinlienquan">
-                            <h3>Tin liên quan</h3>
+                        <div id="data_news">
+                            <div class="tinlienquan">
+                                <h3>Tin liên quan</h3>
+                            </div>
+                            @Html.Partial("DataNewsPages")
                         </div>
-                        @Html.Partial("DataNewsPages")
+                       
                     }
 
                    
@@ -140,6 +143,7 @@
                 start = end - recordOnPage + 1;
             }
             var request = {
+                CategoryType: '@CategoryType',
                 currentPage: index,
                 start: start,
                 end: end

@@ -1,0 +1,53 @@
+﻿@using Common
+@model WebForm.Models.ListSymbol
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width:50px; text-align: center">STT</th>
+                <th style="text-align: center">Mã cổ phiếu</th>
+                <th style="text-align: center">Tên cổ phiếu</th>
+                <th style="text-align: center">Tên doanh nghiệp</th>
+                <th style="text-align: center">Trạng thái</th>
+                <th style="text-align: center">Vùng mua dự kiến</th>
+                <th style="text-align: center">Giá mục tiêu </th>
+                <th style="text-align: center">Giá dừng lỗ </th>
+                <th style="text-align: center">Tăng trưởng Doanh thu </th>
+                <th style="text-align: center">Tăng trưởng Lợi nhuận </th>
+                <th style="width:150px; text-align: center">Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Collection)
+            {
+                <tr>
+                    <td> @Model.Start </td>
+                    <td> @item.Symbol</td>
+                    <td> @item.Name</td>
+                    <td> @item.Issue</td>
+                    <td> @item.Status_Text</td>
+                    <td> @item.F_PRICE_Exp.ToNumberStringN10() - @item.T_PRICE_Exp.ToNumberStringN10()</td>
+                    <td> @item.F_PRICE_Target.ToNumberStringN10() - @item.T_PRICE_Target.ToNumberStringN10()</td>
+                    <td> @item.T_Pause.ToNumberStringN10()</td>
+                    <td> @item.DoanhThu.ToNumberStringN10() (%)</td>
+                    <td> @item.LoiNhuan.ToNumberStringN10() (%)</td>
+                   
+                    <td>
+                        <a href="@("/Symbol/Edit/" + item.Id)" class="btn btn-warning  ">
+                            <span class="glyphicon glyphicon glyphicon-pencil"></span> Sửa
+                        </a>
+                        <a href="#" class="btn btn-danger" onclick="deleteNews('@item.Id')">
+                            <span class="glyphicon glyphicon-trash"></span> Xóa
+                        </a>
+                    </td>
+                </tr>
+                Model.Start++;
+            }
+        </tbody>
+    </table>
+</div>
+@Html.Raw(Model.Paging)
+<input type="hidden" id="txtTotalPage" value="@Model.TotalPage" />
+
+<input type="hidden" id="txtCurrentPage" value="@Model.CurrentPage" />

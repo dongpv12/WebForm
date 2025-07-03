@@ -53,7 +53,15 @@
                     @if(listLienQuan.Count > 0)
                     {
                         <div class="tinlienquan  d-flex justify-content-between align-items-center">
-                            <h3>Tin liên quan</h3>
+                            @if (news.CategoryType == "5")
+                            {
+                                <h3>Câu hỏi khác</h3>
+                            }
+                            else
+                            {
+                                <h3>Tin liên quan</h3>
+                            }
+                           
                             <a href="/danh-sach-tin/@news.CategoryType" class="viewmore Orcolor">xem thêm >></a>
                         </div>
                         @foreach (var item in listLienQuan)

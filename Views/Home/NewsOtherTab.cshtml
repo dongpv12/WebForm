@@ -41,7 +41,14 @@
         list_3 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 3).OrderByDescending(i => i.Id).Take(5).ToList();
 
     }
+    else if (Model == "5")
+    {
+        list_1 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 1).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_2 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 2).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_3 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 3).OrderByDescending(i => i.Id).Take(5).ToList();
+        list_4 = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == 4).OrderByDescending(i => i.Id).Take(5).ToList();
 
+    }
 
 }
 

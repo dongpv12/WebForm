@@ -19,13 +19,37 @@
     {
         <div class="analysis-item">
             <div class="analysis-meta">
-                <span class="badge badge-update">CẬP NHẬT</span>
+                @if (item.Symbol == null || item.Symbol == "")
+                {
+
+                }
+                else
+                {
+                    <span class="badge badge-update">@item.Symbol</span>
+                }
+
                 <span class="date">@item.CreateDate</span>
             </div>
             <div class="analysis-title">
                 <a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title</a>
             </div>
-            <div class="analysis-source">Nguồn: VCBS</div>
+            @if (item.Tag == null || item.Tag == "")
+            {
+
+            }
+            else
+            {
+                <div class="analysis-source">Nguồn: @item.Tag</div>
+            }
+
+            @if (item.Suggestion == null || item.Suggestion == "")
+            {
+
+            }
+            else
+            {
+                <div class="analysis-source">@item.Suggestion</div>
+            }
         </div>
 
 

@@ -684,7 +684,7 @@ public class HomeController : Controller
 
         var HotNews = list.FirstOrDefault();
 
-        if (type != 1)
+        if (type != 1 && type != 5)
         {
             list = list.Where(i => i.Id != HotNews?.Id).ToList();
         }
@@ -724,6 +724,15 @@ public class HomeController : Controller
 
         List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType)).OrderByDescending(i => i.Id).ToList();
 
+        var HotNews = list.FirstOrDefault();
+
+        if (request.CategoryType != "1" && request.CategoryType != "5")
+        {
+            list = list.Where(i => i.Id != HotNews?.Id).ToList();
+        }
+
+        ViewBag.HotNews = HotNews;
+
         var total = list.Count();
         var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
         // danh sách tin
@@ -742,7 +751,7 @@ public class HomeController : Controller
         ViewBag.Header = typeNews.CdContent;
 
         var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "tin " + ViewBag.Header);
-        
+
         ViewBag.Paging = paging;
         ViewBag.List = list;
 
@@ -751,16 +760,16 @@ public class HomeController : Controller
 
 
 
-    
 
 
 
     [HttpGet]
-    [Route("danh-sach-bao-cao-art")]
-    public ActionResult ReportArt()
+    [Route("danh-sach-bao-cao-art/{type}")]
+    public ActionResult ReportArt(decimal type = 6)
     {
 
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
+
         var total = list.Count();
         var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
 
@@ -777,10 +786,14 @@ public class HomeController : Controller
 
         }
 
-        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Báo cáo Fint Art";
+        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
+
+        ViewBag.Header = typeNews.CdContent;
+
+        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
         ViewBag.Paging = paging;
         ViewBag.List = list;
+        ViewBag.CategoryType = type;
         return View();
     }
 
@@ -788,7 +801,8 @@ public class HomeController : Controller
     public ActionResult SearchReport_Art([FromBody] SearchNewsRequest request)
     {
 
-        List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
+        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType)).OrderByDescending(i => i.Id).ToList();
+
         var total = list.Count();
         var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
         // danh sách tin
@@ -804,14 +818,15 @@ public class HomeController : Controller
 
         }
 
-        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "Tin tức");
-        ViewBag.Header = "Cổ phiếu dẫn dắt";
+
+        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == Convert.ToDecimal(request.CategoryType)).FirstOrDefault();
+        ViewBag.Header = typeNews.CdContent;
+
+        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, ViewBag.Header);
         ViewBag.Paging = paging;
         ViewBag.List = list;
-
         return PartialView("DataReportPages");
     }
-
 
     [HttpGet]
     [Route("co-phieu-tu-van")]
