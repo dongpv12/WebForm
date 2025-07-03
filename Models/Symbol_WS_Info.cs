@@ -1,5 +1,6 @@
 ﻿namespace WebForm.Models
 {
+
     public class Symbol_WS_Info
     {
         public Symbol_WS_Info() { }
@@ -195,6 +196,7 @@
         /// Mở cửa
         /// </summary>
         public decimal Open { get; set; }
+        public decimal Open_Qtty { get; set; }
 
         public string Color { get; set; }
 

@@ -121,7 +121,7 @@ namespace WebForm.Controllers
                         var _stockInfo = StockMem.GetBySymbol(symbol);
                         if (_stockInfo != null)
                         {
-                            _symboCode = _stockInfo.SymbolName;
+                            _symboCode = _stockInfo.Symbol;
                             _symboName = _stockInfo.SymbolName;
                             _type = c_Type_Stock;
                         }
@@ -239,10 +239,10 @@ namespace WebForm.Controllers
                             if (lstOnline?.Count > 0)
                             {
                                 arrTime = lstOnline.Select(x => (long)Math.Floor((decimal)x.TimestampUTC / 1000)).ToArray();
-                                arrOpen = lstOnline.Select(x => x.OpenPrice).ToArray();
-                                arrClose = lstOnline.Select(x => x.ClosePrice).ToArray();
-                                arrHigh = lstOnline.Select(x => x.HighestPrice).ToArray();
-                                arrLow = lstOnline.Select(x => x.LowestPrice).ToArray();
+                                arrOpen = lstOnline.Select(x => x.OpenPrice/1000).ToArray();
+                                arrClose = lstOnline.Select(x => x.ClosePrice / 1000).ToArray();
+                                arrHigh = lstOnline.Select(x => x.HighestPrice / 1000).ToArray();
+                                arrLow = lstOnline.Select(x => x.LowestPrice / 1000).ToArray();
                                 arrVolumn = lstOnline.Select(x => x.TotalTradedQtty).ToArray();
                             }
                         }
@@ -278,9 +278,9 @@ namespace WebForm.Controllers
                                     //t = lstHist.Select(x => x.historydate_timestamp).ToArray(),
                                     t = lstHist.Select(x => Utils.DateTimeToTimeStamp(x.historydate)).ToArray(),
                                     //
-                                    o = lstHist.Select(x => x.OpenPrice).ToArray(),
-                                    c = lstHist.Select(x => x.ClosePrice).ToArray(),
-                                    h = lstHist.Select(x => x.Max).ToArray(),
+                                    o = lstHist.Select(x => x.OpenPrice ).ToArray(),
+                                    c = lstHist.Select(x => x.ClosePrice ).ToArray(),
+                                    h = lstHist.Select(x => x.Max ).ToArray(),
                                     l = lstHist.Select(x => x.Min).ToArray(),
                                     //
                                     v = lstHist.Select(x => x.MatchQtty).ToArray(),

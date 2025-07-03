@@ -93,10 +93,10 @@ namespace WebForm
                 {
                     symbol = data.symbol,
                     historydate = DateTimeOffset.FromUnixTimeSeconds(data.t[i]).DateTime,
-                    OpenPrice = (decimal)(data.o[i] * 1000),
-                    ClosePrice = (decimal)(data.c[i] * 1000),
-                    Max = (decimal)(data.h[i] * 1000),
-                    Min = (decimal)(data.l[i] * 1000),
+                    OpenPrice = (decimal)(data.o[i] ),
+                    ClosePrice = (decimal)(data.c[i]),
+                    Max = (decimal)(data.h[i] ),
+                    Min = (decimal)(data.l[i]),
                     MatchQtty = data.v[i]
                 });
             }
