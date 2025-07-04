@@ -6,17 +6,10 @@ using WebForm;
 using WebForm.Common;
 
 string ConfigFolder = "";
-#if DEBUG
 ConfigFolder = "Config";
-#else
-            ConfigFolder = "../Config";
-#endif
 
-///x 
-
-var path = Path.Combine(Directory.GetCurrentDirectory(), ConfigFolder, "appsettings.json");
-//test
 // Cấu hình đọc cấu hình từ file appsettings.json
+var path = Path.Combine(Directory.GetCurrentDirectory(), ConfigFolder, "appsettings.json");
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile(path, optional: true, reloadOnChange: true)
     .Build();
