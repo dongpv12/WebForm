@@ -659,20 +659,36 @@ public class HomeController : Controller
     [Route("chi-tiet/{id}")]
     public ActionResult ChitietTinTuc(string id)
     {
-        var ds = _newsDa.GetById(Convert.ToInt32(id));
-        var news = (News)CBO.FillObjectFromDataSet(ds, typeof(News));
-        ViewBag.New = news;
-        return View();
+        try
+        {
+            var ds = _newsDa.GetById(Convert.ToInt32(id));
+            var news = (News)CBO.FillObjectFromDataSet(ds, typeof(News));
+            ViewBag.New = news;
+            return View();
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
     }
 
     [HttpGet]
     [Route("chi-tiet-bao-cao/{id}")]
     public ActionResult ChitietBaoCao(string id)
     {
-        var ds = _newsDa.GetById(Convert.ToInt32(id));
-        var news = (News)CBO.FillObjectFromDataSet(ds, typeof(News));
-        ViewBag.New = news;
-        return View();
+        try
+        {
+            var ds = _newsDa.GetById(Convert.ToInt32(id));
+            var news = (News)CBO.FillObjectFromDataSet(ds, typeof(News));
+            ViewBag.New = news;
+            return View();
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
     }
 
 
@@ -681,83 +697,97 @@ public class HomeController : Controller
     [Route("danh-sach-tin/{type}")]
     public ActionResult XHTT(decimal type = 1)
     {
-
-        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
-
-        var HotNews = list.FirstOrDefault();
-
-        if (type != 1 && type != 5)
+        try
         {
-            list = list.Where(i => i.Id != HotNews?.Id).ToList();
+            List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
+
+            var HotNews = list.FirstOrDefault();
+
+            if (type != 1 && type != 5)
+            {
+                list = list.Where(i => i.Id != HotNews?.Id).ToList();
+            }
+
+            ViewBag.HotNews = HotNews;
+
+            var total = list.Count();
+            var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
+
+            // danh sách tin
+
+            int start = 1;
+            int end = ConfigInfo.RecordOnPage;
+
+
+            if (list?.Count > 0 && list.Count >= start)
+            {
+                int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
+                list = list.Skip(start - 1).Take(numberTake).ToList();
+
+            }
+            Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
+
+            ViewBag.Header = typeNews.CdContent;
+
+            var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "tin " + typeNews.CdContent);
+
+            ViewBag.Paging = paging;
+            ViewBag.List = list;
+            ViewBag.CategoryType = type;
+            return View();
         }
-
-        ViewBag.HotNews = HotNews;
-
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-
-        // danh sách tin
-
-        int start = 1;
-        int end = ConfigInfo.RecordOnPage;
-
-
-        if (list?.Count > 0 && list.Count >= start)
+        catch (Exception e)
         {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
+            Logger.Log.Error(e.ToString());
+            return null;
         }
-        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
-
-        ViewBag.Header = typeNews.CdContent;
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, "tin " + typeNews.CdContent);
-
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-        ViewBag.CategoryType = type;
-        return View();
     }
 
     [HttpPost]
     public ActionResult SearchXHTT([FromBody] SearchNewsRequest request)
     {
-
-        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType)).OrderByDescending(i => i.Id).ToList();
-
-        var HotNews = list.FirstOrDefault();
-
-        if (request.CategoryType != "1" && request.CategoryType != "5")
+        try
         {
-            list = list.Where(i => i.Id != HotNews?.Id).ToList();
+            List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType)).OrderByDescending(i => i.Id).ToList();
+
+            var HotNews = list.FirstOrDefault();
+
+            if (request.CategoryType != "1" && request.CategoryType != "5")
+            {
+                list = list.Where(i => i.Id != HotNews?.Id).ToList();
+            }
+
+            ViewBag.HotNews = HotNews;
+
+            var total = list.Count();
+            var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
+            // danh sách tin
+
+            int start = request.Start;
+            int end = request.End;
+
+
+            if (list?.Count > 0 && list.Count >= start)
+            {
+                int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
+                list = list.Skip(start - 1).Take(numberTake).ToList();
+
+            }
+            Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == Convert.ToDecimal(request.CategoryType)).FirstOrDefault();
+            ViewBag.Header = typeNews.CdContent;
+
+            var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "tin " + ViewBag.Header);
+
+            ViewBag.Paging = paging;
+            ViewBag.List = list;
+
+            return PartialView("DataNewsPages");
         }
-
-        ViewBag.HotNews = HotNews;
-
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-        // danh sách tin
-
-        int start = request.Start;
-        int end = request.End;
-
-
-        if (list?.Count > 0 && list.Count >= start)
+        catch (Exception e)
         {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
-
+            Logger.Log.Error(e.ToString());
+            return null;
         }
-        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == Convert.ToDecimal(request.CategoryType)).FirstOrDefault();
-        ViewBag.Header = typeNews.CdContent;
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, "tin " + ViewBag.Header);
-
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-
-        return PartialView("DataNewsPages");
     }
 
 
@@ -769,65 +799,79 @@ public class HomeController : Controller
     [Route("danh-sach-bao-cao-art/{type}")]
     public ActionResult ReportArt(decimal type = 6)
     {
-
-        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
-
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-
-        // danh sách tin
-
-        int start = 1;
-        int end = ConfigInfo.RecordOnPage;
-
-
-        if (list?.Count > 0 && list.Count >= start)
+        try
         {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
+            List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
 
+            var total = list.Count();
+            var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
+
+            // danh sách tin
+
+            int start = 1;
+            int end = ConfigInfo.RecordOnPage;
+
+
+            if (list?.Count > 0 && list.Count >= start)
+            {
+                int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
+                list = list.Skip(start - 1).Take(numberTake).ToList();
+
+            }
+
+            Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
+
+            ViewBag.Header = typeNews.CdContent;
+
+            var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
+            ViewBag.Paging = paging;
+            ViewBag.List = list;
+            ViewBag.CategoryType = type;
+            return View();
         }
-
-        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
-
-        ViewBag.Header = typeNews.CdContent;
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-        ViewBag.CategoryType = type;
-        return View();
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
     }
 
     [HttpPost]
     public ActionResult SearchReport_Art([FromBody] SearchNewsRequest request)
     {
-
-        List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType)).OrderByDescending(i => i.Id).ToList();
-
-        var total = list.Count();
-        var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
-        // danh sách tin
-
-        int start = request.Start;
-        int end = request.End;
-
-
-        if (list?.Count > 0 && list.Count >= start)
+        try
         {
-            int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
-            list = list.Skip(start - 1).Take(numberTake).ToList();
+            List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType)).OrderByDescending(i => i.Id).ToList();
 
+            var total = list.Count();
+            var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
+            // danh sách tin
+
+            int start = request.Start;
+            int end = request.End;
+
+
+            if (list?.Count > 0 && list.Count >= start)
+            {
+                int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
+                list = list.Skip(start - 1).Take(numberTake).ToList();
+
+            }
+
+
+            Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == Convert.ToDecimal(request.CategoryType)).FirstOrDefault();
+            ViewBag.Header = typeNews.CdContent;
+
+            var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, ViewBag.Header);
+            ViewBag.Paging = paging;
+            ViewBag.List = list;
+            return PartialView("DataReportPages");
         }
-
-
-        Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == Convert.ToDecimal(request.CategoryType)).FirstOrDefault();
-        ViewBag.Header = typeNews.CdContent;
-
-        var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, ViewBag.Header);
-        ViewBag.Paging = paging;
-        ViewBag.List = list;
-        return PartialView("DataReportPages");
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
     }
 
     [HttpGet]
@@ -850,62 +894,131 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult GetStocks()
     {
-
-
-
-        // danh sách cổ phiếu
-        List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
-
-
-
-        foreach (var item in listSymbol)
+        try
         {
-            StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
-            item.Price_Text = item.Price.ToNumberStringN31();
-            if (info != null)
+            // danh sách cổ phiếu
+            List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
+            foreach (var item in listSymbol)
             {
-
-                item.Current_Price = info.MatchPrice;
-                if (item.Price == 0)
+                StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
+                item.Price_Text = item.Price.ToNumberStringN31();
+                if (info != null)
                 {
-                    item.Heso = 100;
+
+                    item.Current_Price = info.MatchPrice;
+                    if (item.Price == 0)
+                    {
+                        item.Heso = 100;
+                    }
+                    else
+                    {
+                        item.Heso = (info.MatchPrice - item.Price) / item.Price;
+                    }
+
+
+                    item.Heso_Text = item.Heso.ToNumberStringN31();
+
+
+
                 }
                 else
                 {
-                    item.Heso = (info.MatchPrice - item.Price) / item.Price;
+                    item.Heso_Text = "0";
                 }
-                   
-                
-                    item.Heso_Text = item.Heso.ToNumberStringN31();
-               
-
-
             }
-            else
+
+            listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) < 7)).OrderByDescending(x => x.Heso).ToList();
+
+            var stocks = listSymbol.Select(x => new
             {
-                item.Heso_Text = "0";
-            }
+                Id = x.Id,
+                Symbol = x.Symbol,
+                Name = x.Name,
+                Price = x.Price,
+                Price_Text = x.Price_Text,
+                Current_Price = x.Current_Price,
+                Heso_Text = x.Heso_Text,
+                Status_Text = x.Status_Text,
+                Status = x.Status
+            }).ToArray();
+
+
+
+
+            return Ok(stocks);
         }
-
-        listSymbol = listSymbol.Where(x=>x.Status != "2" || (x.Status == "2" &&  ((DateTime.Now.Date - x.Date_Pause.Date).Days) < 7 )).OrderByDescending(x => x.Heso).ToList();
-
-        var stocks = listSymbol.Select(x => new
+        catch (Exception e)
         {
-            Id = x.Id,
-            Symbol = x.Symbol,
-            Name = x.Name,
-            Price = x.Price,
-            Price_Text = x.Price_Text,
-            Current_Price = x.Current_Price,
-            Heso_Text = x.Heso_Text,
-            Status_Text = x.Status_Text,
-            Status = x.Status
-        }).ToArray();
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
+    }
 
 
 
 
-        return Ok(stocks);
+    [HttpGet]
+    [Route("tt-co-phieu/{matp}")]
+    public IActionResult GetStocksCode()
+    {
+        try
+        {
+            // danh sách cổ phiếu
+            List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
+            foreach (var item in listSymbol)
+            {
+                StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
+                item.Price_Text = item.Price.ToNumberStringN31();
+                if (info != null)
+                {
+
+                    item.Current_Price = info.MatchPrice;
+                    if (item.Price == 0)
+                    {
+                        item.Heso = 100;
+                    }
+                    else
+                    {
+                        item.Heso = (info.MatchPrice - item.Price) / item.Price;
+                    }
+
+
+                    item.Heso_Text = item.Heso.ToNumberStringN31();
+
+
+
+                }
+                else
+                {
+                    item.Heso_Text = "0";
+                }
+            }
+
+            listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) < 7)).OrderByDescending(x => x.Heso).ToList();
+
+            var stocks = listSymbol.Select(x => new
+            {
+                Id = x.Id,
+                Symbol = x.Symbol,
+                Name = x.Name,
+                Price = x.Price,
+                Price_Text = x.Price_Text,
+                Current_Price = x.Current_Price,
+                Heso_Text = x.Heso_Text,
+                Status_Text = x.Status_Text,
+                Status = x.Status
+            }).ToArray();
+
+
+
+
+            return Ok(stocks);
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
     }
 
 
@@ -918,6 +1031,72 @@ public class HomeController : Controller
 
         return View();
     }
+
+
+
+    [HttpGet]
+    [Route("chi-tiet-co-phieu/{matp}")]
+    public ActionResult ChiTietTP(string matp)
+    {
+
+        try
+        {
+            List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
+            Symbol_Notify_Info _info = listSymbol.Where(x => x.Symbol.ToUpper() == matp.ToUpper()).FirstOrDefault();
+            
+            
+         
+            ViewBag.MaTP = matp;
+            ViewBag.Info = _info;
+            return View();
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
+
+    }
+
+
+    [HttpPost]
+    public ActionResult SearchReport_Art_BySymbol([FromBody] SearchNewsRequest request)
+    {
+        try
+        {
+            List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == Convert.ToDecimal(request.CategoryType) && i.Symbol.ToUpper() == request.Symbol.ToUpper()).OrderByDescending(i => i.Id).ToList();
+
+            var total = list.Count();
+            var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
+            // danh sách tin
+
+            int start = request.Start;
+            int end = request.End;
+
+
+            if (list?.Count > 0 && list.Count >= start)
+            {
+                int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
+                list = list.Skip(start - 1).Take(numberTake).ToList();
+
+            }
+
+
+            Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == Convert.ToDecimal(request.CategoryType)).FirstOrDefault();
+            ViewBag.Header = typeNews.CdContent;
+
+            var paging = HtmlControllHelpers.WritePaging(totalPage, request.CurrentPage, total, ConfigInfo.RecordOnPage, ViewBag.Header);
+            ViewBag.Paging = paging;
+            ViewBag.List = list;
+            return PartialView("DataReportPages_BySymbol");
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
+    }
+
 }
 
-    
+

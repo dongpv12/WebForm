@@ -72,6 +72,7 @@ namespace WebForm.Models
         public string CategoryType { get; set; }
         public string CreateDate { get; set; }
         public string Title { get; set; }
+        public string Symbol { get; set; }
     }
 
 

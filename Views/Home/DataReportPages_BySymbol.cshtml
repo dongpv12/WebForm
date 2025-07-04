@@ -1,0 +1,65 @@
+﻿@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@using WebForm.Models;
+@{
+
+    List<News> list = new List<News>();
+    if (ViewBag.List != null)
+    {
+        list = ViewBag.List;
+    }
+
+}
+@if (list != null && list.Count > 0)
+{
+    @foreach (var item in list)
+    {
+        <div class="analysis-item">
+            <div class="analysis-meta">
+                @if (item.Symbol == null || item.Symbol == "")
+                {
+
+                }
+                else
+                {
+                    <span class="badge badge-update">@item.Symbol</span>
+                }
+
+                <span class="date">@item.CreateDate</span>
+            </div>
+            <div class="analysis-title">
+                <a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title</a>
+            </div>
+            @if (item.Tag == null || item.Tag == "")
+            {
+
+            }
+            else
+            {
+                <div class="analysis-source">Nguồn: @item.Tag</div>
+            }
+
+            @if (item.Suggestion == null || item.Suggestion == "")
+            {
+
+            }
+            else
+            {
+                <div class="analysis-source">@item.Suggestion</div>
+            }
+        </div>
+
+
+    }
+}
+else
+{
+
+}
+@if (list != null && list.Count > 0)
+{
+    <div style="padding: 10px 20px;"> @Html.Raw(ViewBag.Paging) </div>
+}

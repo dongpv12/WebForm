@@ -1,6 +1,5 @@
 ﻿@using WebForm.Common
 @using WebForm.Helpers
-@model WebForm.Models.IndexPortal
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -79,7 +78,7 @@
                                 <tbody>
                                     <tr v-for="(item, index) in stocks" :key="index">
                                         <td class="text-center">{{ index + 1 }}</td>
-                                        <td><a :href="`/chi-tiet/TP/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
+                                        <td><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
                                         <td>{{ item.Name }}</td>
                                         <td class="text-end">{{ item.Price_Text }}</td>
                                         <td class="text-end">
@@ -93,7 +92,7 @@
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <a :href="`/chi-tiet/TP/${item.Symbol}`" class="btn btn-sm btn-outline-primary custom-btn">Xem báo cáo</a>
+                                            <a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="btn btn-sm btn-outline-primary custom-btn">Xem báo cáo</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -137,7 +136,7 @@
 
 
                                     <tr v-for="(item, index) in stocks" :key="index">
-                                        <td><a :href="`/chi-tiet/TP/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
+                                        <td><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
                                         <td>38.50</td>
                                         <td>33–34</td>
                                         <td>39.5–40.5</td>
@@ -178,7 +177,7 @@
 
 
                                     <tr v-for="(item, index) in stocks" :key="index">
-                                        <td><a :href="`/chi-tiet/TP/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
+                                        <td><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
                                         <td>38.50</td>
                                        
                                     </tr>
