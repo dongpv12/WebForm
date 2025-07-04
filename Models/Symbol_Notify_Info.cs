@@ -16,7 +16,7 @@ namespace WebForm.Models
     {
 
         public int Id { get; set; }
-
+        public string IsSpecial { get; set; }
         public int ChangeType { get; set; }
 
         /// <summary>
@@ -142,6 +142,12 @@ namespace WebForm.Models
         public decimal Current_Price { get; set; }
 
 
+        /// <summary>
+        /// He so
+        /// </summary>
+        public string Heso_Text { get; set; }
+        public decimal Heso { get; set; }
+
         public decimal PriceRangePercent { get; set; }
 
         /// <summary>
@@ -216,6 +222,9 @@ namespace WebForm.Models
         public decimal T_Pause { get; set; }
         public decimal DoanhThu { get; set; }
         public decimal LoiNhuan { get; set; }
+        public decimal Price { get; set; }
+        public string Price_Text { get; set; }
+        public DateTime Date_Pause { get; set; }
 
     }
 

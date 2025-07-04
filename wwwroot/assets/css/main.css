@@ -234,9 +234,9 @@ h6 {
         .navmenu li:hover > a,
         .navmenu .active,
         .navmenu .active:focus {
-            /*color: var(--contrast-color);*/
-            color: red;
-            /*background-color: var(--nav-hover-color);*/
+            color: var(--contrast-color);
+            /*color: red;*/
+            background-color: var(--nav-hover-color);
         }
 
         .navmenu .dropdown ul {
@@ -2148,4 +2148,10 @@ section,
 
 .fa-medal {
     color: goldenrod;
+}
+
+@media (max-width: 1550px) {
+    .hero {
+        height: 60vh;
+    }
 }

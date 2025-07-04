@@ -12,7 +12,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[13];
+                var spParameter = new SqlParameter[15];
 
                 #region Set param
 
@@ -100,21 +100,40 @@ namespace WebForm.DataAccess
                     Direction = ParameterDirection.Input,
                     Value = request.LoiNhuan
                 };
+
                 spParameter[11] = parameter;
+                parameter = new SqlParameter("@IsSpecial", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.IsSpecial
+                };
+                
+
+                spParameter[12] = parameter;
+
+
+                parameter = new SqlParameter("@Price", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Price
+                };
+
+
+                spParameter[13] = parameter;
 
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[12] = parameter;
+                spParameter[14] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_INSERT",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[12].Value);
+                return Convert.ToDecimal(spParameter[14].Value);
             }
             catch (Exception ex)
             {
@@ -156,46 +175,46 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[15];
+                var spParameter = new SqlParameter[16];
 
                 #region Set param
 
-                var parameter = new SqlParameter("@P_Id", SqlDbType.Int)
+                var parameter = new SqlParameter("@Id", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Id
                 };
                 spParameter[0] = parameter;
 
-                parameter = new SqlParameter("@P_Symbol", SqlDbType.NVarChar)
+                parameter = new SqlParameter("@Symbol", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Symbol
                 };
                 spParameter[1] = parameter;
 
-                parameter = new SqlParameter("@P_Name", SqlDbType.NVarChar)
+                parameter = new SqlParameter("@Name", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Name
                 };
                 spParameter[2] = parameter;
 
-                parameter = new SqlParameter("@P_Issue", SqlDbType.NVarChar)
+                parameter = new SqlParameter("@Issue", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Issue
                 };
                 spParameter[3] = parameter;
 
-                parameter = new SqlParameter("@P_Description", SqlDbType.NVarChar)
+                parameter = new SqlParameter("@Description", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Description
                 };
                 spParameter[4] = parameter;
 
-                parameter = new SqlParameter("@P_Status", SqlDbType.VarChar)
+                parameter = new SqlParameter("@Status", SqlDbType.VarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Status
@@ -255,20 +274,35 @@ namespace WebForm.DataAccess
                 spParameter[12] = parameter;
 
 
+                parameter = new SqlParameter("@IsSpecial", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.IsSpecial
+                };
+
+                spParameter[13] = parameter;
+                parameter = new SqlParameter("@Price", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Price
+                };
+
+
+                spParameter[14] = parameter;
 
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[13] = parameter;
+                spParameter[15] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_UPDATE",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[14].Value);
+                return Convert.ToDecimal(spParameter[15].Value);
             }
             catch (Exception ex)
             {

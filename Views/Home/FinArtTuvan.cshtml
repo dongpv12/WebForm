@@ -1,0 +1,231 @@
+﻿@using WebForm.Common
+@using WebForm.Helpers
+@model WebForm.Models.IndexPortal
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh mục tư vấn";
+}
+
+
+<style>
+ 
+ 
+
+    .cptv th{
+        padding: 15px;
+        background: #67b0d1;
+        color: #fff;
+    }
+
+    .cptd th {
+        padding: 15px;
+        background: #d58a35;
+        color: #fff;
+    }
+
+    .custom-btn:hover {
+        background-color: #67b0d1; /* xanh đậm */
+        color: white;
+        border-color: #67b0d1;
+        transition: 0.3s ease;
+    }
+
+    .custom-btn {
+        color: #67b0d1;
+        border-color: #67b0d1;
+    }
+
+
+</style>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- Page Title -->
+<div class="page-title accent-background">
+    <div class="container position-relative">
+        <h1>Danh mục tư vấn</h1>
+        @* <nav class="breadcrumbs">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li class="current">Service Details</li>
+            </ol>
+        </nav> *@
+    </div>
+</div><!-- End Page Title -->
+<!-- Service Details Section -->
+<section id="service-details" class="service-details section">
+    <div class="container" id="app">
+        <!-- Thẻ trên -->
+        <div class="row mb-3" >
+            <div class="col-12">
+            
+                <div class="p-4 bg-light border rounded shadow-sm">
+                    <div class="container">
+                        <h4 class="mb-4 text-uppercase fw-bold" style="color:#67b0d1">Cổ phiếu tư vấn</h4>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle cptv table table-striped table-hover">
+                                <thead class="bg-primary text-white text-center rounded-top">
+                                    <tr style="vertical-align: middle;">
+                                        <th style="width: 40px;">#</th>
+                                        <th>Mã CP</th>
+                                        <th>Tên cổ phiếu</th>
+                                        <th>Giá mua</th>
+                                        <th>Tỷ suất hiện tại</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item, index) in stocks" :key="index">
+                                        <td class="text-center">{{ index + 1 }}</td>
+                                        <td><a :href="`/chi-tiet/TP/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
+                                        <td>{{ item.Name }}</td>
+                                        <td class="text-end">{{ item.Price_Text }}</td>
+                                        <td class="text-end">
+                                            <span :class="parseFloat(item.Heso_Text) >= 0 ? 'text-success' : 'text-danger'">
+                                                {{ item.Heso_Text }} (%)
+                                            </span>
+                                        </td>
+                                        <td class="">
+                                            <span :class="parseFloat(item.Status) != 2 ? 'text-success' : 'text-danger'">
+                                                {{ item.Status_Text }}
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a :href="`/chi-tiet/TP/${item.Symbol}`" class="btn btn-sm btn-outline-primary custom-btn">Xem báo cáo</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Hai thẻ dưới -->
+        <div class="row">
+            <div class="col-md-8 mb-3 mb-md-0">
+                <div class="p-4 bg-light border rounded shadow-sm">
+
+
+                    <div class="container">
+                        <h5 class="mb-4 text-uppercase text-danger fw-bold">Danh sách cổ phiếu theo dõi</h5>
+
+                        <div class="table-responsive shadow-sm">
+                            <table class="table table-bordered text-center align-middle cptd table table-striped table-hover">
+                                <thead class="text-white" style="background-color: #002b5c;">
+                                    <tr>
+                                        <th rowspan="2">Mã</th>
+                                        <th rowspan="2">Giá hiện tại</th>
+                                        <th rowspan="2">Vùng mua</th>
+                                        <th rowspan="2">Giá mục tiêu</th>
+                                        <th rowspan="2">Giá dừng lỗ</th>
+                                        <th colspan="2">Thông số cơ bản</th>
+                                        <th rowspan="2">Điều kiện giải ngân</th>
+                                    </tr>
+                                    <tr style="background-color: #004080;">
+                                      
+                                        <th>T. trưởng Doanh thu</th>
+                                        <th>T. trưởng Lợi nhuận</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <tr v-for="(item, index) in stocks" :key="index">
+                                        <td><a :href="`/chi-tiet/TP/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
+                                        <td>38.50</td>
+                                        <td>33–34</td>
+                                        <td>39.5–40.5</td>
+                                        <td>31</td>
+
+                                        <td>24.6%</td>
+                                        <td>-22.4%</td>
+                                        <td>Theo dõi giải ngân</td>
+                                    </tr>
+
+
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                 
+
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 text-white text-center" style="background: #38a0b5">
+                    <div class="container">
+                        <h5 class="mb-4 text-uppercase  fw-bold" style="color:#fff">Chỉ số FinArt</h5>
+                        <div class="table-responsive shadow-sm">
+                            <table class="table table-bordered table-hover table-striped align-middle table table-striped table-hover">
+                                <thead class="table-primary text-center">
+                                    <tr>
+                                       
+                                        <th style="color:#fff; background: #001cb5">Mã TP</th>
+                                        <th style="color:#fff; background: #001cb5">Điểm chỉ số kỹ thuật ngắn hạn</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <tr v-for="(item, index) in stocks" :key="index">
+                                        <td><a :href="`/chi-tiet/TP/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
+                                        <td>38.50</td>
+                                       
+                                    </tr>
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+     const { createApp, ref, onMounted } = Vue
+
+       createApp({
+      setup() {
+        const stocks = ref([
+
+        ])
+
+        function sendPost() {
+
+            axios.get('/Home/GetStocks')
+            .then(function (response) {
+              console.log('Gửi thành công:', response.data)
+              stocks.value = response.data
+            })
+            .catch(function (error) {
+              console.error('Lỗi khi gọi API:', error)
+            })
+        }
+
+
+       onMounted(() => {
+            sendPost() // gọi lần đầu
+            setInterval(sendPost, 5000) // gọi lại mỗi 60 giây
+       })
+
+
+
+
+        return { stocks }
+      }
+    }).mount('#app')
+</script>

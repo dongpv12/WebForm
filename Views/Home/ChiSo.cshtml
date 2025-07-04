@@ -1,0 +1,60 @@
+﻿
+
+
+
+<div class="" style="margin-bottom: 30px;    margin-bottom: 30px;
+    border: 2px solid #007c71;
+    border-radius: 10px;" id="app">
+    <table class="symbol-table">
+        <thead>
+            <tr>
+                <th>Mã TP</th>
+                <th>Tỷ suất hiện tại</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr v-for="(item, index) in stocks.slice(0, 5)" :key="index">
+                <td><a :href="`/chi-tiet/TP/${item.Symbol}`">{{ item.Symbol }}</a></td>
+                <td>{{ item.Heso_Text }}</td>
+            </tr>
+
+           
+        </tbody>
+    </table>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+     const { createApp, ref, onMounted } = Vue
+
+       createApp({
+      setup() {
+        const stocks = ref([
+
+        ])
+
+        function sendPost() {
+
+            axios.get('/Home/GetStocks')
+            .then(function (response) {
+              console.log('Gửi thành công:', response.data)
+              stocks.value = response.data
+            })
+            .catch(function (error) {
+              console.error('Lỗi khi gọi API:', error)
+            })
+        }
+
+
+       onMounted(() => {
+            sendPost() // gọi lần đầu
+            setInterval(sendPost, 5000) // gọi lại mỗi 60 giây
+       })
+
+
+
+
+        return { stocks }
+      }
+    }).mount('#app')
+</script>

@@ -273,6 +273,8 @@ namespace WebForm.Common
         public static string ConnectString { get; set; } = "";
         public static int RecordOnPage = 10;
         public static int RecordOnPageIndex = 5;
+
+        public static string Zalocontact { get; set; } = "";
         public static string ProductTemplate { get; set; } = "";
         public static string EmailTemplate { get; set; } = "";
         public static string ContactPhone { get; set; } = "";
@@ -289,6 +291,8 @@ namespace WebForm.Common
 
                 BaseDir = configuration["BaseDir"]?.ToString() ?? "";
                 BaseUrl = configuration["BaseUrl"]?.ToString() ?? "";
+                Zalocontact = configuration["ContactZalo"]?.ToString() ?? "";
+
                 RecordOnPage = Convert.ToInt32(configuration["RecordOnPage"]?.ToString() ?? "10");
                 RecordOnPageIndex = Convert.ToInt32(configuration["RecordOnPageIndex"]?.ToString() ?? "10");
                 ConnectString = configuration["ConnectString"]?.ToString() ?? "";

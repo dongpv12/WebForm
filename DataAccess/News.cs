@@ -80,7 +80,7 @@ namespace WebForm.DataAccess
                 spParameter[8] = parameter;
 
 
-                parameter = new SqlParameter("@P_Symbol", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Symbol", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = request.Symbol
@@ -88,14 +88,14 @@ namespace WebForm.DataAccess
                 spParameter[9] = parameter;
 
 
-                parameter = new SqlParameter("@P_SymbolName", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_SymbolName", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = request.SymbolName
                 };
                 spParameter[10] = parameter;
 
-                parameter = new SqlParameter("@P_Issue", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Issue", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = request.Issue
@@ -103,7 +103,7 @@ namespace WebForm.DataAccess
                 spParameter[11] = parameter;
 
 
-                parameter = new SqlParameter("@P_Suggestion", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Suggestion", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = request.Suggestion
@@ -111,14 +111,14 @@ namespace WebForm.DataAccess
                 spParameter[12] = parameter;
 
 
-                parameter = new SqlParameter("@P_Industry", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Industry", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = request.Industry
                 };
                 spParameter[13] = parameter;
 
-                parameter = new SqlParameter("@P_Link", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Link", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = request.Link
@@ -218,21 +218,21 @@ namespace WebForm.DataAccess
                 };
                 spParameter[4] = parameter;
 
-                parameter = new SqlParameter("@P_Tag", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Tag", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Tag
                 };
                 spParameter[5] = parameter;
 
-                parameter = new SqlParameter("@P_CategoryType", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_CategoryType", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.CategoryType
                 };
                 spParameter[6] = parameter;
 
-                parameter = new SqlParameter("@P_Special", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Special", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Special
@@ -240,7 +240,7 @@ namespace WebForm.DataAccess
                 spParameter[7] = parameter;
 
 
-                parameter = new SqlParameter("@P_Symbol", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Symbol", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Symbol
@@ -255,7 +255,7 @@ namespace WebForm.DataAccess
                 };
                 spParameter[9] = parameter;
 
-                parameter = new SqlParameter("@P_Issue", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Issue", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Issue
@@ -263,7 +263,7 @@ namespace WebForm.DataAccess
                 spParameter[10] = parameter;
 
 
-                parameter = new SqlParameter("@P_Suggestion", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Suggestion", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Suggestion
@@ -271,14 +271,14 @@ namespace WebForm.DataAccess
                 spParameter[11] = parameter;
 
 
-                parameter = new SqlParameter("@P_Industry", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Industry", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Industry
                 };
                 spParameter[12] = parameter;
 
-                parameter = new SqlParameter("@P_Link", SqlDbType.VarChar)
+                parameter = new SqlParameter("@P_Link", SqlDbType.NVarChar)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Link

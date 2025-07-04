@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 using WebForm.Common;
 using WebForm.DataAccess;
 using WebForm.Helpers;
@@ -26,7 +27,7 @@ namespace WebForm.Areas.Admin.Controllers
                 OrderByType = "DESC"
             };
 
-            return View("~/Areas/Admin/Views/Symbol/List.cshtml", Search(request));
+            return View("~/Areas/Admin/Views/Symbol/List.cshtml", SearchNews(request));
         }
 
 
@@ -70,6 +71,18 @@ namespace WebForm.Areas.Admin.Controllers
         //[Route("Do-Create")]
         public ActionResult DoCreate([FromBody] Symbol_Notify_Info model)
         {
+
+            // 
+            List<Symbol_Notify_Info> list = DataMemory.GetAllSymbol();
+            if (list.Count(x=>x.Symbol == model.Symbol) > 0)
+            {
+                return Json(new
+                {
+                    Status = false,
+                    Message = "Tạo cổ phiếu thất bại, Đã tồn tại mã cổ phếu trong hệ thống"
+                });
+            }
+
             var ketqua = _Da.Create(model);
             if (ketqua > 0)
             {
@@ -85,7 +98,7 @@ namespace WebForm.Areas.Admin.Controllers
                 return Json(new
                 {
                     Status = false,
-                    Message = "Tạo tạo cổ phiếu thất bại"
+                    Message = "Tạo cổ phiếu thất bại"
                 });
             }
         }
@@ -108,8 +121,19 @@ namespace WebForm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit([FromBody] Symbol_Notify_Info request)
         {
+
+            List<Symbol_Notify_Info> list = DataMemory.GetAllSymbol();
+            if (list.Count(x => x.Symbol == request.Symbol && x.Id != request.Id) > 0)
+            {
+                return Json(new
+                {
+                    Status = false,
+                    Message = "Sửa cổ phiếu thất bại, Đã tồn tại mã cổ phếu trong hệ thống"
+                });
+            }
+
             var result = _Da.Edit(request);
-            if (result > 0)
+            if (result >= 0)
             {
                 DataMemory.LoadSymbol();
                 return Json(new

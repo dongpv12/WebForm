@@ -16,7 +16,10 @@
     <script src="/js/sweetalert.min.js"></script>
 
     <!-- Favicons -->
-    <link href="~/assets/img/favicon.png" rel="icon">
+    @* <link href="~/assets/img/favicon.png" rel="icon"> *@
+    <link href="~/assets/img/logo.jpg" rel="icon">
+
+
     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
@@ -43,7 +46,9 @@
 
     <script src="/js/axios.min.js"></script>
 
+
 </head>
+
 
 
 
@@ -143,8 +148,8 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="/" class="active">Trang chủ</a></li>
-                    <li><a href="javascript:;">Về chúng tôi</a></li>
-                    <li><a href="javascript:;">Chỉ số FinArt</a></li>
+                    <li><a href="/danh-sach-tin/5">Về chúng tôi</a></li>
+                    <li><a href="/danh-muc-tu-van">Chỉ số FinArt</a></li>
                     <li><a href="/danh-sach-tin/5">FAQ</a></li>
                     <li>
                         <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
@@ -194,7 +199,7 @@
                                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                                 <div>
                                     <h3>Địa chỉ</h3>
-                                    <p>A108 Adam Street, New York, NY 535022</p>
+                                    <p>Haf </p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -202,7 +207,7 @@
                                 <i class="bi bi-telephone flex-shrink-0"></i>
                                 <div>
                                     <h3>Điện thoại</h3>
-                                    <p>+1 5589 55488 55</p>
+                                    <p>098 9048431</p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -210,7 +215,7 @@
                                 <i class="bi bi-envelope flex-shrink-0"></i>
                                 <div>
                                     <h3>Email</h3>
-                                    <p>info@example.com</p>
+                                    <p>chungngocmai3931@gmail.com</p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -274,9 +279,9 @@
                     </a>
                     <div class="footer-contact pt-3">
                         <p>A108 Adam Street</p>
-                        <p>New York, NY 535022</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                        <p><strong>Email:</strong> <span>info@example.com</span></p>
+                        <p>Hà Nội, HN Việt Nam</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>098 9048431</span></p>
+                        <p><strong>Email:</strong> <span>chungngocmai3931@gmail.com</span></p>
                     </div>
                     <div class="social-links d-flex mt-4">
                         <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -289,28 +294,28 @@
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="/">Trang chủ</a></li>
+                        <li><a href="/danh-sach-tin/5">Về chúng tôi</a></li>
+                        <li><a href="#">Xu hướng thị trường</a></li>
+                        <li><a href="#">Xu hướng ngành</a></li>
+                        <li><a href="#">Cổ phiếu dẫn dắt</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Product Management</a></li>
-                        <li><a href="#">Marketing</a></li>
-                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="/danh-sach-bao-cao-art/6">Báo cáo FintArt</a></li>
+                        <li><a href="/danh-sach-bao-cao-art/7">Báo cáo công ty Chứng khoán</a></li>
+                        <li><a href="/danh-sach-bao-cao-art/8">Báo cáo ngành</a></li>
+                        <li><a href="#">Chỉ số FinArt</a></li>
+                        <li><a href="/danh-sach-tin/5">FAQ</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-4 col-md-12 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+                    <h4>Bản tin của chúng tôi</h4>
+                    <p>Hãy theo dõi nhận bản tin để nhận những thông tin mới nhất về sản phẩm và dịch vụ của chúng tôi!</p>
                     @* <form action="forms/newsletter.php" method="post" class="php-email-form">
 						<div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
 						<div class="loading">Loading</div>
@@ -349,7 +354,7 @@
     <script src="~/assets/js/main.js"></script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script>
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/messageHub")
@@ -363,20 +368,17 @@
         connection.start().catch(function (err) {
             console.error("SignalR connection error:", err.toString());
         });
-    </script>
+    </script> *@
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+  
 
-            const navLinks = document.querySelectorAll("#navmenu a");
-
-            navLinks.forEach(link => {
-                link.addEventListener("click", function () {
-                    navLinks.forEach(l => l.classList.remove("active")); // Bỏ active khỏi tất cả
-                    this.classList.add("active"); // Thêm active vào link vừa click
-                });
-            });
-        });
-    </script>
+    <div class="zalo-chat-widget"
+         data-oaid="@ConfigInfo.Zalocontact"
+         data-welcome-message="Xin chào! Bạn cần hỗ trợ gì không?"
+         data-autopopup="0"
+         data-width=""
+         data-height="">
+    </div>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 </body>
 </html>

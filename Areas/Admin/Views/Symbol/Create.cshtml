@@ -107,6 +107,20 @@
 		</div>
 	</div>
 
+	<div class="form-group row" id="f_txtIssue">
+		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mua</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="txtPrice" maxlength="20" />
+		</div>
+	</div>
+
+
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label">&nbsp;</label>
+		<div class="col-sm-10">
+			<input type="checkbox" id="cbxSpecial" value="">  <label class="checkbox-inline">Theo dõi</label>
+		</div>
+	</div>
 
 	
 	<div class="form-group row">
@@ -129,7 +143,10 @@
 	
 
 	function CreateNews() {
-		
+		var isSpecial = 'N';
+		if ($('#cbxSpecial').is(':checked')) {
+			isSpecial = 'Y';
+		}
 		if (lockSubmit) {
 			return;
 		}
@@ -141,7 +158,6 @@
 			$('#txtSymbol').focus();
 			return;
 		}
-		alert($("#txtF_PRICE_Exp").val())
 		var request = {
 			
 			 Symbol: $('#txtSymbol').val().trim(),
@@ -158,7 +174,9 @@
 			 T_PRICE_Target : $("#txtT_PRICE_Target").val(),
 			 T_Pause : $("#txtT_Pause").val(),
 			 DoanhThu : $("#txtDoanhThu").val(),
-			 LoiNhuan : $("#txtLoinhuan").val()
+			 LoiNhuan : $("#txtLoinhuan").val(),
+			 IsSpecial : isSpecial,
+			 Price : $("#txtPrice").val(),
 		};
 
 		axios.post("/Symbol/DoCreate", request).then(function (response) {
@@ -175,7 +193,7 @@
 			} else {
 				swal({
 					title: "Lỗi",
-					text: "Vui lòng thử lại vào lúc khác",
+					text: data.Message,
 					icon: "warning",
 					buttons: true
 				});

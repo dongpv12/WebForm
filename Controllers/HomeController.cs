@@ -1,6 +1,8 @@
-﻿using System.Data;
-using System.Diagnostics;
+﻿using Common;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using WebForm.Common;
 using WebForm.DataAccess;
 using WebForm.Helpers;
@@ -845,4 +847,77 @@ public class HomeController : Controller
 
 
 
+    [HttpGet]
+    public IActionResult GetStocks()
+    {
+
+
+
+        // danh sách cổ phiếu
+        List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
+
+
+
+        foreach (var item in listSymbol)
+        {
+            StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
+            item.Price_Text = item.Price.ToNumberStringN31();
+            if (info != null)
+            {
+
+                item.Current_Price = info.MatchPrice;
+                if (item.Price == 0)
+                {
+                    item.Heso = 100;
+                }
+                else
+                {
+                    item.Heso = (info.MatchPrice - item.Price) / item.Price;
+                }
+                   
+                
+                    item.Heso_Text = item.Heso.ToNumberStringN31();
+               
+
+
+            }
+            else
+            {
+                item.Heso_Text = "0";
+            }
+        }
+
+        listSymbol = listSymbol.Where(x=>x.Status != "2" || (x.Status == "2" &&  ((DateTime.Now.Date - x.Date_Pause.Date).Days) < 7 )).OrderByDescending(x => x.Heso).ToList();
+
+        var stocks = listSymbol.Select(x => new
+        {
+            Id = x.Id,
+            Symbol = x.Symbol,
+            Name = x.Name,
+            Price = x.Price,
+            Price_Text = x.Price_Text,
+            Current_Price = x.Current_Price,
+            Heso_Text = x.Heso_Text,
+            Status_Text = x.Status_Text,
+            Status = x.Status
+        }).ToArray();
+
+
+
+
+        return Ok(stocks);
+    }
+
+
+
+
+    [HttpGet]
+    [Route("danh-muc-tu-van")]
+    public ActionResult FinArtTuvan()
+    {
+
+        return View();
+    }
 }
+
+    

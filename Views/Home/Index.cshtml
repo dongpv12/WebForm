@@ -17,81 +17,80 @@
     }
 
     .hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
     }
 
-    .hero-bg .carousel-inner {
-    height: 100%;
-    }
+        .hero-bg .carousel-inner {
+            height: 100%;
+        }
 
-    .hero-bg .carousel-item {
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    }
+        .hero-bg .carousel-item {
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
 
     .hero-content {
-    position: relative;
-    z-index: 2;
+        position: relative;
+        z-index: 2;
         height: calc(100% + 50px);
-        
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    pointer-events: none;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        pointer-events: none;
     }
 
-    .hero-content h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-    }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+        }
 
-    .hero-content p {
-    max-width: 600px;
-    margin-top: 15px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    }
+        .hero-content p {
+            max-width: 600px;
+            margin-top: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
 
     .search-box {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    pointer-events: auto;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        pointer-events: auto;
     }
 
-    .search-box input {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    width: 250px;
-    }
+        .search-box input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            width: 250px;
+        }
 
-    .search-box button {
-    padding: 8px 15px;
-    border: none;
-    background-color: #267d36;
-    color: white;
-    border-radius: 0 5px 5px 0;
-    }
+        .search-box button {
+            padding: 8px 15px;
+            border: none;
+            background-color: #267d36;
+            color: white;
+            border-radius: 0 5px 5px 0;
+        }
 
     .tag-buttons {
-    margin: 30px auto;
-    text-align: center;
+        margin: 30px auto;
+        text-align: center;
     }
 
     .carousel-control-prev,
     .carousel-control-next {
-    z-index: 3;
+        z-index: 3;
     }
 
     #highlight article {
@@ -103,55 +102,57 @@
         background: #ffffff2e;
     }
 
-    #highlight article h2 img {
-    width: 26px;
-    }
+        #highlight article h2 img {
+            width: 26px;
+        }
 
     #highlight .text_a img {
-    width: 18px;
-    height: 18px;
+        width: 18px;
+        height: 18px;
     }
 
     .frame-base img {
-    float: right;
-    width: 160px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+        float: right;
+        width: 160px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
     .only-img {
-    float: left !important;
-    width: 200px !important;
-    background: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
+        float: left !important;
+        width: 200px !important;
+        background: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
     }
 
     #highlight ul li {
-    list-style-type: none;
-    position: relative;
-    padding: 7px 0 7px 0px;
-    font-size: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        list-style-type: none;
+        position: relative;
+        padding: 7px 0 7px 0px;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     #highlight article h2 {
-    font-size: 48px;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    color: var(--cyan);
+        font-size: 48px;
+        line-height: 1.1;
+        letter-spacing: -1px;
+        color: var(--cyan);
     }
 
     .a_01 {
-    animation-delay: 0.1s;
+        animation-delay: 0.1s;
     }
 
     .animate {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: fadeInUp;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeInUp;
     }
 </style>
+
+
 
 <section id="hero" class="hero section accent-background">
 
@@ -160,7 +161,7 @@
         <div id="heroCarousel" class="carousel slide hero-bg carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="background-image: url('/assets/img/bg_01.jpg');"></div>
-          @*       <div class="carousel-item" style="background-image: url('/assets/img/bg_02.jpg');"></div>
+                @*       <div class="carousel-item" style="background-image: url('/assets/img/bg_02.jpg');"></div>
                 <div class="carousel-item" style="background-image: url('/assets/img/bg_03.jpg');"></div> *@
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
@@ -188,64 +189,44 @@
     position: absolute;
     left: 184px;
     top: 76px;" src="~/assets/img/robot.png" />
-                            <button type="submit" class="highlight-button ms-auto" style="padding-right:60px"> Danh mục tư vấn</button>
-                           
+                            <button type="submit" class="highlight-button ms-auto" style="padding-right:60px" onclick="gotoDanhMucTuvan()"> Danh mục tư vấn</button>
+
                         </div>
                         <div class="col-12 col-md-6">
-                            <article>
-                                @*  <h2 class="animate a_01">
-                                    <img src="https://timetradingfx.com/output/images/arrow-up.png?v=1.0" alt="arrow"> Semi Gold
-                                </h2> *@
+
+
+                            <article id="app">
+
                                 <div class="frame-base animate a_02">
-                                   <div class="clearfix"></div>
+                                    <div class="clearfix"></div>
                                 </div>
 
 
                                 <ul class="info-list">
-                                    <li class="animate a_03">
+                                    <li class="animate a_03" v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
                                         <span class="info-left">
-                                            <img src="~/assets/img/medal (1).png" style="width: 26px;height: auto; margin-top: 8px;" />
-                                            <span>ABC</span>
-                                        </span>
-                                        <span class="info-right">14.6</span>
-                                    </li>
-                                    <li class="animate a_03">
-                                        <span class="info-left">
-                                            <img src="~/assets/img/medal (2).png" style="width: 26px;height: auto; margin-top: 8px;" />
-                                            <span>AAA</span>
-                                        </span>
-                                        <span class="info-right">10.5</span>
-                                    </li>
-                                    <li class="animate a_03">
-                                        <span class="info-left">
-                                            <img src="~/assets/img/medal (3).png" style="width: 26px;height: auto; margin-top: 8px;" />
-                                            <span>VCB</span>
-                                        </span>
-                                        <span class="info-right">9.55</span>
-                                    </li>
-                                    <li class="animate a_03">
-                                        <span class="info-left">
-                                         
-                                            <span>AVG</span>
-                                        </span>
-                                        <span class="info-right">6</span>
-                                    </li>
-                                    <li class="animate a_03">
-                                        <span class="info-left">
+                                            @* <img src="~/assets/img/medal (1).png" style="width: 26px;height: auto; margin-top: 8px;" /> *@
+
+                                            <img v-if="index === 0"
+                                                 src="~/assets/img/medal (1).png"
+                                                 style="width: 26px; height: auto; margin-top: 8px;" />
+                                            <img v-if="index === 1"
+                                                 src="~/assets/img/medal (2).png"
+                                                 style="width: 26px; height: auto; margin-top: 8px;" />
+                                            <img v-if="index === 2"
+                                                 src="~/assets/img/medal (3).png"
+                                                 style="width: 26px; height: auto; margin-top: 8px;" />
                                            
-                                            <span>NHX</span>
+
+                                            <span> <a :href="`/chi-tiet/TP/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#fff">{{ item.Symbol }}</a></span>
                                         </span>
-                                        <span class="info-right">3.78</span>
+                                        <span class="info-right">{{ item.Heso_Text }}</span>
                                     </li>
+
+
+                                  
                                 </ul>
-                                @* <div class="text_a animate a_10">
-                                    <a class="btn-action bg-cyan" href="#trading">Get Started for Free <img src="https://timetradingfx.com/output/images/icon-user3.png?=v1.0" alt="start-user"></a>
-                                    <a class="btn-action bg-cyan-outline" target="_blank" href="https://www.mql5.com/en/signals/2266788?source=Site+Signals+My#!tab=account">
-                                        View Detail
-                                        <img src="https://timetradingfx.com/output/images/arrow-detail.png?v=1.0" alt="icon-telegram" style="    width: 13px !important;
-    height: 13px !important;">
-                                    </a>
-                                </div> *@
+
                             </article>
                         </div>
                     </div>
@@ -285,13 +266,13 @@
 
                                 <div class="title_news">
                                     <a href="/chi-tiet/@item.Id" target="_blank" style="display: -webkit-box;
-                                          -webkit-line-clamp: 2;       /* 👈 Giới hạn 3 dòng */
-                                          -webkit-box-orient: vertical;
-                                          overflow: hidden;
-                                          text-overflow: ellipsis;
+                                                          -webkit-line-clamp: 2;       /* 👈 Giới hạn 3 dòng */
+                                                          -webkit-box-orient: vertical;
+                                                          overflow: hidden;
+                                                          text-overflow: ellipsis;
 
-                                          line-height: 1.4;
-                                          max-height: calc(1.4em * 2); /* Giới hạn chiều cao 3 dòng */">
+                                                          line-height: 1.4;
+                                                          max-height: calc(1.4em * 2); /* Giới hạn chiều cao 3 dòng */">
 
                                         @if ((DateTime.Now.Date - item.Create_Date?.Date)?.Days <= 3)
                                         {
@@ -306,15 +287,15 @@
                                                         </radialGradient>
                                                     </defs>
                                                     <path d="M32 0 L36 20 L52 12 L44 28 L64 32 L44 36 L52 52 L36 44 L32 64
-               L28 44 L12 52 L20 36 L0 32 L20 28 L12 12 L28 20 Z" />
+                                       L28 44 L12 52 L20 36 L0 32 L20 28 L12 12 L28 20 Z" />
                                                 </svg>
                                                 NEW
                                             </div>
                                         }
-                                       
 
 
-                                        @(item.Title ?? "") 
+
+                                        @(item.Title ?? "")
                                     </a>
                                 </div>
                                 <div class="date_new" style="">
@@ -324,7 +305,7 @@
 
                         </div>
 
-                       
+
 
 
                     }
@@ -392,7 +373,7 @@
             <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
                 <div class="service-item position-relative">
                     <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                    <h4><a href="/danh-sach-bao-cao-art/7" class="stretched-link">Báo cáo công ty chứng khoán</a></h4>
+                    <h4><a href="/danh-sach-bao-cao-art/7" class="stretched-link">Báo cáo công ty Chứng khoán</a></h4>
                     <p>Tổng hợp các báo cáo phân tích, nhận định và khuyến nghị từ các công ty chứng khoán</p>
                 </div>
             </div><!-- End Service Item -->
@@ -429,7 +410,7 @@
             <div class="col-xl-10">
                 <div class="text-center">
                     <h3>Về chúng tôi</h3>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Chúng tôi là đội ngũ chuyên gia giàu kinh nghiệm trong lĩnh vực chứng khoán, cam kết mang đến những giải pháp hiệu quả, chất lượng và bền vững cho khách hàng. Sứ mệnh của chúng tôi là tạo ra giá trị thực và đồng hành cùng sự phát triển của bạn.</p>
                     <a class="cta-btn" target="_blank" href="/danh-sach-tin/5">Xem thêm</a>
                 </div>
             </div>
@@ -444,8 +425,52 @@
        window.location = '/co-phieu-tu-van';
     }
 
+     function gotoDanhMucTuvan(){
+      window.open('/danh-muc-tu-van', '_blank');
+    }
+   
+
     const heroCarousel = new bootstrap.Carousel('#heroCarousel', {
       interval: 10000,
       ride: 'carousel'
     });
+</script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const { createApp, ref, onMounted } = Vue
+
+
+
+
+    createApp({
+      setup() {
+        const stocks = ref([
+
+        ])
+
+
+        function sendPost() {
+
+            axios.get('/Home/GetStocks')
+            .then(function (response) {
+              console.log('Gửi thành công:', response.data)
+              stocks.value = response.data
+            })
+            .catch(function (error) {
+              console.error('Lỗi khi gọi API:', error)
+            })
+        }
+
+
+       onMounted(() => {
+            sendPost() // gọi lần đầu
+            setInterval(sendPost, 5000) // gọi lại mỗi 60 giây
+       })
+
+
+      
+
+        return { stocks }
+      }
+    }).mount('#app')
 </script>

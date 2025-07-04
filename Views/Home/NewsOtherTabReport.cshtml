@@ -129,7 +129,7 @@
 
         <div class="analysis-card">
             <div class="analysis-header">
-                <h5>Báo cáo FinArt</h5>
+                <h5 onclick="gotoBaoCao('6');" style=" cursor: pointer;">Báo cáo FinArt</h5>
             </div>
             @foreach (var item in list_6)
             {
@@ -183,7 +183,7 @@
 
         <div class="analysis-card">
             <div class="analysis-header">
-                <h5>Báo cáo CTCK</h5>
+                <h5 onclick="gotoBaoCao('6');" style=" cursor: pointer;">Báo cáo CTCK</h5>
             </div>
             @foreach (var item in list_7)
             {
@@ -238,7 +238,7 @@
 
         <div class="analysis-card">
             <div class="analysis-header">
-                <h5>Báo cáo ngành</h5>
+                <h5 onclick="gotoBaoCao('6');" style=" cursor: pointer;">Báo cáo ngành</h5>
             </div>
             @foreach (var item in list_8)
             {
@@ -284,3 +284,10 @@
 
 
 }
+
+<script>
+    function gotoBaoCao(type){
+        const url = `/danh-sach-bao-cao-art/${type}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
+</script>
