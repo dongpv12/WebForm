@@ -45,7 +45,12 @@ WebForm.Common.ConfigInfo.GetConfig(configuration);
 
 builder.Services.AddSingleton<IHostedService, DataMemoryService>();
 
-
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/admin/dang-nhap";
+        options.LogoutPath = "/admin/dang-xuat";
+    });
 
 
 // Add services to the container.
