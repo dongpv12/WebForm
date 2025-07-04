@@ -12,7 +12,7 @@ ConfigFolder = "Config";
             ConfigFolder = "../Config";
 #endif
 
-///x
+///x 
 
 var path = Path.Combine(Directory.GetCurrentDirectory(), ConfigFolder, "appsettings.json");
 //test
