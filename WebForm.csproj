@@ -32,13 +32,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\assets\admin\css\dataTables.bootstrap4.css" />
-    <None Include="wwwroot\assets\admin\css\sb-admin.css" />
+    <None Include="wwwroot\assets\admin\css\dataTables.bootstrap4.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\assets\admin\css\sb-admin.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\assets\admin\css\sb-admin.min.css" />
-    <None Include="wwwroot\assets\admin\sass\login.scss" />
-    <None Include="wwwroot\assets\admin\sass\style.scss" />
-    <None Include="wwwroot\assets\admin\styles\login.css" />
-    <None Include="wwwroot\assets\admin\styles\style.css" />
+    <None Include="wwwroot\assets\admin\sass\login.scss">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\assets\admin\sass\style.scss">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\assets\admin\styles\login.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\assets\admin\styles\style.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\tvchart\charting_library\charting_library.min.js" />
     <None Include="wwwroot\tvchart\charting_library\static\bundles\13.416855bb3e77f54b85bc.js" />
     <None Include="wwwroot\tvchart\charting_library\static\bundles\crosshair.6c091f7d5427d0c5e6d9dc3a90eb2b20.cur" />
@@ -110,6 +122,24 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="wwwroot\ImgUpload\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\assets\admin\jquery-easing\jquery.easing.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\admin\jquery\jquery.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\admin\sb-admin-charts.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\admin\sb-admin-datatables.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\admin\sb-admin.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
