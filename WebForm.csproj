@@ -7,13 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Admin\css\dataTables.bootstrap4.css" />
-    <Content Remove="wwwroot\Admin\css\sb-admin.css" />
-    <Content Remove="wwwroot\Admin\css\sb-admin.min.css" />
-    <Content Remove="wwwroot\Admin\sass\login.scss" />
-    <Content Remove="wwwroot\Admin\sass\style.scss" />
-    <Content Remove="wwwroot\Admin\styles\login.css" />
-    <Content Remove="wwwroot\Admin\styles\style.css" />
+    <Compile Remove="wwwroot\Admin\**" />
+    <Content Remove="wwwroot\Admin\**" />
+    <EmbeddedResource Remove="wwwroot\Admin\**" />
+    <None Remove="wwwroot\Admin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\assets\admin\css\dataTables.bootstrap4.css" />
+    <Content Remove="wwwroot\assets\admin\css\sb-admin.css" />
+    <Content Remove="wwwroot\assets\admin\css\sb-admin.min.css" />
+    <Content Remove="wwwroot\assets\admin\sass\login.scss" />
+    <Content Remove="wwwroot\assets\admin\sass\style.scss" />
+    <Content Remove="wwwroot\assets\admin\styles\login.css" />
+    <Content Remove="wwwroot\assets\admin\styles\style.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,13 +32,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Admin\css\dataTables.bootstrap4.css" />
-    <None Include="wwwroot\Admin\css\sb-admin.css" />
-    <None Include="wwwroot\Admin\css\sb-admin.min.css" />
-    <None Include="wwwroot\Admin\sass\login.scss" />
-    <None Include="wwwroot\Admin\sass\style.scss" />
-    <None Include="wwwroot\Admin\styles\login.css" />
-    <None Include="wwwroot\Admin\styles\style.css" />
+    <None Include="wwwroot\assets\admin\css\dataTables.bootstrap4.css" />
+    <None Include="wwwroot\assets\admin\css\sb-admin.css" />
+    <None Include="wwwroot\assets\admin\css\sb-admin.min.css" />
+    <None Include="wwwroot\assets\admin\sass\login.scss" />
+    <None Include="wwwroot\assets\admin\sass\style.scss" />
+    <None Include="wwwroot\assets\admin\styles\login.css" />
+    <None Include="wwwroot\assets\admin\styles\style.css" />
     <None Include="wwwroot\tvchart\charting_library\charting_library.min.js" />
     <None Include="wwwroot\tvchart\charting_library\static\bundles\13.416855bb3e77f54b85bc.js" />
     <None Include="wwwroot\tvchart\charting_library\static\bundles\crosshair.6c091f7d5427d0c5e6d9dc3a90eb2b20.cur" />
