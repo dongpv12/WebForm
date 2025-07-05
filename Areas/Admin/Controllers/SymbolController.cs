@@ -79,7 +79,7 @@ namespace WebForm.Areas.Admin.Controllers
                 return Json(new
                 {
                     Status = false,
-                    Message = "Tạo cổ phiếu thất bại, Đã tồn tại mã cổ phếu trong hệ thống"
+                    Message = "Tạo cổ phiếu thất bại, Đã tồn tại mã cổ phiếu trong hệ thống"
                 });
             }
 
@@ -128,7 +128,7 @@ namespace WebForm.Areas.Admin.Controllers
                 return Json(new
                 {
                     Status = false,
-                    Message = "Sửa cổ phiếu thất bại, Đã tồn tại mã cổ phếu trong hệ thống"
+                    Message = "Sửa cổ phiếu thất bại, Đã tồn tại mã cổ phiếu trong hệ thống"
                 });
             }
 

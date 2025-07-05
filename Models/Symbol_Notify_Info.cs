@@ -141,12 +141,14 @@ namespace WebForm.Models
         /// </summary>
         public decimal Current_Price { get; set; }
 
-
+        public string Current_Price_Text { get; set; }
         /// <summary>
         /// He so
         /// </summary>
         public string Heso_Text { get; set; }
         public decimal Heso { get; set; }
+
+        public decimal Sell_Price { get; set; }
 
         public decimal PriceRangePercent { get; set; }
 

@@ -70,6 +70,7 @@
                                         <th>Mã CP</th>
                                         <th>Tên cổ phiếu</th>
                                         <th>Giá mua</th>
+                                        <th>Giá hiện tại</th>
                                         <th>Tỷ suất hiện tại</th>
                                         <th>Trạng thái</th>
                                         <th>Hành động</th>
@@ -81,6 +82,7 @@
                                         <td><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
                                         <td>{{ item.Name }}</td>
                                         <td class="text-end">{{ item.Price_Text }}</td>
+                                        <td class="text-end">{{ item.Current_Price_Text }} </td>
                                         <td class="text-end">
                                             <span :class="parseFloat(item.Heso_Text) >= 0 ? 'text-success' : 'text-danger'">
                                                 {{ item.Heso_Text }} (%)

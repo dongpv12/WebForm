@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Reflection;
 using WebForm;
 using WebForm.Common;
+using WebForm.DataAccess;
 using WebForm.Models;
 
 public class DataMemoryService : IHostedService
@@ -48,6 +50,8 @@ public class DataMemoryService : IHostedService
             try
             {
                 bool _dequeueSuccess = StockMem.c_queueMessage.TryDequeue(out string requestMessage);
+                decimal _ck = 0;
+                SymbolDA _da = new SymbolDA();
                 if (_dequeueSuccess && requestMessage != null)
                 {
                     Notify_WebSocket_Info _Notify_WebSocket_Info = Newtonsoft.Json.JsonConvert.DeserializeObject<Notify_WebSocket_Info>(requestMessage);
@@ -105,6 +109,19 @@ public class DataMemoryService : IHostedService
                                 TotalTradedQtty = _Symbol_WS_Info.Volume,
                                 TotalTradedValue = _Symbol_WS_Info.TotalValue,
                             });
+
+                            // update vao DB  
+                            try
+                            {
+                                Symbol_Notify_Info info = new Symbol_Notify_Info();
+                                info.Symbol = _Symbol_WS_Info.Symbol;
+                                info.Current_Price = _Symbol_WS_Info.Current_Price;
+                                _ck = _da.UpdateCurrenPrice(info);
+                            }
+                            catch(Exception ex)
+                            {
+                                Logger.Log.Error(ex.ToString());
+                            }
                         }
                     }
                     //Utils.AppendMessageToFile(requestMessage, "DataSymbol/data.txt");
