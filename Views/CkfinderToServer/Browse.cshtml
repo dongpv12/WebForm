@@ -135,10 +135,8 @@
 
 
 			$("img").on("dblclick",function () {
-				// var _src = $(this).attr('src');
+				 var _src = $(this).attr('src');
 
-				var baseSrc = $(this).attr('src').split('?')[0]; // Lấy đường dẫn gốc
-				var _src = baseSrc + '?v=' + new Date().getTime(); // Thêm version
 				window.opener.CKEDITOR.tools.callFunction(funcNum, _src);
 				window.close();
 			});

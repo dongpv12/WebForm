@@ -61,63 +61,63 @@
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (từ)</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtF_PRICE_Exp" maxlength="20" />
+			<input type="text" class="form-control" id="txtF_PRICE_Exp" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (đến)</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtT_PRICE_Exp" maxlength="20" />
+			<input type="text" class="form-control" id="txtT_PRICE_Exp" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu (từ)</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtF_PRICE_Target" maxlength="20" />
+			<input type="text" class="form-control" id="txtF_PRICE_Target" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu (đến)</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtT_PRICE_Target" maxlength="20" />
+			<input type="text" class="form-control" id="txtT_PRICE_Target" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Giá dừng lỗ</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtT_Pause" maxlength="20" />
+			<input type="text" class="form-control" id="txtT_Pause" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Tăng trưởng Doanh thu (%)</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtDoanhThu" maxlength="20" />
+			<input type="text" class="form-control" id="txtDoanhThu" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Tăng trưởng Lợi nhuận (%)</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtLoinhuan" maxlength="20" />
+			<input type="text" class="form-control" id="txtLoinhuan" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mua</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtPrice" maxlength="20" />
+			<input type="text" class="form-control" id="txtPrice" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
 	<div class="form-group row" id="f_txtIssue">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Giá bán</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" id="txtSellPrice" maxlength="20" />
+			<input type="text" class="form-control" id="txtSellPrice" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
 		</div>
 	</div>
 
@@ -172,20 +172,20 @@
 			 Issue: $('#txtIssue').val(),
 			 Status : $("#txtStatus").val(),
 
-			 F_PRICE_Exp : $("#txtF_PRICE_Exp").val() || '0',
-			 T_PRICE_Exp : $("#txtT_PRICE_Exp").val() || '0',
+			 F_PRICE_Exp : $("#txtF_PRICE_Exp").val().replace(/,/g, "") || '0',
+			 T_PRICE_Exp : $("#txtT_PRICE_Exp").val().replace(/,/g, "") || '0',
 
-			 F_PRICE_Target : $("#txtF_PRICE_Target").val() || '0',
+			 F_PRICE_Target : $("#txtF_PRICE_Target").val().replace(/,/g, "") || '0',
 
 
-			 T_PRICE_Target : $("#txtT_PRICE_Target").val() || '0',
-			 T_Pause : $("#txtT_Pause").val() || '0',
-			 DoanhThu : $("#txtDoanhThu").val() || '0',
-			 LoiNhuan : $("#txtLoinhuan").val() || '0',
+			 T_PRICE_Target : $("#txtT_PRICE_Target").val().replace(/,/g, "") || '0',
+			 T_Pause : $("#txtT_Pause").val().replace(/,/g, "") || '0',
+			 DoanhThu : $("#txtDoanhThu").val().replace(/,/g, "") || '0',
+			 LoiNhuan : $("#txtLoinhuan").val().replace(/,/g, "") || '0',
 			 IsSpecial : isSpecial,
-			 Price : $("#txtPrice").val() || '0',
+			 Price : $("#txtPrice").val().replace(/,/g, "") || '0',
 
-			 Sell_Price : $("#txtSellPrice").val() || '0'
+			 Sell_Price : $("#txtSellPrice").val().replace(/,/g, "") || '0'
 		};
 
 		axios.post("/Symbol/DoCreate", request).then(function (response) {

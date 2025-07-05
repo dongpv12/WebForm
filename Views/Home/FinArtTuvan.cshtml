@@ -137,7 +137,7 @@
                                 <tbody>
 
 
-                                    <tr v-for="(item, index) in stocks" :key="index">
+                                    <tr v-for="(item, index) in specialStocks" :key="index">
                                         <td><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
                                         <td class="text-end">{{ item.Current_Price_Text }} </td>
                                         <td class="">{{ item.PRICE_Exp_Text }} </td>
@@ -196,37 +196,40 @@
 </section>
 
 
+
+
 <script>
-     const { createApp, ref, onMounted } = Vue
+    const { createApp, ref, onMounted, computed } = Vue
 
-       createApp({
+    createApp({
       setup() {
-        const stocks = ref([
+        const stocks = ref([])
 
-        ])
-
-        function sendPost() {
-
-            axios.get('/Home/GetStocks')
-            .then(function (response) {
+        const sendPost = () => {
+          axios.get('/Home/GetStocks')
+            .then(response => {
               console.log('Gửi thành công:', response.data)
               stocks.value = response.data
             })
-            .catch(function (error) {
+            .catch(error => {
               console.error('Lỗi khi gọi API:', error)
             })
         }
 
+        // ✅ Tạo computed lọc IsSpecial = 'Y'
+        const specialStocks = computed(() =>
+          stocks.value.filter(item => (item.IsSpecial || '').toUpperCase() === 'Y')
+        )
 
-       onMounted(() => {
-            sendPost() // gọi lần đầu
-            setInterval(sendPost, 5000) // gọi lại mỗi 60 giây
-       })
+        onMounted(() => {
+          sendPost()
+          setInterval(sendPost, 5000)
+        })
 
-
-
-
-        return { stocks }
+        return {
+          stocks,
+          specialStocks // return ra template để dùng
+        }
       }
     }).mount('#app')
 </script>

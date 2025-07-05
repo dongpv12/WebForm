@@ -289,31 +289,14 @@ namespace WebForm.Common
                 ChartProtocal = configuration["ChartProtocal"]?.ToString() ?? "";
                 WebSocketData = configuration["WebSocketData"]?.ToString() ?? "";
 
-                BaseDir = configuration["BaseDir"]?.ToString() ?? "";
-                BaseUrl = configuration["BaseUrl"]?.ToString() ?? "";
+               
                 Zalocontact = configuration["ContactZalo"]?.ToString() ?? "";
 
                 RecordOnPage = Convert.ToInt32(configuration["RecordOnPage"]?.ToString() ?? "10");
                 RecordOnPageIndex = Convert.ToInt32(configuration["RecordOnPageIndex"]?.ToString() ?? "10");
                 ConnectString = configuration["ConnectString"]?.ToString() ?? "";
-                EmailBusiness = configuration["EmailBusiness"]?.ToString() ?? "";
-                var fileTemplate = System.IO.Path.Combine(ConfigInfo.ContentRootPath, "Template", "Product.html");
-                ProductTemplate = File.ReadAllText(fileTemplate);
-                fileTemplate = System.IO.Path.Combine(ConfigInfo.ContentRootPath, "Template", "DangKyTuVan.html");
-                EmailTemplate = File.ReadAllText(fileTemplate);
 
-                string _ssl = configuration["SSL"]?.ToString() ?? "N";
-                DataMemory.EmailOriginal = new EmailInfo()
-                {
-                    Host = configuration["EMailHost"]?.ToString() ?? "",
-                    Port = Convert.ToInt32(configuration["EmailPost"]?.ToString() ?? "21"),
-                    Name = configuration["EMailFrom"]?.ToString() ?? "",
-                    EmailCC = configuration["EMailCC"]?.ToString() ?? "",
-                    PassWord = configuration["EMailPass"]?.ToString() ?? "",
-                    DisplayName = configuration["DisplayName"]?.ToString() ?? "",
-                    IsSsl = _ssl == "Y" ? true : false,
-                };
-
+              
                 ContactPhone = configuration["ContactPhone"]?.ToString() ?? "";
             }
             catch (Exception ex)

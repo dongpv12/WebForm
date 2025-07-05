@@ -20,8 +20,14 @@ namespace WebForm.Controllers
                     Directory.CreateDirectory(uploadPath);
                 }
 
+
+                var originalFileName = Path.GetFileNameWithoutExtension(upload.FileName);
+                var extension = Path.GetExtension(upload.FileName);
+                var timestamp = DateTime.Now.ToString("ddMMyyHHmmss"); // ngày + giờ chính xác hơn
+
+                var fileName = $"{originalFileName}_{timestamp}{extension}";
+
                 // Tạo tên file an toàn
-                var fileName = Path.GetFileName(upload.FileName);
                 var filePath = Path.Combine(uploadPath, fileName);
 
                 // Lưu file vào wwwroot/ImgUpload
@@ -138,8 +144,13 @@ namespace WebForm.Controllers
                     Directory.CreateDirectory(uploadPath);
                 }
 
+                var originalFileName = Path.GetFileNameWithoutExtension(upload.FileName);
+                var extension = Path.GetExtension(upload.FileName);
+                var timestamp = DateTime.Now.ToString("ddMMyyHHmmss"); // ngày + giờ chính xác hơn
+
+                var fileName = $"{originalFileName}_{timestamp}{extension}";
+
                 // Tạo tên file an toàn
-                var fileName = Path.GetFileName(upload.FileName);
                 var filePath = Path.Combine(uploadPath, fileName);
 
                 // Lưu file vào wwwroot/ImgUpload

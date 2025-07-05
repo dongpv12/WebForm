@@ -960,7 +960,8 @@ public class HomeController : Controller
                 T_Pause = x.T_Pause.ToNumberStringN31(),
                 LoiNhuan = x.LoiNhuan.ToNumberStringN31(),
                 DoanhThu = x.DoanhThu.ToNumberStringN31(),
-                PE = x.PE.ToNumberStringN31()
+                PE = x.PE.ToNumberStringN31(),
+                IsSpecial = x.IsSpecial
 
             }).ToArray();
 
