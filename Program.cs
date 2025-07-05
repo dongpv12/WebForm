@@ -93,6 +93,11 @@ builder.Services.AddResponseCompression(options =>
 
 builder.Services.AddSignalR();
 builder.Services.AddHostedService<WebSocketReceiverService>();
+
+var _HostUrl = configuration["AppUrls"] ?? "http://*:9000";
+WebForm.Common.Logger.Log.Info("Start webform server port " + _HostUrl);
+Console.WriteLine("HostUrl " + _HostUrl);
+builder.WebHost.UseUrls(_HostUrl); // hoặc http://0.0.0.0:5000
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -120,9 +125,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
-var _HostUrl = configuration["AppUrls"] ?? "http://*:9000";
-WebForm.Common.Logger.Log.Info("Start webform server port " + _HostUrl);
-Console.WriteLine("HostUrl " + _HostUrl);
 
-app.Urls.Add(_HostUrl);
+
+//app.Urls.Add(_HostUrl);
 app.Run();
