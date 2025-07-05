@@ -141,6 +141,8 @@ namespace WebForm.Models
         /// </summary>
         public decimal Current_Price { get; set; }
 
+        public decimal PE { get; set; }
+
         public string Current_Price_Text { get; set; }
         /// <summary>
         /// He so
