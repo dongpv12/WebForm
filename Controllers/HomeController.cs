@@ -902,17 +902,19 @@ public class HomeController : Controller
             {
                 StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
                 item.Price_Text = item.Price.ToNumberStringN31();
-                if (info != null)
+                if (info != null && item.Sell_Price == 0)
                 {
 
                     item.Current_Price = info.MatchPrice;
+                    item.Current_Price_Text = info.MatchPrice.ToNumberStringN31();
+                   
                     if (item.Price == 0)
                     {
                         item.Heso = 100;
                     }
                     else
                     {
-                        item.Heso = (info.MatchPrice - item.Price) / item.Price;
+                        item.Heso = ((info.MatchPrice - item.Price) * 100) / item.Price;
                     }
 
 
@@ -923,11 +925,23 @@ public class HomeController : Controller
                 }
                 else
                 {
-                    item.Heso_Text = "0";
+                    // giu nguyen gia trị trong DB
+
+                    item.Heso_Text = item.Heso.ToNumberStringN31();
+                    item.Current_Price_Text = item.Current_Price.ToNumberStringN31();
                 }
+                if (item.DoanhThu == 0)
+                {
+                    item.PE = 0;
+                }
+                else
+                {
+                    item.PE = item.Current_Price / item.DoanhThu;
+                }
+                   
             }
 
-            listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) < 7)).OrderByDescending(x => x.Heso).ToList();
+            listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) <= 7)).OrderByDescending(x => x.Heso).ToList();
 
             var stocks = listSymbol.Select(x => new
             {
@@ -939,7 +953,15 @@ public class HomeController : Controller
                 Current_Price = x.Current_Price,
                 Heso_Text = x.Heso_Text,
                 Status_Text = x.Status_Text,
-                Status = x.Status
+                Status = x.Status,
+                Current_Price_Text = x.Current_Price_Text,
+                PRICE_Exp_Text = x.F_PRICE_Exp.ToNumberStringN31() + " - " + x.T_PRICE_Exp.ToNumberStringN31(),
+                PRICE_Taget_Text = x.F_PRICE_Target.ToNumberStringN31() + " - " + x.T_PRICE_Target.ToNumberStringN31(),
+                T_Pause = x.T_Pause.ToNumberStringN31(),
+                LoiNhuan = x.LoiNhuan.ToNumberStringN31(),
+                DoanhThu = x.DoanhThu.ToNumberStringN31(),
+                PE = x.PE.ToNumberStringN31()
+
             }).ToArray();
 
 
@@ -973,6 +995,7 @@ public class HomeController : Controller
                 {
 
                     item.Current_Price = info.MatchPrice;
+                    item.Current_Price_Text = info.MatchPrice.ToNumberStringN31(); ;
                     if (item.Price == 0)
                     {
                         item.Heso = 100;

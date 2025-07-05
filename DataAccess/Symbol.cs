@@ -12,7 +12,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[15];
+                var spParameter = new SqlParameter[16];
 
                 #region Set param
 
@@ -107,33 +107,44 @@ namespace WebForm.DataAccess
                     Direction = ParameterDirection.Input,
                     Value = request.IsSpecial
                 };
-                
+
 
                 spParameter[12] = parameter;
 
 
-                parameter = new SqlParameter("@Price", SqlDbType.NVarChar)
+                parameter = new SqlParameter("@Price", SqlDbType.Decimal)
                 {
                     Direction = ParameterDirection.Input,
                     Value = request.Price
                 };
 
-
                 spParameter[13] = parameter;
+
+
+
+
+                parameter = new SqlParameter("@Sell_Price", SqlDbType.Decimal)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Sell_Price
+                };
+
+                spParameter[14] = parameter;
+
 
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[14] = parameter;
+                spParameter[15] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_INSERT",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[14].Value);
+                return Convert.ToDecimal(spParameter[15].Value);
             }
             catch (Exception ex)
             {
@@ -175,7 +186,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[16];
+                var spParameter = new SqlParameter[17];
 
                 #region Set param
 
@@ -281,7 +292,7 @@ namespace WebForm.DataAccess
                 };
 
                 spParameter[13] = parameter;
-                parameter = new SqlParameter("@Price", SqlDbType.NVarChar)
+                parameter = new SqlParameter("@Price", SqlDbType.Decimal)
                 {
                     Direction = ParameterDirection.Input,
                     Value = model.Price
@@ -290,19 +301,29 @@ namespace WebForm.DataAccess
 
                 spParameter[14] = parameter;
 
+                parameter = new SqlParameter("@Sell_Price", SqlDbType.Decimal)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Sell_Price
+                };
+
+
+                spParameter[15] = parameter;
+
+
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[15] = parameter;
+                spParameter[16] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_UPDATE",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[15].Value);
+                return Convert.ToDecimal(spParameter[16].Value);
             }
             catch (Exception ex)
             {
@@ -310,6 +331,59 @@ namespace WebForm.DataAccess
                 return -1;
             }
         }
+
+
+
+
+
+        public decimal UpdateCurrenPrice(Symbol_Notify_Info model)
+        {
+            try
+            {
+                var spParameter = new SqlParameter[3];
+
+                #region Set param
+
+                var parameter = new SqlParameter("@Symbol", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Symbol
+                };
+                spParameter[0] = parameter;
+
+                parameter = new SqlParameter("@Current_Price", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Current_Price
+                };
+                spParameter[1] = parameter;
+
+
+                parameter = new SqlParameter("@P_Return", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output,
+                    Value = -1
+                };
+                spParameter[2] = parameter;
+
+                #endregion
+
+                SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_UPDATE_CURRENT_PRICE",
+                    spParameter);
+
+                return Convert.ToDecimal(spParameter[2].Value);
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+                return -1;
+            }
+        }
+
+
+
+
+
 
         public DataSet Search(SearchSymbolRequest model, ref int pTotal)
         {

@@ -15,6 +15,8 @@
                 <th style="text-align: center">Giá dừng lỗ </th>
                 <th style="text-align: center">Tăng trưởng Doanh thu </th>
                 <th style="text-align: center">Tăng trưởng Lợi nhuận </th>
+                <th style="text-align: center">Giá mua </th>
+                <th style="text-align: center">Giá bán </th>
                 <th style="width:150px; text-align: center">Chức năng</th>
             </tr>
         </thead>
@@ -32,7 +34,8 @@
                     <td> @item.T_Pause.ToNumberStringN10()</td>
                     <td> @item.DoanhThu.ToNumberStringN10() (%)</td>
                     <td> @item.LoiNhuan.ToNumberStringN10() (%)</td>
-                   
+                    <td> @item.Price.ToNumberStringN10() (%)</td>
+                    <td> @item.Sell_Price.ToNumberStringN10() (%)</td>
                     <td>
                         <a href="@("/Symbol/Edit/" + item.Id)" class="btn btn-warning  ">
                             <span class="glyphicon glyphicon glyphicon-pencil"></span> Sửa
