@@ -15,7 +15,7 @@
 <!-- Page Title -->
 <div class="page-title accent-background">
     <div class="container position-relative">
-        <h1>@news.CategoryName</h1>
+        <h1>Về chúng tôi</h1>
 
     </div>
 </div><!-- End Page Title -->
@@ -29,23 +29,26 @@
 
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 
+                @if (news != null)
+                {
+                    <div id="noidung">
+                        <h3 class="titleDetail">@(news.Title ?? "")</h3>
 
-                <div id="noidung">
-                    <h3 class="titleDetail">@(news.Title ?? "")</h3>
-                    
-                    <div id="des_detail">
-                        @(news.Description ?? "")
+                        <div id="des_detail">
+                            @(news.Description ?? "")
+                        </div>
+                        <div>@Html.Raw(news.Content ?? "")</div>
+
                     </div>
-                    <div>@Html.Raw(news.Content ?? "")</div>
-
-                </div>
+                }
+                
 
 
              
             </div>
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                @Html.Partial("NewsOtherTab", @news.CategoryType)
+                @Html.Partial("NewsOtherTab", "9")
             </div>
 
 
