@@ -148,7 +148,7 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="/" class="active">Trang chủ</a></li>
-                    <li><a href="/danh-sach-tin/5">Về chúng tôi</a></li>
+                    <li><a href="/ve-chung-toi">Về chúng tôi</a></li>
                     <li><a href="/danh-muc-tu-van">Chỉ số FinArt</a></li>
                     <li><a href="/danh-sach-tin/5">FAQ</a></li>
                     <li>
@@ -295,10 +295,10 @@
                     <h4>Useful Links</h4>
                     <ul>
                         <li><a href="/">Trang chủ</a></li>
-                        <li><a href="/danh-sach-tin/5">Về chúng tôi</a></li>
-                        <li><a href="#">Xu hướng thị trường</a></li>
-                        <li><a href="#">Xu hướng ngành</a></li>
-                        <li><a href="#">Cổ phiếu dẫn dắt</a></li>
+                        <li><a href="/ve-chung-toi">Về chúng tôi</a></li>
+                        <li><a href="javascript:;">Xu hướng thị trường</a></li>
+                        <li><a href="javascript:;">Xu hướng ngành</a></li>
+                        <li><a href="javascript:;">Cổ phiếu dẫn dắt</a></li>
                     </ul>
                 </div>
 
@@ -370,6 +370,7 @@
         });
     </script> *@
 
+
   
 
     <div class="zalo-chat-widget"
@@ -380,5 +381,22 @@
          data-height="">
     </div>
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+
+    <script>
+             // Lấy đường dẫn hiện tại
+        const currentPath = window.location.pathname;
+
+        // Duyệt qua tất cả các thẻ <a> trong #navmenu
+        document.querySelectorAll('#navmenu a').forEach(link => {
+            const linkPath = link.getAttribute('href');
+
+            // So sánh đường dẫn (có thể so sánh tương đối hoặc dùng startsWith nếu cần)
+            if (linkPath === currentPath || currentPath.startsWith(linkPath + '/')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>

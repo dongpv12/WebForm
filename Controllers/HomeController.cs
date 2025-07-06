@@ -1121,6 +1121,13 @@ public class HomeController : Controller
         }
     }
 
+    [HttpGet]
+    [Route("ve-chung-toi")]
+    public ActionResult AboutUsNew()
+    {
+        return View();
+    }
+
 }
 
 

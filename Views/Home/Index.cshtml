@@ -202,7 +202,7 @@
                                 </div>
 
 
-                                <ul class="info-list">
+                                <ul class="info-list" v-if="stocks && stocks.length > 0">
                                     <li class="animate a_03" v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
                                         <span class="info-left">
                                             @* <img src="~/assets/img/medal (1).png" style="width: 26px;height: auto; margin-top: 8px;" /> *@
@@ -411,7 +411,7 @@
                 <div class="text-center">
                     <h3>Về chúng tôi</h3>
                     <p>Chúng tôi là đội ngũ chuyên gia giàu kinh nghiệm trong lĩnh vực chứng khoán, cam kết mang đến những giải pháp hiệu quả, chất lượng và bền vững cho khách hàng. Sứ mệnh của chúng tôi là tạo ra giá trị thực và đồng hành cùng sự phát triển của bạn.</p>
-                    <a class="cta-btn" target="_blank" href="/danh-sach-tin/5">Xem thêm</a>
+                    <a class="cta-btn" target="_blank" href="/ve-chung-toi">Xem thêm</a>
                 </div>
             </div>
         </div>

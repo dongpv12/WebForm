@@ -4,7 +4,7 @@
 	List<Allcode_Info> typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE");
 	if (ViewBag.TypeGroup == 1)
 	{
-		typeNews = typeNews.Where(x => x.CdValue == "1" || x.CdValue == "2" || x.CdValue == "3" || x.CdValue == "4" || x.CdValue == "5").ToList();
+		typeNews = typeNews.Where(x => x.CdValue == "1" || x.CdValue == "2" || x.CdValue == "3" || x.CdValue == "4" || x.CdValue == "5" || x.CdValue == "9").ToList();
 	}
 	else
 	{
