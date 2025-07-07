@@ -113,10 +113,10 @@ public class DataMemoryService : IHostedService
                             // update vao DB  
                             try
                             {
-                                Symbol_Notify_Info info = new Symbol_Notify_Info();
-                                info.Symbol = _Symbol_WS_Info.Symbol;
-                                info.Current_Price = _Symbol_WS_Info.Current_Price;
-                                _ck = _da.UpdateCurrenPrice(info);
+                                //Symbol_Notify_Info info = new Symbol_Notify_Info();
+                                //info.Symbol = _Symbol_WS_Info.Symbol;
+                                //info.Current_Price = _Symbol_WS_Info.Current_Price;
+                                //_ck = _da.UpdateCurrenPrice(info);
                             }
                             catch(Exception ex)
                             {

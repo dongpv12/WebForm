@@ -8,6 +8,7 @@
 
     List<News> list = DataMemory.c_lstNew.Where(x => x.CategoryType == "1").OrderByDescending(i => i.Id).Take(5).ToList();
 }
+
 <style>
     .hero-section {
         position: relative;
@@ -150,6 +151,39 @@
         animation-fill-mode: both;
         animation-name: fadeInUp;
     }
+
+
+
+
+    .row {
+        display: flex;
+        gap: 6rem; /* khoảng cách giữa các ô */
+        margin: 0; /* nếu bạn cần reset margin */
+    }
+
+
+    .row0 {
+        display: flex;
+        gap: 0rem; /* khoảng cách giữa các ô */
+        margin: 0; /* nếu bạn cần reset margin */
+    }
+
+    .col {
+        flex: 1; /* mỗi cột chiếm phần bằng nhau */
+        /* background-color: #f2f2f2;  */
+        padding: 1.5rem;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+        .col:nth-child(3n-2) {
+            padding-left: 0;
+        }
+
+        /* Xóa padding bên phải của cột 3 (trong mỗi hàng 3 cột) */
+        .col:nth-child(3n) {
+            padding-right: 0;
+        }
 </style>
 
 
@@ -216,7 +250,7 @@
                                             <img v-if="index === 2"
                                                  src="~/assets/img/medal (3).png"
                                                  style="width: 26px; height: auto; margin-top: 8px;" />
-                                           
+
 
                                             <span> <a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#fff">{{ item.Symbol }}</a></span>
                                         </span>
@@ -224,7 +258,7 @@
                                     </li>
 
 
-                                  
+
                                 </ul>
 
                             </article>
@@ -238,14 +272,213 @@
         </div>
     </div>
 
-
-
-
-
-
-
 </section><!-- /Hero Section -->
 <!-- About Section -->
+
+<section>
+    <div id="offer" class="space_section">
+        <div class="container container_padding">
+
+            <hgroup class="title-group">
+                <h6>
+                    <img src="~/assets/img/arrow-up.png" />
+                    Chỉ số Finart
+                </h6>
+                <h2>Khám phá thuật toán giao dịch của chúng tôi</h2>
+            </hgroup>
+
+            <div class="row">
+                <div class="col nth-article">
+                    <article class="card-article">
+                        <p class="number"></p>
+                        <div class="border-img">
+                            <img src="~/assets/img/icon-01.png" />
+                        </div> <h3>
+                            Diễn biến thị trường
+                        </h3>
+                        <p> Phân tích diễn biến và xu hướng thị trường qua số liệu thực tế – hỗ trợ xây dựng chiến lược đầu tư hiệu quả </p>
+                    </article>
+                </div>
+                <div class="col nth-article">
+                    <article class="card-article">
+                        <p class="number"></p>
+                        <div class="border-img">
+                            <img src="~/assets/img/icon-01.png" />
+                        </div> <h3>
+                            Xu hướng ngành
+                        </h3> <p> Phân tích các xu hướng phát triển nổi bật trong từng ngành – nền tảng quan trọng để đánh giá cơ hội đầu tư và định vị chiến lược dài hạn </p>
+                    </article>
+                </div>
+                <div class="col nth-article">
+                    <article class="card-article">
+                        <p class="number"></p>
+                        <div class="border-img">
+                            <img src="~/assets/img/icon-01.png" />
+                        </div> <h3>Cổ phiếu dẫn dắt</h3>
+                        <p> Danh mục các cổ phiếu dẫn dắt thị trường, đại diện cho các ngành tăng trưởng mạnh và thu hút dòng tiền lớn </p>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section>
+
+    <div id="reason" class="space_section">
+        <div class="container">
+            <hgroup class="title-group">
+                <h6><img src="~/assets/img/arrow-up.png" /> Báo cáo phân tích</h6>
+                <h2>Đơn giản hóa sự lựa chọn của khách hàng</h2>
+            </hgroup> <div id="reason" class="carousel slide" data-bs-ride="carousel">
+                <div class="container">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row row0">
+                                <div class="col-12 col-sm-6 col-md-4 d-flex">
+                                    <article>
+                                        <img src="~/assets/img/icon-13.png" />
+                                        <h3>Báo cáo FinArt</h3>
+                                        <p> Tổng hợp các báo cáo phân tích chuyên sâu được thực hiện bởi FinArt – giúp bạn nắm bắt thông tin thị trường một cách toàn diện</p>
+                                    </article>
+                                </div> <div class="col-12 col-sm-6 col-md-4 d-flex">
+                                    <article>
+                                        <img src="~/assets/img/icon-14.png" />
+                                        <h3>Báo cáo CTCK</h3>
+                                        <p> Tổng hợp các báo cáo phân tích, nhận định và khuyến nghị từ các công ty chứng khoán</p>
+                                    </article>
+                                </div> <div class="col-12 col-sm-6 col-md-4 d-flex">
+                                    <article>
+                                        <img src="~/assets/img/icon-15.png" />
+                                        <h3>Báo cáo ngành</h3>
+                                        <p> Phân tích toàn cảnh ngành với số liệu, xu hướng và đánh giá chuyên sâu, giúp bạn hiểu rõ bối cảnh và tiềm năng phát triển </p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<section>
+
+    <div id="trading" class="space_section">
+        <div class="container">
+            <hgroup class="title-group">
+                <h6><img src="~/assets/img/arrow-up.png" /> Tham gia FinArt</h6>
+                <h2>Bắt đầu cuộc hành trình</h2>
+                <h5>
+                    <a href="javascript:;" target="_blank">
+                        <img src="~/assets/img/icon-play.png" /> Tham gia
+                    </a>
+                </h5>
+                <img class="abs-fix" src="~/assets/img/shape-4.png" />
+            </hgroup> <div class="box-plan">
+                <article>
+                    <img src="~/assets/img/vector1.png" />
+                    <h6 class="price">$0</h6> <p> Speed up your trading journey - let our automated trading system do the work for you. </p>
+                    <div class="text_a">
+                        <a target="_blank" rel="dofollow" href="javascript:;" class="btn-action">
+                            <img src="~/assets/img/icon-start.png" />
+                            Start Now
+                        </a>
+                    </div>
+                </article> <ul class="list-grid">
+                    <li>Phần mềm FinArt <span>Bot tín hiệu</span></li>
+                    <li>Khuyến nghị<span>Rõ ràng, minh bạch</span></li>
+                    <li>Mở tài khoàn <span>10 phút thực hiện</span></li>
+                    <li>Hỗ trợ <span>15/7</span></li>
+                    <li>khóa học và kiến thức <span>Chia sẻ miễn phí</span></li>
+                    <li>Chiến lược<span>Linh hoạt, hiệu quả</span></li>
+                    <li>Vốn<span>Nguồn vay lớn</span></li>
+                    <li>Cộng đồng<span>Nhà đầu tư chuyên nghiệm</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div id="subscriber">
+    <div class="container">
+        <hgroup class="title-group">
+            <h2>Become a part <span>of our update community</span></h2>
+        </hgroup> <form id="subscribeForm" class="form-subscriber" method="POST" action="https://timetradingfx.com/subscribe">
+            <input type="hidden" name="_token" value="bPjYx4U8g7Ifm0MeiMWAm6p2ZLwbCuCxYOwkdwx0" autocomplete="off">
+            <input type="email" id="email" name="email_user" minlength="5" maxlength="35" class="form-control" placeholder="Enter your E-Mail" required="">
+            <button type="submit" class="btn-action bg-cyan">Subscriber</button>
+        </form>
+    </div> <script type="text/javascript"> </script>
+</div>
+
+<footer style="margin-top: 60px;">
+    <div class="container">
+        <div class="row0">
+            <div class="col-12 col-sm-5">
+                <div class="footer-logo">
+                    <a href="/"><img src="	https://timetradingfx.com/storage/config/182e624b1a6d178.png" alt="logo-TimeTrading"></a>
+                    <p>
+                    <p>85 Vũ Trọng Phung, Thanh Xuân , Hà Nội</p>
+                    <p>Phone <span>098 904 8431</span></p>
+                    <p>Email <span>finart.advisory@gmail.com</span></p>
+                    </p>
+                </div>
+            </div><div class="col-12 col-sm-2"></div>
+            <div class="col-12 col-sm-2">
+                <h5>Useful Links</h5><ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li><a href="javascript:;">About Us</a></li>
+                    <li><a href="javascript:;">Product</a></li>
+                    <li><a href="javascript:;">Service</a></li>
+                    <li><a href="javascript:;">FAQ</a></li>
+                    <li><a href="javascript:;">Contact Us</a></li>
+                </ul>
+            </div><div class="col-12 col-sm-3">
+                <h5>Social Connect</h5><ul class="fanpages">
+                    <li>
+                        <a target="_blank" rel="nofollow" href="javascrript:;">
+
+                            <img src="~/assets/img/facebook.png" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="javascript:;">
+                            <img src="~/assets/img/youtube.png" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="javascript;;">
+                            <img src="~/assets/img/telegram.png" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="javascript:;">
+                            <img src="~/assets/img/instagram.png" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><hr><div class="container">
+        <div class="row0">
+            <div class="col-12 col-sm-6"><p class="copyright">© 2025 <b>FinArt</b>. All rights reserved.</p></div>
+
+        </div>
+    </div>
+</footer>
+
 <section class="about section">
 
     <div class="container">
@@ -346,6 +579,8 @@
 
         </div>
 
+
+
     </div>
 
 </section><!-- /About Section -->
@@ -428,7 +663,7 @@
      function gotoDanhMucTuvan(){
       window.open('/danh-muc-tu-van', '_blank');
     }
-   
+
 
     const heroCarousel = new bootstrap.Carousel('#heroCarousel', {
       interval: 10000,
@@ -468,7 +703,7 @@
        })
 
 
-      
+
 
         return { stocks }
       }

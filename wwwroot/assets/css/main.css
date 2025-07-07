@@ -20,7 +20,7 @@
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
     --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-    --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
+    --default-color: #5a687d; /* Default color used for the majority of the text content across the entire website */
     --heading-color: #2f4d5a; /* Color for headings, subheadings and title throughout the website */
     --accent-color: #1476C6; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
     --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
@@ -67,11 +67,41 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+
+
+
+@font-face {
+    font-family: 'Lexenddeca_B';
+    src: url('../admin/font-awesome/fonts/lexenddeca_b.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexenddeca';
+    src: url('../admin/font-awesome/fonts/lexenddeca.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'LexendDeca_Light';
+    src: url('../admin/font-awesome/fonts/LexendDeca_Light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+
 body {
+    font-family: "LexendDeca" !important;
+    font-size: 14px !important;
+    color: #5a687d !important;
+}
+
+/*body {
     color: var(--default-color);
     background-color: var(--background-color);
     font-family: var(--default-font);
-}
+}*/
 
 a {
     color: var(--accent-color);
@@ -155,7 +185,7 @@ h6 {
     --heading-color: #ffffff;
     color: var(--default-color);
     background-color: var(--background-color);
-    padding: 5px 0;
+    padding: 12px 0;
     transition: all 0.5s;
     z-index: 997;
 }
@@ -210,7 +240,7 @@ h6 {
 
         .navmenu a,
         .navmenu a:focus {
-            color: #67b0d1;
+            color: #16315e;
             padding: 10px 15px;
             margin-left: 2px;
             font-size: 16px;
@@ -221,6 +251,7 @@ h6 {
             justify-content: space-between;
             white-space: nowrap;
             transition: 0.3s;
+            font-weight: bold
         }
 
             .navmenu a i,
@@ -234,9 +265,9 @@ h6 {
         .navmenu li:hover > a,
         .navmenu .active,
         .navmenu .active:focus {
-            color: var(--contrast-color);
+            color: #10cfc9;
             /*color: red;*/
-            background-color: var(--nav-hover-color);
+            background-color: none;
         }
 
         .navmenu .dropdown ul {
@@ -263,7 +294,8 @@ h6 {
                 margin: 0;
                 font-size: 15px;
                 text-transform: none;
-                color: var(--nav-dropdown-color);
+                /*color: var(--nav-dropdown-color);*/
+                color: #16315e;
             }
 
                 .navmenu .dropdown ul a i {
@@ -273,8 +305,9 @@ h6 {
                 .navmenu .dropdown ul a:hover,
                 .navmenu .dropdown ul .active:hover,
                 .navmenu .dropdown ul li:hover > a {
-                    color: var(--contrast-color);
-                    background-color: var(--nav-hover-color);
+                    /*  color: var(--contrast-color);
+                    background-color: var(--nav-hover-color);*/
+                    color: #10cfc9;
                 }
 
         .navmenu .dropdown:hover > ul {
@@ -340,6 +373,7 @@ h6 {
             justify-content: space-between;
             white-space: nowrap;
             transition: 0.3s;
+            font-weight: bold;
         }
 
             .navmenu a i,
@@ -715,9 +749,9 @@ h6 {
 --------------------------------------------------------------*/
 section,
 .section {
-    color: var(--default-color);
+    color: var(--default-color); 
     background-color: var(--background-color);
-    padding: 60px 0;
+    /*padding: 60px 0;*/
     scroll-margin-top: 74px;
     overflow: clip;
 }
@@ -771,7 +805,7 @@ section,
     /*min-height: 100vh;*/
     position: relative;
     /*padding: 120px 0 60px 0;*/
-    padding:0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2021,7 +2055,7 @@ section,
 
 @media (min-width: 1199px) {
     article {
-        width: 400px;
+        /*width: 400px;*/
     }
 }
 
@@ -2142,7 +2176,6 @@ section,
     text-align: center;
     flex: 1;
     font-weight: bold;
-
     /*color: #444;*/
 }
 
@@ -2154,4 +2187,373 @@ section,
     .hero {
         height: 60vh;
     }
+}
+
+
+
+.card-article {
+    padding: 20px 25px 30px;
+    border-radius: 10px;
+    text-align: center;
+    /*background: var(--white) url('/assets/img/shape.png') no-repeat center top;*/
+    background: #fff;
+    background-image: url('/assets/img/shape.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    box-shadow: 0 5px 30px #dbdbdb;
+}
+
+.border-img {
+    background-color: #fff;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    text-align: center;
+    padding: 18px;
+    margin-top: -32px;
+    box-shadow: 0 4px 12px #a6e3e2;
+}
+
+.card-article .number {
+    color: #10cfc9;
+    font-family: "Lexenddeca_B", Roboto, Arial, sans-serif;
+    font-size: 24px;
+    text-align: left;
+}
+
+.card-article p {
+    min-height: 105px;
+}
+
+#offer .nth-article:nth-child(2n) .card-article {
+    margin-top: 60px;
+}
+
+
+@media (min-width: 1350px) {
+    .container_padding {
+        padding-left: 130px;
+        padding-right: 130px;
+    }
+}
+
+
+#offer {
+    background: #f7f8fa;
+}
+
+.space_section {
+    padding: 100px 0;
+}
+
+.title-group h6 {
+    color: #10cfc9;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+
+    .title-group h6 img {
+        width: 22px;
+        margin-right: 5px;
+    }
+
+a, img {
+    transition: all 0.3s ease;
+}
+
+img, svg {
+    vertical-align: middle;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+    line-height: 1.25;
+    font-family: "Lexenddeca_B", Roboto, Arial, sans-serif;
+    color: #16315e;
+    letter-spacing: -1px;
+}
+
+.title-group h2 {
+    margin-top: 10px;
+    font-size: 40px;
+    line-height: 1.3;
+}
+
+.title-group {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.card-article p {
+    min-height: 105px;
+    line-height: 1.85;
+    margin-bottom: 0;
+}
+
+#reason {
+    background: #16315e;
+}
+
+    #reason article {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+
+    #reason .title-group h2 {
+        color: #fff;
+    }
+
+.title-group h2 {
+    margin-top: 10px;
+    font-size: 40px;
+    line-height: 1.3;
+}
+
+#trading {
+    background: url('../img/shape2.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.space_section {
+    padding: 100px 0;
+}
+
+.abs-fix {
+    position: absolute;
+    top: 30px;
+    right: 215px;
+    width: 240px;
+}
+.box-plan {
+    display: flex;
+}
+
+    .box-plan article {
+        background: #16315e;
+        color: #fff;
+        width: 40%;
+        padding: 30px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+
+        .box-plan article p {
+            margin-bottom: 25px;
+        }
+
+    .box-plan .text_a a {
+        color: #fff;
+        text-transform: uppercase;
+        border: 2px solid #10cfc9;
+    }
+
+.text_a a {
+    display: inline-block;
+}
+
+a, a:hover, a:active, a:link, a:visited {
+    text-decoration: none;
+}
+
+.list-grid {
+    padding-left: 0;
+    margin-bottom: 0;
+    width: calc(100% - 40%);
+}
+
+    .list-grid li {
+        background: linear-gradient(to right, #cdfbf9 0%, #cdfbf9 61%, #f0ffff 51%, #f0ffff 100%);
+        position: relative;
+        margin-bottom: 5px;
+        padding: 17px 20px 17px 40px;
+        font-size: 15px;
+    }
+
+li {
+    list-style-type: none;
+}
+
+
+.list-grid li span {
+    float: right;
+}
+
+.list-grid li span {
+    font-family: "LexendDeca_B";
+    color: #16315e;
+}
+
+.title-group h5 a {
+    display: block;
+    padding: 13px 30px;
+    background: #fff;
+    border: 2px solid #16315e;
+    color: #16315e;
+    border-radius: 40px;
+}
+
+.title-group h5 {
+    float: right;
+    margin-top: -72px;
+}
+
+
+.box-plan .text_a a {
+    color: #fff;
+    text-transform: uppercase;
+    border: 2px solid #10cfc9;
+}
+
+.text_a a:hover {
+    box-shadow: 0 4px 30px #10cfc9;
+}
+
+.btn-action {
+    padding: 13px 30px;
+    border: 0;
+    font-size: 15px;
+    border-radius: 40px;
+    font-family: var(--font_b);
+    color: var(--white);
+    margin-right: 10px;
+}
+
+.footer-logo p {
+    margin-bottom: 15px;
+}
+
+footer h5 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.footer-logo img {
+    width: 240px;
+    margin-bottom: 20px;
+}
+
+.list-grid li:last-child {
+    margin-bottom: 0;
+}
+
+footer ul li a {
+    display: block;
+    padding: 6px 0;
+    color: #5a687d;
+}
+
+footer ul li {
+    list-style-type: disc;
+}
+
+.fanpages li img {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+}
+
+.fanpages li a {
+    display: inline-block;
+    margin: 0 1px;
+}
+
+.fanpages {
+    padding-left: 0;
+}
+
+footer ul {
+    padding-left: 15px;
+}
+
+
+.fanpages li {
+    display: inline;
+}
+
+footer ul li {
+    list-style-type: disc;
+}
+
+.copyright b {
+    color: #10cfc9;
+}
+
+.privacy {
+    padding-left: 0;
+    float: right;
+}
+{
+    list-style-type: none;
+}
+
+.privacy li {
+    list-style-type: disc;
+    float: left;
+}
+
+#subscriber {
+    background-image: url('../img/banner.jpg');
+    background-size: 100%;
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+    #subscriber hgroup h2 {
+        color: #fff;
+        text-align: left;
+        font-size: 48px;
+        font-family: "LexendDeca_Light";
+    }
+
+.title-group h2 {
+    margin-top: 10px;
+    font-size: 40px;
+    line-height: 1.3;
+}
+
+#subscriber hgroup h2 span {
+    color: #26c48c;
+    display: block;
+    font-family: Lexenddeca_B;
+    line-height: -2px;
+}
+
+.form-subscriber .form-control {
+    padding: 15px 30px;
+    color: #fff !important;
+    font-size: 18px;
+    background: #16315e !important;
+    border-radius: 30px;
+    border: 2px solid #10cfc9;
+}
+
+
+.form-subscriber .btn-action {
+    position: absolute;
+    bottom: 6px;
+    right: -4px;
+    border-radius: 30px;
+    padding: 10px 30px !important;
+}
+
+.bg-cyan {
+    border: 2px solid #10cfc9 !important;
+    background-color: #10cfc9 !important;
+    color: #16315e !important;
+}
+
+.form-subscriber {
+    position: relative;
+    width: 600px;
 }

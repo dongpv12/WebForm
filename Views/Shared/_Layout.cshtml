@@ -45,7 +45,8 @@
 
 
     <script src="/js/axios.min.js"></script>
-
+    <link href="~/assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="~/assets/css/device.min.css" rel="stylesheet" />
 
 </head>
 
@@ -148,8 +149,20 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="/" class="active">Trang chủ</a></li>
-                    <li><a href="/ve-chung-toi">Về chúng tôi</a></li>
+
+                   <li class="dropdown">
+                        <a href="#"><span>Danh mục tư vấn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#">Danh mục trung hạn</a></li>
+                            <li><a href="#">Danh mục ngắn hạn</a></li>
+                            <li><a href="#">Danh mục chờ mua</a></li>
+                        </ul>
+                    </li>
+
                     <li><a href="/danh-muc-tu-van">Chỉ số FinArt</a></li>
+
+                    <li><a href="/ve-chung-toi">Về chúng tôi</a></li>
+                    
                     <li><a href="/danh-sach-tin/5">FAQ</a></li>
                     <li>
                         <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
