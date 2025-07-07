@@ -281,6 +281,7 @@ namespace WebForm.Common
         public static string EmailBusiness { get; set; } = "";
         public static string ChartProtocal { get; set; } = "";
         public static string WebSocketData { get; set; } = "";
+        public static string ApiUrl_Analysis { get; set; } = "";
         
         public static void GetConfig(IConfiguration configuration)
         {
@@ -288,8 +289,8 @@ namespace WebForm.Common
             {
                 ChartProtocal = configuration["ChartProtocal"]?.ToString() ?? "";
                 WebSocketData = configuration["WebSocketData"]?.ToString() ?? "";
+                ApiUrl_Analysis = configuration["ApiUrl_Analysis"]?.ToString() ?? "";
 
-               
                 Zalocontact = configuration["ContactZalo"]?.ToString() ?? "";
 
                 RecordOnPage = Convert.ToInt32(configuration["RecordOnPage"]?.ToString() ?? "10");
