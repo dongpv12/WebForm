@@ -1,6 +1,8 @@
 ﻿using RestSharp;
 using System.Globalization;
+using System.Text.Json;
 using WebForm.Common;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WebForm
 {
@@ -184,6 +186,68 @@ namespace WebForm
             catch (Exception ex)
             {
                 Logger.Log.Error(ex);
+            }
+        }
+
+        public static StockAnalysis Get_technical_analysis(string p_symbol)
+        {
+            try
+            {
+                var client = new RestClient(ConfigInfo.ApiUrl_Analysis);
+                var request = new RestRequest("api/analysis-symbol?p_symbol=" + p_symbol, Method.Get);
+                RestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return JsonSerializer.Deserialize<StockAnalysis>(response.Content ?? string.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+            }
+            return new StockAnalysis();
+        }
+
+        /// <summary>
+        /// Hàm ví dụ phân tích mã chứng khoán
+        /// </summary>
+        /// <param name="p_symbol"></param>
+        public static void Save_technical_analysis(string p_symbol)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(p_symbol))
+                {
+                    return;
+                }
+                StockAnalysis stockAnalysis = Get_technical_analysis(p_symbol);
+                if (stockAnalysis == null || stockAnalysis.CurrentPrice <= 0)
+                {
+                    return;
+                }
+
+                string _msg_analysis = $"📈 PHÂN TÍCH CHỨNG KHOÁN **{p_symbol}**" + "\n";
+                _msg_analysis += $"Giá hiện tại: {stockAnalysis.CurrentPrice:F0}" + "\n";
+                _msg_analysis += $"Xu hướng: **{stockAnalysis.Trend}**" + "\n";
+                _msg_analysis += $"Thay đổi giá 20 ngày: {stockAnalysis.Change20Days:F2}%" + "\n";
+                _msg_analysis += $"RSI: {stockAnalysis.RSI:F2} - {stockAnalysis.RSISignal}" + "\n";
+                _msg_analysis += $"MACD: {stockAnalysis.MACDCrossSignal}" + "\n";
+                _msg_analysis += $"Bollinger Bands: {stockAnalysis.BollingerSignal}" + "\n";
+                _msg_analysis += $"Biến động giá: {stockAnalysis.Volatility:F2}%" + "\n";
+                _msg_analysis += $"Thay đổi khối lượng 30 phiên: {stockAnalysis.VolumeChange * 100:F2}%" + "\n";
+
+                if (stockAnalysis.Observations != null)
+                {
+                    _msg_analysis += "\n📝 Nhận định:" + "\n";
+                    foreach (var obs in stockAnalysis.Observations)
+                    {
+                        _msg_analysis += obs + "\n";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
             }
         }
     }
