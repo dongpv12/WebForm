@@ -13,10 +13,21 @@
         matp = ViewBag.MaTP;
     }
     Symbol_Notify_Info _Info = new Symbol_Notify_Info();
-    if (ViewBag.Info != null )
+    if (ViewBag.Info != null)
     {
         _Info = ViewBag.Info;
     }
+
+    StockAnalysis stockAnalysis = null;
+    if (ViewBag.StockAnalysis != null)
+    {
+        stockAnalysis = (StockAnalysis)ViewBag.StockAnalysis;
+    }
+
+
+    var host = Context.Request.IsHttps ? "https" : "http";
+    host += "://" + Context.Request.Host.Value.ToLower();
+    string _url = host + "/chart?symbol=" + matp + "& p_username =";
 }
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -37,50 +48,108 @@
     <div class="container" id="app">
 
         <!-- HÀNG 1: Thông tin + Biểu đồ -->
-        <div class="row mb-4">
-            <!-- Cột trái: Thông tin cổ phiếu -->
-            <div class="col-md-5">
-                <div class="p-5 bg-light border rounded shadow-sm">
-                    <h5 class="mb-4 text-uppercase fw-bold" style="color:#38a0b5">Thông tin cổ phiếu</h5>
-
-                    <div class="row mb-2">
-                        <div class="col-sm-5 fw-semibold text-muted">Mã cổ phiếu:</div>
-                        <div class="col-sm-7">@(_Info.Symbol ?? "")</div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-sm-5 fw-semibold text-muted">Tên cổ phiếu:</div>
-                        <div class="col-sm-7">@(_Info.Name ?? "")</div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-sm-5 fw-semibold text-muted">Tổ chức phát hành:</div>
-                        <div class="col-sm-7">@(_Info.Issue ?? "")</div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-sm-5 fw-semibold text-muted">Giá mua:</div>
-                        <div class="col-sm-7">@_Info.Price.ToNumberStringN31()</div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-sm-5 fw-semibold text-muted">Tỷ suất hiện tại:</div>
-                        @* <div class="col-sm-7">{{ stock.Price }}</div> *@
-                    </div>
-                </div>
-            </div>
-
+        <div class="row">
             <!-- Cột phải: Biểu đồ -->
-            <div class="col-md-7">
-                <div class="p-4 text-white text-center rounded shadow-sm" style="background: #38a0b5;">
-                    <div class="container">
-                        biểu đồ vẽ ở đây
-                    </div>
+            <div class="col-md-12">
+                <div class="tinlienquan d-flex justify-content-between align-items-center">
+                    <h3 class="fw-bold text-uppercase">Thông tin cổ phiếu</h3>
                 </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Mã cổ phiếu:</div>
+                    <div class="col-sm-7">@(_Info.Symbol ?? "")</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Tên cổ phiếu:</div>
+                    <div class="col-sm-7">@(_Info.Name ?? "")</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Tổ chức phát hành:</div>
+                    <div class="col-sm-7">@(_Info.Issue ?? "")</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Giá mua:</div>
+                    <div class="col-sm-7">@_Info.Price.ToNumberStringN31()</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Tỷ suất hiện tại:</div>
+                    @* <div class="col-sm-7">{{ stock.Price }}</div> *@
+                </div>
+
+                <div class="tinlienquan d-flex justify-content-between align-items-center">
+                    <h3 class="fw-bold text-uppercase">Phân tích kỹ thuật</h3>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Giá hiện tại:</div>
+                    <div class="col-sm-7">@(stockAnalysis.CurrentPrice.ToString("##0.##") ?? "")</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Thay đổi giá 20 ngày:</div>
+                    <div class="col-sm-7">@(stockAnalysis.Change20Days.ToString("##0.##") ?? "")</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">RSI:</div>
+                    <div class="col-sm-7">@(stockAnalysis.RSI.ToString("##0.##") + " - " + stockAnalysis.RSISignal)</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">MACD:</div>
+                    <div class="col-sm-7">@(stockAnalysis.MACDCrossSignal)</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Bollinger Bands:</div>
+                    <div class="col-sm-7">@(stockAnalysis.BollingerSignal)</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Biến động giá:</div>
+                    <div class="col-sm-7">@(stockAnalysis.Volatility.ToString("##0.##"))%</div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-sm-5 fw-semibold text-muted">Thay đổi khối lượng 30 phiên:</div>
+                    <div class="col-sm-7">@((stockAnalysis.VolumeChange * 100).ToString("##0.##")) %</div>
+                </div>
+
+                @if (stockAnalysis.Observations != null)
+                {
+                    <div class="row mb-2">
+                        <div class="col-sm-5 fw-semibold text-muted">Nhận định:</div>
+                        <div class="col-sm-7"></div>
+                    </div>
+                    @foreach (var obs in stockAnalysis.Observations)
+                    {
+                        <div class="row mb-2">
+                            <div class="col-sm-12">@obs</div>
+                        </div>
+                    }
+                }
             </div>
         </div>
 
-        <!-- HÀNG 2: Dữ liệu báo cáo -->
+        <div class="row">
+            <div class="col-12 mb-3">
+                <div class="tinlienquan d-flex justify-content-between align-items-center">
+                    <h3 class="fw-bold text-uppercase">Đồ thị kỹ thuật</h3>
+                </div>
+
+                <iframe src="@_url"
+                        width="100%"
+                        height="600"
+                        frameborder="0"
+                        style="border:0; min-height:400px;"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+
+        <!-- HÀNG 3: Dữ liệu báo cáo -->
         <div class="row">
             <div class="col-12 mb-3">
                 <div class="tinlienquan d-flex justify-content-between align-items-center">
