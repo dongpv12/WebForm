@@ -10,9 +10,7 @@ public class DataMemoryService : IHostedService
 {
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        Task.Run(LoadMemory, cancellationToken);
         Task.Run(Thread_ProcessWSRequest, cancellationToken);
-        Task.Run(Write_SymbolFile, cancellationToken);
         return Task.CompletedTask;
     }
 
@@ -20,37 +18,44 @@ public class DataMemoryService : IHostedService
     {
         throw new NotImplementedException();
     }
-
-    private async Task LoadMemory()
+     
+    void Write_Symbol_File()
     {
-        while (true)
+        try
         {
-            try
+            Logger.Log.Info("Begin Write Symbol File");
+            List<StockMemInfo> _lst = new List<StockMemInfo>();
+            List<string> _lst_symbol = new List<string>(StockMem.c_dicStocks.Keys);
+            foreach (var item in _lst_symbol)
             {
-                DataMemory.LoadNews();
-
-                DataMemory.GetAllcode();
-
-                StockMem.Read_SymbolFile();
-
-                DataMemory.LoadSymbol();
+                if (StockMem.c_dicStocks.ContainsKey(item) == true)
+                {
+                    StockMemInfo _Info = StockMem.c_dicStocks[item].CloneObjectT<StockMemInfo>();
+                    _lst.Add(_Info);
+                }
             }
-            catch (Exception ex)
-            {
-                Logger.Log.Error(ex.ToString());
-            }
-            await Task.Delay(TimeSpan.FromSeconds(30));
+            string jsonString = JsonConvert.SerializeObject(_lst);
+            // Ghi chuỗi JSON vào tệp
+            string _accountFile = System.IO.Path.Combine(ConfigInfo.ContentRootPath, "Data", "Symbol_Info.json");
+            File.WriteAllText(_accountFile, jsonString);
+            Logger.Log.Info("Done Write Symbol File");
         }
-    }
+        catch (Exception ex)
+        {
+            Logger.Log.Error(ex.ToString());
+        }
+    } 
 
     private async Task Thread_ProcessWSRequest()
     {
+        int _index = 0;
+        DateTime lastWrite = DateTime.MinValue;
+
         while (true)
         {
             try
             {
                 bool _dequeueSuccess = StockMem.c_queueMessage.TryDequeue(out string requestMessage);
-                decimal _ck = 0;
                 SymbolDA _da = new SymbolDA();
                 if (_dequeueSuccess && requestMessage != null)
                 {
@@ -60,7 +65,6 @@ public class DataMemoryService : IHostedService
                         Symbol_WS_Info _Symbol_WS_Info = Newtonsoft.Json.JsonConvert.DeserializeObject<Symbol_WS_Info>(_Notify_WebSocket_Info.data);
                         if (_Symbol_WS_Info != null && _Symbol_WS_Info.Symbol != null && _Symbol_WS_Info.Symbol != "")
                         {
-
                             if (StockMem.c_dicStocks.ContainsKey(_Symbol_WS_Info.Symbol) == false)
                             {
                                 StockMemInfo stockMemInfo = new StockMemInfo
@@ -124,10 +128,25 @@ public class DataMemoryService : IHostedService
                             }
                         }
                     }
-                    //Utils.AppendMessageToFile(requestMessage, "DataSymbol/data.txt");
+
+                    // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
+                    if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
+                    {
+
+                        Write_Symbol_File();
+                        lastWrite = DateTime.Now;
+                    }
                 }
                 else
                 {
+                    // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
+                    if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
+                    {
+
+                        Write_Symbol_File();
+                        lastWrite = DateTime.Now;
+                    }
+
                     await Task.Delay(TimeSpan.FromSeconds(5));
                 }
             }
@@ -138,37 +157,5 @@ public class DataMemoryService : IHostedService
         }
     }
 
-    public Task Write_SymbolFile()
-    {
-        Logger.Log.Info("RunBackgroundService Write_AccountFile");
-
-        while (true)
-        {
-
-            try
-            {
-                List<StockMemInfo> _lst = new List<StockMemInfo>();
-                List<string> _lst_symbol = new List<string>(StockMem.c_dicStocks.Keys);
-                foreach (var item in _lst_symbol)
-                {
-                    if (StockMem.c_dicStocks.ContainsKey(item) == true)
-                    {
-                        StockMemInfo _Info = StockMem.c_dicStocks[item].CloneObjectT<StockMemInfo>();
-                        _lst.Add(_Info);
-                    }
-                }
-                string jsonString = JsonConvert.SerializeObject(_lst);
-
-                // Ghi chuỗi JSON vào tệp
-                string _accountFile = System.IO.Path.Combine(ConfigInfo.ContentRootPath, "Data", "Symbol_Info.json");
-                File.WriteAllText(_accountFile, jsonString);
-            }
-            catch (Exception ex)
-            {
-                Logger.Log.Error(ex.ToString());
-            }
-
-            Thread.Sleep(30000);
-        }
-    }
+  
 }

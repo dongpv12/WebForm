@@ -124,8 +124,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+DataMemory.LoadMem(); 
 
-
-
-//app.Urls.Add(_HostUrl);
 app.Run();
