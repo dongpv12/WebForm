@@ -1824,8 +1824,9 @@ section,
     .analysis-header h5 {
         margin: 0;
         font-size: 16px;
-        color: #4b99bb;
+        color: #fff;
         font-weight: 600;
+        font-family: LexendDeca_Light
     }
 
 .analysis-item {
@@ -1854,8 +1855,8 @@ section,
 }
 
 .badge-update {
-    background-color: #d4f4f2;
-    color: #03b59c;
+    background-color: #16315e;
+    color: #FFF;
 }
 
 .badge-analysis {
@@ -1881,7 +1882,7 @@ section,
 
 .analysis-source {
     font-size: 12px;
-    color: #888;
+    color: #ff7f00;
 }
 
 .services-list {
@@ -1892,20 +1893,20 @@ section,
 
 
 .analysis-header {
-    background-color: #f1f9ff;
+    background-color: #16315e;
     padding: 12px 16px;
     border-bottom: 1px solid #e0e0e0;
 }
 
     .analysis-header h5 {
         font-size: 16px;
-        color: #4b99bb;
+        color: #fff;
         font-weight: 600;
     }
 
 .viewmore {
     font-size: 13px;
-    color: #4b99bb;
+    color: #fff !important;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -1957,6 +1958,7 @@ section,
 
     .tinlienquan h3 {
         color: #e9430f;
+        font-family: LexendDeca_Light;
     }
 
 .Description_list {
@@ -2894,11 +2896,11 @@ li.three-columns {
     }
 
 
-    li.three-columns span:nth-child(1) a {
-        text-align: left;
-        font-family: "LexendDeca" !important;
-        color: #fff !important;
-    }
+        li.three-columns span:nth-child(1) a {
+            text-align: left;
+            font-family: "LexendDeca" !important;
+            color: #fff !important;
+        }
 
     li.three-columns span:nth-child(2) {
         text-align: center;
@@ -2907,3 +2909,63 @@ li.three-columns {
     li.three-columns span:nth-child(3) {
         text-align: right;
     }
+
+
+.row0 {
+    display: flex;
+    gap: 0rem;
+    margin: 0;
+}
+
+.area-page-title {
+    position: relative;
+}
+
+    .area-page-title::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: -webkit-linear-gradient(-45deg, #16315e 50%, #10cfc9 80%);
+        opacity: 0.6;
+        z-index: 0;
+    }
+
+    .area-page-title .container {
+        position: relative;
+        z-index: 1; /* Đảm bảo nội dung nằm trên lớp nền */
+    }
+
+
+
+.area-page-title {
+    background: url('../img/page-title.jpg') no-repeat bottom center;
+    color: #fff;
+    padding: 50px 0;
+    overflow: hidden;
+    position: relative;
+    margin-top: 60px;
+}
+
+    .area-page-title h1, .area-page-title h2 {
+        color: #fff;
+        font-size: 48px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+
+
+.breadcrumb-item.active {
+    color: #fff !important;
+}
+
+.breadcrumb-item a {
+    color: #10cfc9 !important;
+}
+
+.service-details{
+    padding-top: 60px;
+}

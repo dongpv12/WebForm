@@ -5,7 +5,7 @@
 @using WebForm.Helpers;
 @using WebForm.Models;
 @{
-   
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     string _Header = "";
@@ -33,21 +33,19 @@
     }
 }
 
-<!-- Page Title -->
-<div class="page-title accent-background">
-    <div class="container position-relative">
-        <h1>@_Header</h1>
-        @* <nav class="breadcrumbs">
-            <ol>
-                <li><a href="index.html">Home</a></li>
-                <li class="current">Service Details</li>
-            </ol>
-        </nav> *@
+
+
+<div class="area-page-title">
+    <div class="container">
+        <h1 class="animate a_01">@_Header</h1>
+        <ol class="breadcrumb animate a_02">
+            <li class="breadcrumb-item">
+                <a href="/">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">@_Header</li>
+        </ol>
     </div>
-</div><!-- End Page Title -->
-<!-- Service Details Section -->
-
-
+</div>
 
 <section id="service-details" class="service-details section">
 
@@ -66,7 +64,7 @@
             }
             else
             {
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" >
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 
 
                     <div id="noidung">
@@ -92,16 +90,16 @@
                             </div>
                             @Html.Partial("DataNewsPages")
                         </div>
-                       
+
                     }
 
-                   
+
 
 
                 </div>
             }
 
-           
+
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                 @Html.Partial("NewsOtherTab", CategoryType)

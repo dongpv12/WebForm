@@ -209,9 +209,9 @@
                                     <span class="flex-item">-</span>
                                     <span class="flex-item">{{ item.Heso_Text }}</span>
                                 </li>
-                                
 
-                                
+
+
 
 
 
@@ -305,7 +305,7 @@
                                         <img src="~/assets/img/icon-13.png" />
                                         <h3>
 
-                                            <a href="/danh-sach-tin/6"> Báo cáo FinArt</a>
+                                            <a href="/danh-sach-bao-cao-art/6"> Báo cáo FinArt</a>
 
                                         </h3>
                                         <p> Tổng hợp các báo cáo phân tích chuyên sâu được thực hiện bởi FinArt – giúp bạn nắm bắt thông tin thị trường một cách toàn diện</p>
@@ -315,7 +315,7 @@
                                         <img src="~/assets/img/icon-14.png" />
                                         <h3>
 
-                                            <a href="/danh-sach-tin/7">    Báo cáo CTCK</a>
+                                            <a href="/danh-sach-bao-cao-art/7">    Báo cáo CTCK</a>
                                         </h3>
                                         <p> Tổng hợp các báo cáo phân tích, nhận định và khuyến nghị từ các công ty chứng khoán</p>
                                     </article>
@@ -323,7 +323,7 @@
                                     <article>
                                         <img src="~/assets/img/icon-15.png" />
                                         <h3>
-                                            <a href="/danh-sach-tin/8">
+                                            <a href="/danh-sach-bao-cao-art/8">
                                                 Báo cáo ngành
                                             </a>
                                         </h3>
@@ -395,76 +395,78 @@
     </div> <script type="text/javascript"> </script>
 </div>
 
-<section class="highlight-posts-wrap mb-15 ">
-    <div class="container" style="padding: 20px 20px 4px;">
+@if (list != null && list.Count > 0)
+{
+        <section class="highlight-posts-wrap mb-15 ">
+            <div class="container" style="padding: 20px 20px 4px;">
 
-        <hgroup class="title-group">
-            <h6><img src="~/assets/img/arrow-up.png" /> TIN NỔI BẬT</h6>
-            <h2>Tin tức mới nhất của thị trường chứng khoán</h2>
-        </hgroup>
+                <hgroup class="title-group">
+                    <h6><img src="~/assets/img/arrow-up.png" /> TIN NỔI BẬT</h6>
+                    <h2>Tin tức mới nhất của thị trường chứng khoán</h2>
+                </hgroup>
 
-        <div class="section-content row0" style="margin-left: -14px; margin-right: -14px;">
-            <div class="carousel-wrap" style="">
-                <div class="carousel-wrap-inner">
-                    <div class="carousel-highlight-post px-15 row r0">
+                <div class="section-content row0" style="margin-left: -14px; margin-right: -14px;">
+                    <div class="carousel-wrap" style="">
+                        <div class="carousel-wrap-inner">
+                            <div class="carousel-highlight-post px-15 row r0">
 
-                        @foreach (var item in list)
-                        {
-                            <div class="col-lg-4 col-md-6" style="padding-left: 14px; padding-right: 14px;">
-                                <a href="/chi-tiet/@item.Id" class="span-like post-card clickable highlight-post">
-                                    @if (item.FeatureImage != null && item.FeatureImage != "")
-                                    {
-                                        <div class="post-image">
-                                            <img loading="lazy" class="logo-cover" src="@item.FeatureImage" alt="" onerror="this.src='/assets/img/bg_01.jpg';">
-                                        </div>
+                            @foreach (var item in list)
+                            {
+                                            <div class="col-lg-4 col-md-6" style="padding-left: 14px; padding-right: 14px;">
+                                                <a href="/chi-tiet/@item.Id" class="span-like post-card clickable highlight-post">
+                                        @if (item.FeatureImage != null && item.FeatureImage != "")
+                                        {
+                                                                <div class="post-image">
+                                                                    <img loading="lazy" class="logo-cover" src="@item.FeatureImage" alt="" onerror="this.src='/assets/img/bg_01.jpg';">
+                                                                </div>
 
-                                    }
-                                    else
-                                    {
-                                        <div class="post-image">
-                                            <img loading="lazy" class="logo-cover" src="/assets/img/bg_01.jpg" alt="">
-                                        </div>
+                                        }
+                                        else
+                                        {
+                                                                <div class="post-image">
+                                                                    <img loading="lazy" class="logo-cover" src="/assets/img/bg_01.jpg" alt="">
+                                                                </div>
 
-                                    }
+                                        }
 
-                                    <div class="post-content">
-                                        <div class="posted-at-wrap">
-                                            @if (item.CreateDate != null)
+                                                    <div class="post-content">
+                                                        <div class="posted-at-wrap">
+                                                @if (item.CreateDate != null)
+                                                {
+                                                                        <div class="posted-at">@item.CreateDate</div>
+                                                }
+
+
+                                                        </div>
+                                            @if (item.Title != null)
                                             {
-                                                <div class="posted-at">@item.CreateDate</div>
+                                                                    <div class="post-title">@item.Title</div>
                                             }
 
+                                            @if (item.Description != null)
+                                            {
+                                                                    <div class="post-description">@item.Description</div>
+                                            }
 
-                                        </div>
-                                        @if (item.Title != null)
-                                        {
-                                            <div class="post-title">@item.Title</div>
-                                        }
+                                                        <div class="reactions-wrap d-flex align-items-center" style="height: 20px;">
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
 
-                                        @if (item.Description != null)
-                                        {
-                                            <div class="post-description">@item.Description</div>
-                                        }
+                            }
 
-                                        <div class="reactions-wrap d-flex align-items-center" style="height: 20px;">
-                                        </div>
-                                    </div>
-                                </a>
                             </div>
 
-                        }
 
+
+                        </div>
                     </div>
-
-
-
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-
+}
 
 
 @* --- bỏ *@
@@ -485,7 +487,10 @@
       ride: 'carousel'
     });
 </script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+<script src="~/assets/js/vue.global.js"></script>
+
 <script>
     const { createApp, ref, onMounted } = Vue
 

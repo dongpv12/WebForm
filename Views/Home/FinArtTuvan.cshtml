@@ -38,19 +38,23 @@
 
 </style>
 
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<!-- Page Title -->
-<div class="page-title accent-background">
-    <div class="container position-relative">
-        <h1>Danh mục tư vấn</h1>
-        @* <nav class="breadcrumbs">
-            <ol>
-                <li><a href="index.html">Home</a></li>
-                <li class="current">Service Details</li>
-            </ol>
-        </nav> *@
+
+<script src="~/assets/js/vue.global.js"></script>
+
+
+<div class="area-page-title">
+    <div class="container">
+        <h1 class="animate a_01">Danh mục tư vấn</h1>
+        <ol class="breadcrumb animate a_02">
+            <li class="breadcrumb-item">
+                <a href="/">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Danh mục tư vấn</li>
+        </ol>
     </div>
-</div><!-- End Page Title -->
+</div>
+
+
 <!-- Service Details Section -->
 <section id="service-details" class="service-details section">
     <div class="container" id="app">
@@ -60,7 +64,7 @@
             
                 <div class="p-4 bg-light border rounded shadow-sm">
                     <div class="container">
-                        <h4 class="mb-4 text-uppercase fw-bold" style="color:#67b0d1">Cổ phiếu tư vấn</h4>
+                        <h4 class="mb-4 text-uppercase" style="color:#16315e; font-weight:100">Cổ phiếu tư vấn</h4>
 
                         <div class="table-responsive">
                             <table class="table table-bordered align-middle cptv table table-striped table-hover">
@@ -114,7 +118,7 @@
 
 
                     <div class="container">
-                        <h5 class="mb-4 text-uppercase text-danger fw-bold">Danh sách cổ phiếu theo dõi</h5>
+                        <h5 class="mb-4 text-uppercase text-danger">Danh sách cổ phiếu theo dõi</h5>
 
                         <div class="table-responsive shadow-sm">
                             <table class="table table-bordered text-center align-middle cptd table table-striped table-hover">
@@ -164,7 +168,7 @@
             <div class="col-md-4">
                 <div class="p-4 text-white text-center" style="background: #38a0b5">
                     <div class="container">
-                        <h5 class="mb-4 text-uppercase  fw-bold" style="color:#fff">Chỉ số FinArt</h5>
+                        <h5 class="mb-4 text-uppercase " style="color:#fff">Chỉ số FinArt</h5>
                         <div class="table-responsive shadow-sm">
                             <table class="table table-bordered table-hover table-striped align-middle table table-striped table-hover">
                                 <thead class="table-primary text-center">

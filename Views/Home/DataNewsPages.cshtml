@@ -25,7 +25,7 @@
             <div class="featureimage">
                 @if (item.FeatureImage != null && item.FeatureImage != "")
                 {
-                    <img src="@item.FeatureImage" />
+                    <img src="@item.FeatureImage" onerror="this.src='/assets/img/bg_01.jpg';" />
                 }
                 else
                 {
