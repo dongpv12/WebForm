@@ -106,7 +106,7 @@
 
 
         .navmenu .search-form {
-            width: 250px;
+            width: 200px;
         }
 
             .navmenu .search-form input.form-control {
@@ -125,7 +125,7 @@
 
             .navmenu .search-form span {
                 pointer-events: none;
-                font-size: 1.2rem;
+                font-size: 13px;
                 color: #267d36;
             }
 
@@ -137,7 +137,7 @@
         }
     </style>
     <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between" style="margin:0; margin-left: auto">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between px-0">
 
             <a href="/" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -161,20 +161,42 @@
 
                     <li><a href="/danh-muc-tu-van">Chỉ số FinArt</a></li>
 
-                    <li><a href="/ve-chung-toi">Về chúng tôi</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Báo cáo phân tích</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#">Báo cáo FinArt</a></li>
+                            <li><a href="#">Báo cáo CTCK</a></li>
+                            <li><a href="#">Báo cáo ngành</a></li>
+                        </ul>
+                    </li>
                     
-                    <li><a href="/danh-sach-tin/5">FAQ</a></li>
+                    <li><a href="/danh-sach-tin/5">Tin tức chứng khoán</a></li>
                     <li>
-                        <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
+                       @*  <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
                             <input class="form-control" type="search" placeholder="Search..." style="height: 30px;">
                             <span class="position-absolute top-50 end-0 translate-middle-y pe-3 text-success">
 
                             </span>
+                        </form> *@
+
+                        <span class="iconsearch" onclick="toggleSearch()" style="cursor: pointer;">
+                            <i class="fa fa-search text-success"></i> <!-- hoặc thay bằng SVG nếu bạn dùng icon khác -->
+                        </span>
+
+                        <!-- FORM tìm kiếm -->
+                        <form id="searchForm" class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0; display: none !important;">
+                            <input class="form-control" type="text" placeholder="Search..." style="height: 30px; font-size: 13px">
+                            <span class="position-absolute top-50 end-0 translate-middle-y pe-3 text-success" style="cursor: pointer;">
+                                <i class="fa fa-search text-success" style="cursor: pointer"></i>
+                            </span>
                         </form>
                     </li>
 
-                    <li>
-                        <a href="/admin/dang-nhap" style="padding: 0;font-weight: 300;">login</a>
+                    <li class="dang-nhap">
+                        <a href="/admin/dang-nhap" style="padding: 0;font-weight: 300;">Đăng nhập</a>
+                    </li>
+                    <li class="dang-ky">
+                        <a href="/admin/dang-nhap" >Đăng ký</a>
                     </li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -193,157 +215,71 @@
         <!-- Pricing Section -->
         <!-- Faq Section -->
         <!-- Contact Section -->
-        <section id="contact" class="contact section">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Liên hệ</h2>
-                <p>Liên hệ với chúng tôi để được hỗ trợ, tư vấn hoặc hợp tác. Đội ngũ FinArt luôn sẵn sàng đồng hành cùng bạn.</p>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-5">
-
-                        <div class="info-wrap">
-                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                                <div>
-                                    <h3>Địa chỉ</h3>
-                                    <p>Haf </p>
-                                </div>
-                            </div><!-- End Info Item -->
-
-                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                                <i class="bi bi-telephone flex-shrink-0"></i>
-                                <div>
-                                    <h3>Điện thoại</h3>
-                                    <p>098 9048431</p>
-                                </div>
-                            </div><!-- End Info Item -->
-
-                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                                <i class="bi bi-envelope flex-shrink-0"></i>
-                                <div>
-                                    <h3>Email</h3>
-                                    <p>chungngocmai3931@gmail.com</p>
-                                </div>
-                            </div><!-- End Info Item -->
-
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7">
-                        <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                            <div class="row gy-4">
-
-                                <div class="col-md-6">
-                                    <label for="name-field" class="pb-2">Tên của bạn</label>
-                                    <input type="text" name="name" id="name-field" class="form-control" required="">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="email-field" class="pb-2">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email-field" required="">
-                                </div>
-
-                                <div class="col-md-12">
-                                    <label for="subject-field" class="pb-2">Tiêu đề</label>
-                                    <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                                </div>
-
-                                <div class="col-md-12">
-                                    <label for="message-field" class="pb-2">Nội dung</label>
-                                    <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                                </div>
-
-                                <div class="col-md-12 text-center">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Cảm ơn bạn! Chúng tôi đã nhận được tin nhắn và sẽ phản hồi sớm nhất có thể</div>
-
-                                    <button type="submit">Gửi góp ý</button>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div><!-- End Contact Form -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Contact Section -->
-
+     
     </main>
 
 
 
-    <footer id="footer" class="footer dark-background">
-
-        <div class="container footer-top">
-            <div class="row gy-4">
-                <div class="col-lg-4 col-md-6 footer-about">
-                    <a href="index.html" class="logo d-flex align-items-center">
-                        <span class="sitename">FinArt</span>
-                    </a>
-                    <div class="footer-contact pt-3">
-                        <p>A108 Adam Street</p>
-                        <p>Hà Nội, HN Việt Nam</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>098 9048431</span></p>
-                        <p><strong>Email:</strong> <span>chungngocmai3931@gmail.com</span></p>
+    <footer style="margin-top: 60px;">
+        <div class="container">
+            <div class="row0">
+                <div class="col-12 col-sm-5">
+                    <div class="footer-logo">
+                        <a href="/"><img src="	https://timetradingfx.com/storage/config/182e624b1a6d178.png" alt="logo-TimeTrading"></a>
+                        <p>
+                        <p>85 Vũ Trọng Phung, Thanh Xuân , Hà Nội</p>
+                        <p>Phone <span>098 904 8431</span></p>
+                        <p>Email <span>finart.advisory@gmail.com</span></p>
+                        </p>
                     </div>
-                    <div class="social-links d-flex mt-4">
-                        <a href=""><i class="bi bi-twitter-x"></i></a>
-                        <a href=""><i class="bi bi-facebook"></i></a>
-                        <a href=""><i class="bi bi-instagram"></i></a>
-                        <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
+                </div><div class="col-12 col-sm-2"></div>
+                <div class="col-12 col-sm-2">
+                    <h5>Useful Links</h5><ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li><a href="javascript:;">About Us</a></li>
+                        <li><a href="javascript:;">Product</a></li>
+                        <li><a href="javascript:;">Service</a></li>
+                        <li><a href="javascript:;">FAQ</a></li>
+                        <li><a href="javascript:;">Contact Us</a></li>
+                    </ul>
+                </div><div class="col-12 col-sm-3">
+                    <h5>Social Connect</h5><ul class="fanpages">
+                        <li>
+                            <a target="_blank" rel="nofollow" href="javascrript:;">
 
-                <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="/">Trang chủ</a></li>
-                        <li><a href="/ve-chung-toi">Về chúng tôi</a></li>
-                        <li><a href="javascript:;">Xu hướng thị trường</a></li>
-                        <li><a href="javascript:;">Xu hướng ngành</a></li>
-                        <li><a href="javascript:;">Cổ phiếu dẫn dắt</a></li>
+                                <img src="~/assets/img/facebook.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="javascript:;">
+                                <img src="~/assets/img/youtube.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="javascript;;">
+                                <img src="~/assets/img/telegram.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="javascript:;">
+                                <img src="~/assets/img/instagram.png" />
+                            </a>
+                        </li>
                     </ul>
                 </div>
-
-                <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="/danh-sach-bao-cao-art/6">Báo cáo FintArt</a></li>
-                        <li><a href="/danh-sach-bao-cao-art/7">Báo cáo công ty Chứng khoán</a></li>
-                        <li><a href="/danh-sach-bao-cao-art/8">Báo cáo ngành</a></li>
-                        <li><a href="#">Chỉ số FinArt</a></li>
-                        <li><a href="/danh-sach-tin/5">FAQ</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-4 col-md-12 footer-newsletter">
-                    <h4>Bản tin của chúng tôi</h4>
-                    <p>Hãy theo dõi nhận bản tin để nhận những thông tin mới nhất về sản phẩm và dịch vụ của chúng tôi!</p>
-                    @* <form action="forms/newsletter.php" method="post" class="php-email-form">
-						<div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-						<div class="loading">Loading</div>
-						<div class="error-message"></div>
-						<div class="sent-message">Your subscription request has been sent. Thank you!</div>
-					</form> *@
-                </div>
+            </div>
+        </div><hr><div class="container">
+            <div class="row0">
+                <div class="col-12 col-sm-6"><p class="copyright">© 2025 <b>FinArt</b>. All rights reserved.</p></div>
 
             </div>
         </div>
-
-        <div class="container copyright text-center mt-4">
-        </div>
-
     </footer>
+
+
+
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -410,6 +346,20 @@
                 link.classList.remove('active');
             }
         });
+    </script>
+
+    <script>
+        function toggleSearch() {
+          const form = document.getElementById("searchForm");
+         
+          if (form.style.display === "none" || form.style.display === "") {
+            form.style.display = "block";
+            form.querySelector("input").focus();
+          } else {
+            form.style.display = "none";
+          }
+         $(".iconsearch").css("display", "none");
+        }
     </script>
 </body>
 </html>

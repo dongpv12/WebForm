@@ -6,7 +6,7 @@
     var lstNews = Model.LstNews;
     var lstProject = Model.LstProject;
 
-    List<News> list = DataMemory.c_lstNew.Where(x => x.CategoryType == "1").OrderByDescending(i => i.Id).Take(5).ToList();
+    List<News> list = DataMemory.c_lstNew.Where(x => x.CategoryType == "1").OrderByDescending(i => i.Id).Take(6).ToList();
 }
 
 <style>
@@ -293,8 +293,9 @@
                         <p class="number"></p>
                         <div class="border-img">
                             <img src="~/assets/img/icon-01.png" />
-                        </div> <h3>
-                            Diễn biến thị trường
+                        </div>
+                        <h3>
+                            <a href="/danh-sach-tin/2">Xu hướng thị trường</a>
                         </h3>
                         <p> Phân tích diễn biến và xu hướng thị trường qua số liệu thực tế – hỗ trợ xây dựng chiến lược đầu tư hiệu quả </p>
                     </article>
@@ -305,7 +306,8 @@
                         <div class="border-img">
                             <img src="~/assets/img/icon-01.png" />
                         </div> <h3>
-                            Xu hướng ngành
+
+                            <a href="/danh-sach-tin/3"> Xu hướng ngành</a>
                         </h3> <p> Phân tích các xu hướng phát triển nổi bật trong từng ngành – nền tảng quan trọng để đánh giá cơ hội đầu tư và định vị chiến lược dài hạn </p>
                     </article>
                 </div>
@@ -314,7 +316,11 @@
                         <p class="number"></p>
                         <div class="border-img">
                             <img src="~/assets/img/icon-01.png" />
-                        </div> <h3>Cổ phiếu dẫn dắt</h3>
+                        </div>
+                        <h3>
+
+                            <a href="/danh-sach-tin/4">  Cổ phiếu dẫn dắt</a>
+                        </h3>
                         <p> Danh mục các cổ phiếu dẫn dắt thị trường, đại diện cho các ngành tăng trưởng mạnh và thu hút dòng tiền lớn </p>
                     </article>
                 </div>
@@ -341,19 +347,30 @@
                                 <div class="col-12 col-sm-6 col-md-4 d-flex">
                                     <article>
                                         <img src="~/assets/img/icon-13.png" />
-                                        <h3>Báo cáo FinArt</h3>
+                                        <h3>
+
+                                            <a href="/danh-sach-tin/6"> Báo cáo FinArt</a>
+
+                                        </h3>
                                         <p> Tổng hợp các báo cáo phân tích chuyên sâu được thực hiện bởi FinArt – giúp bạn nắm bắt thông tin thị trường một cách toàn diện</p>
                                     </article>
                                 </div> <div class="col-12 col-sm-6 col-md-4 d-flex">
                                     <article>
                                         <img src="~/assets/img/icon-14.png" />
-                                        <h3>Báo cáo CTCK</h3>
+                                        <h3>
+
+                                            <a href="/danh-sach-tin/7">    Báo cáo CTCK</a>
+                                        </h3>
                                         <p> Tổng hợp các báo cáo phân tích, nhận định và khuyến nghị từ các công ty chứng khoán</p>
                                     </article>
                                 </div> <div class="col-12 col-sm-6 col-md-4 d-flex">
                                     <article>
                                         <img src="~/assets/img/icon-15.png" />
-                                        <h3>Báo cáo ngành</h3>
+                                        <h3>
+                                            <a href="/danh-sach-tin/8">
+                                                Báo cáo ngành
+                                            </a>
+                                        </h3>
                                         <p> Phân tích toàn cảnh ngành với số liệu, xu hướng và đánh giá chuyên sâu, giúp bạn hiểu rõ bối cảnh và tiềm năng phát triển </p>
                                     </article>
                                 </div>
@@ -383,10 +400,11 @@
                     </a>
                 </h5>
                 <img class="abs-fix" src="~/assets/img/shape-4.png" />
-            </hgroup> <div class="box-plan">
+            </hgroup>
+            <div class="box-plan">
                 <article>
                     <img src="~/assets/img/vector1.png" />
-                    <h6 class="price">$0</h6> <p> Speed up your trading journey - let our automated trading system do the work for you. </p>
+                    <h6 class="price"></h6> <p> Speed up your trading journey - let our automated trading system do the work for you. </p>
                     <div class="text_a">
                         <a target="_blank" rel="dofollow" href="javascript:;" class="btn-action">
                             <img src="~/assets/img/icon-start.png" />
@@ -421,239 +439,80 @@
     </div> <script type="text/javascript"> </script>
 </div>
 
-<footer style="margin-top: 60px;">
-    <div class="container">
-        <div class="row0">
-            <div class="col-12 col-sm-5">
-                <div class="footer-logo">
-                    <a href="/"><img src="	https://timetradingfx.com/storage/config/182e624b1a6d178.png" alt="logo-TimeTrading"></a>
-                    <p>
-                    <p>85 Vũ Trọng Phung, Thanh Xuân , Hà Nội</p>
-                    <p>Phone <span>098 904 8431</span></p>
-                    <p>Email <span>finart.advisory@gmail.com</span></p>
-                    </p>
-                </div>
-            </div><div class="col-12 col-sm-2"></div>
-            <div class="col-12 col-sm-2">
-                <h5>Useful Links</h5><ul>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li><a href="javascript:;">About Us</a></li>
-                    <li><a href="javascript:;">Product</a></li>
-                    <li><a href="javascript:;">Service</a></li>
-                    <li><a href="javascript:;">FAQ</a></li>
-                    <li><a href="javascript:;">Contact Us</a></li>
-                </ul>
-            </div><div class="col-12 col-sm-3">
-                <h5>Social Connect</h5><ul class="fanpages">
-                    <li>
-                        <a target="_blank" rel="nofollow" href="javascrript:;">
+<section class="highlight-posts-wrap mb-15 ">
+    <div class="container" style="padding: 20px 20px 4px;">
 
-                            <img src="~/assets/img/facebook.png" />
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" rel="nofollow" href="javascript:;">
-                            <img src="~/assets/img/youtube.png" />
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" rel="nofollow" href="javascript;;">
-                            <img src="~/assets/img/telegram.png" />
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" rel="nofollow" href="javascript:;">
-                            <img src="~/assets/img/instagram.png" />
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div><hr><div class="container">
-        <div class="row0">
-            <div class="col-12 col-sm-6"><p class="copyright">© 2025 <b>FinArt</b>. All rights reserved.</p></div>
+        <hgroup class="title-group">
+            <h6><img src="~/assets/img/arrow-up.png" /> TIN NỔI BẬT</h6>
+            <h2>Tin tức mới nhất của thị trường chứng khoán</h2>
+        </hgroup>
 
-        </div>
-    </div>
-</footer>
+        <div class="section-content row0" style="margin-left: -14px; margin-right: -14px;">
+            <div class="carousel-wrap" style="">
+                <div class="carousel-wrap-inner">
+                    <div class="carousel-highlight-post px-15 row r0">
 
-<section class="about section">
+                        @foreach (var item in list)
+                        {
+                            <div class="col-lg-4 col-md-6" style="padding-left: 14px; padding-right: 14px;">
+                                <a href="/chi-tiet/@item.Id" class="span-like post-card clickable highlight-post">
+                                    @if (item.FeatureImage != null && item.FeatureImage != "")
+                                    {
+                                        <div class="post-image">
+                                            <img loading="lazy" class="logo-cover" src="@item.FeatureImage" alt="" onerror="this.src='/assets/img/bg_01.jpg';">
+                                        </div>
 
-    <div class="container">
+                                    }
+                                    else
+                                    {
+                                        <div class="post-image">
+                                            <img loading="lazy" class="logo-cover" src="/assets/img/bg_01.jpg" alt="">
+                                        </div>
 
-        <div class="row gy-5">
+                                    }
 
-            <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
-                <h5 style="    border-bottom: 2px solid #e9430f;color: #e9430f; font-weight: bold">
-                    Tin tức mới nhất
-                </h5>
-                @if (list != null && list.Count > 0)
-                {
-                    @foreach (var item in list)
-                    {
-                        <div class="item_news" style="padding:7px 10px;">
+                                    <div class="post-content">
+                                        <div class="posted-at-wrap">
+                                            @if (item.CreateDate != null)
+                                            {
+                                                <div class="posted-at">@item.CreateDate</div>
+                                            }
 
-                            <div class="newtomtat" style="padding-left: 0 !important">
 
-                                <div class="title_news">
-                                    <a href="/chi-tiet/@item.Id" target="_blank" style="display: -webkit-box;
-                                                          -webkit-line-clamp: 2;       /* 👈 Giới hạn 3 dòng */
-                                                          -webkit-box-orient: vertical;
-                                                          overflow: hidden;
-                                                          text-overflow: ellipsis;
-
-                                                          line-height: 1.4;
-                                                          max-height: calc(1.4em * 2); /* Giới hạn chiều cao 3 dòng */">
-
-                                        @if ((DateTime.Now.Date - item.Create_Date?.Date)?.Days <= 3)
+                                        </div>
+                                        @if (item.Title != null)
                                         {
-
-                                            <div class="new-badge">
-                                                <!-- SVG ngôi sao nhiều cánh với gradient đỏ-vàng -->
-                                                <svg class="star" viewBox="0 0 64 64">
-                                                    <defs>
-                                                        <radialGradient id="grad" cx="50%" cy="50%" r="50%">
-                                                            <stop offset="0%" stop-color="#FFD700" /> <!-- Vàng -->
-                                                            <stop offset="100%" stop-color="#FF4500" /> <!-- Đỏ cam -->
-                                                        </radialGradient>
-                                                    </defs>
-                                                    <path d="M32 0 L36 20 L52 12 L44 28 L64 32 L44 36 L52 52 L36 44 L32 64
-                                       L28 44 L12 52 L20 36 L0 32 L20 28 L12 12 L28 20 Z" />
-                                                </svg>
-                                                NEW
-                                            </div>
+                                            <div class="post-title">@item.Title</div>
                                         }
 
+                                        @if (item.Description != null)
+                                        {
+                                            <div class="post-description">@item.Description</div>
+                                        }
 
-
-                                        @(item.Title ?? "")
-                                    </a>
-                                </div>
-                                <div class="date_new" style="">
-                                    @item.CreateDate
-                                </div>
+                                        <div class="reactions-wrap d-flex align-items-center" style="height: 20px;">
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
 
-                        </div>
+                        }
 
-
-
-
-                    }
-                }
-                else
-                {
-
-                }
-
-
-            </div>
-
-            <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
-                <div class="row gy-4">
-
-                    <div class="col-md-6 icon-box position-relative">
-                        <i class="bi bi-briefcase"></i>
-                        <h4><a href="/danh-sach-tin/2" class="stretched-link">Xu hướng thị trường</a></h4>
-                        <p>Phân tích diễn biến và xu hướng thị trường qua số liệu thực tế – hỗ trợ xây dựng chiến lược đầu tư hiệu quả</p>
-                    </div><!-- Icon-Box -->
-
-                    <div class="col-md-6 icon-box position-relative">
-                        <i class="bi bi-gem"></i>
-                        <h4><a href="/danh-sach-tin/3" class="stretched-link">Xu hướng ngành</a></h4>
-                        <p>Phân tích các xu hướng phát triển nổi bật trong từng ngành – nền tảng quan trọng để đánh giá cơ hội đầu tư và định vị chiến lược dài hạn</p>
-                    </div><!-- Icon-Box -->
-
-                    <div class="col-md-6 icon-box position-relative">
-                        <i class="bi bi-broadcast"></i>
-                        <h4><a href="/danh-sach-tin/4" class="stretched-link">Cổ phiếu dẫn dắt</a></h4>
-                        <p>Danh mục các cổ phiếu dẫn dắt thị trường, đại diện cho các ngành tăng trưởng mạnh và thu hút dòng tiền lớn</p>
-                    </div><!-- Icon-Box -->
+                    </div>
 
 
 
                 </div>
             </div>
-
-        </div>
-
-
-
-    </div>
-
-</section><!-- /About Section -->
-<!-- Services Section -->
-<section id="services" class="services section">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-        <h2>Báo cáo phân tích</h2>
-        @* <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> *@
-    </div><!-- End Section Title -->
-
-    <div class="container">
-
-        <div class="row gy-4">
-
-            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-item position-relative">
-                    <div class="icon"><i class="bi bi-activity icon"></i></div>
-                    <h4><a href="/danh-sach-bao-cao-art/6" class="stretched-link">Báo cáo Fin Art</a></h4>
-                    <p>Tổng hợp các báo cáo phân tích chuyên sâu được thực hiện bởi Fin Art – giúp bạn nắm bắt thông tin thị trường một cách toàn diện</p>
-                </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-item position-relative">
-                    <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                    <h4><a href="/danh-sach-bao-cao-art/7" class="stretched-link">Báo cáo công ty Chứng khoán</a></h4>
-                    <p>Tổng hợp các báo cáo phân tích, nhận định và khuyến nghị từ các công ty chứng khoán</p>
-                </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-                <div class="service-item position-relative">
-                    <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                    <h4><a href="/danh-sach-bao-cao-art/8" class="stretched-link">Báo cáo ngành</a></h4>
-                    <p>Phân tích toàn cảnh ngành với số liệu, xu hướng và đánh giá chuyên sâu, giúp bạn hiểu rõ bối cảnh và tiềm năng phát triển</p>
-                </div>
-            </div><!-- End Service Item -->
-            @*  <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                            <h4><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                        </div>
-                    </div> *@
-            <!-- End Service Item -->
-
-        </div>
-
-    </div>
-
-</section><!-- /Services Section -->
-<!-- Stats Section -->
-<!-- Call To Action Section -->
-<section id="about" class="call-to-action section accent-background">
-
-    <img src="~/assets/img/cta-bg.jpg" alt="">
-
-    <div class="container">
-        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-            <div class="col-xl-10">
-                <div class="text-center">
-                    <h3>Về chúng tôi</h3>
-                    <p>Chúng tôi là đội ngũ chuyên gia giàu kinh nghiệm trong lĩnh vực chứng khoán, cam kết mang đến những giải pháp hiệu quả, chất lượng và bền vững cho khách hàng. Sứ mệnh của chúng tôi là tạo ra giá trị thực và đồng hành cùng sự phát triển của bạn.</p>
-                    <a class="cta-btn" target="_blank" href="/ve-chung-toi">Xem thêm</a>
-                </div>
-            </div>
         </div>
     </div>
+</section>
 
-</section><!-- /Call To Action Section -->
-<!-- Portfolio Section -->
+
+
+
+@* --- bỏ *@
+
 
 <script>
     function gotoDanhMuc(){
