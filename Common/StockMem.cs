@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Skender.Stock.Indicators;
 using System.Collections.Concurrent;
 using WebForm.Common;
 
@@ -67,6 +68,28 @@ namespace WebForm
             {
                 Logger.Log.Error(ex.ToString());
                 return new List<StockHistoryInfo>();
+            }
+        }
+
+        public static List<Quote> LoadData_StockFrom_VPS_Quote(string p_symbol, DateTime fromDate, DateTime toDate)
+        {
+            try
+            {
+                //DateTime _dt_1 = DateTime.Now;
+                //DateTime _dt_2 = DateTime.Now.AddMonths(-6);
+                long from = Utils.DateTimeToTimeStamp(fromDate);
+                long to = Utils.DateTimeToTimeStamp(toDate);
+
+                string _url = string.Format("https://histdatafeed.vps.com.vn/tradingview/history?symbol={0}&resolution=1D&from={1}&to={2}", p_symbol, from, to); // Thay đổi đường dẫn file cần download ở đây
+                string ContentCK = Utils.CallAPI(_url);
+                StockData_TradingView _StockData_VPS = Newtonsoft.Json.JsonConvert.DeserializeObject<StockData_TradingView>(ContentCK);
+                List<Quote> _lst_convert = Utils.ConvertTo_Quote(_StockData_VPS);
+                return _lst_convert;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+                return new List<Quote>();
             }
         }
 
