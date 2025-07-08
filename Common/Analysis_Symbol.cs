@@ -35,11 +35,11 @@ namespace WebForm
                         Analysis_Info = ""
                     };
                 }
-                double Current_Price = (double)_StockMemInfo.MatchPrice;
+                double Current_Price = _StockMemInfo.MatchPrice <= 0 ? 0 : (double)_StockMemInfo.MatchPrice / 1000;
 
                 DateTime _dt_1 = DateTime.Now;
-                DateTime _dt_2 = DateTime.Now.AddMonths(-8);
-                List<Quote> Lst_Quote = StockMem.LoadData_StockFrom_VPS_Quote(p_Symbol, _dt_1, _dt_2);
+                DateTime _dt_2 = DateTime.Now.AddMonths(-12);
+                List<Quote> Lst_Quote = StockMem.LoadData_StockFrom_VPS_Quote(p_Symbol, _dt_2, _dt_1);
 
                 if (Lst_Quote == null || Lst_Quote.Count == 0)
                 {
@@ -187,7 +187,7 @@ namespace WebForm
                 // Tạo nhận xét tổng hợp
                 analysis.Observations = new List<string>();
                 analysis.Observations.Add($"Chứng khoán đang trong xu hướng {analysis.Trend} với giá hiện tại {analysis.CurrentPrice:F2}.");
-                analysis.Observations.Add($"Thay đổi trong 20 ngày gần đây: {analysis.Change20Days:F2}%.");
+                analysis.Observations.Add($"Thay đổi giá trong 20 ngày gần đây: {analysis.Change20Days:F2}%.");
 
                 if (analysis.RSI > 70)
                     analysis.Observations.Add($"RSI đang ở mức {analysis.RSI:F2}, cho thấy cổ phiếu đang trong vùng QUÁ MUA.");

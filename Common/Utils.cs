@@ -233,7 +233,7 @@ namespace WebForm
         /// Hàm ví dụ phân tích mã chứng khoán
         /// </summary>
         /// <param name="p_symbol"></param>
-        public static void Save_technical_analysis(string p_symbol)
+        public static async Task Save_technical_analysisAsync(string p_symbol)
         {
             try
             {
@@ -241,7 +241,10 @@ namespace WebForm
                 {
                     return;
                 }
-                StockAnalysis stockAnalysis = Get_technical_analysis(p_symbol);
+
+                //StockAnalysis stockAnalysis = Get_technical_analysis(p_symbol);
+                StockAnalysis stockAnalysis = await Analysis_Symbol.AnalyzeStockDataAsync(p_symbol);
+
                 if (stockAnalysis == null || stockAnalysis.CurrentPrice <= 0)
                 {
                     return;
