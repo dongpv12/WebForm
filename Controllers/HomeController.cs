@@ -24,7 +24,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> IndexAsync()
     {
         List<News> list = DataMemory.c_lstNew.OrderByDescending(i => i.Special).ThenByDescending(i => i.Id).Take(4).ToList();
         List<Project> listProject = DataMemory.c_lstProject.FindAll(i => i.Special == "Y").ToList();

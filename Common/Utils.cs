@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using Skender.Stock.Indicators;
 using System.Globalization;
 using System.Text.Json;
 using WebForm.Common;
@@ -100,6 +101,26 @@ namespace WebForm
                     Max = (decimal)(data.h[i] ),
                     Min = (decimal)(data.l[i]),
                     MatchQtty = data.v[i]
+                });
+            }
+
+            return records;
+        }
+
+        public static List<Quote> ConvertTo_Quote(StockData_TradingView data)
+        {
+            var records = new List<Quote>();
+
+            for (int i = 0; i < data.t.Count; i++)
+            {
+                records.Add(new Quote
+                {
+                    Date = DateTimeOffset.FromUnixTimeSeconds(data.t[i]).DateTime,
+                    Open = (decimal)(data.o[i]),
+                    Close = (decimal)(data.c[i]),
+                    High = (decimal)(data.h[i]),
+                    Low = (decimal)(data.l[i]),
+                    Volume = data.v[i]
                 });
             }
 
@@ -212,7 +233,7 @@ namespace WebForm
         /// Hàm ví dụ phân tích mã chứng khoán
         /// </summary>
         /// <param name="p_symbol"></param>
-        public static void Save_technical_analysis(string p_symbol)
+        public static async Task Save_technical_analysisAsync(string p_symbol)
         {
             try
             {
@@ -220,7 +241,10 @@ namespace WebForm
                 {
                     return;
                 }
-                StockAnalysis stockAnalysis = Get_technical_analysis(p_symbol);
+
+                //StockAnalysis stockAnalysis = Get_technical_analysis(p_symbol);
+                StockAnalysis stockAnalysis = await Analysis_Symbol.AnalyzeStockDataAsync(p_symbol);
+
                 if (stockAnalysis == null || stockAnalysis.CurrentPrice <= 0)
                 {
                     return;
