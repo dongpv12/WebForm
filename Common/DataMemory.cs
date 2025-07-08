@@ -22,6 +22,18 @@ namespace WebForm.Common
 
         public static List<Symbol_Notify_Info> c_lstSymbolData = new List<Symbol_Notify_Info>();
 
+        public static void LoadMem()
+        {
+            Logger.Log.Info("Begin Load Memory");
+
+            DataMemory.LoadNews();
+            DataMemory.LoadSymbol();
+            DataMemory.GetAllcode();
+            StockMem.Read_SymbolFile();
+
+            Logger.Log.Info("Done Load Memory");
+        }
+
         public static void LoadNews()
         {
             try
@@ -45,13 +57,12 @@ namespace WebForm.Common
                 Logger.Log.Error(ex.ToString());
             }
         }
+
         public static void GetAllcode()
         {
             try
             {
                 UsersDA _da = new UsersDA();
-
-               
                 var ds = _da.GetAllcode();
 
                 c_lstAllcode = CBO<Allcode_Info>.FillCollectionFromDataSet(ds);
@@ -90,12 +101,6 @@ namespace WebForm.Common
                 SymbolDA _da = new SymbolDA();
                 var data = _da.SymbolGetAll();
                 c_lstSymbolData = CBO<Symbol_Notify_Info>.FillCollectionFromDataSet(data);
-
-                //var pTotal = 0;
-                //var ds = _newsDa.GetForPortalDetail(portalSearchNews, ref pTotal);
-
-                //c_lstNew = CBO<News>.FillCollectionFromDataSet(ds);
-                //c_lstNew = c_lstNew.OrderByDescending(m => m.Id).ToList();
             }
             catch (Exception ex)
             {

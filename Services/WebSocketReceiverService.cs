@@ -48,7 +48,7 @@ public class WebSocketReceiverService : BackgroundService
                 {
                     if (msg.ToString() == "hello")
                     {
-                        Logger.Log.Info("Websocket Connected");
+                        Logger.Log.Info("Websocket Connected => done recv message hello");
                     }
                     else
                     {
