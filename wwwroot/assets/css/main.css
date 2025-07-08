@@ -749,7 +749,7 @@ h6 {
 --------------------------------------------------------------*/
 section,
 .section {
-    color: var(--default-color); 
+    color: var(--default-color);
     background-color: var(--background-color);
     /*padding: 60px 0;*/
     scroll-margin-top: 74px;
@@ -2268,7 +2268,7 @@ img, svg {
     vertical-align: middle;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -2335,6 +2335,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 215px;
     width: 240px;
 }
+
 .box-plan {
     display: flex;
 }
@@ -2437,6 +2438,7 @@ footer h5 {
     font-size: 18px;
     margin-bottom: 20px;
 }
+
 .footer-logo img {
     width: 240px;
     margin-bottom: 20px;
@@ -2492,6 +2494,7 @@ footer ul li {
     padding-left: 0;
     float: right;
 }
+
 {
     list-style-type: none;
 }
@@ -2575,6 +2578,7 @@ footer ul li {
 .mb-15 {
     margin-bottom: 15px !important;
 }
+
 .highlight-posts-wrap .section-caption .caption-text {
     color: #ffc601;
     line-height: 28px;
@@ -2658,6 +2662,7 @@ footer ul li {
     font-size: 13px;
     line-height: 16px;
 }
+
 .post-card .posted-at-wrap .posted-at {
     font-size: 12px;
     color: #c4c4c4;
@@ -2714,7 +2719,7 @@ footer ul li {
     display: none !important;
 }
 
- .post-card .post-description {
+.post-card .post-description {
     color: #707a83;
 }
 
@@ -2743,8 +2748,8 @@ footer ul li {
 }
 
 
-.r0{
-    gap:0rem !important;
+.r0 {
+    gap: 0rem !important;
 }
 
 
@@ -2752,19 +2757,19 @@ a {
     color: #16315e !important;
 }
 
-.dang-ky{
+.dang-ky {
     /*border: 1px solid red;*/
 }
 
-.dang-ky a{
-    padding: 2px 8px !important;
-    font-weight: unset !important;
-    font-size: 13px;
-    font-family: 'Lexenddeca';
-    color: #000;
-    background: #f4b123;
-    border-radius: 9px;
-}
+    .dang-ky a {
+        padding: 2px 8px !important;
+        font-weight: unset !important;
+        font-size: 13px;
+        font-family: 'Lexenddeca';
+        color: #000;
+        background: #f4b123;
+        border-radius: 9px;
+    }
 
 .dang-nhap a {
     padding: 2px 8px !important;
@@ -2773,10 +2778,132 @@ a {
     font-family: 'Lexenddeca';
     color: #585858 !important;
 }
+
 .iconsearch i {
     color: #585858 !important;
 }
 
 .iconsearch {
-    padding:0 10px !important;
+    padding: 0 10px !important;
 }
+
+
+
+
+
+#highlight {
+    background: url('../img/shape-1.jpg') no-repeat top center;
+    background-size: 100%;
+    color: #fff;
+    background-size: cover; /* phủ toàn bộ khung */
+    background-position: center top;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 60px);
+    /* full chiều cao màn hình */
+    color: #fff;
+    display: flex;
+    align-items: center; /* căn giữa theo chiều dọc nếu muốn */
+    margin-top: 60px;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel-inner {
+    overflow: visible;
+}
+
+
+#highlight article {
+    padding: 30px;
+    border: 2px solid #10cfc9;
+    margin: 20px 0;
+    border-radius: 15px;
+    position: relative;
+}
+
+    #highlight article h2 {
+        font-size: 48px;
+        line-height: 1.1;
+        letter-spacing: -1px;
+        color: #10cfc9;
+    }
+
+.a_01 {
+    animation-delay: 0.1s;
+}
+
+.animate {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeInUp;
+}
+
+#highlight ul li:after {
+    position: absolute;
+    content: '';
+    top: 6px;
+    left: 0;
+    background: url(images/badge_active.svg) no-repeat;
+    width: 24px;
+    height: 24px;
+    transform: scale(0.7, 0.7);
+}
+
+
+#highlight ul li:after {
+    position: absolute;
+    content: '';
+    top: 6px;
+    left: 0;
+    background: url('../img/badge_active.svg') no-repeat;
+    width: 24px;
+    height: 24px;
+    transform: scale(0.7, 0.7);
+}
+
+#highlight ul li {
+    list-style-type: none;
+    position: relative;
+    padding: 7px 0 7px 30px;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.a_03 {
+    animation-delay: 0.3s;
+}
+
+#highlight ul li span {
+    color: #10cfc9;
+    font-family: Lexenddeca_B;
+    float: right;
+}
+
+li.three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px;
+}
+
+    li.three-columns span:nth-child(1) {
+        text-align: left;
+        font-family: "LexendDeca" !important;
+        color: #fff !important;
+    }
+
+
+    li.three-columns span:nth-child(1) a {
+        text-align: left;
+        font-family: "LexendDeca" !important;
+        color: #fff !important;
+    }
+
+    li.three-columns span:nth-child(2) {
+        text-align: center;
+    }
+
+    li.three-columns span:nth-child(3) {
+        text-align: right;
+    }
