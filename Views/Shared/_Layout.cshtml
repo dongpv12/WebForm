@@ -151,7 +151,7 @@
                 <ul>
                     <li><a href="/" class="active">Trang chủ</a></li>
 
-                   <li class="dropdown">
+                    <li class="dropdown">
                         <a href="#"><span>Danh mục tư vấn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Danh mục trung hạn</a></li>
@@ -170,10 +170,10 @@
                             <li><a href="/danh-sach-tin/8">Báo cáo ngành</a></li>
                         </ul>
                     </li>
-                    
+
                     <li><a href="/danh-sach-tin/5">Tin tức chứng khoán</a></li>
                     <li>
-                       @*  <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
+                        @*  <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
                             <input class="form-control" type="search" placeholder="Search..." style="height: 30px;">
                             <span class="position-absolute top-50 end-0 translate-middle-y pe-3 text-success">
 
@@ -197,7 +197,7 @@
                         <a href="/admin/dang-nhap" style="padding: 0;font-weight: 300;">Đăng nhập</a>
                     </li>
                     <li class="dang-ky">
-                        <a href="/admin/dang-nhap" >Đăng ký</a>
+                        <a href="/admin/dang-nhap">Đăng ký</a>
                     </li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -216,7 +216,7 @@
         <!-- Pricing Section -->
         <!-- Faq Section -->
         <!-- Contact Section -->
-     
+
     </main>
 
 
@@ -226,7 +226,10 @@
             <div class="row0">
                 <div class="col-12 col-sm-5">
                     <div class="footer-logo">
-                        <a href="/"><img src="	https://timetradingfx.com/storage/config/182e624b1a6d178.png" alt="logo-TimeTrading"></a>
+                        <a href="/">
+                            @* <img src="	https://timetradingfx.com/storage/config/182e624b1a6d178.png" alt="logo-TimeTrading"> *@
+                            <img src="~/assets/img/logo.jpg" />
+                        </a>
                         <p>
                         <p>85 Vũ Trọng Phung, Thanh Xuân , Hà Nội</p>
                         <p>Phone <span>098 904 8431</span></p>
@@ -321,7 +324,7 @@
     </script> *@
 
 
-  
+
 
     <div class="zalo-chat-widget"
          data-oaid="@ConfigInfo.Zalocontact"
@@ -352,7 +355,7 @@
     <script>
         function toggleSearch() {
           const form = document.getElementById("searchForm");
-         
+
           if (form.style.display === "none" || form.style.display === "") {
             form.style.display = "block";
             form.querySelector("input").focus();
