@@ -398,11 +398,12 @@ public class HomeController : Controller
                     item.Heso_Text = item.Heso.ToNumberStringN31();
                     item.Current_Price_Text = item.Current_Price.ToNumberStringN31();
                 }
-                if (item.DoanhThu == 0)
+
+                if (info != null && item.DoanhThu == 0)
                 {
                     item.PE = 0;
                 }
-                else
+                else if(info != null)
                 {
                     item.PE = item.Current_Price / item.DoanhThu;
                 }
@@ -494,6 +495,7 @@ public class HomeController : Controller
                 Price = x.Price,
                 Price_Text = x.Price_Text,
                 Current_Price = x.Current_Price,
+                Current_Price_Text = x.Current_Price_Text,
                 Heso_Text = x.Heso_Text,
                 Status_Text = x.Status_Text,
                 Status = x.Status

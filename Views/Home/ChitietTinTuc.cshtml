@@ -18,13 +18,21 @@
 
 }
 
-<!-- Page Title -->
-<div class="page-title accent-background">
-    <div class="container position-relative">
-        <h1>@news.CategoryName</h1>
 
+
+<div class="area-page-title">
+    <div class="container">
+        <h1 class="animate a_01">@news.CategoryName</h1>
+        <ol class="breadcrumb animate a_02">
+            <li class="breadcrumb-item">
+                <a href="/">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">@news.CategoryName</li>
+        </ol>
     </div>
-</div><!-- End Page Title -->
+</div>
+
+
 <!-- Service Details Section -->
 <section id="service-details" class="service-details section">
 
@@ -41,7 +49,7 @@
                         @news.CreateDate
                     </div>
                     <div id="des_detail">
-                        @(news.Description ?? "")
+                         @Html.Raw(news.Description ?? "")   
                     </div>
                     <div>@Html.Raw(news.Content ?? "")</div>
 
@@ -112,7 +120,7 @@
             </div>
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                @Html.Partial("NewsOtherTab", @news.CategoryType)
+                @Html.Partial("NewsOtherTab", news.CategoryType)
             </div>
 
 

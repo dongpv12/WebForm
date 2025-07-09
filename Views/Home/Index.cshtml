@@ -96,11 +96,11 @@
 
     #highlight article {
         /*  padding: 30px;
-                    border: 2px solid #fff;
-                    margin: 20px 0;
-                    border-radius: 15px;
-                    position: relative;
-                    background: #ffffff2e; */
+                                border: 2px solid #fff;
+                                margin: 20px 0;
+                                border-radius: 15px;
+                                position: relative;
+                                background: #ffffff2e; */
     }
 
         #highlight article h2 img {
@@ -179,6 +179,57 @@
             padding-right: 0;
         }
 
+
+
+    .stock-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+        .stock-table th,
+        .stock-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        .stock-table thead {
+            /* background-color: #f8d87b; */
+          /*   font-weight: bold;
+            color: #00fff0;
+            font-family: "LexendDeca_Light"; */
+            font-family: "LexendDeca";
+            color: #16315e !important;
+            background: #18cbb4;
+        }
+
+        .stock-table .positive {
+            /* background-color: #c6f3c2;  */
+            background: #276827;
+            font-family: "LexendDeca";
+            color: #10cfc9;
+        }
+
+        .stock-table .negative {
+            /* background-color: #f4c6c6;  */
+            background: #cc0000;
+            font-family: "LexendDeca";
+            color: #10cfc9;
+        }
+
+        .stock-table .yellow{
+            background: #f4a300;
+            font-family: "LexendDeca";
+            color: #10cfc9;
+        }
+
+        .stock-table td {
+            color: #fff;
+        }
+
 </style>
 @* <link href="~/assets/css/layout.min.css" rel="stylesheet" />
  *@
@@ -189,27 +240,53 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="row" style="gap: 0rem;">
-                    <div class="col-12 col-md-6">
+                    @*  <div class="col-12 col-md-6">
                         <div class="box-rel animate a_02">
                             <img src="~/assets/img/robot.png" />
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6">
+                    </div> *@
+                    <div class="col-12 col-md-6 mx-auto">
                         <article>
-                            <h2 class="animate a_01">
-                                <img src="~/assets/img/arrow-up.png" /> Semi Gold
+                            <h2 class="animate a_01" style="color:#10cfc9">
+                                <img src="~/assets/img/arrow-up.png" /> Danh mục tư vấn
                             </h2>
                             <div class="frame-base animate a_02">
                                 <img class="only-img" src="~/assets/img/shape-bg3.png" />
                                 @* <img src="~/assets/img/mt5.png" /> *@
+                                <p style="color: #ffffff; font-size: 24px; text-align: right;">Khuyến nghị</p>
                                 <div class="clearfix"></div>
-                            </div> <ul id="app">
-                                <li class="animate a_03 three-columns" v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
+                            </div>
+                            <ul id="app" style="padding:0">
+                                @*  <li class="animate a_03 three-columns" v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
                                     <span class="flex-item "><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold">{{ item.Symbol }}</a></span>
                                     <span class="flex-item">-</span>
                                     <span class="flex-item">{{ item.Heso_Text }}</span>
-                                </li>
+                                </li> *@
 
+                                <table class="stock-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã</th>
+                                            <th>Giá mua<br>(1.000đ)</th>
+                                            <th>Giá hiện tại<br>(1.000đ)</th>
+                                            <th>Hiệu quả (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
+                                            <td>{{ item.Symbol }}</td>
+                                            <td>{{ item.Price_Text }}</td>
+                                            <td>{{ item.Current_Price_Text }}</td>
+                                           
+
+                                            <td :class="parseFloat(item.Heso_Text) > 0 ? 'positive'   : (parseFloat(item.Heso_Text) < 0   ? 'negative': 'yellow')">
+                                                {{ item.Heso_Text }}
+                                            </td>
+
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
 
 
 
@@ -217,8 +294,11 @@
 
                             </ul>
                             <div class="text_a animate a_10">
-                                <a class="btn-action bg-cyan" href="/danh-muc-tu-van">Xem chi tiết</a>
-
+                                <a class="btn-action bg-cyan" href="/danh-muc-tu-van">Cổ phiếu tăng trưởng</a>
+                                <a class="btn-action bg-cyan-outline" target="_blank" href="https://www.mql5.com/en/signals/2266788?source=Site+Signals+My#!tab=account">
+                                    Xem chi tiết
+                                    <img src="~/assets/img/arrow-detail.png" />
+                                </a>
                             </div>
                         </article>
                     </div>
@@ -352,7 +432,7 @@
                 <h2>Bắt đầu cuộc hành trình</h2>
                 <h5>
                     <a href="javascript:;" target="_blank">
-                        <img src="~/assets/img/icon-play.png" /> Tham gia
+                        <img src="~/assets/img/icon-play.png" /> Cộng đồng
                     </a>
                 </h5>
                 <img class="abs-fix" src="~/assets/img/shape-4.png" />
@@ -360,22 +440,18 @@
             <div class="box-plan">
                 <article>
                     <img src="~/assets/img/vector1.png" />
-                    <h6 class="price"></h6> <p> Speed up your trading journey - let our automated trading system do the work for you. </p>
+                    <h6 class="price"></h6> <p style="font-size: 25px"> Hãy để chúng tôi đồng hành cùng bạn trên con đường chinh phục thị trường </p>
                     <div class="text_a">
-                        <a target="_blank" rel="dofollow" href="javascript:;" class="btn-action">
-                            <img src="~/assets/img/icon-start.png" />
-                            Start Now
-                        </a>
                     </div>
                 </article> <ul class="list-grid">
                     <li>Phần mềm FinArt <span>Bot tín hiệu</span></li>
                     <li>Khuyến nghị<span>Rõ ràng, minh bạch</span></li>
                     <li>Mở tài khoàn <span>10 phút thực hiện</span></li>
                     <li>Hỗ trợ <span>15/7</span></li>
-                    <li>khóa học và kiến thức <span>Chia sẻ miễn phí</span></li>
-                    <li>Chiến lược<span>Linh hoạt, hiệu quả</span></li>
+                    <li>Khóa học và Kiến thức <span>Chia sẻ miễn phí</span></li>
+                    <li>Margin<span>3/7</span></li>
                     <li>Vốn<span>Nguồn vay lớn</span></li>
-                    <li>Cộng đồng<span>Nhà đầu tư chuyên nghiệm</span></li>
+                    <li>Cộng đồng<span>Nhà đầu tư chuyên nghiệP</span></li>
                 </ul>
             </div>
         </div>
@@ -383,7 +459,7 @@
 
 </section>
 
-<div id="subscriber">
+@* <div id="subscriber">
     <div class="container">
         <hgroup class="title-group">
             <h2>Become a part <span>of our update community</span></h2>
@@ -393,78 +469,78 @@
             <button type="submit" class="btn-action bg-cyan">Subscriber</button>
         </form>
     </div> <script type="text/javascript"> </script>
-</div>
+</div> *@
 
 @if (list != null && list.Count > 0)
 {
-        <section class="highlight-posts-wrap mb-15 ">
-            <div class="container" style="padding: 20px 20px 4px;">
+    <section class="highlight-posts-wrap mb-15 ">
+        <div class="container" style="padding: 20px 20px 4px;">
 
-                <hgroup class="title-group">
-                    <h6><img src="~/assets/img/arrow-up.png" /> TIN NỔI BẬT</h6>
-                    <h2>Tin tức mới nhất của thị trường chứng khoán</h2>
-                </hgroup>
+            <hgroup class="title-group">
+                <h6><img src="~/assets/img/arrow-up.png" /> TIN NỔI BẬT</h6>
+                <h2>Tin tức mới nhất của thị trường chứng khoán</h2>
+            </hgroup>
 
-                <div class="section-content row0" style="margin-left: -14px; margin-right: -14px;">
-                    <div class="carousel-wrap" style="">
-                        <div class="carousel-wrap-inner">
-                            <div class="carousel-highlight-post px-15 row r0">
+            <div class="section-content row0" style="margin-left: -14px; margin-right: -14px;">
+                <div class="carousel-wrap" style="">
+                    <div class="carousel-wrap-inner">
+                        <div class="carousel-highlight-post px-15 row r0">
 
                             @foreach (var item in list)
                             {
-                                            <div class="col-lg-4 col-md-6" style="padding-left: 14px; padding-right: 14px;">
-                                                <a href="/chi-tiet/@item.Id" class="span-like post-card clickable highlight-post">
+                                <div class="col-lg-4 col-md-6" style="padding-left: 14px; padding-right: 14px;">
+                                    <a href="/chi-tiet/@item.Id" class="span-like post-card clickable highlight-post">
                                         @if (item.FeatureImage != null && item.FeatureImage != "")
                                         {
-                                                                <div class="post-image">
-                                                                    <img loading="lazy" class="logo-cover" src="@item.FeatureImage" alt="" onerror="this.src='/assets/img/bg_01.jpg';">
-                                                                </div>
+                                            <div class="post-image">
+                                                <img loading="lazy" class="logo-cover" src="@item.FeatureImage" alt="" onerror="this.src='/assets/img/bg_01.jpg';">
+                                            </div>
 
                                         }
                                         else
                                         {
-                                                                <div class="post-image">
-                                                                    <img loading="lazy" class="logo-cover" src="/assets/img/bg_01.jpg" alt="">
-                                                                </div>
+                                            <div class="post-image">
+                                                <img loading="lazy" class="logo-cover" src="/assets/img/bg_01.jpg" alt="">
+                                            </div>
 
                                         }
 
-                                                    <div class="post-content">
-                                                        <div class="posted-at-wrap">
+                                        <div class="post-content">
+                                            <div class="posted-at-wrap">
                                                 @if (item.CreateDate != null)
                                                 {
-                                                                        <div class="posted-at">@item.CreateDate</div>
+                                                    <div class="posted-at">@item.CreateDate</div>
                                                 }
 
 
-                                                        </div>
+                                            </div>
                                             @if (item.Title != null)
                                             {
-                                                                    <div class="post-title">@item.Title</div>
+                                                <div class="post-title">@item.Title</div>
                                             }
 
                                             @if (item.Description != null)
                                             {
-                                                                    <div class="post-description">@item.Description</div>
+                                                <div class="post-description">@item.Description</div>
                                             }
 
-                                                        <div class="reactions-wrap d-flex align-items-center" style="height: 20px;">
-                                                        </div>
-                                                    </div>
-                                                </a>
+                                            <div class="reactions-wrap d-flex align-items-center" style="height: 20px;">
                                             </div>
+                                        </div>
+                                    </a>
+                                </div>
 
                             }
 
-                            </div>
-
-
-
                         </div>
+
+
+
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
 }
 

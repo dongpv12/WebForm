@@ -2687,7 +2687,7 @@ footer ul li {
 
 .post-card.highlight-post .post-title {
     margin-bottom: 4px;
-    font-weight: 700;
+    /*font-weight: 700;*/
     font-size: 16px;
     color: #fff;
     min-height: 74px;
@@ -2696,6 +2696,7 @@ footer ul li {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    FONT-FAMILY: 'LexendDeca_Light';
 }
 
 .post-card .post-description, .post-card .post-title {
@@ -2748,7 +2749,7 @@ footer ul li {
 
 .highlight-post {
     border-radius: 10px;
-    background: #151514;
+    background: #18363e;
     margin-bottom: 28px;
     display: block;
 }
@@ -2976,4 +2977,50 @@ li.three-columns {
 
 .service-details {
     padding-top: 60px;
+}
+
+
+#highlight .btn-action {
+    margin-left: 5px !important;
+}
+
+#highlight .btn-action {
+    padding: 13px 20px !important;
+}
+
+.text_a a {
+    display: inline-block;
+}
+
+a, a:hover, a:active, a:link, a:visited {
+    text-decoration: none;
+}
+
+.bg-cyan-outline {
+    border: 2px solid #10cfc9 !important;
+    color: #10cfc9 !important;
+}
+
+.btn-action {
+    padding: 13px 30px;
+    border: 0;
+    font-size: 15px;
+    border-radius: 40px;
+    font-family: "LexendDeca_B";
+    color: #fff;
+    margin-right: 10px;
+}
+
+#highlight .text_a img {
+    width: 18px;
+    height: 18px;
+}
+
+.text_a .btn-action:last-child img {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+.btn-action img {
+    margin-left: 7px;
 }

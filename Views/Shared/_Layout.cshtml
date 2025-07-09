@@ -107,7 +107,8 @@
 
 
         .navmenu .search-form {
-            width: 200px;
+            width: 185px;
+            padding-left: 15px;
         }
 
             .navmenu .search-form input.form-control {
@@ -136,6 +137,34 @@
                 display: none !important;
             }
         }
+
+
+        .hidden {
+            display: none !important;
+        }
+
+        .visible {
+            display: block !important;
+        }
+
+
+        .spanicon_an{
+            cursor: pointer;
+            right: 0px;
+            top: 15px;
+            position: absolute;
+            padding: 0 !important;
+            z-index: 1;
+        }
+
+        .spanicon_hien {
+            cursor: pointer;
+            right: 10px;
+            top: 15px;
+            position: absolute;
+            padding: 0 !important;
+            z-index: 1;
+        }
     </style>
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between px-0">
@@ -154,13 +183,23 @@
                     <li class="dropdown">
                         <a href="#"><span>Danh mục tư vấn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Danh mục trung hạn</a></li>
-                            <li><a href="#">Danh mục ngắn hạn</a></li>
-                            <li><a href="#">Danh mục chờ mua</a></li>
+                            <li><a href="#">Cổ phiếu tăng trưởng</a></li>
+                            <li><a href="#">Danh sách khuyến nghị</a></li>
                         </ul>
                     </li>
 
-                    <li><a href="/danh-muc-tu-van">Chỉ số FinArt</a></li>
+                    @* <li><a href="/danh-muc-tu-van">Chỉ số FinArt</a></li> *@
+
+                    <li class="dropdown">
+                        <a href="#"><span>Chỉ số FinArt</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="/danh-sach-tin/2">Xu hướng thị trường</a></li>
+                            <li><a href="/danh-sach-tin/3">Xu hương ngành</a></li>
+                            <li><a href="/danh-sach-tin/4">Cổ phiếu dẫn dắt</a></li>
+                        </ul>
+                    </li>
+
+
 
                     <li class="dropdown">
                         <a href="#"><span>Báo cáo phân tích</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -171,8 +210,8 @@
                         </ul>
                     </li>
 
-                    <li><a href="/danh-sach-tin/5">Tin tức chứng khoán</a></li>
-                    <li>
+                    <li><a href="/danh-sach-tin/1">Tin tức</a></li>
+                    <li style="position: relative; min-width: 20px; height: 44px;">
                         @*  <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
                             <input class="form-control" type="search" placeholder="Search..." style="height: 30px;">
                             <span class="position-absolute top-50 end-0 translate-middle-y pe-3 text-success">
@@ -180,16 +219,14 @@
                             </span>
                         </form> *@
 
-                        <span class="iconsearch" onclick="toggleSearch()" style="cursor: pointer;">
-                            <i class="fa fa-search text-success"></i> <!-- hoặc thay bằng SVG nếu bạn dùng icon khác -->
+                        <span class="iconsearch spanicon_an" onclick="toggleSearch()" style="cursor: pointer;">
+                            <i class="fa fa-search text-success" id="iconseach_change"></i> <!-- hoặc thay bằng SVG nếu bạn dùng icon khác -->
                         </span>
 
                         <!-- FORM tìm kiếm -->
-                        <form id="searchForm" class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0; display: none !important;">
-                            <input class="form-control" type="text" placeholder="Search..." style="height: 30px; font-size: 13px">
-                            <span class="position-absolute top-50 end-0 translate-middle-y pe-3 text-success" style="cursor: pointer;">
-                                <i class="fa fa-search text-success" style="cursor: pointer"></i>
-                            </span>
+                        <form id="searchForm" class="search-form position-relative me-3 d-none d-lg-block hidden" style="margin: 0 !important;">
+                            <input id="searchInput" class="form-control searchtext" type="text" placeholder="Search..." style="height: 30px; font-size: 13px; margin-top: 8px;">
+                            
                         </form>
                     </li>
 
@@ -232,24 +269,26 @@
                         </a>
                         <p>
                         <p>85 Vũ Trọng Phung, Thanh Xuân , Hà Nội</p>
-                        <p>Phone <span>098 904 8431</span></p>
-                        <p>Email <span>finart.advisory@gmail.com</span></p>
+                        <p>Phone: <span>098 904 8431</span></p>
+                        <p>Email: <span>finart.advisory@gmail.com</span></p>
                         </p>
                     </div>
                 </div><div class="col-12 col-sm-2"></div>
                 <div class="col-12 col-sm-2">
-                    <h5>Useful Links</h5><ul>
+                    <h5>Liên kết</h5><ul>
                         <li>
-                            <a href="/">Home</a>
+                            <a href="/">Trang chủ</a>
                         </li>
-                        <li><a href="javascript:;">About Us</a></li>
-                        <li><a href="javascript:;">Product</a></li>
-                        <li><a href="javascript:;">Service</a></li>
-                        <li><a href="javascript:;">FAQ</a></li>
-                        <li><a href="javascript:;">Contact Us</a></li>
+                        <li><a href="javascript:;">Cổ phiếu tăng trưởng</a></li>
+                        <li><a href="javascript:;">Danh sách Khuyến nghị</a></li>
+                        <li><a href="javascript:;">Chỉ số FinArt</a></li>
+                        <li><a href="/danh-sach-bao-cao-art/6">Báo cáo FinArt</a></li>
+                        <li><a href="/danh-sach-bao-cao-art/7">Báo cáo CTCK</a></li>
+                        <li><a href="/danh-sach-bao-cao-art/8">Báo cáo Ngành</a></li>
+                        <li><a href="/danh-sach-tin/1">Tin tức chứng khoán</a></li>
                     </ul>
                 </div><div class="col-12 col-sm-3">
-                    <h5>Social Connect</h5><ul class="fanpages">
+                    <h5>Mạng xã hội</h5><ul class="fanpages">
                         <li>
                             <a target="_blank" rel="nofollow" href="javascrript:;">
 
@@ -354,16 +393,42 @@
 
     <script>
         function toggleSearch() {
-          const form = document.getElementById("searchForm");
 
-          if (form.style.display === "none" || form.style.display === "") {
-            form.style.display = "block";
-            form.querySelector("input").focus();
-          } else {
-            form.style.display = "none";
-          }
-         $(".iconsearch").css("display", "none");
+            $("#searchForm").toggleClass("hidden").focus();
+            if ($("#searchForm").hasClass("hidden")) {
+                //
+               
+               $(".iconsearch").addClass('spanicon_an');
+               $(".iconsearch").removeClass('spanicon_hien');
+
+               $("#iconseach_change").addClass('fa-search');
+               $("#iconseach_change").removeClass('fa-times');
+            } else {
+               //
+                $(".searchtext").focus();
+               $(".iconsearch").removeClass('spanicon_an');
+               $(".iconsearch").addClass('spanicon_hien');
+
+               $("#iconseach_change").removeClass('fa-search');
+               $("#iconseach_change").addClass('fa-times');
+            }
         }
     </script>
+
+    <script>
+        $(document).ready(function () {
+          $('#searchInput').on('keypress', function (e) {
+            if (e.which === 13) { // 13 là mã phím Enter
+              let value = $(this).val().trim().toUpperCase();
+              alert(encodeURIComponent(value))
+              if (value) {
+                    let url = '/chi-tiet-co-phieu/' + encodeURIComponent(value);
+                    window.open(url, '_blank'); // Mở trong tab mới
+              }
+            }
+          });
+        });
+    </script>
+
 </body>
 </html>
