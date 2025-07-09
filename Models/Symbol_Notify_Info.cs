@@ -140,6 +140,7 @@ namespace WebForm.Models
         /// Giá khớp hiện tại
         /// </summary>
         public decimal Current_Price { get; set; }
+        public decimal Match_Qtty { get; set; }
 
         public decimal PE { get; set; }
 
@@ -178,6 +179,7 @@ namespace WebForm.Models
         /// Mở cửa
         /// </summary>
         public decimal Open { get; set; }
+        public decimal Open_Qtty { get; set; }
 
         public string Color { get; set; }
 
@@ -201,6 +203,9 @@ namespace WebForm.Models
         /// Tổng khối lượng giao dịch
         /// </summary>
         public decimal Volume { get; set; }
+        public decimal TotalValue { get; set; }
+
+        
 
         /// <summary>
         /// Giá tại 50% biên độ
