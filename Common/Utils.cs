@@ -3,6 +3,7 @@ using Skender.Stock.Indicators;
 using System.Globalization;
 using System.Text.Json;
 using WebForm.Common;
+using WebForm.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WebForm
@@ -96,9 +97,9 @@ namespace WebForm
                 {
                     symbol = data.symbol,
                     historydate = DateTimeOffset.FromUnixTimeSeconds(data.t[i]).DateTime,
-                    OpenPrice = (decimal)(data.o[i] ),
+                    OpenPrice = (decimal)(data.o[i]),
                     ClosePrice = (decimal)(data.c[i]),
-                    Max = (decimal)(data.h[i] ),
+                    Max = (decimal)(data.h[i]),
                     Min = (decimal)(data.l[i]),
                     MatchQtty = data.v[i]
                 });
@@ -274,5 +275,115 @@ namespace WebForm
                 Logger.Log.Error(ex.ToString());
             }
         }
+
+        public static string Get_Symbol(string p_data)
+        {
+            try
+            {
+                string[] _arr_ck_1 = p_data.Split('|');
+                return _arr_ck_1[0];
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+                return "";
+            }
+        }
+
+        public static Symbol_WS_Info Init_Symbol_FromSocket(string p_data)
+        {
+            try
+            {
+
+                string[] _arr_ck_1 = p_data.Split('|');
+
+                Symbol_WS_Info _Info = new Symbol_WS_Info();
+                _Info.Symbol = _arr_ck_1[0];
+
+                foreach (var item_2 in _arr_ck_1)
+                {
+                    string[] _arr_Properties = item_2.Split('*');
+                    if (_arr_Properties.Length < 2)
+                    {
+                        continue;
+                    }
+
+                    if (_arr_Properties[0] == "1" && _arr_Properties[1] != "")
+                    {
+                        _Info.Ceiling_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                    }
+                    if (_arr_Properties[0] == "2" && _arr_Properties[1] != "")
+                    {
+                        _Info.Floor_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                    }
+                    if (_arr_Properties[0] == "3" && _arr_Properties[1] != "")
+                    {
+                        _Info.Basic_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                    }
+
+                    // giá khớp gần nhất
+                    if (_arr_Properties[0] == "16" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.Current_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                    }
+                    // thay đổi giá
+                    if (_arr_Properties[0] == "17" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.ChangePrice = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                    }
+                    // % thay đổi giá
+                    if (_arr_Properties[0] == "18" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.ChangePricePercent = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                    }
+                    // kl giao dịch
+                    if (_arr_Properties[0] == "61" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.Volume = Convert.ToDecimal(_arr_Properties[1]);
+                    }
+                    // kl giao dịch
+                    if (_arr_Properties[0] == "62" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.TotalValue = Convert.ToDecimal(_arr_Properties[1]);
+                    }
+                    if (_arr_Properties[0] == "19" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.Match_Qtty = Convert.ToDecimal(_arr_Properties[1]);
+                    }
+                    if (_arr_Properties[0] == "22" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.Hight = Convert.ToDecimal(_arr_Properties[1]) * 1000;
+                    }
+                    if (_arr_Properties[0] == "24" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.Low = Convert.ToDecimal(_arr_Properties[1]) * 1000;
+                    }
+                    if (_arr_Properties[0] == "30" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.Open = Convert.ToDecimal(_arr_Properties[1]) * 1000;
+                    }
+                    if (_arr_Properties[0] == "31" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.Close = Convert.ToDecimal(_arr_Properties[1]) * 1000;
+                    }
+                    if (_arr_Properties[0] == "34" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    {
+                        _Info.MarketCode = _arr_Properties[1];
+                    }
+                    if (_arr_Properties[0] == "59" && _arr_Properties[1] != "")
+                    {
+                        _Info.Name = _arr_Properties[1];
+                    }
+                }
+
+                return _Info;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.ToString());
+                return null;
+            }
+        }
+
     }
 }

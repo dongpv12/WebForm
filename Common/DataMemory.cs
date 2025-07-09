@@ -21,6 +21,7 @@ namespace WebForm.Common
         public static List<Symbol_Notify_Info> c_lstSymbol = new List<Symbol_Notify_Info>();
 
         public static List<Symbol_Notify_Info> c_lstSymbolData = new List<Symbol_Notify_Info>();
+        public static Dictionary<string, Symbol_Notify_Info> c_dicSymbol = new Dictionary<string, Symbol_Notify_Info>();
 
         public static void LoadMem()
         {
@@ -101,6 +102,10 @@ namespace WebForm.Common
                 SymbolDA _da = new SymbolDA();
                 var data = _da.SymbolGetAll();
                 c_lstSymbolData = CBO<Symbol_Notify_Info>.FillCollectionFromDataSet(data);
+                foreach (var item in c_lstSymbolData)
+                {
+                    c_dicSymbol[item.Symbol] = item;
+                }
             }
             catch (Exception ex)
             {
@@ -155,7 +160,7 @@ namespace WebForm.Common
                                 {
                                     symbolMap[dataModel.Symbol] = dataModel;
                                 }
-                                    
+
                             }
                         }
                         catch (Exception ex)
@@ -165,7 +170,7 @@ namespace WebForm.Common
                     }
                     c_lstSymbol = symbolMap.Values.ToList();
                 }
-                    
+
 
             }
             catch (Exception ex)
@@ -287,7 +292,11 @@ namespace WebForm.Common
         public static string ChartProtocal { get; set; } = "";
         public static string WebSocketData { get; set; } = "";
         public static string ApiUrl_Analysis { get; set; } = "";
-        
+
+        public static string WebSocket_TVSI { get; set; } = "";
+        public static string Source_WS { get; set; } = "NAVISOFT";
+
+
         public static void GetConfig(IConfiguration configuration)
         {
             try
@@ -302,8 +311,10 @@ namespace WebForm.Common
                 RecordOnPageIndex = Convert.ToInt32(configuration["RecordOnPageIndex"]?.ToString() ?? "10");
                 ConnectString = configuration["ConnectString"]?.ToString() ?? "";
 
-              
+
                 ContactPhone = configuration["ContactPhone"]?.ToString() ?? "";
+                WebSocket_TVSI = configuration["WebSocket_TVSI"]?.ToString() ?? "";
+                Source_WS = configuration["Source_WS"]?.ToString() ?? "NAVISOFT";
             }
             catch (Exception ex)
             {
