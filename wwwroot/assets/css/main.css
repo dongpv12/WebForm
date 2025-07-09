@@ -265,9 +265,17 @@ h6 {
         .navmenu li:hover > a,
         .navmenu .active,
         .navmenu .active:focus {
-            color: #10cfc9;
-            /*color: red;*/
-            background-color: none;
+            color: #f8f8f8 !IMPORTANT;
+            /* color: #16315e !important; */
+            background-color: #16315e !important;
+        }
+
+        .navmenu .dang-nhap:hover
+        
+        {
+            color: #585858 !important;
+            /* color: #16315e !important; */
+            background-color:none !important;
         }
 
         .navmenu .dropdown ul {
@@ -1739,7 +1747,7 @@ section,
 
 .service-details h4 {
     font-size: 20px;
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 
 .service-details p {
@@ -2966,6 +2974,6 @@ li.three-columns {
     color: #10cfc9 !important;
 }
 
-.service-details{
+.service-details {
     padding-top: 60px;
 }
