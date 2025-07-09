@@ -92,7 +92,15 @@ builder.Services.AddResponseCompression(options =>
 });
 
 builder.Services.AddSignalR();
-builder.Services.AddHostedService<WebSocketReceiverService>();
+
+if (ConfigInfo.Source_WS == "NAVISOFT")
+{
+    builder.Services.AddHostedService<WebSocketReceiverService>();
+}
+else
+{
+    builder.Services.AddHostedService<TVSI_DataService>();
+}
 
 var _HostUrl = configuration["AppUrls"] ?? "http://*:9000";
 WebForm.Common.Logger.Log.Info("Start webform server port " + _HostUrl);

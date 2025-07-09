@@ -168,6 +168,7 @@
         /// Giá khớp hiện tại
         /// </summary>
         public decimal Current_Price { get; set; }
+        public decimal Match_Qtty { get; set; }
 
 
         public decimal PriceRangePercent { get; set; }
