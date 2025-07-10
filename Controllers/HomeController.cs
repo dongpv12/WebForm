@@ -498,7 +498,7 @@ public class HomeController : Controller
 
     [HttpGet]
     [Route("tt-co-phieu/{matp}")]
-    public IActionResult GetStocksCode()
+    public IActionResult GetStocksCode(string matp)
     {
         try
         {
@@ -534,8 +534,7 @@ public class HomeController : Controller
                 }
             }
 
-            listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) < 7)).OrderByDescending(x => x.Heso).ToList();
-
+           
             var stocks = listSymbol.Select(x => new
             {
                 Id = x.Id,
