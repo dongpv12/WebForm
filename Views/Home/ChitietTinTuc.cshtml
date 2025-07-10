@@ -49,12 +49,12 @@
                         @news.CreateDate
                     </div>
                     <div id="des_detail">
-                         @Html.Raw(news.Description ?? "")   
+                        @Html.Raw(news.Description ?? "")   
                     </div>
                     <div>@Html.Raw(news.Content ?? "")</div>
 
                 </div>
-               
+
 
                 <div class="analysis-card" style="border:none; box-shadow: none">
 
@@ -69,8 +69,34 @@
                             {
                                 <h3>Tin liên quan</h3>
                             }
-                           
-                            <a href="/danh-sach-tin/@news.CategoryType" class="viewmore Orcolor">xem thêm >></a>
+
+                            @if (news.CategoryType == "1")
+                            {
+                                <a href="/danh-sach-tin-tuc-chung-khoan" class="viewmore Orcolor">xem thêm >></a>
+
+
+                            }
+                            else if (news.CategoryType == "2")
+                            {
+                                <a href="/xu-huong-thi-truong" class="viewmore Orcolor">xem thêm >></a>
+
+
+                            }
+                            else if (news.CategoryType == "3")
+                            {
+                                <a href="/xu-huong-nganh" class="viewmore Orcolor">xem thêm >></a>
+
+
+                            }
+                            else if (news.CategoryType == "4")
+                            {
+                                <a href="/co-phieu-dan-dat" class="viewmore Orcolor">xem thêm >></a>
+
+
+                            }
+
+                          
+
                         </div>
                         @foreach (var item in listLienQuan)
                         {
@@ -120,7 +146,8 @@
             </div>
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                @Html.Partial("NewsOtherTab", news.CategoryType)
+                 @Html.Partial("NewsOtherTab", news.CategoryType) 
+                @* @Html.Partial("ChiSo.cshtml") *@
             </div>
 
 

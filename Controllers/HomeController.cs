@@ -165,14 +165,41 @@ public class HomeController : Controller
         }
     }
 
+    private decimal ExtractTypeFromRoute(string? path)
+    {
+        var segments = path?.Split('/');
+        if (segments != null && segments.Length > 2 && decimal.TryParse(segments[2], out var result))
+            return result;
+
+        return -1;
+    }
+
 
 
     [HttpGet]
     [Route("danh-sach-tin/{type}")]
+    [Route("danh-sach-tin-tuc-chung-khoan")]                   // Alias 1
+    [Route("xu-huong-thi-truong")]
+    [Route("xu-huong-nganh")]
+    [Route("co-phieu-dan-dat")]
     public ActionResult XHTT(decimal type = 1)
     {
         try
         {
+
+            var path = HttpContext.Request.Path.Value?.ToLower();
+
+            type = path switch
+            {
+                "/danh-sach-tin-tuc-chung-khoan" => 1,
+                "/xu-huong-thi-truong" => 2,
+                "/xu-huong-nganh" => 3,
+                "/co-phieu-dan-dat" => 4,
+                _ => ExtractTypeFromRoute(path) // Trả về decimal
+            };
+
+
+
             List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
 
             var HotNews = list.FirstOrDefault();
@@ -217,6 +244,11 @@ public class HomeController : Controller
         }
     }
 
+    
+    
+    
+    
+    
     [HttpPost]
     public ActionResult SearchXHTT([FromBody] SearchNewsRequest request)
     {
@@ -267,10 +299,27 @@ public class HomeController : Controller
 
     [HttpGet]
     [Route("danh-sach-bao-cao-art/{type}")]
+    [Route("danh-sach-bao-cao-finart")]                   // Alias 1
+    [Route("danh-sach-bao-cao-ctck")]
+    [Route("danh-sach-bao-cao-nganh")]
     public ActionResult ReportArt(decimal type = 6)
     {
         try
         {
+
+
+            var path = HttpContext.Request.Path.Value?.ToLower();
+
+            type = path switch
+            {
+                "/danh-sach-bao-cao-finart" => 6,
+                "/danh-sach-bao-cao-ctck" => 7,
+                "/danh-sach-bao-cao-nganh" => 8,
+                _ => ExtractTypeFromRoute(path) // Trả về decimal
+            };
+
+
+
             List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
 
             var total = list.Count();
@@ -369,12 +418,12 @@ public class HomeController : Controller
             foreach (var item in listSymbol)
             {
                 StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
-                item.Price_Text = item.Price.ToNumberStringN31();
+                item.Price_Text = (item.Price/1000).ToNumberStringN31();
                 if (info != null && item.Sell_Price == 0)
                 {
 
                     item.Current_Price = info.MatchPrice;
-                    item.Current_Price_Text = info.MatchPrice.ToNumberStringN31();
+                    item.Current_Price_Text = (info.MatchPrice/1000).ToNumberStringN31();
                    
                     if (item.Price == 0)
                     {
@@ -396,7 +445,7 @@ public class HomeController : Controller
                     // giu nguyen gia trị trong DB
 
                     item.Heso_Text = item.Heso.ToNumberStringN31();
-                    item.Current_Price_Text = item.Current_Price.ToNumberStringN31();
+                    item.Current_Price_Text = (item.Current_Price/1000).ToNumberStringN31();
                 }
 
                 if (info != null && item.DoanhThu == 0)
@@ -424,9 +473,9 @@ public class HomeController : Controller
                 Status_Text = x.Status_Text,
                 Status = x.Status,
                 Current_Price_Text = x.Current_Price_Text,
-                PRICE_Exp_Text = x.F_PRICE_Exp.ToNumberStringN31() + " - " + x.T_PRICE_Exp.ToNumberStringN31(),
-                PRICE_Taget_Text = x.F_PRICE_Target.ToNumberStringN31() + " - " + x.T_PRICE_Target.ToNumberStringN31(),
-                T_Pause = x.T_Pause.ToNumberStringN31(),
+                PRICE_Exp_Text = (x.F_PRICE_Exp/1000).ToNumberStringN31() + " - " + (x.T_PRICE_Exp/1000).ToNumberStringN31(),
+                PRICE_Taget_Text = (x.F_PRICE_Target/1000).ToNumberStringN31() + " - " + (x.T_PRICE_Target/1000).ToNumberStringN31(),
+                T_Pause = (x.T_Pause/1000).ToNumberStringN31(),
                 LoiNhuan = x.LoiNhuan.ToNumberStringN31(),
                 DoanhThu = x.DoanhThu.ToNumberStringN31(),
                 PE = x.PE.ToNumberStringN31(),
@@ -592,6 +641,22 @@ public class HomeController : Controller
     [HttpGet]
     [Route("ve-chung-toi")]
     public ActionResult AboutUsNew()
+    {
+        return View();
+    }
+
+
+    [HttpGet]
+    [Route("co-phieu-tang-truong")]
+    public ActionResult CophieuTangTruong()
+    {
+        return View();
+    }
+
+
+    [HttpGet]
+    [Route("danh-sach-khuyen-nghi")]
+    public ActionResult DanhSachKhuyenNghi()
     {
         return View();
     }

@@ -1,0 +1,220 @@
+﻿@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@using WebForm.Models;
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+<style>
+
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        table-layout: fixed;
+    }
+
+    col {
+        width: 12.5%; /* 8 cột => mỗi cột chiếm 12.5% */
+    }
+
+    th, td {
+        border: 1px solid #999;
+        padding: 6px 8px;
+        vertical-align: middle;
+        word-wrap: break-word;
+    }
+
+    .section-header {
+        background-color: #b7f1cb;
+        color: #16315e;
+        font-family: Lexenddeca_B;
+    }
+
+    .column-header {
+        background-color: #d58a35;
+        font-family: Lexenddeca_light;
+        color: #f9f9f9;
+    }
+
+    .highlight-green {
+        background-color: #8ef08e;
+        font-weight: bold;
+    }
+
+    .highlight-red {
+        background-color: #a52a2a;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr th {
+        font-family: Lexenddeca_light
+    }
+
+    td {
+        font-size: 15px;
+    }
+</style>
+
+<div class="area-page-title">
+    <div class="container">
+        <h1 class="animate a_01">Danh sách khuyến nghị</h1>
+        <ol class="breadcrumb animate a_02">
+            <li class="breadcrumb-item">
+                <a href="/">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Danh sách khuyến nghị</li>
+        </ol>
+    </div>
+</div>
+
+<section id="service-details" class="service-details section">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+
+            <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+
+                <table>
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <tr>
+                        <th colspan="8" class="section-header">DANH MỤC KHUYẾN NGHỊ NGẮN HẠN</th>
+                    </tr>
+                    <tr>
+                        <th class="column-header">Ngày mở vị thế</th>
+                        <th class="column-header">MÃ</th>
+                        <th class="column-header">Giá hiện tại<br>(1.000đ)</th>
+                        <th class="column-header">Giá mua<br>(1.000đ)</th>
+                        <th class="column-header">Giá mục tiêu / Giá đóng vị thế<br>(1.000đ)</th>
+                        <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
+                        <th class="column-header">Hiệu quả đầu tư (%)</th>
+                        <th class="column-header">Cập nhật vị thế/trạng thái</th>
+                    </tr>
+                    <tr>
+                        <td>07/09/2025</td>
+                        <td>SHS</td>
+                        <td>14,4</td>
+                        <td>14</td>
+                        <td>17</td>
+                        <td>12,5</td>
+                        <td class="highlight-green">21,4%</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="highlight-red">đỏ là lỗ</td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <!-- BẢNG 2 -->
+                <table>
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <tr>
+                        <th colspan="8" class="section-header">DANH MỤC THEO DÕI CHỜ MUA</th>
+                    </tr>
+                    <tr>
+                        <th class="column-header">MÃ</th>
+                        <th class="column-header">Giá hiện tại<br>(1.000đ)</th>
+                        <th class="column-header">Giá mua<br>(1.000đ)</th>
+                        <th class="column-header">Giá mục tiêu<br>(1.000đ)</th>
+                        <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
+                        <th class="column-header">Hiệu quả kỳ vọng đầu tư (%)</th>
+                        <th class="column-header" colspan="2">Khuyến nghị</th> <!-- Gộp 2 cột -->
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td colspan="2">&nbsp;</td>
+                        
+                    </tr>
+                </table>
+              
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<script src="~/assets/js/vue.global.js"></script>
+
+<script>
+    const { createApp, ref, onMounted, computed } = Vue
+
+    createApp({
+      setup() {
+        const stocks = ref([])
+
+        const sendPost = () => {
+          axios.get('/Home/GetStocks')
+            .then(response => {
+              console.log('Gửi thành công:', response.data)
+              stocks.value = response.data
+            })
+            .catch(error => {
+              console.error('Lỗi khi gọi API:', error)
+            })
+        }
+
+        // ✅ Tạo computed lọc IsSpecial = 'Y'
+        // const specialStocks = computed(() =>
+        //   stocks.value.filter(item => (item.IsSpecial || '').toUpperCase() === 'Y')
+        // )
+
+
+
+        onMounted(() => {
+          sendPost()
+          setInterval(sendPost, 5000)
+        })
+
+        return {
+          stocks
+          // specialStocks // return ra template để dùng
+        }
+      }
+    }).mount('#app')
+</script>

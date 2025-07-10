@@ -59,7 +59,7 @@
                             @(news.Description ?? "")
                         </div>
                     }
-                    
+
 
                     @if (news.Content != null && news.Content != "")
                     {
@@ -68,7 +68,7 @@
 
                     @if (news.Link != null && news.Link != "")
                     {
-                        <iframe src="@news.Link"
+                        <iframe src="@(news.Link + "#navpanes=0")"
                                 width="100%"
                                 height="600px"
                                 style="border: none;">
@@ -87,7 +87,27 @@
                     {
                         <div class="tinlienquan  d-flex justify-content-between align-items-center">
                             <h3>Báo cáo liên quan</h3>
-                            <a href="/danh-sach-bao-cao-art/@news.CategoryType" class="viewmore Orcolor">xem thêm >></a>
+
+                            @if (news.CategoryType == "6")
+                            {
+                                <a href="/danh-sach-bao-cao-finart" class="viewmore Orcolor">xem thêm >></a>
+
+
+                            }
+                            else if (news.CategoryType == "7")
+                            {
+                                <a href="/danh-sach-bao-cao-ctck" class="viewmore Orcolor">xem thêm >></a>
+
+                            }
+                            else
+                            {
+                                <a href="/danh-sach-bao-cao-nganh" class="viewmore Orcolor">xem thêm >></a>
+
+                            }
+
+
+
+
                         </div>
                         @foreach (var item in listLienQuan)
                         {
@@ -118,7 +138,7 @@
                                     <p class="title_news">
                                         <a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title ?? ""</a>
                                     </p>
-                                  
+
 
                                     @if (item.Tag == null || item.Tag == "")
                                     {

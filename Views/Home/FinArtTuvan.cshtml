@@ -113,9 +113,8 @@
 
         <!-- Hai thẻ dưới -->
         <div class="row">
-            <div class="col-md-8 mb-3 mb-md-0">
+            <div class="col-md-12">
                 <div class="p-4 bg-light border rounded shadow-sm">
-
 
                     <div class="container">
                         <h5 class="mb-4 text-uppercase text-danger">Danh sách cổ phiếu theo dõi</h5>
@@ -160,42 +159,10 @@
                         </div>
                     </div>
 
-                 
-
 
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-4 text-white text-center" style="background: #38a0b5">
-                    <div class="container">
-                        <h5 class="mb-4 text-uppercase " style="color:#fff">Chỉ số FinArt</h5>
-                        <div class="table-responsive shadow-sm">
-                            <table class="table table-bordered table-hover table-striped align-middle table table-striped table-hover">
-                                <thead class="table-primary text-center">
-                                    <tr>
-                                       
-                                        <th style="color:#fff; background: #001cb5">Mã TP</th>
-                                        <th style="color:#fff; background: #001cb5">Điểm chỉ số kỹ thuật ngắn hạn</th>
-                                       
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-
-                                    <tr v-for="(item, index) in stocks" :key="index">
-                                        <td><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold" style="color:#67b0d1">{{ item.Symbol }}</a></td>
-                                        <td>38.50</td>
-                                       
-                                    </tr>
-                                  
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+           </div>
     </div>
 </section>
 

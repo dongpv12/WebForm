@@ -109,14 +109,14 @@
     }
 
 </style>
-@Html.Partial("ChiSo.cshtml")
+@* @Html.Partial("ChiSo.cshtml") *@
 @if (list_2.Count > 0)
 {
     <div class="" style="margin-bottom: 30px;">
         <div class="analysis-card">
             <div class="analysis-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0" >Xu hướng thị trường</h5>
-                <a href="/danh-sach-tin/2" class="viewmore">xem thêm >></a>
+                <a href="/xu-huong-thi-truong" class="viewmore">xem thêm >></a>
             </div>
 
             @foreach (var item in list_2)
@@ -128,10 +128,6 @@
                     <div class="analysis-title"><a href="/chi-tiet/@item.Id">@(item.Title ?? "")</a></div>
                 </div>
             }
-
-
-
-
         </div>
     </div>
 }
@@ -142,7 +138,7 @@
         <div class="analysis-card">
             <div class="analysis-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0" >Xu hướng ngành</h5>
-                <a href="/danh-sach-tin/3" class="viewmore">xem thêm >></a>
+                <a href="/xu-huong-nganh" class="viewmore">xem thêm >></a>
             </div>
 
             @foreach (var item in list_3)
@@ -168,7 +164,7 @@
         <div class="analysis-card">
             <div class="analysis-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0" >Cổ phiếu dẫn dắt</h5>
-                <a href="/danh-sach-tin/4" class="viewmore">xem thêm >></a>
+                <a href="/co-phieu-dan-dat" class="viewmore">xem thêm >></a>
             </div>
 
             @foreach (var item in list_4)
@@ -195,7 +191,7 @@
         <div class="analysis-card">
             <div class="analysis-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Tin tức mới nhất</h5>
-                <a href="/danh-sach-tin/1" class="viewmore">xem thêm >></a>
+                <a href="/danh-sach-tin-tuc-chung-khoan" class="viewmore">xem thêm >></a>
             </div>
 
             @foreach (var item in list_1)
