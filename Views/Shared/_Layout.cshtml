@@ -420,7 +420,7 @@
           $('#searchInput').on('keypress', function (e) {
             if (e.which === 13) { // 13 là mã phím Enter
               let value = $(this).val().trim().toUpperCase();
-              alert(encodeURIComponent(value))
+             
               if (value) {
                     let url = '/chi-tiet-co-phieu/' + encodeURIComponent(value);
                     window.open(url, '_blank'); // Mở trong tab mới
