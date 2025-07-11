@@ -96,11 +96,11 @@
 
     #highlight article {
         /*  padding: 30px;
-                                border: 2px solid #fff;
-                                margin: 20px 0;
-                                border-radius: 15px;
-                                position: relative;
-                                background: #ffffff2e; */
+                                                        border: 2px solid #fff;
+                                                        margin: 20px 0;
+                                                        border-radius: 15px;
+                                                        position: relative;
+                                                        background: #ffffff2e; */
     }
 
         #highlight article h2 img {
@@ -184,7 +184,7 @@
     .stock-table {
         width: 100%;
         border-collapse: collapse;
-        font-family: Arial, sans-serif;
+      
         text-align: center;
         font-size: 14px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -197,42 +197,32 @@
         }
 
         .stock-table thead {
-            /* background-color: #f8d87b; */
-          /*   font-weight: bold;
-            color: #00fff0;
-            font-family: "LexendDeca_Light"; */
-            font-family: "LexendDeca";
             color: #16315e !important;
             background: #18cbb4;
         }
 
         .stock-table .positive {
-            /* background-color: #c6f3c2;  */
-            background: #276827;
-            font-family: "LexendDeca";
-            color: #10cfc9;
+            color: #0ee30e;
         }
 
         .stock-table .negative {
-            /* background-color: #f4c6c6;  */
-            background: #cc0000;
-            font-family: "LexendDeca";
-            color: #10cfc9;
+         
+            color: #E60000;
         }
 
-        .stock-table .yellow{
-            background: #f4a300;
-            font-family: "LexendDeca";
-            color: #10cfc9;
+        .stock-table .yellow {
+            color: #fff700;
         }
 
         .stock-table td {
             color: #fff;
         }
 
-</style>
-@* <link href="~/assets/css/layout.min.css" rel="stylesheet" />
- *@
+</style> 
+
+
+
+
 
 
 <div id="highlight" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -240,11 +230,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="row" style="gap: 0rem;">
-                    @*  <div class="col-12 col-md-6">
-                        <div class="box-rel animate a_02">
-                            <img src="~/assets/img/robot.png" />
-                        </div>
-                    </div> *@
+
                     <div class="col-12 col-md-6 mx-auto">
                         <article>
                             <h2 class="animate a_01" style="color:#10cfc9">
@@ -252,16 +238,12 @@
                             </h2>
                             <div class="frame-base animate a_02">
                                 <img class="only-img" src="~/assets/img/shape-bg3.png" />
-                                @* <img src="~/assets/img/mt5.png" /> *@
-                                <p style="color: #ffffff; font-size: 24px; text-align: right;">Khuyến nghị</p>
+
+                                <p style="color: #ffffff; font-size: 24px; text-align: right;">Khuyến Nghị</p>
                                 <div class="clearfix"></div>
                             </div>
                             <ul id="app" style="padding:0">
-                                @*  <li class="animate a_03 three-columns" v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
-                                    <span class="flex-item "><a :href="`/chi-tiet-co-phieu/${item.Symbol}`" class="text-decoration-none fw-semibold">{{ item.Symbol }}</a></span>
-                                    <span class="flex-item">-</span>
-                                    <span class="flex-item">{{ item.Heso_Text }}</span>
-                                </li> *@
+
 
                                 <table class="stock-table">
                                     <thead>
@@ -277,14 +259,14 @@
                                             <td>{{ item.Symbol }}</td>
                                             <td>{{ item.Price_Text }}</td>
                                             <td>{{ item.Current_Price_Text }}</td>
-                                           
+
 
                                             <td :class="parseFloat(item.Heso_Text) > 0 ? 'positive'   : (parseFloat(item.Heso_Text) < 0   ? 'negative': 'yellow')">
                                                 {{ item.Heso_Text }}
                                             </td>
 
                                         </tr>
-                                       
+
                                     </tbody>
                                 </table>
 
@@ -308,12 +290,10 @@
     </div>
 </div>
 
-<!-- /Hero Section -->
-<!-- About Section -->
 
 <section>
     <div id="offer" class="space_section">
-        <div class="container container_padding">
+        <div class="container">
 
             <hgroup class="title-group">
                 <h6>
@@ -324,7 +304,7 @@
             </hgroup>
 
             <div class="row">
-                <div class="col nth-article">
+                <div class="col-12 col-sm-6 col-md-3 mx-auto nth-article">
                     <article class="card-article">
                         <p class="number"></p>
                         <div class="border-img">
@@ -336,7 +316,7 @@
                         <p> Phân tích diễn biến và xu hướng thị trường qua số liệu thực tế – hỗ trợ xây dựng chiến lược đầu tư hiệu quả </p>
                     </article>
                 </div>
-                <div class="col nth-article">
+                <div class="col-12 col-sm-6 col-md-3 mx-auto nth-article">
                     <article class="card-article">
                         <p class="number"></p>
                         <div class="border-img">
@@ -347,7 +327,7 @@
                         </h3> <p> Phân tích các xu hướng phát triển nổi bật trong từng ngành – nền tảng quan trọng để đánh giá cơ hội đầu tư và định vị chiến lược dài hạn </p>
                     </article>
                 </div>
-                <div class="col nth-article">
+                <div class="col-12 col-sm-6 col-md-3 mx-auto nth-article">
                     <article class="card-article">
                         <p class="number"></p>
                         <div class="border-img">
@@ -451,7 +431,7 @@
                     <li>Khóa học và Kiến thức <span>Chia sẻ miễn phí</span></li>
                     <li>Margin<span>3/7</span></li>
                     <li>Vốn<span>Nguồn vay lớn</span></li>
-                    <li>Cộng đồng<span>Nhà đầu tư chuyên nghiệP</span></li>
+                    <li>Cộng đồng<span>Nhà đầu tư chuyên nghiệp</span></li>
                 </ul>
             </div>
         </div>

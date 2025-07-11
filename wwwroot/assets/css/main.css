@@ -12,9 +12,9 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --heading-font: "Raleway", sans-serif;
-    --nav-font: "Poppins", sans-serif;
+    --default-font: "LexendDeca", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --heading-font: "LexendDeca", sans-serif;
+    --nav-font: "LexendDeca", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -70,32 +70,9 @@
 
 
 
-@font-face {
-    font-family: 'Lexenddeca_B';
-    src: url('../admin/font-awesome/fonts/lexenddeca_b.ttf') format('truetype');
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lexenddeca';
-    src: url('../admin/font-awesome/fonts/lexenddeca.ttf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'LexendDeca_Light';
-    src: url('../admin/font-awesome/fonts/LexendDeca_Light.ttf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
-}
 
 
-body {
-    font-family: "LexendDeca" !important;
-    font-size: 14px !important;
-    color: #5a687d !important;
-}
+
 
 /*body {
     color: var(--default-color);
@@ -179,43 +156,10 @@ h6 {
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
-.header {
-    /*--background-color: rgba(255, 255, 255);*/
-    --default-color: #ffffff;
-    --heading-color: #ffffff;
-    color: var(--default-color);
-    background-color: var(--background-color);
-    padding: 12px 0;
-    transition: all 0.5s;
-    z-index: 997;
-}
-
-    .header .logo {
-        line-height: 1;
-    }
-
-        .header .logo img {
-            max-height: 45px;
-            margin-right: 8px;
-        }
-
-        .header .logo h1 {
-            font-size: 26px;
-            margin: 0;
-            font-weight: 700;
-            color: var(--heading-color);
-            text-transform: uppercase;
-        }
-
-.scrolled .header {
-    box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
-}
 
 /* Global Header on Scroll
 ------------------------------*/
-.scrolled .header {
-    --background-color: #fff;
-}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -1831,10 +1775,10 @@ section,
 
     .analysis-header h5 {
         margin: 0;
-        font-size: 16px;
+        /*font-size: 16px;*/
         color: #fff;
-        font-weight: 600;
-        font-family: LexendDeca_Light
+        /*font-weight: 600;*/
+        font-family: LexendDeca
     }
 
 .analysis-item {
@@ -1907,9 +1851,9 @@ section,
 }
 
     .analysis-header h5 {
-        font-size: 16px;
+        /*font-size: 16px;*/
         color: #fff;
-        font-weight: 600;
+        /*font-weight: 600;*/
     }
 
 .viewmore {
@@ -1954,8 +1898,12 @@ section,
 
 #des_detail {
     margin: 10px 0;
-    font-weight: 500;
     text-align: justify;
+    font-family: Arial;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #333;
 }
 
 .tinlienquan {
@@ -1999,7 +1947,12 @@ section,
 }
 
 .titleDetail {
-    color: #e9430f !important;
+    font-family: Roboto;
+    font-weight: 400;
+    color: #3c475b;
+    font-size: 32px;
+    margin-bottom: 25px;
+    position: relative;
 }
 
 .titleNews {
@@ -2007,9 +1960,9 @@ section,
 }
 
 .dateTime {
-    font-size: 11px !important;
+    font-size: 12px !important;
     text-align: right;
-    font-style: italic;
+    /*font-style: italic;*/
     color: #888
 }
 
@@ -2801,22 +2754,6 @@ a {
 
 
 
-
-#highlight {
-    background: url('../img/shape-1.jpg') no-repeat top center;
-    background-size: 100%;
-    color: #fff;
-    background-size: cover; /* phủ toàn bộ khung */
-    background-position: center top;
-    background-repeat: no-repeat;
-    min-height: calc(100vh - 60px);
-    /* full chiều cao màn hình */
-    color: #fff;
-    display: flex;
-    align-items: center; /* căn giữa theo chiều dọc nếu muốn */
-    margin-top: 60px;
-}
-
 .carousel {
     position: relative;
 }
@@ -2825,21 +2762,6 @@ a {
     overflow: visible;
 }
 
-
-#highlight article {
-    padding: 30px;
-    border: 2px solid #10cfc9;
-    margin: 20px 0;
-    border-radius: 15px;
-    position: relative;
-}
-
-    #highlight article h2 {
-        font-size: 48px;
-        line-height: 1.1;
-        letter-spacing: -1px;
-        color: #10cfc9;
-    }
 
 .a_01 {
     animation-delay: 0.1s;
@@ -2851,45 +2773,8 @@ a {
     animation-name: fadeInUp;
 }
 
-#highlight ul li:after {
-    position: absolute;
-    content: '';
-    top: 6px;
-    left: 0;
-    background: url(images/badge_active.svg) no-repeat;
-    width: 24px;
-    height: 24px;
-    transform: scale(0.7, 0.7);
-}
-
-
-#highlight ul li:after {
-    position: absolute;
-    content: '';
-    top: 6px;
-    left: 0;
-    background: url('../img/badge_active.svg') no-repeat;
-    width: 24px;
-    height: 24px;
-    transform: scale(0.7, 0.7);
-}
-
-#highlight ul li {
-    list-style-type: none;
-    position: relative;
-    padding: 7px 0 7px 30px;
-    font-size: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 .a_03 {
     animation-delay: 0.3s;
-}
-
-#highlight ul li span {
-    color: #10cfc9;
-    font-family: Lexenddeca_B;
-    float: right;
 }
 
 li.three-columns {
@@ -2950,12 +2835,10 @@ li.three-columns {
 
 
 .area-page-title {
-    background: url('../img/page-title.jpg') no-repeat bottom center;
+    background: url('../img/page-title.jpg')  bottom center;
     color: #fff;
-    padding: 50px 0;
     overflow: hidden;
     position: relative;
-    margin-top: 60px;
 }
 
     .area-page-title h1, .area-page-title h2 {
@@ -2980,14 +2863,6 @@ li.three-columns {
 }
 
 
-#highlight .btn-action {
-    margin-left: 5px !important;
-}
-
-#highlight .btn-action {
-    padding: 13px 20px !important;
-}
-
 .text_a a {
     display: inline-block;
 }
@@ -3006,15 +2881,11 @@ a, a:hover, a:active, a:link, a:visited {
     border: 0;
     font-size: 15px;
     border-radius: 40px;
-    font-family: "LexendDeca_B";
+
     color: #fff;
     margin-right: 10px;
 }
 
-#highlight .text_a img {
-    width: 18px;
-    height: 18px;
-}
 
 .text_a .btn-action:last-child img {
     width: 13px !important;

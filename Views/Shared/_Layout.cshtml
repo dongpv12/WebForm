@@ -37,9 +37,9 @@
     <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="~/assets/css/main.css" rel="stylesheet">
+    @* <link href="~/assets/css/main.css" rel="stylesheet"> *@
 
-
+    <script src="/js/axios.min.js"></script>
     <!-- Vendor JS Files -->
     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -47,7 +47,12 @@
     <script src="/js/axios.min.js"></script>
     <link href="~/assets/css/vendor.min.css" rel="stylesheet" />
     <link href="~/assets/css/device.min.css" rel="stylesheet" />
+    <link href="~/assets/css/layout.min.css" rel="stylesheet" />
+    <link href="~/assets/css/main.css" rel="stylesheet" />
 
+    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> *@
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet" />
+    <script src="~/assets/vendor/aos/aos.js"></script>
 
 </head>
 
@@ -148,7 +153,7 @@
         }
 
 
-        .spanicon_an{
+        .spanicon_an {
             cursor: pointer;
             right: 0px;
             top: 15px;
@@ -165,185 +170,268 @@
             padding: 0 !important;
             z-index: 1;
         }
+
+        /* Ẩn dropdown ban đầu */
+        .nav-item .dropdown-menu {
+            display: block; /* vẫn cần để giữ không bị ẩn cứng */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Khi hover, hiện dropdown */
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .navbar-expand-lg .navbar-nav .dropdown-menu {
+            position: absolute;
+            left: inherit;
+            top: 100%;
+            width: 240px;
+            margin-top: 12px;
+            z-index: 100;
+            background: #fff;
+            padding: 10px 0px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid #fff;
+            border-top: 5px solid #26c48c !important;
+            transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -webkit-transition: all 500ms ease;
+            -ms-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+        }
+
+        .dropdown-item.active, .dropdown-item:active {
+            color: red;
+            text-decoration: none;
+            background-color: #fff !important;
+        }
+
+        .dropdown-item:focus, .dropdown-item:hover {
+            background-color: #fff !important;
+        }
+
+
+        .navbar-brand img {
+            width: 125px;
+        }
+
+        .sticky .navbar-brand img {
+            width: 110px;
+        }
+
+
+
+        #searchInput:focus {
+            color: #212529 !important;
+            background-color: #fff !important;
+            border-color: #12cec2 !important;
+            outline: 0 !important;
+            box-shadow: none !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl d-flex align-items-center justify-content-between px-0">
 
-            <a href="/" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="assets/img/logo.png" alt=""> -->
-                @* <h1 class="sitename" style="color: forestgreen">FinArt</h1> *@
+
+
+    <div class="container-fluid padding0">
+        <header id="header" class="animate a_01">
+            <span class="screen-darken"></span>
+            <a class="logo-mobile" href="/">
                 <img src="~/assets/img/logo.jpg" />
-            </a>
+            </a><div class="float-end onlyMobile">
+                <button id="btn-menu" data-trigger="navbar_main" class="d-lg-none" type="button">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg">
+                <div class="container container_full">
+                    <div class="offcanvas-header">
+                        <a class="logo-brand" href="/">
+                            <img src="~/assets/img/logo.jpg" />
+                        </a> <button class="btn-close float-end">✕</button>
+                    </div><a class="navbar-brand" href="/">
+                        <img src="~/assets/img/logo.jpg" />
+                    </a>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/">Trang chủ</a>
+                        </li>
 
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                    <li><a href="/" class="active">Trang chủ</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Danh mục tư vấn
+                            </a>
+                            <ul class="dropdown-menu">
 
-                    <li class="dropdown">
-                        <a href="#"><span>Danh mục tư vấn</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="/co-phieu-tang-truong">Cổ phiếu tăng trưởng</a></li>
-                            <li><a href="/danh-sach-khuyen-nghi">Danh sách khuyến nghị</a></li>
-                        </ul>
-                    </li>
+                                <li><a class="dropdown-item" href="/danh-sach-khuyen-nghi">Danh sách khuyến nghị</a></li>
+                                <li><a class="dropdown-item" href="/co-phieu-tang-truong">Danh mục đầu tư quý</a></li>
 
-                    @* <li><a href="/danh-muc-tu-van">Chỉ số FinArt</a></li> *@
+                            </ul>
+                        </li>
 
-                    <li class="dropdown">
-                        <a href="#"><span>Chỉ số FinArt</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="/xu-huong-thi-truong">Xu hướng thị trường</a></li>
-                            <li><a href="/xu-huong-nganh">Xu hướng ngành</a></li>
-                            <li><a href="/co-phieu-dan-dat">Cổ phiếu dẫn dắt</a></li>
-                        </ul>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Chỉ số FinArt
+                            </a>
+                            <ul class="dropdown-menu">
 
 
+                                <li><a class="dropdown-item" href="/xu-huong-thi-truong">Xu hướng thị trường</a></li>
+                                <li><a class="dropdown-item" href="/xu-huong-nganh">Xu hướng ngành</a></li>
+                                <li><a class="dropdown-item" href="/co-phieu-dan-dat">Cổ phiếu dẫn dắt</a></li>
 
-                    <li class="dropdown">
-                        <a href="#"><span>Báo cáo phân tích</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="/danh-sach-bao-cao-finart">Báo cáo FinArt</a></li>
-                            <li><a href="/danh-sach-bao-cao-ctck">Báo cáo CTCK</a></li>
-                            <li><a href="/danh-sach-bao-cao-nganh">Báo cáo ngành</a></li>
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Báo cáo phân tích
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/danh-sach-bao-cao-finart">Báo cáo FinArt</a></li>
+                                <li><a class="dropdown-item" href="/danh-sach-bao-cao-ctck">Báo cáo CTCK</a></li>
+                                <li><a class="dropdown-item" href="/danh-sach-bao-cao-nganh">Báo cáo ngành</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item "><a class="nav-link " href="/danh-sach-tin-tuc-chung-khoan">Tin tức</a></li>
 
-                    <li><a href="/danh-sach-tin-tuc-chung-khoan">Tin tức</a></li>
-                    <li style="position: relative; min-width: 20px; height: 44px;">
-                        @*  <form class="search-form position-relative me-3 d-none d-lg-block" style="margin: 0">
-                            <input class="form-control" type="search" placeholder="Search..." style="height: 30px;">
-                            <span class="position-absolute top-50 end-0 translate-middle-y pe-3 text-success">
+                        <li style="position: relative; min-width: 20px; height: 44px;">
 
+
+                            <span class="iconsearch spanicon_an" onclick="toggleSearch()" style="cursor: pointer;">
+                                <i class="fa fa-search text-success" id="iconseach_change"></i>
                             </span>
-                        </form> *@
 
-                        <span class="iconsearch spanicon_an" onclick="toggleSearch()" style="cursor: pointer;">
-                            <i class="fa fa-search text-success" id="iconseach_change"></i> <!-- hoặc thay bằng SVG nếu bạn dùng icon khác -->
+
+                            <form id="searchForm" class="search-form position-relative me-3 d-none d-lg-block hidden" style="margin: 0 !important;">
+                                <input id="searchInput" class="form-control searchtext" type="text" placeholder="Search..." style="height: 30px; font-size: 13px; margin-top: 8px;    border-radius: 15px;">
+
+                            </form>
+                        </li>
+
+                        <span class="dang-nhap" style="margin-top: 13px;">
+                            <a href="/admin/dang-nhap" style="padding: 0;font-weight: 300;">Đăng nhập</a>
+                        </span>
+                        <span class="dang-ky" style="margin-top: 13px;">
+                            <a href="/admin/dang-nhap">Đăng ký</a>
                         </span>
 
-                        <!-- FORM tìm kiếm -->
-                        <form id="searchForm" class="search-form position-relative me-3 d-none d-lg-block hidden" style="margin: 0 !important;">
-                            <input id="searchInput" class="form-control searchtext" type="text" placeholder="Search..." style="height: 30px; font-size: 13px; margin-top: 8px;">
-                            
-                        </form>
-                    </li>
 
-                    <span class="dang-nhap">
-                        <a href="/admin/dang-nhap" style="padding: 0;font-weight: 300;">Đăng nhập</a>
-                    </span>
-                    <span class="dang-ky">
-                        <a href="/admin/dang-nhap">Đăng ký</a>
-                    </span>
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
-
-        </div>
-    </header>
-
-    <main class="main">
-
-        <!-- Hero Section -->
-        @RenderBody()
-
-        <!-- Testimonials Section -->
-        <!-- Team Section -->
-        <!-- Pricing Section -->
-        <!-- Faq Section -->
-        <!-- Contact Section -->
-
-    </main>
-
-
-
-    <footer style="margin-top: 60px;    border-top: 1px solid #e9e9e9; padding-top: 40px;">
-        <div class="container">
-            <div class="row0">
-                <div class="col-12 col-sm-5">
-                    <div class="footer-logo">
-                        <a href="/">
-                            @* <img src="	https://timetradingfx.com/storage/config/182e624b1a6d178.png" alt="logo-TimeTrading"> *@
-                            <img src="~/assets/img/logo.jpg" />
-                        </a>
-                        <p>
-                        <p>41 Ngô Quyền, Hoàn Kiếm, Hà Nội</p>
-                        <p>Phone: <span>098 904 8431</span></p>
-                        <p>Email: <span>finart.advisory@gmail.com</span></p>
-                        </p>
-                    </div>
-                </div><div class="col-12 col-sm-2"></div>
-                <div class="col-12 col-sm-2">
-                    <h5>Liên kết</h5><ul>
-                        <li>
-                            <a href="/">Trang chủ</a>
-                        </li>
-                        <li><a href="javascript:;">Cổ phiếu tăng trưởng</a></li>
-                        <li><a href="javascript:;">Danh sách Khuyến nghị</a></li>
-                        <li><a href="javascript:;">Chỉ số FinArt</a></li>
-                        <li><a href="/danh-sach-bao-cao-finart">Báo cáo FinArt</a></li>
-                        <li><a href="/danh-sach-bao-cao-ctck">Báo cáo CTCK</a></li>
-                        <li><a href="/danh-sach-bao-cao-nganh">Báo cáo Ngành</a></li>
-                        <li><a href="danh-sach-tin-tuc-chung-khoan">Tin tức chứng khoán</a></li>
-                    </ul>
-                </div><div class="col-12 col-sm-3">
-                    <h5>Mạng xã hội</h5><ul class="fanpages">
-                        <li>
-                            <a target="_blank" rel="nofollow" href="javascrript:;">
-
-                                <img src="~/assets/img/facebook.png" />
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="nofollow" href="javascript:;">
-                                <img src="~/assets/img/youtube.png" />
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="nofollow" href="javascript;;">
-                                <img src="~/assets/img/telegram.png" />
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="nofollow" href="javascript:;">
-                                <img src="~/assets/img/instagram.png" />
-                            </a>
-                        </li>
                     </ul>
                 </div>
+            </nav>
+        </header>
+
+
+        <main>
+
+            <!-- Hero Section -->
+            @RenderBody()
+
+            <!-- Testimonials Section -->
+            <!-- Team Section -->
+            <!-- Pricing Section -->
+            <!-- Faq Section -->
+            <!-- Contact Section -->
+
+        </main>
+
+
+
+        <footer style="margin-top: 60px;    border-top: 1px solid #e9e9e9; padding-top: 40px;">
+            <div class="container">
+                <div class="row0">
+                    <div class="col-12 col-sm-5">
+                        <div class="footer-logo">
+                            <a href="/">
+                                <img src="~/assets/img/logo.jpg" />
+                            </a>
+                            <p>
+                            <p>41 Ngô Quyền, Hoàn Kiếm, Hà Nội</p>
+                            <p>Phone: <span>098 904 8431</span></p>
+                            <p>Email: <span>finart.advisory@gmail.com</span></p>
+                            </p>
+                        </div>
+                    </div><div class="col-12 col-sm-2"></div>
+                    <div class="col-12 col-sm-2">
+                        <h5>Liên kết</h5><ul>
+                            <li>
+                                <a href="/">Trang chủ</a>
+                            </li>
+                            <li><a href="javascript:;">Danh sách Khuyến nghị</a></li>
+                            <li><a href="javascript:;">Cổ phiếu tăng trưởng</a></li>
+
+                            <li><a href="javascript:;">Chỉ số FinArt</a></li>
+                            <li><a href="/danh-sach-bao-cao-finart">Báo cáo FinArt</a></li>
+                            <li><a href="/danh-sach-bao-cao-ctck">Báo cáo CTCK</a></li>
+                            <li><a href="/danh-sach-bao-cao-nganh">Báo cáo Ngành</a></li>
+                            <li><a href="/danh-sach-tin-tuc-chung-khoan">Tin tức chứng khoán</a></li>
+                        </ul>
+                    </div><div class="col-12 col-sm-3">
+                        <h5>Mạng xã hội</h5><ul class="fanpages">
+                            <li>
+                                <a target="_blank" rel="nofollow" href="javascrript:;">
+
+                                    <img src="~/assets/img/facebook.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="nofollow" href="javascript:;">
+                                    <img src="~/assets/img/youtube.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="nofollow" href="javascript;;">
+                                    <img src="~/assets/img/telegram.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="nofollow" href="javascript:;">
+                                    <img src="~/assets/img/instagram.png" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div><hr><div class="container">
+                <div class="row0">
+                    <div class="col-12 col-sm-6"><p class="copyright">© 2025 <b>FinArt</b>. All rights reserved.</p></div>
+
+                </div>
             </div>
-        </div><hr><div class="container">
-            <div class="row0">
-                <div class="col-12 col-sm-6"><p class="copyright">© 2025 <b>FinArt</b>. All rights reserved.</p></div>
-
-            </div>
-        </div>
-    </footer>
+        </footer>
 
 
+        <button onclick="topFunction()" id="clickToTop" fdprocessedid="90iu49">
+            <img src="~/assets/img/back-to-top.png" alt="Back to Top">
+        </button>
 
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    </div>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+    <script src="~/assets/js/vendor.min.js"></script>
+    <script src="~/assets/js/script.js"></script>
 
 
-    <script src="~/assets/vendor/php-email-form/validate.js"></script>
-    <script src="~/assets/vendor/aos/aos.js"></script>
-    <script src="~/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="~/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
 
 
 
     <!-- Main JS File -->
-    <script src="~/assets/js/main.js"></script>
+    @* <script src="~/assets/js/main.js"></script> *@
 
 
     @* <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
@@ -365,14 +453,14 @@
 
 
 
-    <div class="zalo-chat-widget"
+    @* <div class="zalo-chat-widget"
          data-oaid="@ConfigInfo.Zalocontact"
          data-welcome-message="Xin chào! Bạn cần hỗ trợ gì không?"
          data-autopopup="0"
          data-width=""
          data-height="">
     </div>
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script> *@
 
     <script>
              // Lấy đường dẫn hiện tại
@@ -397,7 +485,7 @@
             $("#searchForm").toggleClass("hidden").focus();
             if ($("#searchForm").hasClass("hidden")) {
                 //
-               
+
                $(".iconsearch").addClass('spanicon_an');
                $(".iconsearch").removeClass('spanicon_hien');
 
@@ -420,7 +508,7 @@
           $('#searchInput').on('keypress', function (e) {
             if (e.which === 13) { // 13 là mã phím Enter
               let value = $(this).val().trim().toUpperCase();
-             
+
               if (value) {
                     let url = '/chi-tiet-co-phieu/' + encodeURIComponent(value);
                     window.open(url, '_blank'); // Mở trong tab mới
@@ -428,7 +516,29 @@
             }
           });
         });
+
+
     </script>
 
+
+
+    @* 
+
+
+    <script>
+        AOS.init();
+    </script>
+ *@
+
+
+
+
 </body>
+
+
+
+
+
+
+
 </html>

@@ -4,6 +4,10 @@
 	.container{
 		max-width:1100px;	
 	}
+	.container_full {
+		max-width: 1400px !important;
+		margin-right: 0
+	}
 }
 
 /* ================= Options Devices (All Devices) ================= */

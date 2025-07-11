@@ -55,7 +55,7 @@
 
             @if (CategoryType == "1" || CategoryType == "5")
             {
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" id="data_news">
+                <div class="col-lg-8"  id="data_news">
 
                     @Html.Partial("DataNewsPages")
 
@@ -64,7 +64,7 @@
             }
             else
             {
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-8" >
 
 
                     <div id="noidung">
@@ -101,7 +101,7 @@
 
 
 
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-4">
                 @Html.Partial("NewsOtherTab", CategoryType)
 
             </div>
