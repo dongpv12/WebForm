@@ -5,7 +5,7 @@
 	Layout = "_Layout_Admin";
 
 	List<Allcode_Info> typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE");
-
+	List<Allcode_Info> typeNganh = DataMemory.GetAllcodeByName("NEWS", "NGANHNGHE");
 
 }
 <style>
@@ -99,7 +99,17 @@
 	<div class="form-group row" id="f_txtIndustry">
 		<label for="txtTitle" class="col-sm-2 col-form-label">Ngành</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtIndustry" maxlength="1000" />
+			@* <input type="text" class="form-control" id="txtIndustry" maxlength="1000" /> *@
+
+
+			<select class="form-control" id="txtIndustry">
+				<option value="">-- Không chọn --</option>
+				@foreach (var item in typeNganh)
+				{
+					<option value="@item.CdValue">@item.CdContent</option>
+				}
+			</select>
+
 		</div>
 	</div>
 
@@ -270,35 +280,7 @@
 			$("#txtTag").val("");
 			$("#txtLink").val("");
 
-		}else if(type == "6" ){
-			$("#f_txtSymbol").removeClass("displaynone");
-			$("#f_txtSymbolName").removeClass("displaynone");
-			$("#f_txtIssue").removeClass("displaynone");
-			$("#f_txtSuggestion").removeClass("displaynone");
-			$("#f_txtIndustry").addClass("displaynone");
-			$("#f_txtTag").addClass("displaynone");
-			$("#f_txtLink").addClass("displaynone");
-
-			$("#txtIndustry").val("");
-			$("#txtTag").val("");
-			$("#txtLink").val("");
-		}
-		else if(type == "7" ){
-			$("#f_txtSymbol").addClass("displaynone");
-			$("#f_txtSymbolName").addClass("displaynone");
-			$("#f_txtIssue").addClass("displaynone");
-			$("#f_txtSuggestion").addClass("displaynone");
-			$("#f_txtIndustry").addClass("displaynone");
-			$("#f_txtTag").removeClass("displaynone");
-			$("#f_txtLink").removeClass("displaynone");
-
-			$("#txtSymbol").val("");
-			$("#txtSymbolName").val("");
-			$("#txtIssue").val("");
-			$("#txtSuggestion").val("");
-			$("#txtIndustry").val("");
-
-		}else if(type == "8" ){
+		}else{
 			$("#f_txtSymbol").removeClass("displaynone");
 			$("#f_txtSymbolName").removeClass("displaynone");
 			$("#f_txtIssue").removeClass("displaynone");
@@ -306,9 +288,46 @@
 			$("#f_txtIndustry").removeClass("displaynone");
 			$("#f_txtTag").removeClass("displaynone");
 			$("#f_txtLink").removeClass("displaynone");
+		}
+		// else if(type == "6" ){
+		// 	$("#f_txtSymbol").removeClass("displaynone");
+		// 	$("#f_txtSymbolName").removeClass("displaynone");
+		// 	$("#f_txtIssue").removeClass("displaynone");
+		// 	$("#f_txtSuggestion").removeClass("displaynone");
+		// 	$("#f_txtIndustry").addClass("displaynone");
+		// 	$("#f_txtTag").addClass("displaynone");
+		// 	$("#f_txtLink").addClass("displaynone");
+
+		// 	$("#txtIndustry").val("");
+		// 	$("#txtTag").val("");
+		// 	$("#txtLink").val("");
+		// }
+		// else if(type == "7" ){
+		// 	$("#f_txtSymbol").addClass("displaynone");
+		// 	$("#f_txtSymbolName").addClass("displaynone");
+		// 	$("#f_txtIssue").addClass("displaynone");
+		// 	$("#f_txtSuggestion").addClass("displaynone");
+		// 	$("#f_txtIndustry").addClass("displaynone");
+		// 	$("#f_txtTag").removeClass("displaynone");
+		// 	$("#f_txtLink").removeClass("displaynone");
+
+		// 	$("#txtSymbol").val("");
+		// 	$("#txtSymbolName").val("");
+		// 	$("#txtIssue").val("");
+		// 	$("#txtSuggestion").val("");
+		// 	$("#txtIndustry").val("");
+
+		// }else if(type == "8" ){
+		// 	$("#f_txtSymbol").removeClass("displaynone");
+		// 	$("#f_txtSymbolName").removeClass("displaynone");
+		// 	$("#f_txtIssue").removeClass("displaynone");
+		// 	$("#f_txtSuggestion").removeClass("displaynone");
+		// 	$("#f_txtIndustry").removeClass("displaynone");
+		// 	$("#f_txtTag").removeClass("displaynone");
+		// 	$("#f_txtLink").removeClass("displaynone");
 
 			
-		}
+		// }
 	}
 </script>
 

@@ -243,6 +243,53 @@
         html {
             scroll-behavior: smooth;
         }
+
+      
+
+
+
+        /* Đặt submenu bên phải */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+            .dropdown-submenu > .dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-top: -1px;
+                display: none;
+                position: absolute;
+            }
+
+            /* Hiện menu cấp 3 khi hover vào menu cấp 2 */
+            .dropdown-submenu:hover > .dropdown-menu {
+                display: block;
+            }
+
+        /* Tùy chọn: ngăn menu cấp 2 đóng khi rê vào menu cấp 3 */
+        .dropdown-menu > .dropdown-submenu > a:after {
+            content: " ▶";
+            float: right;
+        }
+        .item3{
+            left: 240px !important;
+            top: 0px !important;
+        }
+
+      /*   .menu3 .dropdown-toggle::after {
+            display: none !important;
+        } */
+
+        .menu3 .dropdown-toggle1::after {
+            font-family: "Font Awesome 5 Free" !important; /* hoặc "Font Awesome 6 Free" nếu bạn dùng v6 */
+            content: "\f105" !important; /* Mũi tên phải (angle-right) */
+            font-weight: 900 !important;
+            margin-left: 0.5rem !important;
+            display: inline-block !important;
+            vertical-align: middle !important;
+        }
+
+
     </style>
 
 
@@ -277,15 +324,15 @@
                             </a>
                             <ul class="dropdown-menu">
 
-                                <li><a class="dropdown-item" href="/danh-sach-khuyen-nghi">Danh sách khuyến nghị</a></li>
-                                <li><a class="dropdown-item" href="/co-phieu-tang-truong">Danh mục đầu tư quý</a></li>
+                                <li><a class="dropdown-item" href="/danh-sach-khuyen-nghi">Danh mục khuyến nghị</a></li>
+                                <li><a class="dropdown-item" href="/co-phieu-tang-truong">Danh mục đầu tư dài hạn</a></li>
 
                             </ul>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Chỉ số FinArt
+                                Nhận định FinArt
                             </a>
                             <ul class="dropdown-menu">
 
@@ -296,17 +343,52 @@
 
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
+                       @*  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Báo cáo phân tích
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/danh-sach-bao-cao-finart">Báo cáo FinArt</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/danh-sach-bao-cao-finart">Báo cáo FinArt</a>
+                                </li>
                                 <li><a class="dropdown-item" href="/danh-sach-bao-cao-ctck">Báo cáo CTCK</a></li>
                                 <li><a class="dropdown-item" href="/danh-sach-bao-cao-nganh">Báo cáo ngành</a></li>
+
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Báo cáo ngành</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/bao-cao-nganh-cong-nghe">Ngành Công Nghệ</a></li>
+                                        <li><a class="dropdown-item" href="/bao-cao-nganh-ngan-hang">Ngành Ngân Hàng</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li> *@
+
+
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Báo cáo phân tích 
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/danh-sach-bao-cao-vimo">Báo cáo Vĩ mô</a></li>
+                               
+
+                                <li class="dropdown-submenu menu3">
+                                    <a class="dropdown-item dropdown-toggle1" href="#">Báo cáo FinArt </a>
+                                    <ul class="dropdown-menu item3">
+                                        <li><a class="dropdown-item" href="/danh-sach-bao-cao-nganh">Báo cáo ngành</a></li>
+                                        <li><a class="dropdown-item" href="/danh-sach-bao-cao-doanh-nghiep">Báo cáo DN khuyến nghị</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a class="dropdown-item" href="/danh-sach-bao-cao-ctck">Báo cáo CTCK</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item "><a class="nav-link " href="/danh-sach-tin-tuc-chung-khoan">Tin tức</a></li>
+
+
+                        <li class="nav-item "><a class="nav-link " href="/danh-sach-tin-tuc-chung-khoan">Tin nổi bật</a></li>
 
                         <li style="position: relative; min-width: 20px; height: 44px;">
 
@@ -371,14 +453,12 @@
                             <li>
                                 <a href="/">Trang chủ</a>
                             </li>
-                            <li><a href="javascript:;">Danh sách Khuyến nghị</a></li>
-                            <li><a href="javascript:;">Cổ phiếu tăng trưởng</a></li>
+                            <li><a href="/danh-sach-khuyen-nghi">Danh mục tư vấn</a></li>
+                            <li><a href="/xu-huong-thi-truong">Nhận định FinArt</a></li>
 
-                            <li><a href="javascript:;">Chỉ số FinArt</a></li>
-                            <li><a href="/danh-sach-bao-cao-finart">Báo cáo FinArt</a></li>
-                            <li><a href="/danh-sach-bao-cao-ctck">Báo cáo CTCK</a></li>
-                            <li><a href="/danh-sach-bao-cao-nganh">Báo cáo Ngành</a></li>
-                            <li><a href="/danh-sach-tin-tuc-chung-khoan">Tin tức chứng khoán</a></li>
+                            <li><a href="/danh-sach-bao-cao-vimo">Báo cáo phân tích</a></li>
+                            <li><a href="/danh-sach-tin-tuc-chung-khoan">Tin nổi bật</a></li>
+                            
                         </ul>
                     </div><div class="col-12 col-sm-3">
                         <h5>Mạng xã hội</h5><ul class="fanpages">

@@ -26,18 +26,53 @@
         CategoryType = ViewBag.CategoryType.ToString();
     }
 
+    // danh sách ngành
+    List<Allcode_Info> typeNganh = DataMemory.GetAllcodeByName("NEWS", "NGANHNGHE");
 
+    string nganh = "";
+    if (ViewBag.Nganh != null)
+    {
+        nganh = ViewBag.Nganh;
+    }
 }
 
 <style>
     .page-title {
-        background: url('/assets/img/cta-bg-02.png') !important;
+    background: url('/assets/img/cta-bg-02.png') !important;
     }
 
     .page-title:before {
-           
-        background-color: color-mix(in srgb, var(--background-color), transparent 80%) !important;
+    background-color: color-mix(in srgb, var(--background-color), transparent 80%) !important;
     }
+
+
+    .sub-post {
+    }
+
+
+    .sub-post .active a:after {
+    background: none;
+    }
+
+    .sub-post li a:after {
+    background: none !important;
+    }
+
+    .sub-post li {
+    margin-bottom: 10px !important;
+    }
+
+
+
+    .sub-post a {
+    background: #496262 !important;
+    padding: 10px 14px !important;
+    }
+
+    .sub-post .active a {
+    background: #266664 !important;
+    }
+
 </style>
 
 <div class="area-page-title">
@@ -47,46 +82,111 @@
             <li class="breadcrumb-item">
                 <a href="/">Trang chủ</a>
             </li>
+
+            @if (CategoryType == "10" || CategoryType == "6")
+            {
+                <li class="breadcrumb-item">
+                    <a href="/danh-sach-bao-cao-nganh">Báo cáo FinArt</a>
+                </li>
+            }
             <li class="breadcrumb-item active" aria-current="page">@_Header</li>
         </ol>
     </div>
 </div>
 <!-- Service Details Section -->
-<section id="service-details" class="service-details section">
+<section id="service-details" class="area-content-page">
 
     <div class="container">
 
-        <div class="row gy-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-4 order-b">
+
+                    @if (CategoryType == "8")
+                    {
+                        <ul class="list-post">
+                            <li class="active">
+                                <a href="/danh-sach-bao-cao-vimo"> Báo cáo Vĩ mô </a>
+                            </li>
+                        </ul>
+                    }
+                    else if (CategoryType == "6")
+                    {
+                        <ul class="list-post ">
+                            <li class="active" style="position: relative">
+                                <a href="/danh-sach-bao-cao-nganh" class="iconnene"> Báo cáo ngành </a>
+                                <span class="bcn" onclick="ShowNganh(this)"></span>
+                                <ul class="sub-post" >
+                                    @foreach (var item in typeNganh)
+                                    {
+                                        if (item.CdValue == nganh)
+                                        {
+                                            <li style="background: none !important;"><a href="/danh-sach-bao-cao-nganh/@item.CdValue" class="active">@item.CdContent</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li style="background: none !important;"><a href="/danh-sach-bao-cao-nganh/@item.CdValue">@item.CdContent</a></li>
+                                        }
+                                       
+                                    }
+                                </ul>
+
+                            </li>
+                            <li>
+                                <a href="/danh-sach-bao-cao-doanh-nghiep"> Báo cáo DN khuyến nghị </a>
+                            </li>
+                        </ul>
+                    }
+                    else if (CategoryType == "10")
+                    {
+                        <ul class="list-post">
+                            <li>
+                                <a href="/danh-sach-bao-cao-nganh"> Báo cáo ngành </a>
 
 
 
+                            </li>
+                            <li class="active">
+                                <a href="/danh-sach-bao-cao-doanh-nghiep" class="active"> Báo cáo DN khuyến nghị </a>
+                            </li>
+                        </ul>
+                    }
+                    else if (CategoryType == "7")
+                    {
+                        <ul class="list-post">
+                            <li>
+                                <a href="/danh-sach-bao-cao-vimo"> Báo cáo Vĩ mô </a>
+                            </li>
+                            <li>
+                                <a href="/danh-sach-bao-cao-nganh"> Báo cáo ngành </a>
+                            </li>
+                            <li>
+                                <a href="/danh-sach-bao-cao-doanh-nghiep"> Báo cáo DN khuyến nghị </a>
+                            </li>
+                        </ul>
+                    }
 
-            <div class="col-lg-8"  id="data_news">
 
-                <div class="analysis-card">
-                    <div class="analysis-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">@_Header</h5>
+
+                    <div class="advertise">
+                        <a href="https://t.me/timetradingtele" target="_blank">
+                            <img src="https://timetradingfx.com/output/images/advertise/banner1.jpg?v=1.1" alt="banner">
+                        </a>
                     </div>
+
+                </div>
+                <div class="col-12 col-sm-8 order-a">
+
+                    <h4 class="header_list" style="    border-bottom: 3px solid; color: #10cfc9; padding-bottom: 10px;">
+                        @_Header.ToUpper()
+                    </h4>
 
                     <div id="data_report">
                         @Html.Partial("DataReportPages")
-
                     </div>
 
-
                 </div>
-
-
-
             </div>
-
-            <div class="col-lg-4" >
-
-                @Html.Partial("NewsOtherTabReport", CategoryType)
-               
-
-            </div>
-
         </div>
 
     </div>
@@ -94,6 +194,17 @@
 </section><!-- /Service Details Section -->
 <input type="hidden" id="txtRecordOnPage" value="@ConfigInfo.RecordOnPage" />
 <script>
+
+
+    $(document).ready(function () {
+    const nganh = '@(nganh ?? "0")'; // Razor sinh ra "0" nếu null
+    const btn = document.querySelector('.bcn');
+
+    if (btn && nganh !== "0" && nganh !== "") {
+      ShowNganh(btn);
+    }
+    });
+
     function page(index) {
 
         try {
@@ -128,4 +239,25 @@
             console.log(e);
         }
     }
+
+        function ShowNganh(btn) {
+      const submenu = btn.parentElement.querySelector('.sub-post');
+      submenu.classList.toggle('open');
+      btn.classList.toggle('open'); // nếu muốn đổi icon nền
+    }
+
+
+    // function ShowNganh(btn) {
+    //   const li = btn.closest('li');
+    //   const submenu = li.querySelector('.sub-post');
+
+    //   // Toggle submenu
+    //   if (submenu.style.display === 'none' || submenu.style.display === '') {
+    //     submenu.style.display = 'block';
+    //     btn.classList.add('open');
+    //   } else {
+    //     submenu.style.display = 'none';
+    //     btn.classList.remove('open');
+    //   }
+    // }
 </script>

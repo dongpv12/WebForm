@@ -299,9 +299,10 @@ public class HomeController : Controller
 
     [HttpGet]
     [Route("danh-sach-bao-cao-art/{type}")]
-    [Route("danh-sach-bao-cao-finart")]                   // Alias 1
-    [Route("danh-sach-bao-cao-ctck")]
+    [Route("danh-sach-bao-cao-vimo")]                   // Alias 1
     [Route("danh-sach-bao-cao-nganh")]
+    [Route("danh-sach-bao-cao-doanh-nghiep")]
+    [Route("danh-sach-bao-cao-ctck")]
     public ActionResult ReportArt(decimal type = 6)
     {
         try
@@ -312,9 +313,10 @@ public class HomeController : Controller
 
             type = path switch
             {
-                "/danh-sach-bao-cao-finart" => 6,
+                "/danh-sach-bao-cao-vimo" => 8,
+                "/danh-sach-bao-cao-nganh" => 6,
+                "/danh-sach-bao-cao-doanh-nghiep" => 10,
                 "/danh-sach-bao-cao-ctck" => 7,
-                "/danh-sach-bao-cao-nganh" => 8,
                 _ => ExtractTypeFromRoute(path) // Trả về decimal
             };
 
@@ -340,12 +342,26 @@ public class HomeController : Controller
 
             Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
 
-            ViewBag.Header = typeNews.CdContent;
+            if (typeNews.CdValue == "10")
+            {
+                ViewBag.Header = "Báo cáo doanh nghiệp khuyến nghị";
+            }else if (typeNews.CdValue == "6")
+            {
+                ViewBag.Header = "Báo cáo ngành";
+            }
+            else
+            {
+                ViewBag.Header = typeNews.CdContent;
+            }
 
-            var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
+
+                var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
             ViewBag.Paging = paging;
             ViewBag.List = list;
             ViewBag.CategoryType = type;
+
+            ViewBag.Nganh = "0";
+
             return View();
         }
         catch (Exception e)
@@ -354,6 +370,96 @@ public class HomeController : Controller
             return null;
         }
     }
+
+
+
+    [HttpGet]
+   
+    [Route("danh-sach-bao-cao-nganh/{nganh}")]
+    public ActionResult ReportArtNganh(string nganh = "0")
+    {
+        try
+        {
+
+
+            var path = HttpContext.Request.Path.Value?.ToLower();
+
+            decimal type = 6;
+
+
+
+            List<News> list = DataMemory.c_lstNew.Where(i => Convert.ToDecimal(i.CategoryType) == type).OrderByDescending(i => i.Id).ToList();
+
+            if (nganh != null && nganh != "")
+            {
+               list = DataMemory.c_lstNew
+                                            .Where(i => Convert.ToDecimal(i.CategoryType) == type && i.Industry == nganh)
+                                            .OrderByDescending(i => i.Id)
+                                            .ToList();
+            }
+           
+
+
+            var total = list.Count();
+            var totalPage = Math.Ceiling(total / (decimal)ConfigInfo.RecordOnPage);
+
+            // danh sách tin
+
+            int start = 1;
+            int end = ConfigInfo.RecordOnPage;
+
+
+            if (list?.Count > 0 && list.Count >= start)
+            {
+                int numberTake = Math.Min((list.Count - start + 1), (end - start + 1));
+                list = list.Skip(start - 1).Take(numberTake).ToList();
+
+            }
+
+            Allcode_Info typeNews = DataMemory.GetAllcodeByName("NEWS", "CATEGORYTYPE").Where(X => Convert.ToDecimal(X.CdValue) == type).FirstOrDefault();
+
+            if (typeNews.CdValue == "10")
+            {
+                ViewBag.Header = "Báo cáo doanh nghiệp khuyến nghị";
+            }
+            else if (typeNews.CdValue == "6")
+            {
+                ViewBag.Header = "Báo cáo ngành";
+            }
+            else
+            {
+                ViewBag.Header = typeNews.CdContent;
+            }
+
+
+            var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
+            ViewBag.Paging = paging;
+            ViewBag.List = list;
+            ViewBag.CategoryType = type;
+
+            ViewBag.Nganh = nganh;
+
+            return View("ReportArt");
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     [HttpPost]
     public ActionResult SearchReport_Art([FromBody] SearchNewsRequest request)

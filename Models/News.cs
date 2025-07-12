@@ -19,7 +19,7 @@ namespace WebForm.Models
         public string Suggestion { get; set; }
         public string Industry { get; set; }
         public string Link { get; set; }
-
+        public string Industry_Text { get; set; }
 
     }
 

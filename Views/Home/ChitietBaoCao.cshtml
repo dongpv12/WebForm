@@ -7,11 +7,29 @@
 @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    string _Header = "";
+    string CategoryType = "1";
     News news = new News();
     if (ViewBag.New != null)
     {
         news = ViewBag.New;
+        CategoryType = news.CategoryType;
+
+
+
+
+        if (CategoryType == "6")
+        {
+            _Header = "Báo cáo ngành";
+        }
+        else if (CategoryType == "10")
+        {
+            _Header = "Báo cáo doanh nghiệp khuyến nghị";
+        }
+        else
+        {
+            _Header = news.CategoryName;
+        }
     }
     ViewBag.Title = news.CategoryName;
 
@@ -23,50 +41,93 @@
 
 <div class="area-page-title">
     <div class="container">
-        <h1 class="animate a_01">@news.CategoryName</h1>
+        <h1 class="animate a_01">@_Header</h1>
         <ol class="breadcrumb animate a_02">
             <li class="breadcrumb-item">
                 <a href="/">Trang chủ</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">@news.CategoryName</li>
+
+            @if (CategoryType == "10" || CategoryType == "6")
+            {
+                <li class="breadcrumb-item">
+                    <a href="/danh-sach-bao-cao-nganh">Báo cáo FinArt</a>
+                </li>
+            }
+
+            @if (CategoryType == "10")
+            {
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="/danh-sach-bao-cao-doanh-nghiep" style="color:#fff !important">@_Header</a>
+                </li>
+            }
+            else if (CategoryType == "6")
+            {
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="/danh-sach-bao-cao-nganh" style="color:#fff !important">@_Header</a>
+                </li>
+            }
+            else if (CategoryType == "7")
+            {
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="/danh-sach-bao-cao-ctck" style="color:#fff !important">@_Header</a>
+                </li>
+            }
+            else if (CategoryType == "8")
+            {
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="/danh-sach-bao-cao-vimo" style="color:#fff !important">@_Header</a>
+                </li>
+            }
+
         </ol>
     </div>
 </div>
 
 
 
-<!-- Service Details Section -->
-<section id="service-details" class="service-details section">
-
+<div class="area-content-page">
     <div class="container">
+        <div class="row">
 
-        <div class="row gy-4">
+            <div class="col-12 col-sm-12 order-a mx-auto">
+                <article class="detail-post">
 
-
-            <div class="col-lg-8">
-                <div id="noidung">
                     @if (news.Title != null && news.Title != "")
                     {
-                        <h3 class="titleDetail">@(news.Title ?? "")</h3>
+                        <h1>@(news.Title ?? "")</h1>
+                    }
+                    @if (!string.IsNullOrEmpty(news.CreateDate))
+                    {
+                        <time>@news.CreateDate</time>
                     }
 
-                    <div class="dateTime" style="    font-size: 13px; text-align: right; font-style: italic;">
-                        @news.CreateDate
-                    </div>
-                    @if (news.Description != null && news.Description != "")
+                    @*    <div class="excerpt">
+                        @if (!string.IsNullOrEmpty(news.Symbol))
+                        {
+                            <span class="badge badge-update">@news.Symbol</span>
+                        }
+                        @if (!string.IsNullOrEmpty(news.Tag))
+                        {
+                            <p>
+                                <time>@news.Tag</time>
+                            </p>
+                        }
+                    </div> *@
+
+                    @if (!string.IsNullOrEmpty(news.Description))
                     {
-                        <div id="des_detail">
-                            @(news.Description ?? "")
+                        <div class="description">
+                            @news.Description
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(news.Content))
+                    {
+                        <div class="description">
+                            @Html.Raw(news.Content)
                         </div>
                     }
 
-
-                    @if (news.Content != null && news.Content != "")
-                    {
-                        <div>@Html.Raw(news.Content)</div>
-                    }
-
-                    @if (news.Link != null && news.Link != "")
+                    @if (!string.IsNullOrEmpty(news.Link))
                     {
                         <iframe src="@(news.Link + "#navpanes=0")"
                                 width="100%"
@@ -75,115 +136,11 @@
                         </iframe>
                     }
 
-
-                </div>
-
-
-
-
-                <div class="analysis-card" style="border:none; box-shadow: none">
-
-                    @if (listLienQuan.Count > 0)
-                    {
-                        <div class="tinlienquan  d-flex justify-content-between align-items-center">
-                            <h3>Báo cáo liên quan</h3>
-
-                            @if (news.CategoryType == "6")
-                            {
-                                <a href="/danh-sach-bao-cao-finart" class="viewmore Orcolor">xem thêm >></a>
-
-
-                            }
-                            else if (news.CategoryType == "7")
-                            {
-                                <a href="/danh-sach-bao-cao-ctck" class="viewmore Orcolor">xem thêm >></a>
-
-                            }
-                            else
-                            {
-                                <a href="/danh-sach-bao-cao-nganh" class="viewmore Orcolor">xem thêm >></a>
-
-                            }
-
-
-
-
-                        </div>
-                        @foreach (var item in listLienQuan)
-                        {
-                            <div class="item_news">
-
-
-
-                                <div class="featureimage">
-                                    @if (item.FeatureImage != null && item.FeatureImage != "")
-                                    {
-                                        <img src="@item.FeatureImage" />
-                                    }
-                                    else
-                                    {
-
-                                        <img src="~/assets/img/bg_03.jpg" />
-                                    }
-                                </div>
-                                <div class="newtomtat">
-                                    @if (item.Symbol == null || item.Symbol == "")
-                                    {
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-update">@item.Symbol.ToUpper()</span>
-                                    }
-                                    <span class="date_new">@item.CreateDate</span>
-                                    <p class="title_news">
-                                        <a href="/chi-tiet-bao-cao/@item.Id" target="_blank">@item.Title ?? ""</a>
-                                    </p>
-
-
-                                    @if (item.Tag == null || item.Tag == "")
-                                    {
-                                    }
-                                    else
-                                    {
-                                        <div class="analysis-source onerow">Nguồn: @item.Tag</div>
-                                    }
-
-                                    @if (item.Suggestion == null || item.Suggestion == "")
-                                    {
-                                    }
-                                    else
-                                    {
-                                        <div class="analysis-source onerow" style="color: #ff2222; font-weight: bold">@item.Suggestion</div>
-                                    }
-
-
-                                </div>
-
-                            </div>
-                        }
-
-                    }
-                    <!-- Tin 1 -->
-
-
-
-                </div>
-
-
+                </article>
             </div>
-
-            <div class="col-lg-4">
-
-                @Html.Partial("NewsOtherTabReport", @news.CategoryType)
-
-            </div>
-
-
-
-
-
         </div>
-
     </div>
+</div>
 
-</section><!-- /Service Details Section -->
+
+
