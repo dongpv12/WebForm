@@ -256,7 +256,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
+                                  @*       <tr v-for="(item, index) in stocks.slice(0, 5)" :key="item.Id">
                                             <td>{{ item.Symbol }}</td>
                                             <td>{{ item.Price_Text }}</td>
                                             <td>{{ item.Current_Price_Text }}</td>
@@ -266,7 +266,25 @@
                                                 {{ item.Heso_Text }}
                                             </td>
 
+                                        </tr> *@
+
+                                        <tr v-for="(item, index) in paddedStocks" :key="index">
+                                            @* <td>{{ item?.Symbol || '&nbsp;' }}</td> *@
+
+                                            <td>
+                                                <a v-if="item?.Symbol" :href="`/chi-tiet-co-phieu/${item.Symbol}`" style="color: #fff !important">
+                                                    {{ item.Symbol }}
+                                                </a>
+                                                <span v-else>&nbsp;</span>
+                                            </td>
+
+                                            <td>{{ item?.Price_Text || ' ' }}</td>
+                                            <td>{{ item?.Current_Price_Text || ' ' }}</td>
+                                            <td :class="getClass(item?.Heso_Text)">
+                                                {{ item?.Heso_Text || ' ' }}
+                                            </td>
                                         </tr>
+
 
                                     </tbody>
                                 </table>
@@ -549,18 +567,31 @@
 <script src="~/assets/js/vue.global.js"></script>
 
 <script>
-    const { createApp, ref, onMounted } = Vue
+    const { createApp, ref, onMounted, computed } = Vue
 
     createApp({
       setup() {
-        const stocks = ref([
+        const stocks = ref([])
 
-        ])
+        // Tạo mảng luôn đủ 5 dòng
+        const paddedStocks = computed(() => {
+          const filled = [...stocks.value]
+          while (filled.length < 5) {
+            filled.push(null) // hoặc {} nếu muốn tránh undefined
+          }
+          return filled.slice(0, 5)
+        })
 
+        // Xử lý class màu theo Heso_Text
+        function getClass(hesoText) {
+          const value = parseFloat(hesoText)
+          if (isNaN(value)) return ''
+          return value > 0 ? 'positive' : value < 0 ? 'negative' : 'yellow'
+        }
 
+        // Gọi API để lấy stocks
         function sendPost() {
-
-            axios.get('/Home/GetStocks')
+          axios.get('/Home/GetStocks')
             .then(function (response) {
               console.log('Gửi thành công:', response.data)
               stocks.value = response.data
@@ -570,16 +601,16 @@
             })
         }
 
+        onMounted(() => {
+          sendPost()
+          setInterval(sendPost, 5000) // gọi lại mỗi 5 giây
+        })
 
-       onMounted(() => {
-            sendPost() // gọi lần đầu
-            setInterval(sendPost, 5000) // gọi lại mỗi 60 giây
-       })
-
-
-
-
-        return { stocks }
+        return {
+          stocks,
+          paddedStocks,
+          getClass
+        }
       }
     }).mount('#app')
 </script>
