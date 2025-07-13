@@ -45,22 +45,54 @@
     }
 
     .highlight-green {
-        background-color: #8ef08e;
-        font-weight: bold;
+        background-color: #15a903;
+        /*  font-weight: bold; */
     }
 
     .highlight-red {
-        background-color: #a52a2a;
+        background-color: #eb0505;
         color: white;
-        font-weight: bold;
+        /*  font-weight: bold; */
+    }
+
+    .highlight-ye {
+        background-color: #ffc107;
+        color: white;
+        /*  font-weight: bold; */
     }
 
     tr th {
         font-family: Lexenddeca_light
     }
 
-    td {
+
+    #app td {
+        color: #221e1e !important;
         font-size: 15px;
+    }
+
+    .status_1 {
+        padding: 3px 10px;
+        border-radius: 16px;
+        font-size: 14px;
+        background: #027c00;
+        color: #fff;
+    }
+
+    .status_2 {
+        padding: 3px 10px;
+        border-radius: 16px;
+        font-size: 14px;
+        background: red;
+        color: #fff;
+    }
+
+    .status_3 {
+        padding: 3px 10px;
+        border-radius: 16px;
+        font-size: 14px;
+        background: #007c77;
+        color: #fff;
     }
 </style>
 
@@ -78,15 +110,16 @@
 
 <section id="service-details" class="service-details section">
 
-    <div class="container">
+    <div class="container" id="app">
 
         <div class="row gy-4">
 
 
-            <div class="col-12" >
+            <div class="col-12">
 
                 <table>
                     <colgroup>
+                        <col>
                         <col>
                         <col>
                         <col>
@@ -97,38 +130,51 @@
                         <col>
                     </colgroup>
                     <tr>
-                        <th colspan="8" class="section-header">DANH MỤC KHUYẾN NGHỊ NGẮN HẠN</th>
+                        <th colspan="9" class="section-header">DANH MỤC KHUYẾN NGHỊ TRUNG HẠN</th>
                     </tr>
                     <tr>
                         <th class="column-header">Ngày mở vị thế</th>
                         <th class="column-header">MÃ</th>
-                        <th class="column-header">Giá hiện tại<br>(1.000đ)</th>
+                        <th class="column-header">Giá hiện tại / Giá đóng vị thế<br>(1.000đ)</th>
                         <th class="column-header">Giá mua<br>(1.000đ)</th>
-                        <th class="column-header">Giá mục tiêu / Giá đóng vị thế<br>(1.000đ)</th>
+                        <th class="column-header">Giá mục tiêu<br>(1.000đ)</th>
                         <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
+                        <th class="column-header"> Upside kỳ vọng (%)</th>
                         <th class="column-header">Hiệu quả đầu tư (%)</th>
                         <th class="column-header">Cập nhật vị thế/trạng thái</th>
                     </tr>
-                    <tr>
-                        <td>07/09/2025</td>
-                        <td>SHS</td>
-                        <td>14,4</td>
-                        <td>14</td>
-                        <td>17</td>
-                        <td>12,5</td>
-                        <td class="highlight-green">21,4%</td>
-                        <td></td>
+                    <tr v-for="(item, index) in stocks" :key="index">
+                        <td>{{ item.Open_Position_Date }}</td>
+                        <td>{{ item.Symbol }}</td>
+                        <td>{{ item.Price_Position_Text }}</td>
+                        <td>{{ item.Price_Text }}</td>
+                        <td>{{ item.PRICE_Taget_Text }}</td>
+                        <td>{{ item.T_Pause }}</td>
+                        <td>{{ item.Upside }}</td>
+
+                        <td :class="{
+                            'highlight-green' : item.HieuQua>
+                            0,
+                            'highlight-red': item.HieuQua < 0,
+                            'highlight-ye': item.HieuQua == 0
+                            }">
+                            {{ item.HieuQua }}%
+                        </td>
+
+
+                        <td class="">
+                            <span :class="{
+                                  'status_1' : item.Status == '1',
+                                  'status_2' : item.Status == '2',
+                                   'status_3': item.Status == '3'
+                                }">
+                                {{ item.Status_Text == 'Theo dõi giải ngân' ? 'Theo dõi' : item.Status_Text }}
+                            </span></>
+                        </td>
+
+
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="highlight-red">đỏ là lỗ</td>
-                    </tr>
+
                 </table>
 
                 <br>
@@ -136,6 +182,7 @@
                 <!-- BẢNG 2 -->
                 <table>
                     <colgroup>
+                        <col>
                         <col>
                         <col>
                         <col>
@@ -165,10 +212,10 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td colspan="2">&nbsp;</td>
-                        
+
                     </tr>
                 </table>
-              
+
 
 
             </div>
@@ -199,10 +246,6 @@
             })
         }
 
-        // ✅ Tạo computed lọc IsSpecial = 'Y'
-        // const specialStocks = computed(() =>
-        //   stocks.value.filter(item => (item.IsSpecial || '').toUpperCase() === 'Y')
-        // )
 
 
 
@@ -213,7 +256,7 @@
 
         return {
           stocks
-          // specialStocks // return ra template để dùng
+
         }
       }
     }).mount('#app')

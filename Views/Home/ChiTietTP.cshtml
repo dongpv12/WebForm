@@ -79,7 +79,7 @@
 
                 <div class="row mb-2">
                     <div class="col-sm-5 fw-semibold text-muted">Tỷ suất hiện tại:</div>
-                    @* <div class="col-sm-7">{{ stock.Price }}</div> *@
+                    <div class="col-sm-7">{{ stocks.Heso_Text }}</div>
                 </div>
 
                 <div class="tinlienquan d-flex justify-content-between align-items-center" style="margin-bottom: 30px;">
@@ -221,9 +221,7 @@
 
     createApp({
       setup() {
-        const stocks = ref([
-
-        ])
+        const stocks = ref({})
 
 
         function sendPost() {

@@ -10,6 +10,10 @@
 
 
 }
+
+<link href="~/datetimepicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+<script src="~/datetimepicker/jquery.datetimepicker.full.js"></script>
+
 <style>
     .displaynone {
         display: none;
@@ -64,6 +68,14 @@
         </div>
     </div>
 
+    @* // ngày mở vị thế : Open Position Date *@
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Ngày mở vị thế</label>
+        <div class="col-sm-10">
+            <input type="text" class=" form-control datepublic" id="datepublic" value="@Model.Open_Position_Date" />
+        </div>
+    </div>
+
 
     <div class="form-group row" id="f_txtIssue" >
         <label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (từ)</label>
@@ -80,14 +92,14 @@
     </div>
 
     <div class="form-group row" id="f_txtIssue">
-        <label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu (từ)</label>
+        <label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="txtF_PRICE_Target" maxlength="1000" value="@Model.F_PRICE_Target.ToNumberStringN10()" onkeyup="jsFormatFloatNumber(this, 3)" />
         </div>
     </div>
 
     <div class="form-group row" id="f_txtIssue">
-        <label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu (đến)</label>
+        <label for="txtTitle" class="col-sm-2 col-form-label">Giá đóng vị thế</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="txtT_PRICE_Target" maxlength="1000" value="@Model.T_PRICE_Target.ToNumberStringN10()" onkeyup="jsFormatFloatNumber(this, 3)" />
         </div>
@@ -142,6 +154,15 @@
         </div>
     </div>
 
+
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Khuyến nghị</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtNote" maxlength="1000" value="@Model.Note" />
+        </div>
+    </div>
+
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">&nbsp;</label>
         <div class="col-sm-10">
@@ -153,11 +174,18 @@
 
 <script>
 
-     $(document).ready(function() {
+    $(document).ready(function () {
 
-    
 
-    });
+         $.datetimepicker.setLocale('vi');
+         $('.datepublic').datetimepicker({
+             format: 'd/m/Y',
+             formatDate: 'd/m/Y',
+             timepicker: false,
+             mask: '39/19/9999',
+             validateOnBlur: true,
+         });
+     })
 
   
 
@@ -173,6 +201,21 @@
         if (lockSubmit) {
             return;
         }
+
+        var title = $('#txtSymbol').val();
+        if(title == null || title == ""){
+            alert("Mã cổ phiếu không được để trống");
+            $('#txtSymbol').focus();
+            return;
+        }
+
+
+        var datepublic = $("#datepublic").val().trim();
+
+            if (datepublic == "__/__/____") {
+                datepublic = "";
+            }
+
         var request = {
             id: $('#txtId').val(),
             Symbol: $('#txtSymbol').val().trim(),
@@ -188,7 +231,9 @@
             LoiNhuan : $("#txtLoinhuan").val().replace(/,/g, "")  || '0',
             IsSpecial : isSpecial,
             Price : $("#txtPrice").val().replace(/,/g, "")  || '0',
-            Sell_Price : $("#txtSellPrice").val().replace(/,/g, "")  || '0'
+            Sell_Price : $("#txtSellPrice").val().replace(/,/g, "")  || '0',
+             Open_Position_Date : datepublic,
+             Note : $('#txtNote').val().trim(),
         };
         lockSubmit = true;
         axios.post("/Symbol/Edit", request).then(function (response) {

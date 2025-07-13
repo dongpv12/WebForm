@@ -234,6 +234,16 @@ namespace WebForm.Models
         public decimal Price { get; set; }
         public string Price_Text { get; set; }
         public DateTime Date_Pause { get; set; }
+        public string Note { get; set; }
+
+        public string Open_Position_Date { get; set; }
+
+        public string Open_Position_Date_Text { get; set; }
+
+        public decimal Price_Position { get; set; }
+        public decimal Price_Position_Text { get; set; }
+        public decimal Upside { get; set; }
+        public decimal HieuQua { get; set; }
 
     }
 

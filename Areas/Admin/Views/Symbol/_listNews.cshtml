@@ -10,13 +10,16 @@
                 <th style="text-align: center">Tên cổ phiếu</th>
                 <th style="text-align: center">Tên doanh nghiệp</th>
                 <th style="text-align: center">Trạng thái</th>
+                <th style="text-align: center">Ngày mở vị thế</th>
                 <th style="text-align: center">Vùng mua dự kiến</th>
                 <th style="text-align: center">Giá mục tiêu </th>
+                <th style="text-align: center">Giá đóng vị thế </th>
                 <th style="text-align: center">Giá dừng lỗ </th>
                 <th style="text-align: center">Earning Trung bình 4 quý gần nhất</th>
                 <th style="text-align: center">Tăng trưởng Lợi nhuận </th>
                 <th style="text-align: center">Giá mua </th>
                 <th style="text-align: center">Giá bán </th>
+                <th style="text-align: center">Khuyến nghị </th>
                 <th style="width:150px; text-align: center">Chức năng</th>
             </tr>
         </thead>
@@ -29,13 +32,16 @@
                     <td> @item.Name</td>
                     <td> @item.Issue</td>
                     <td> @item.Status_Text</td>
+                    <td> @item.Open_Position_Date</td>
                     <td> @item.F_PRICE_Exp.ToNumberStringN10() - @item.T_PRICE_Exp.ToNumberStringN10()</td>
-                    <td> @item.F_PRICE_Target.ToNumberStringN10() - @item.T_PRICE_Target.ToNumberStringN10()</td>
+                    <td> @item.F_PRICE_Target.ToNumberStringN10()</td>
+                    <td> @item.T_PRICE_Target.ToNumberStringN10()</td>
                     <td> @item.T_Pause.ToNumberStringN10()</td>
                     <td> @item.DoanhThu.ToNumberStringN10() (%)</td>
                     <td> @item.LoiNhuan.ToNumberStringN10() (%)</td>
                     <td> @item.Price.ToNumberStringN10() (%)</td>
                     <td> @item.Sell_Price.ToNumberStringN10() (%)</td>
+                    <td> @item.Note</td>
                     <td>
                         <a href="@("/Symbol/Edit/" + item.Id)" class="btn btn-warning  ">
                             <span class="glyphicon glyphicon glyphicon-pencil"></span> Sửa

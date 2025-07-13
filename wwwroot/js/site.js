@@ -358,7 +358,7 @@ function doGetCaretPosition(ctrl) {
 }
 
 // fomat kiểu number có đấu , ở hàng nghìn và có cả phần thập phân
-function jsFormatFloatNumber(input, fixNum) {
+function jsFormatFloatNumberSoDuong(input, fixNum) {
     var nStr = input.value;
     var _Regex = new RegExp('^[0-9,.]+$');
     var _tempvondieule = "";
@@ -404,6 +404,69 @@ function jsFormatFloatNumber(input, fixNum) {
     var after_length = input.value.length;
     setCaretPosition(input, key_index + (after_length - before_length));
 }
+function jsFormatFloatNumber(input, fixNum) {
+    var nStr = input.value;
+
+    // Cho phép số, dấu phẩy, dấu chấm, dấu trừ
+    var _tempvondieule = "";
+    for (var i = 0; i < nStr.length; i++) {
+        let char = nStr[i];
+        if ((char >= '0' && char <= '9') || char === ',' || char === '.' || char === '-') {
+            _tempvondieule += char;
+        }
+    }
+
+    // Chỉ giữ dấu trừ nếu nó nằm ở đầu
+    let isNegative = false;
+    if (_tempvondieule.startsWith('-')) {
+        isNegative = true;
+        _tempvondieule = _tempvondieule.substring(1).replace(/-/g, ''); // xóa các dấu trừ còn lại
+    } else {
+        _tempvondieule = _tempvondieule.replace(/-/g, ''); // xóa tất cả dấu trừ nếu không ở đầu
+    }
+
+    // Bỏ dấu phẩy
+    nStr = _tempvondieule.replace(/,/g, '');
+
+    // Xử lý phần thập phân
+    var _IndexFloat = nStr.indexOf('.');
+    var _PhanThapPhan = "";
+    var _count_ = (nStr.split(".").length - 1);
+    if (_count_ > 1) {
+        var Fst = nStr.indexOf('.');
+        var nStrTemp = nStr.substring(0, Fst) + "." + nStr.substring(Fst + 1).replace(/\./g, '');
+        nStr = nStrTemp;
+    }
+
+    if (_IndexFloat >= 0) {
+        _IndexFloat = nStr.indexOf('.');
+        _PhanThapPhan = nStr.substring(_IndexFloat);
+        _PhanThapPhan = fixNum != undefined ? _PhanThapPhan.substr(0, fixNum + 1) : _PhanThapPhan;
+        nStr = nStr.substring(0, _IndexFloat);
+    }
+
+    // Loại bỏ số 0 dư thừa ở đầu
+    while (nStr.length > 1 && nStr[0] === '0') {
+        nStr = nStr.substring(1);
+    }
+
+    var before_length = input.value.length;
+    var key_index = doGetCaretPosition(input);
+
+    var x1 = nStr;
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+
+    var result = (isNegative ? '-' : '') + x1 + _PhanThapPhan;
+    input.value = result;
+
+    var after_length = input.value.length;
+    setCaretPosition(input, key_index + (after_length - before_length));
+}
+
+
 
 function jsFormatFloatNumberNoDot(nStr, txtControlId, fixNum) {
 

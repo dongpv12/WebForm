@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Reflection;
 using WebForm.Common;
 using WebForm.DataAccess;
@@ -74,7 +75,11 @@ namespace WebForm.Areas.Admin.Controllers
 
             // 
             List<Symbol_Notify_Info> list = DataMemory.GetAllSymbol();
-            if (list.Count(x=>x.Symbol.ToUpper() == model.Symbol.ToUpper()) > 0)
+
+
+          
+
+            if (list.Count(x => x.Symbol.ToUpper() == model.Symbol.ToUpper()) > 0)
             {
                 return Json(new
                 {

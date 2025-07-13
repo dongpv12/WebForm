@@ -12,7 +12,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[16];
+                var spParameter = new SqlParameter[18];
 
                 #region Set param
 
@@ -132,19 +132,39 @@ namespace WebForm.DataAccess
                 spParameter[14] = parameter;
 
 
+                parameter = new SqlParameter("@Open_Position_Date", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Open_Position_Date
+                };
+
+                spParameter[15] = parameter;
+
+
+                parameter = new SqlParameter("@Note", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Note
+                };
+
+                spParameter[16] = parameter;
+
+
+
+
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[15] = parameter;
+                spParameter[17] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_INSERT",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[15].Value);
+                return Convert.ToDecimal(spParameter[17].Value);
             }
             catch (Exception ex)
             {
@@ -186,7 +206,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[17];
+                var spParameter = new SqlParameter[19];
 
                 #region Set param
 
@@ -311,19 +331,42 @@ namespace WebForm.DataAccess
                 spParameter[15] = parameter;
 
 
+
+
+                parameter = new SqlParameter("@Open_Position_Date", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Open_Position_Date
+                };
+
+                spParameter[16] = parameter;
+
+
+
+
+                parameter = new SqlParameter("@Note", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Note
+                };
+
+                spParameter[17] = parameter;
+
+
+
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[16] = parameter;
+                spParameter[18] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_UPDATE",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[16].Value);
+                return Convert.ToDecimal(spParameter[18].Value);
             }
             catch (Exception ex)
             {

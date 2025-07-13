@@ -63,7 +63,7 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-     
+
 
     private ListNews SearchNewsForPortal(PortalSearchNews portalSearchNews, out News news)
     {
@@ -244,11 +244,11 @@ public class HomeController : Controller
         }
     }
 
-    
-    
-    
-    
-    
+
+
+
+
+
     [HttpPost]
     public ActionResult SearchXHTT([FromBody] SearchNewsRequest request)
     {
@@ -294,7 +294,7 @@ public class HomeController : Controller
             Logger.Log.Error(e.ToString());
             return null;
         }
-    } 
+    }
 
 
     [HttpGet]
@@ -345,7 +345,8 @@ public class HomeController : Controller
             if (typeNews.CdValue == "10")
             {
                 ViewBag.Header = "Báo cáo doanh nghiệp khuyến nghị";
-            }else if (typeNews.CdValue == "6")
+            }
+            else if (typeNews.CdValue == "6")
             {
                 ViewBag.Header = "Báo cáo ngành";
             }
@@ -355,7 +356,7 @@ public class HomeController : Controller
             }
 
 
-                var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
+            var paging = HtmlControllHelpers.WritePaging(totalPage, 1, total, ConfigInfo.RecordOnPage, ViewBag.Header);
             ViewBag.Paging = paging;
             ViewBag.List = list;
             ViewBag.CategoryType = type;
@@ -374,7 +375,7 @@ public class HomeController : Controller
 
 
     [HttpGet]
-   
+
     [Route("danh-sach-bao-cao-nganh/{nganh}")]
     public ActionResult ReportArtNganh(string nganh = "0")
     {
@@ -392,12 +393,12 @@ public class HomeController : Controller
 
             if (nganh != null && nganh != "")
             {
-               list = DataMemory.c_lstNew
-                                            .Where(i => Convert.ToDecimal(i.CategoryType) == type && i.Industry == nganh)
-                                            .OrderByDescending(i => i.Id)
-                                            .ToList();
+                list = DataMemory.c_lstNew
+                                             .Where(i => Convert.ToDecimal(i.CategoryType) == type && i.Industry == nganh)
+                                             .OrderByDescending(i => i.Id)
+                                             .ToList();
             }
-           
+
 
 
             var total = list.Count();
@@ -524,13 +525,13 @@ public class HomeController : Controller
             foreach (var item in listSymbol)
             {
                 StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
-                item.Price_Text = (item.Price/1000).ToNumberStringN31();
+                item.Price_Text = (item.Price / 1000).ToNumberStringN31();
                 if (info != null && item.Sell_Price == 0)
                 {
 
                     item.Current_Price = info.MatchPrice;
-                    item.Current_Price_Text = (info.MatchPrice/1000).ToNumberStringN31();
-                   
+                    item.Current_Price_Text = (info.MatchPrice / 1000).ToNumberStringN31();
+
                     if (item.Price == 0)
                     {
                         item.Heso = 100;
@@ -551,40 +552,80 @@ public class HomeController : Controller
                     // giu nguyen gia trị trong DB
 
                     item.Heso_Text = item.Heso.ToNumberStringN31();
-                    item.Current_Price_Text = (item.Current_Price/1000).ToNumberStringN31();
+                    item.Current_Price_Text = (item.Current_Price / 1000).ToNumberStringN31();
                 }
 
                 if (info != null && item.DoanhThu == 0)
                 {
                     item.PE = 0;
                 }
-                else if(info != null)
+                else if (info != null)
                 {
                     item.PE = item.Current_Price / item.DoanhThu;
                 }
-                   
+
+                if (info != null && item.T_PRICE_Target == 0)
+                {
+                    item.Price_Position = 0;
+                }
+                else if (info != null)
+                {
+                    item.Price_Position = item.Current_Price / item.T_PRICE_Target;
+                }
+
+
+
+                if (info != null && item.Price == 0)
+                {
+                    item.Upside = 0;
+                }
+                else if (info != null)
+                {
+                    item.Upside = (item.Price - item.T_PRICE_Target) * 100 / item.Price;
+                }
+
+                if (info != null && item.Price == 0)
+                {
+                    item.HieuQua = 0;
+                }
+                else if (info != null)
+                {
+                    item.HieuQua = (item.Current_Price - item.Price) * 100 / item.Price;
+                }
             }
 
-            listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) <= 7)).OrderByDescending(x => x.Heso).ToList();
+            //listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) <= 7)).OrderByDescending(x => x.HieuQua).ToList();
+
+
+            listSymbol = listSymbol
+                .Where(x => x.Status != "2" || ((DateTime.Now.Date - x.Date_Pause.Date).Days <= 7))
+                .OrderBy(x => x.Status == "2" ? 1 : 0)              // Ưu tiên Status != "2"
+                .ThenByDescending(x => x.HieuQua)                   // Trong mỗi nhóm, sắp theo HieuQua giảm dần
+                .ToList();
+
 
             var stocks = listSymbol.Select(x => new
             {
                 Id = x.Id,
                 Symbol = x.Symbol,
                 Name = x.Name,
+                Open_Position_Date = x.Open_Position_Date,
                 Price = x.Price,
                 Price_Text = x.Price_Text,
                 Current_Price = x.Current_Price,
                 Heso_Text = x.Heso_Text,
                 Status_Text = x.Status_Text,
                 Status = x.Status,
+                HieuQua = x.HieuQua.ToNumberStringN31(),
                 Current_Price_Text = x.Current_Price_Text,
-                PRICE_Exp_Text = (x.F_PRICE_Exp/1000).ToNumberStringN31() + " - " + (x.T_PRICE_Exp/1000).ToNumberStringN31(),
-                PRICE_Taget_Text = (x.F_PRICE_Target/1000).ToNumberStringN31() + " - " + (x.T_PRICE_Target/1000).ToNumberStringN31(),
-                T_Pause = (x.T_Pause/1000).ToNumberStringN31(),
+                PRICE_Exp_Text = (x.F_PRICE_Exp / 1000).ToNumberStringN31() + " - " + (x.T_PRICE_Exp / 1000).ToNumberStringN31(),
+                PRICE_Taget_Text = (x.F_PRICE_Target / 1000).ToNumberStringN31(),
+                T_Pause = (x.T_Pause / 1000).ToNumberStringN31(),
                 LoiNhuan = x.LoiNhuan.ToNumberStringN31(),
                 DoanhThu = x.DoanhThu.ToNumberStringN31(),
                 PE = x.PE.ToNumberStringN31(),
+                Upside = x.Upside.ToNumberStringN31(),
+                Price_Position_Text = (x.Price_Position).ToNumberStringN31(),
                 IsSpecial = x.IsSpecial
 
             }).ToArray();
@@ -608,57 +649,58 @@ public class HomeController : Controller
     {
         try
         {
-            // danh sách cổ phiếu
-            List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
-            foreach (var item in listSymbol)
+
+            if (matp == null || matp == "")
             {
-                StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
-                item.Price_Text = item.Price.ToNumberStringN31();
-                if (info != null)
+                return null;
+            }
+            // danh sách cổ phiếu
+            Symbol_Notify_Info _Symbol = DataMemory.GetAllSymbol().Where(x => x.Symbol.ToUpper() == matp.ToUpper()).FirstOrDefault();
+
+            StockMemInfo info = StockMem.GetBySymbol(_Symbol.Symbol);
+            _Symbol.Price_Text = _Symbol.Price.ToNumberStringN31();
+            if (info != null)
+            {
+
+                _Symbol.Current_Price = info.MatchPrice;
+                _Symbol.Current_Price_Text = info.MatchPrice.ToNumberStringN31(); ;
+                if (_Symbol.Price == 0)
                 {
-
-                    item.Current_Price = info.MatchPrice;
-                    item.Current_Price_Text = info.MatchPrice.ToNumberStringN31(); ;
-                    if (item.Price == 0)
-                    {
-                        item.Heso = 100;
-                    }
-                    else
-                    {
-                        item.Heso = (info.MatchPrice - item.Price) / item.Price;
-                    }
-
-
-                    item.Heso_Text = item.Heso.ToNumberStringN31();
-
-
-
+                    _Symbol.Heso = 100;
                 }
                 else
                 {
-                    item.Heso_Text = "0";
+                    _Symbol.Heso = (info.MatchPrice - _Symbol.Price) / _Symbol.Price;
                 }
+
+
+                _Symbol.Heso_Text = _Symbol.Heso.ToNumberStringN31();
+
+
+
+            }
+            else
+            {
+                _Symbol.Heso_Text = "0";
             }
 
-           
-            var stocks = listSymbol.Select(x => new
+
+
+            var stock = new
             {
-                Id = x.Id,
-                Symbol = x.Symbol,
-                Name = x.Name,
-                Price = x.Price,
-                Price_Text = x.Price_Text,
-                Current_Price = x.Current_Price,
-                Current_Price_Text = x.Current_Price_Text,
-                Heso_Text = x.Heso_Text,
-                Status_Text = x.Status_Text,
-                Status = x.Status
-            }).ToArray();
+                Id = _Symbol.Id,
+                Symbol = _Symbol.Symbol,
+                Name = _Symbol.Name,
+                Price = _Symbol.Price,
+                Price_Text = _Symbol.Price_Text,
+                Current_Price = _Symbol.Current_Price,
+                Current_Price_Text = _Symbol.Current_Price_Text,
+                Heso_Text = _Symbol.Heso_Text,
+                Status_Text = _Symbol.Status_Text,
+                Status = _Symbol.Status
+            };
 
-
-
-
-            return Ok(stocks);
+            return Ok(stock);
         }
         catch (Exception e)
         {
@@ -763,6 +805,14 @@ public class HomeController : Controller
     [Route("danh-sach-khuyen-nghi")]
     public ActionResult DanhSachKhuyenNghi()
     {
+        try
+        {
+
+        }
+        catch (Exception ex)
+        {
+            Logger.Log.Error(ex.ToString());
+        }
         return View();
     }
 
