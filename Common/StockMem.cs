@@ -7,6 +7,8 @@ namespace WebForm
 {
     public class StockMem
     {
+        public static DateTime c_trading_date = DateTime.Now;
+        public static bool c_update_price = false;
         public static ConcurrentQueue<string> c_queueMessage = new ConcurrentQueue<string>();
 
         private static object c_lockStocks = new object();

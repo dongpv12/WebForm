@@ -2514,8 +2514,8 @@ footer ul li {
 }
 
 .bg-cyan {
-    border: 2px solid #10cfc9 !important;
-    background-color: #10cfc9 !important;
+    border: 2px solid #fff !important;
+    background-color: #fff !important;
     color: #16315e !important;
 }
 
@@ -2872,8 +2872,8 @@ a, a:hover, a:active, a:link, a:visited {
 }
 
 .bg-cyan-outline {
-    border: 2px solid #10cfc9 !important;
-    color: #10cfc9 !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
 }
 
 .btn-action {

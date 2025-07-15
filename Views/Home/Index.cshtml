@@ -197,7 +197,7 @@
 
         .stock-table thead {
             color: #16315e !important;
-            background: #18cbb4;
+            background: #ffffff;
         }
 
         .stock-table .positive {
@@ -234,7 +234,7 @@
                     </div>
                     <div class="col-12 col-md-7 mx-auto">
                         <article>
-                            <h2 class="animate a_01" style="color:#10cfc9">
+                            <h2 class="animate a_01" style="color:#fff">
                                 <img src="~/assets/img/arrow-up.png" /> Danh mục tư vấn
                             </h2>
                             <div class="frame-base animate a_02">
@@ -280,8 +280,8 @@
 
                                             <td>{{ item?.Price_Text || ' ' }}</td>
                                             <td>{{ item?.Current_Price_Text || ' ' }}</td>
-                                            <td :class="getClass(item?.Heso_Text)">
-                                                {{ item?.Heso_Text || ' ' }}
+                                            <td :class="getClass(item?.HieuQua_Text)">
+                                                {{ item?.HieuQua_Text || ' ' }}
                                             </td>
                                         </tr>
 

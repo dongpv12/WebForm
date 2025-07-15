@@ -46,6 +46,7 @@
     {
         public string Symbol { get; set; }
 
+        public bool Is_FinArt { get; set; } = false;
         public string SymbolName { get; set; }
         public int SymbolID { get; set; }
         public string MarketCode { get; set; }

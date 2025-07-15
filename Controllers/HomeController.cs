@@ -527,37 +527,37 @@ public class HomeController : Controller
         {
             // danh sách cổ phiếu
             List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
+            decimal _price = 0;
+            decimal _matchPrice = 0;
             foreach (var item in listSymbol)
             {
                 StockMemInfo info = StockMem.GetBySymbol(item.Symbol);
                 item.Price_Text = (item.Price / 1000).ToNumberStringN31();
-                if (info != null && item.Sell_Price == 0)
+                if (info != null && item.Status != "2")
+
                 {
 
                     item.Current_Price = info.MatchPrice;
-                    item.Current_Price_Text = (info.MatchPrice / 1000).ToNumberStringN31();
-
-                    if (item.Price == 0)
-                    {
-                        item.Heso = 100;
-                    }
-                    else
-                    {
-                        item.Heso = ((info.MatchPrice - item.Price) * 100) / item.Price;
-                    }
-
-
-                    item.Heso_Text = item.Heso.ToNumberStringN31();
-
-
+                    //_matchPrice = info.MatchPrice;
+                    //_price = item.Price;
+                    //item.Current_Price_Text = (info.MatchPrice / 1000).ToNumberStringN31();
+                    //if (item.Price == 0)
+                    //{
+                    //    item.Heso = 100;
+                    //}
+                    //else
+                    //{
+                    //    item.Heso = ((_matchPrice - _price) * 100) / _price;
+                    //}
+                    //item.Heso_Text = item.Heso.ToNumberStringN31();
 
                 }
                 else
                 {
                     // giu nguyen gia trị trong DB
 
-                    item.Heso_Text = item.Heso.ToNumberStringN31();
-                    item.Current_Price_Text = (item.Current_Price / 1000).ToNumberStringN31();
+                    //item.Heso_Text = item.Heso.ToNumberStringN31();
+                    //item.Current_Price_Text = (item.Current_Price / 1000).ToNumberStringN31();
                 }
 
                 if (item != null && item.DoanhThu == 0)
@@ -586,7 +586,7 @@ public class HomeController : Controller
                 }
                 else if (item != null)
                 {
-                    item.Upside = (item.T_PRICE_Target  - item.Price) * 100 / item.Price;
+                    item.Upside = (item.T_PRICE_Target - item.Price) * 100 / item.Price;
                 }
 
                 if (info != null && item.Price == 0)
@@ -599,17 +599,10 @@ public class HomeController : Controller
                 }
             }
 
-            //listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) <= 7)).OrderByDescending(x => x.HieuQua).ToList();
 
 
-            //listSymbol = listSymbol
-            //    .Where(x => x.Status != "2" || ((DateTime.Now.Date - x.Date_Pause.Date).Days <= 7))
-            //    .OrderBy(x => x.Status == "2" ? 1 : 0)              // Ưu tiên Status != "2"
-            //    .ThenByDescending(x => x.Open_Position_Date)                   // Trong mỗi nhóm, sắp theo HieuQua giảm dần
-            //    .ToList();
 
 
-           
 
             listSymbol = listSymbol
                 .Where(x => x.Status != "2" || ((DateTime.Now.Date - x.Date_Pause.Date).Days <= 7))
@@ -634,8 +627,9 @@ public class HomeController : Controller
                 Heso_Text = x.Heso_Text,
                 Status_Text = x.Status_Text,
                 Status = x.Status,
-                HieuQua = x.HieuQua.ToNumberStringN31(),
-                Current_Price_Text = x.Current_Price_Text,
+                HieuQua = x.HieuQua.ToNumberStringN31() + "%",
+                HieuQua_Text = x.HieuQua.ToNumberStringN31(),
+                Current_Price_Text = (x.Current_Price/1000).ToNumberStringN31(),
                 PRICE_Exp_Text = (x.F_PRICE_Exp / 1000).ToNumberStringN31() + " - " + (x.T_PRICE_Exp / 1000).ToNumberStringN31(),
                 PRICE_Taget_Text = (x.F_PRICE_Target / 1000).ToNumberStringN31(),
                 T_Pause = (x.T_Pause / 1000).ToNumberStringN31(),

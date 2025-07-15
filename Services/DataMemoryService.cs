@@ -73,86 +73,130 @@ public class DataMemoryService : IHostedService
                         Symbol_WS_Info _Symbol_WS_Info = Newtonsoft.Json.JsonConvert.DeserializeObject<Symbol_WS_Info>(_Notify_WebSocket_Info.data);
                         if (_Symbol_WS_Info != null && _Symbol_WS_Info.Symbol != null && _Symbol_WS_Info.Symbol != "")
                         {
-                            if (StockMem.c_dicStocks.ContainsKey(_Symbol_WS_Info.Symbol) == false)
+                            // update de lai trong mem cua DataMemory
+                            Symbol_Notify_Info _Symbol_Notify_Info = DataMemory.c_dicSymbol.ContainsKey(_Symbol_WS_Info.Symbol) ? DataMemory.c_dicSymbol[_Symbol_WS_Info.Symbol] : null;
+                            if (_Symbol_Notify_Info != null)
                             {
-                                StockMemInfo stockMemInfo = new StockMemInfo
+                                _Symbol_Notify_Info.Current_Price = _Symbol_WS_Info.Current_Price;
+
+                                // chi xu ly cac ma cua he thong finart
+                                if (StockMem.c_dicStocks.ContainsKey(_Symbol_WS_Info.Symbol) == false)
                                 {
+                                    StockMemInfo stockMemInfo = new StockMemInfo
+                                    {
+                                        Symbol = _Symbol_WS_Info.Symbol,
+                                        SymbolName = _Symbol_WS_Info.Name,
+                                        MarketCode = _Symbol_WS_Info.MarketCode,
+                                        OpenPrice = _Symbol_WS_Info.Open,
+                                        ClosePrice = _Symbol_WS_Info.Close,
+                                        HighestPrice = _Symbol_WS_Info.Hight,
+                                        LowestPrice = _Symbol_WS_Info.Low,
+                                        TotalTradedQttyNM = _Symbol_WS_Info.Volume,
+                                        TotalTradedValueNM = _Symbol_WS_Info.TotalValue,
+                                        MatchPrice = _Symbol_WS_Info.Current_Price
+                                    };
+
+                                    // xem co phai symbol thuoc finart khai bao khong
+                                    if (_Symbol_Notify_Info != null)
+                                    {
+                                        stockMemInfo.Is_FinArt = true;
+                                    }
+                                    else
+                                    {
+                                        stockMemInfo.Is_FinArt = false;
+                                    }
+
+                                    StockMem.c_dicStocks[_Symbol_WS_Info.Symbol] = stockMemInfo;
+                                }
+                                else
+                                {
+                                    StockMemInfo stockMemInfo = StockMem.c_dicStocks[_Symbol_WS_Info.Symbol];
+                                    stockMemInfo.SymbolName = _Symbol_WS_Info.Name;
+                                    stockMemInfo.MarketCode = _Symbol_WS_Info.MarketCode;
+                                    stockMemInfo.OpenPrice = _Symbol_WS_Info.Open;
+                                    stockMemInfo.ClosePrice = _Symbol_WS_Info.Close;
+                                    stockMemInfo.HighestPrice = _Symbol_WS_Info.Hight;
+                                    stockMemInfo.LowestPrice = _Symbol_WS_Info.Low;
+                                    stockMemInfo.TotalTradedQttyNM = _Symbol_WS_Info.Volume;
+                                    stockMemInfo.TotalTradedValueNM = _Symbol_WS_Info.TotalValue;
+                                    stockMemInfo.MatchPrice = _Symbol_WS_Info.Current_Price;
+
+                                    if (_Symbol_Notify_Info != null)
+                                    {
+                                        stockMemInfo.Is_FinArt = true;
+                                    }
+                                    else
+                                    {
+                                        stockMemInfo.Is_FinArt = false;
+                                    }
+
+                                    StockMem.c_dicStocks[_Symbol_WS_Info.Symbol] = stockMemInfo;
+                                }
+
+                                // update vào bảng mem dữ liệu trong ngày
+                                Utils.AddOrUpdateStockMatchStatistic(new StockMatchStatisticInfo()
+                                {
+                                    TradeTime = DateTime.Now,
+                                    TimestampUTC = Utils.DateTimeToTimeStampMillisecond(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, 0).ToUniversalTime()),
                                     Symbol = _Symbol_WS_Info.Symbol,
-                                    SymbolName = _Symbol_WS_Info.Name,
-                                    MarketCode = _Symbol_WS_Info.MarketCode,
                                     OpenPrice = _Symbol_WS_Info.Open,
-                                    ClosePrice = _Symbol_WS_Info.Close,
+                                    OpenQtty = _Symbol_WS_Info.Open_Qtty,
                                     HighestPrice = _Symbol_WS_Info.Hight,
                                     LowestPrice = _Symbol_WS_Info.Low,
-                                    TotalTradedQttyNM = _Symbol_WS_Info.Volume,
-                                    TotalTradedValueNM = _Symbol_WS_Info.TotalValue,
-                                    MatchPrice = _Symbol_WS_Info.Current_Price
-                                };
-
-                                StockMem.c_dicStocks[_Symbol_WS_Info.Symbol] = stockMemInfo;
-                            }
-                            else
-                            {
-                                StockMemInfo stockMemInfo = StockMem.c_dicStocks[_Symbol_WS_Info.Symbol];
-                                stockMemInfo.SymbolName = _Symbol_WS_Info.Name;
-                                stockMemInfo.MarketCode = _Symbol_WS_Info.MarketCode;
-                                stockMemInfo.OpenPrice = _Symbol_WS_Info.Open;
-                                stockMemInfo.ClosePrice = _Symbol_WS_Info.Close;
-                                stockMemInfo.HighestPrice = _Symbol_WS_Info.Hight;
-                                stockMemInfo.LowestPrice = _Symbol_WS_Info.Low;
-                                stockMemInfo.TotalTradedQttyNM = _Symbol_WS_Info.Volume;
-                                stockMemInfo.TotalTradedValueNM = _Symbol_WS_Info.TotalValue;
-                                stockMemInfo.MatchPrice = _Symbol_WS_Info.Current_Price;
-                                StockMem.c_dicStocks[_Symbol_WS_Info.Symbol] = stockMemInfo;
-                            }
-
-                            // update vào bảng mem dữ liệu trong ngày
-                            Utils.AddOrUpdateStockMatchStatistic(new StockMatchStatisticInfo()
-                            {
-                                TradeTime = DateTime.Now,
-                                TimestampUTC = Utils.DateTimeToTimeStampMillisecond(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, 0).ToUniversalTime()),
-                                Symbol = _Symbol_WS_Info.Symbol,
-                                OpenPrice = _Symbol_WS_Info.Open,
-                                OpenQtty = _Symbol_WS_Info.Open_Qtty,
-                                HighestPrice = _Symbol_WS_Info.Hight,
-                                LowestPrice = _Symbol_WS_Info.Low,
-                                ClosePrice = _Symbol_WS_Info.Close,
-                                CloseQtty = 0,
-                                TotalTradedQtty = _Symbol_WS_Info.Volume,
-                                TotalTradedValue = _Symbol_WS_Info.TotalValue,
-                            });
-
-                            // update vao DB  
-                            try
-                            {
-                                //Symbol_Notify_Info info = new Symbol_Notify_Info();
-                                //info.Symbol = _Symbol_WS_Info.Symbol;
-                                //info.Current_Price = _Symbol_WS_Info.Current_Price;
-                                //_ck = _da.UpdateCurrenPrice(info);
-                            }
-                            catch (Exception ex)
-                            {
-                                Logger.Log.Error(ex.ToString());
+                                    ClosePrice = _Symbol_WS_Info.Close,
+                                    CloseQtty = 0,
+                                    TotalTradedQtty = _Symbol_WS_Info.Volume,
+                                    TotalTradedValue = _Symbol_WS_Info.TotalValue,
+                                });
                             }
                         }
+
+                        // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
+                        if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
+                        {
+                            Write_Symbol_File();
+                            lastWrite = DateTime.Now;
+                        }
                     }
-
-                    // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
-                    if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
+                    else
                     {
+                        // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
+                        if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
+                        {
+                            Write_Symbol_File();
+                            lastWrite = DateTime.Now;
+                        }
 
-                        Write_Symbol_File();
-                        lastWrite = DateTime.Now;
+                        await Task.Delay(TimeSpan.FromSeconds(5));
                     }
                 }
                 else
                 {
-                    // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
-                    if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
+                    // update vào db lúc 15h30
+                    if (StockMem.c_update_price == false && DateTime.Now.ToString("HH:mm") == "15:30")
                     {
-
+                        // ghi vao file
                         Write_Symbol_File();
                         lastWrite = DateTime.Now;
+
+                        foreach (var item in DataMemory.c_lstSymbolData)
+                        {
+                            if (item.Status != "2")
+                            {
+                                _da.UpdateCurrenPrice(item);
+                            }
+
+                        }
+                        StockMem.c_update_price = true;
+                    }
+
+                    // reset mem nếu qua ngày
+                    if (DateTime.Now.Date != StockMem.c_trading_date.Date)
+                    {
+                        StockMem.c_trading_date = DateTime.Now;
+
+                        // XÓA DỮ liệu giá khớp từng mã chứng khoán
+                        StockMem.c_dicStockMatchStatistics = new Dictionary<string, Dictionary<long, StockMatchStatisticInfo>>();
                     }
 
                     await Task.Delay(TimeSpan.FromSeconds(5));
@@ -239,7 +283,7 @@ public class DataMemoryService : IHostedService
                                         {
                                             _Symbol_Notify_Info.Open = _Symbol_WS_Info.Open;
                                         }
-                                        if (_Symbol_WS_Info.Name != null && _Symbol_WS_Info.Name !=  "")
+                                        if (_Symbol_WS_Info.Name != null && _Symbol_WS_Info.Name != "")
                                         {
                                             _Symbol_Notify_Info.Name = _Symbol_WS_Info.Name;
                                         }
@@ -309,8 +353,8 @@ public class DataMemoryService : IHostedService
                                 }
                             }
                         }
-                    } 
-                     
+                    }
+
                     // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
                     if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
                     {
@@ -320,11 +364,30 @@ public class DataMemoryService : IHostedService
                 }
                 else
                 {
-                    // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
-                    if ((DateTime.Now - lastWrite).TotalMinutes >= 1)
+                    // update vào db lúc 15h30
+                    if (StockMem.c_update_price == false && DateTime.Now.ToString("HH:mm") == "15:30")
                     {
+                        foreach (var item in DataMemory.c_lstSymbolData)
+                        {
+                            if (item.Status != "2")
+                            {
+                                _da.UpdateCurrenPrice(item);
+                            }
+
+                        }
+                        StockMem.c_update_price = true;
+
                         Write_Symbol_File();
                         lastWrite = DateTime.Now;
+                    }
+
+                    // reset mem nếu qua ngày
+                    if (DateTime.Now.Date != StockMem.c_trading_date.Date)
+                    {
+                        StockMem.c_trading_date = DateTime.Now;
+
+                        // XÓA DỮ liệu giá khớp từng mã chứng khoán
+                        StockMem.c_dicStockMatchStatistics = new Dictionary<string, Dictionary<long, StockMatchStatisticInfo>>();
                     }
 
                     await Task.Delay(TimeSpan.FromSeconds(5));

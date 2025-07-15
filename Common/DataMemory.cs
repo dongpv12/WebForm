@@ -18,8 +18,6 @@ namespace WebForm.Common
         public static List<Page> c_lstPage = new List<Page>();
         public static List<Allcode_Info> c_lstAllcode = new List<Allcode_Info>();
 
-        public static List<Symbol_Notify_Info> c_lstSymbol = new List<Symbol_Notify_Info>();
-
         public static List<Symbol_Notify_Info> c_lstSymbolData = new List<Symbol_Notify_Info>();
         public static Dictionary<string, Symbol_Notify_Info> c_dicSymbol = new Dictionary<string, Symbol_Notify_Info>();
 
@@ -128,58 +126,6 @@ namespace WebForm.Common
             }
         }
 
-
-
-        public static void ReadDataSymbol()
-        {
-            try
-            {
-                string path = "DataSymbol/data.txt";
-                c_lstSymbol = new List<Symbol_Notify_Info>();
-
-                var symbolMap = new Dictionary<string, Symbol_Notify_Info>();
-
-                if (!File.Exists(path))
-                {
-                    c_lstSymbol = new List<Symbol_Notify_Info>();
-                }
-                else
-                {
-                    foreach (var line in File.ReadLines(path))
-                    {
-                        try
-                        {
-                            // Bước 1: Deserialize dòng đầu tiên
-                            var wrapper = JsonSerializer.Deserialize<Notify_WebSocket_Info>(line);
-
-                            // Bước 2: Deserialize tiếp trường 'data' (vì nó là chuỗi JSON lồng)
-                            if (!string.IsNullOrEmpty(wrapper?.data))
-                            {
-                                var dataModel = JsonSerializer.Deserialize<Symbol_Notify_Info>(wrapper.data);
-                                if (dataModel != null && !string.IsNullOrEmpty(dataModel.Symbol))
-                                {
-                                    symbolMap[dataModel.Symbol] = dataModel;
-                                }
-
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"⚠️ Lỗi khi đọc dòng: {ex.Message}");
-                        }
-                    }
-                    c_lstSymbol = symbolMap.Values.ToList();
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                Logger.Log.Error(ex.ToString());
-            }
-        }
-
-
         public static void LoadProject()
         {
             try
@@ -221,52 +167,6 @@ namespace WebForm.Common
                 Logger.Log.Error(ex.ToString());
             }
         }
-
-
-        //public static PhongThuy PhongThuy { get; set; }
-        //public static User CurrentUser
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Session["UserInfo"] == null)
-        //            return null;
-        //        else
-        //            return (User)HttpContext.Current.Session["UserInfo"];
-        //    }
-        //    set
-        //    {
-        //        HttpContext.Current.Session["UserInfo"] = value;
-        //    } 
-        //}
-
-        //public static User CurrentUser(this HttpContext context)
-        //{
-        //    User user = new User();
-        //    try
-        //    {
-        //        user = context.Session.GetObjectFromJson<User>("user");
-
-        //        if (user != null)
-        //        {
-        //            if (MemoryData.c_dic_Function_ByUser.ContainsKey(user.User_Id))
-        //            {
-        //                user.List_User_Functions = MemoryData.c_dic_Function_ByUser[user.User_Id];
-        //            }
-        //            else
-        //            {
-        //                user.List_User_Functions = new List<Cb_Function_Info>();
-        //            }
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        WebForm.Common.Logger.Log.Error(ex.ToString());
-        //        user = new User();
-        //    }
-        //    return user;
-        //}
-
         public static EmailInfo EmailOriginal { get; set; }
 
     }

@@ -371,7 +371,7 @@ body.offcanvas-active {
 
     #highlight article {
         padding: 30px;
-        border: 2px solid var(--cyan);
+        border: 2px solid #fff;
         margin: 20px 0;
         border-radius: 15px;
         position: relative;
