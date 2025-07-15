@@ -30,9 +30,17 @@
     List<Allcode_Info> typeNganh = DataMemory.GetAllcodeByName("NEWS", "NGANHNGHE");
 
     string nganh = "";
+    string nganh_text = "";
     if (ViewBag.Nganh != null)
     {
         nganh = ViewBag.Nganh;
+
+
+        if (nganh != "" && nganh != "0")
+        {
+            nganh_text = typeNganh.Where(x => x.CdValue == nganh).FirstOrDefault().CdContent;
+        }
+       
     }
 }
 
@@ -51,11 +59,11 @@
 
 
     .sub-post .active a:after {
-    background: none;
+    /* background: none; */
     }
 
     .sub-post li a:after {
-    background: none !important;
+    /* background: none !important; */
     }
 
     .sub-post li {
@@ -64,9 +72,10 @@
 
 
 
-    .sub-post a {
-    background: #496262 !important;
-    padding: 10px 14px !important;
+    .list-post .sub-post a {
+    /* background: #496262 !important; */
+            padding: 10px 14px !important;
+            color: #16315e !important;
     }
 
     .sub-post .active a {
@@ -116,18 +125,18 @@
                             <li class="active" style="position: relative">
                                 <a href="/danh-sach-bao-cao-nganh" class="iconnene"> Báo cáo ngành </a>
                                 <span class="bcn" onclick="ShowNganh(this)"></span>
-                                <ul class="sub-post" >
+                                <ul class="sub-post">
                                     @foreach (var item in typeNganh)
                                     {
                                         if (item.CdValue == nganh)
                                         {
-                                            <li style="background: none !important;"><a href="/danh-sach-bao-cao-nganh/@item.CdValue" class="active">@item.CdContent</a></li>
+                                            <li style="background: none !important; "><a style="color: #fff !important" href="/danh-sach-bao-cao-nganh/@item.CdValue" class="active1">@item.CdContent</a></li>
                                         }
                                         else
                                         {
                                             <li style="background: none !important;"><a href="/danh-sach-bao-cao-nganh/@item.CdValue">@item.CdContent</a></li>
                                         }
-                                       
+
                                     }
                                 </ul>
 
@@ -168,17 +177,49 @@
 
 
 
-                    <div class="advertise">
-                        <a href="https://t.me/timetradingtele" target="_blank">
-                            <img src="https://timetradingfx.com/output/images/advertise/banner1.jpg?v=1.1" alt="banner">
-                        </a>
+                    <div class="advertise" style="position: relative">
+
+                        <span style="    position: absolute;
+    top: 322px;
+    color: #fff;
+    font-size: 27px;
+    height: 9px;
+    font-family: Lexenddeca;
+    line-height: 1.3;
+    font-style: italic;
+    LEFT: 16PX; font-weight: bold">
+                            ĐẦU TƯ<br>AN TÂM, HIỆU QUẢ <br> CÙNG <span style="color: #10cfc9">FINART</span>
+                        </span>
+                        <img src="~/assets/img/viber_image_2025-07-14_15-38-44-478.jpg" />
+                        <div style="position: absolute;
+    bottom: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-family: 'LexendDeca';
+    /* font-weight: bold; */
+    font-size: 17px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;">
+                            THAM GIA
+                        </div>
                     </div>
 
                 </div>
                 <div class="col-12 col-sm-8 order-a">
 
                     <h4 class="header_list" style="    border-bottom: 3px solid; color: #10cfc9; padding-bottom: 10px;">
-                        @_Header.ToUpper()
+
+
+                        @if (nganh != "" && nganh != "0")
+                        {
+                            @(_Header + " - " + nganh_text)
+                        }
+                        else
+                        {
+                            @_Header
+                        }
                     </h4>
 
                     <div id="data_report">
@@ -201,7 +242,7 @@
     const btn = document.querySelector('.bcn');
 
     if (btn && nganh !== "0" && nganh !== "") {
-      ShowNganh(btn);
+      // ShowNganh(btn);
     }
     });
 

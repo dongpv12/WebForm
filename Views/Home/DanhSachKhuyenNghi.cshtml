@@ -98,133 +98,142 @@
 
 <div class="area-page-title">
     <div class="container">
-        <h1 class="animate a_01">Danh sách khuyến nghị</h1>
+        <h1 class="animate a_01">Danh mục khuyến nghị</h1>
         <ol class="breadcrumb animate a_02">
             <li class="breadcrumb-item">
                 <a href="/">Trang chủ</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Danh sách khuyến nghị</li>
+            <li class="breadcrumb-item active" aria-current="page">Danh mục khuyến nghị</li>
         </ol>
     </div>
 </div>
 
 <section id="service-details" class="service-details section">
+    <div id="trading">
+        <div class="container" id="app">
 
-    <div class="container" id="app">
-
-        <div class="row gy-4">
-
-
-            <div class="col-12">
-
-                <table>
-                    <colgroup>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                    </colgroup>
-                    <tr>
-                        <th colspan="9" class="section-header">DANH MỤC KHUYẾN NGHỊ TRUNG HẠN</th>
-                    </tr>
-                    <tr>
-                        <th class="column-header">Ngày mở vị thế</th>
-                        <th class="column-header">MÃ</th>
-                        <th class="column-header">Giá hiện tại / Giá đóng vị thế<br>(1.000đ)</th>
-                        <th class="column-header">Giá mua<br>(1.000đ)</th>
-                        <th class="column-header">Giá mục tiêu<br>(1.000đ)</th>
-                        <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
-                        <th class="column-header"> Upside kỳ vọng (%)</th>
-                        <th class="column-header">Hiệu quả đầu tư (%)</th>
-                        <th class="column-header">Cập nhật vị thế/trạng thái</th>
-                    </tr>
-                    <tr v-for="(item, index) in stocks" :key="index">
-                        <td>{{ item.Open_Position_Date }}</td>
-                        <td>{{ item.Symbol }}</td>
-                        <td>{{ item.Price_Position_Text }}</td>
-                        <td>{{ item.Price_Text }}</td>
-                        <td>{{ item.PRICE_Taget_Text }}</td>
-                        <td>{{ item.T_Pause }}</td>
-                        <td>{{ item.Upside }}</td>
-
-                        <td :class="{
-                            'highlight-green' : item.HieuQua>
-                            0,
-                            'highlight-red': item.HieuQua < 0,
-                            'highlight-ye': item.HieuQua == 0
-                            }">
-                            {{ item.HieuQua }}%
-                        </td>
+            <div class="row gy-4">
 
 
-                        <td class="">
-                            <span :class="{
-                                  'status_1' : item.Status == '1',
-                                  'status_2' : item.Status == '2',
-                                   'status_3': item.Status == '3'
+                <div class="col-12">
+
+                    <table>
+                        @*  <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup> *@
+                        <tr>
+                            <th colspan="9" class="section-header" style="padding: 12px;">DANH MỤC KHUYẾN NGHỊ NGẮN HẠN</th>
+                        </tr>
+                        <tr>
+                            <th class="column-header">Ngày mở vị thế</th>
+                            <th class="column-header">MÃ</th>
+                            <th class="column-header">Giá hiện tại / Giá đóng vị thế<br>(1.000đ)</th>
+                            <th class="column-header">Giá mua<br>(1.000đ)</th>
+                            <th class="column-header">Giá mục tiêu<br>(1.000đ)</th>
+                            <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
+                            <th class="column-header"> Upside kỳ vọng (%)</th>
+                            <th class="column-header">Hiệu quả đầu tư (%)</th>
+                            <th class="column-header">Cập nhật vị thế/trạng thái</th>
+                        </tr>
+                        <tr v-for="(item, index) in paddedStocks" :key="index">
+                            <td>{{ item?.Open_Position_Date }}</td>
+                            <td>
+
+                                <a v-if="item?.Symbol" :href="`/chi-tiet-co-phieu/${item.Symbol}`" style="color: #16315e !important; font-family: LexendDeca_B;">
+                                    {{ item?.Symbol }}
+                                </a>
+                                <span v-else>&nbsp;</span>
+
+                            </td>
+
+                         
+
+
+                            <td class="text-end">{{ item?.Price_Position_Text }}</td>
+                            <td class="text-end">{{ item?.Price_Text }}</td>
+                            <td class="text-end">{{ item?.PRICE_Taget_Text }}</td>
+                            <td class="text-end">{{ item?.T_Pause }}</td>
+                            <td>{{ item?.Upside }}</td>
+
+                            <td :class="{
+                                'highlight-green' : item?.HieuQua>
+                                0,
+                                'highlight-red': item?.HieuQua < 0,
+                                'highlight-ye': item?.HieuQua == 0
                                 }">
-                                {{ item.Status_Text == 'Theo dõi giải ngân' ? 'Theo dõi' : item.Status_Text }}
-                            </span></>
-                        </td>
+                                {{ item?.HieuQua }}
+                            </td>
 
 
-                    </tr>
+                            <td class="">
+                                <span :class="{
+                                  'status_1' : item?.Status == '1',
+                                  'status_2' : item?.Status == '2',
+                                   'status_3': item?.Status == '3'
+                                }">
+                                    {{ item?.Status_Text == 'Theo dõi giải ngân' ? 'Theo dõi' : item?.Status_Text }}
+                                </span>
 
-                </table>
+                            </td>
 
-                <br>
 
-                <!-- BẢNG 2 -->
-                <table>
-                    <colgroup>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                    </colgroup>
-                    <tr>
-                        <th colspan="8" class="section-header">DANH MỤC THEO DÕI CHỜ MUA</th>
-                    </tr>
-                    <tr>
-                        <th class="column-header">MÃ</th>
-                        <th class="column-header">Giá hiện tại<br>(1.000đ)</th>
-                        <th class="column-header">Giá mua<br>(1.000đ)</th>
-                        <th class="column-header">Giá mục tiêu<br>(1.000đ)</th>
-                        <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
-                        <th class="column-header">Hiệu quả kỳ vọng đầu tư (%)</th>
-                        <th class="column-header" colspan="2">Khuyến nghị</th> <!-- Gộp 2 cột -->
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td colspan="2">&nbsp;</td>
 
-                    </tr>
-                </table>
 
+                    </table>
+
+                    <div style="margin-bottom: 70px;"></div>
+
+                    <!-- BẢNG 2 -->
+                    <table>
+                       
+                        <tr>
+                            <th colspan="7" class="section-header" style="padding: 12px;">DANH MỤC THEO DÕI CHỜ MUA</th>
+                        </tr>
+                        <tr>
+                            <th class="column-header">Mã</th>
+                            <th class="column-header">Giá hiện tại<br>(1.000đ)</th>
+                            <th class="column-header">Giá mua<br>(1.000đ)</th>
+                            <th class="column-header">Giá mục tiêu<br>(1.000đ)</th>
+                            <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
+                            <th class="column-header">Hiệu quả kỳ vọng đầu tư (%)</th>
+                            <th class="column-header">Khuyến nghị</th> <!-- Gộp 2 cột -->
+                        </tr>
+                        <tr v-for="(item, index) in paddedFilteredStocks" :key="index">
+                            <td>
+
+                                <a v-if="item?.Symbol" :href="`/chi-tiet-co-phieu/${item.Symbol}`" style="color: #16315e !important; font-family: LexendDeca_B;">
+                                    {{ item?.Symbol }}
+                                </a>
+                                <span v-else>&nbsp;</span>
+
+                            </td>
+                            <td class="text-end">{{ item?.Current_Price_Text }}</td>
+                            <td class="text-end">{{ item?.Price_Text }}</td>
+                            <td class="text-end">{{ item?.PRICE_Taget_Text }}</td>
+                            <td class="text-end">{{ item?.T_Pause }}</td>
+                            <td>{{ item?.Upside }}</td>
+                            <td>{{ item?.Note }}</td>
+
+                        </tr>
+                    </table>
+
+
+
+                </div>
 
 
             </div>
 
-
         </div>
-
     </div>
-
 </section>
 <script src="~/assets/js/vue.global.js"></script>
 
@@ -235,28 +244,55 @@
       setup() {
         const stocks = ref([])
 
-        const sendPost = () => {
+        // Tạo mảng luôn đủ 5 dòng
+        const paddedStocks = computed(() => {
+          const filled = [...stocks.value]
+          while (filled.length < 10) {
+            filled.push(null) // hoặc {} nếu muốn tránh undefined
+          }
+          return filled.slice(0, 10)
+        })
+
+
+          const paddedFilteredStocks = computed(() => {
+              const filtered = stocks.value.filter(item => item?.IsSpecial === 'Y')
+              const filled = [...filtered]
+              while (filled.length < 10) {
+                filled.push(null)
+              }
+              return filled.slice(0, 10)
+            })
+
+
+        // Xử lý class màu theo Heso_Text
+        function getClass(hesoText) {
+          const value = parseFloat(hesoText)
+          if (isNaN(value)) return ''
+          return value > 0 ? 'positive' : value < 0 ? 'negative' : 'yellow'
+        }
+
+        // Gọi API để lấy stocks
+        function sendPost() {
           axios.get('/Home/GetStocks')
-            .then(response => {
+            .then(function (response) {
               console.log('Gửi thành công:', response.data)
               stocks.value = response.data
             })
-            .catch(error => {
+            .catch(function (error) {
               console.error('Lỗi khi gọi API:', error)
             })
         }
 
-
-
-
         onMounted(() => {
           sendPost()
-          setInterval(sendPost, 5000)
+          setInterval(sendPost, 5000) // gọi lại mỗi 5 giây
         })
 
         return {
-          stocks
-
+          stocks,
+          paddedStocks,
+          getClass,
+          paddedFilteredStocks
         }
       }
     }).mount('#app')

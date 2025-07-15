@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.Threading.Tasks;
 using WebForm.Common;
 using WebForm.DataAccess;
@@ -148,8 +149,8 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    [Route("chi-tiet-bao-cao/{id}")]
-    public ActionResult ChitietBaoCao(string id)
+    [Route("chi-tiet-bao-cao/{id}/{slug?}")]
+    public ActionResult ChitietBaoCao(string id, string slug = "")
     {
         try
         {
@@ -164,6 +165,10 @@ public class HomeController : Controller
             return null;
         }
     }
+
+
+
+
 
     private decimal ExtractTypeFromRoute(string? path)
     {
@@ -555,20 +560,20 @@ public class HomeController : Controller
                     item.Current_Price_Text = (item.Current_Price / 1000).ToNumberStringN31();
                 }
 
-                if (info != null && item.DoanhThu == 0)
+                if (item != null && item.DoanhThu == 0)
                 {
                     item.PE = 0;
                 }
-                else if (info != null)
+                else if (item != null)
                 {
                     item.PE = item.Current_Price / item.DoanhThu;
                 }
 
-                if (info != null && item.T_PRICE_Target == 0)
+                if (item != null && item.T_PRICE_Target == 0)
                 {
                     item.Price_Position = 0;
                 }
-                else if (info != null)
+                else if (item != null)
                 {
                     item.Price_Position = item.Current_Price / item.T_PRICE_Target;
                 }
@@ -579,16 +584,16 @@ public class HomeController : Controller
                 {
                     item.Upside = 0;
                 }
-                else if (info != null)
+                else if (item != null)
                 {
-                    item.Upside = (item.Price - item.T_PRICE_Target) * 100 / item.Price;
+                    item.Upside = (item.T_PRICE_Target  - item.Price) * 100 / item.Price;
                 }
 
                 if (info != null && item.Price == 0)
                 {
                     item.HieuQua = 0;
                 }
-                else if (info != null)
+                else if (item != null)
                 {
                     item.HieuQua = (item.Current_Price - item.Price) * 100 / item.Price;
                 }
@@ -597,10 +602,23 @@ public class HomeController : Controller
             //listSymbol = listSymbol.Where(x => x.Status != "2" || (x.Status == "2" && ((DateTime.Now.Date - x.Date_Pause.Date).Days) <= 7)).OrderByDescending(x => x.HieuQua).ToList();
 
 
+            //listSymbol = listSymbol
+            //    .Where(x => x.Status != "2" || ((DateTime.Now.Date - x.Date_Pause.Date).Days <= 7))
+            //    .OrderBy(x => x.Status == "2" ? 1 : 0)              // Ưu tiên Status != "2"
+            //    .ThenByDescending(x => x.Open_Position_Date)                   // Trong mỗi nhóm, sắp theo HieuQua giảm dần
+            //    .ToList();
+
+
+           
+
             listSymbol = listSymbol
                 .Where(x => x.Status != "2" || ((DateTime.Now.Date - x.Date_Pause.Date).Days <= 7))
-                .OrderBy(x => x.Status == "2" ? 1 : 0)              // Ưu tiên Status != "2"
-                .ThenByDescending(x => x.HieuQua)                   // Trong mỗi nhóm, sắp theo HieuQua giảm dần
+                .OrderBy(x => x.Status == "2" ? 1 : 0)
+                .ThenByDescending(x =>
+                    !string.IsNullOrWhiteSpace(x.Open_Position_Date)
+                        ? DateTime.ParseExact(x.Open_Position_Date, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+                        : DateTime.MinValue
+                )
                 .ToList();
 
 
@@ -626,7 +644,9 @@ public class HomeController : Controller
                 PE = x.PE.ToNumberStringN31(),
                 Upside = x.Upside.ToNumberStringN31(),
                 Price_Position_Text = (x.Price_Position).ToNumberStringN31(),
-                IsSpecial = x.IsSpecial
+                IsSpecial = x.IsSpecial,
+                Note = x.Note,
+
 
             }).ToArray();
 

@@ -8,15 +8,111 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    string _Header = "";
+    string CategoryType = "1";
+    string title = "";
+    string _title = "";
+    string url = "";
+    string img = "";
+    string Description = "";
+
     News news = new News();
     if (ViewBag.New != null)
     {
         news = ViewBag.New;
+        if (news.Title != null && news.Title != "")
+        {
+            title = news.Title;
+
+        }
+        url = "https://finart.vn/chi-tiet/" + news.Id;
+
+        if (news.Description != null && news.Description != "")
+        {
+            Description = news.Description;
+        }
+
+        if (news.FeatureImage != null && news.FeatureImage != "")
+        {
+            img = news.FeatureImage;
+        }
+        else
+        {
+            img = "https://finart.vn/assets/img/logo.jpg";
+        }
+
     }
+
+
+
+
     ViewBag.Title = news.CategoryName;
     List<News> listLienQuan = DataMemory.c_lstNew.Where(x => x.Id != news.Id && x.CategoryType == news.CategoryType).OrderByDescending(i => i.Id).Take(5).ToList();
 
 }
+
+
+
+@section Head {
+
+    <meta name="description" content="@Description" />
+
+
+
+
+    <!-- Tiêu đề hiển thị -->
+    <meta property="og:title" content="@title">
+
+    <!-- Mô tả ngắn gọn -->
+    <meta property="og:description" content="@Description">
+
+    <!-- Ảnh đại diện khi chia sẻ -->
+    @{
+        string imageUrl = "";
+
+        if (!string.IsNullOrEmpty(news.FeatureImage))
+        {
+            imageUrl = img; // img là biến chứa URL ảnh đã xử lý trước
+        }
+        else
+        {
+            // Dùng Regex để lấy ảnh đầu tiên từ nội dung bài viết
+            var match = System.Text.RegularExpressions.Regex.Match(news.Content ?? "", "<img[^>]+src=[\"']([^\"']+)[\"']", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            if (match.Success)
+            {
+                imageUrl = match.Groups[1].Value;
+            }
+        }
+    }
+
+    @if (!string.IsNullOrEmpty(imageUrl))
+    {
+        <meta property="og:image" content="@imageUrl" />
+    }
+
+
+
+
+
+    <!-- Link chính -->
+    <meta property="og:url" content="@url">
+
+    <!-- Xác định loại nội dung -->
+    <meta property="og:type" content="article">
+
+    <!-- (Tùy chọn) Cho Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@_title">
+    <meta name="twitter:description" content="@Description">
+
+    @if (news.FeatureImage != null && news.FeatureImage != "")
+    {
+        <meta name="twitter:image" content="@img">
+    }
+
+
+}
+
 
 
 

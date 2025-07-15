@@ -1,7 +1,9 @@
 ﻿using RestSharp;
 using Skender.Stock.Indicators;
 using System.Globalization;
+using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using WebForm.Common;
 using WebForm.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -310,31 +312,31 @@ namespace WebForm
 
                     if (_arr_Properties[0] == "1" && _arr_Properties[1] != "")
                     {
-                        _Info.Ceiling_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                        _Info.Ceiling_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
                     if (_arr_Properties[0] == "2" && _arr_Properties[1] != "")
                     {
-                        _Info.Floor_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                        _Info.Floor_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
                     if (_arr_Properties[0] == "3" && _arr_Properties[1] != "")
                     {
-                        _Info.Basic_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                        _Info.Basic_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
 
                     // giá khớp gần nhất
                     if (_arr_Properties[0] == "16" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
                     {
-                        _Info.Current_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                        _Info.Current_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
                     // thay đổi giá
                     if (_arr_Properties[0] == "17" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
                     {
-                        _Info.ChangePrice = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                        _Info.ChangePrice = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
                     // % thay đổi giá
                     if (_arr_Properties[0] == "18" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
                     {
-                        _Info.ChangePricePercent = Convert.ToDecimal(_arr_Properties[1]) * 1000; 
+                        _Info.ChangePricePercent = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
                     // kl giao dịch
                     if (_arr_Properties[0] == "61" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
@@ -384,6 +386,43 @@ namespace WebForm
                 return null;
             }
         }
+
+
+
+
+        public static string ToSlug(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return "";
+
+            // Chuyển về chữ thường
+            text = text.ToLowerInvariant();
+
+            // Bỏ dấu tiếng Việt
+            string normalized = text.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+            foreach (var c in normalized)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(c);
+                }
+            }
+            text = sb.ToString().Normalize(NormalizationForm.FormC);
+
+            // Thay thế khoảng trắng và dấu bằng dấu "-"
+            text = Regex.Replace(text, @"\s+", "-");
+
+            // Xoá ký tự không phải a-z, 0-9, dấu "-"
+            text = Regex.Replace(text, @"[^a-z0-9\-]", "");
+
+            // Xoá dấu "-" lặp lại và ở đầu/cuối
+            text = Regex.Replace(text, @"-+", "-").Trim('-');
+
+            return text;
+        }
+
+
 
     }
 }

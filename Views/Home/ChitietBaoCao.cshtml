@@ -4,19 +4,46 @@
 @using Microsoft.AspNetCore.Mvc;
 @using WebForm.Helpers;
 @using WebForm.Models;
+
+
 @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
     string _Header = "";
     string CategoryType = "1";
+    string title = "";
+    string url = "";
+    string img = "";
+    string Description = "";
     News news = new News();
     if (ViewBag.New != null)
     {
         news = ViewBag.New;
         CategoryType = news.CategoryType;
 
+        if (news.Title != null && news.Title != "")
+        {
+            title = news.Title;
+         
+        }
+        url = "https://finart.vn/chi-tiet-bao-cao/" + news.Id;
 
 
+
+        if (news.Description != null && news.Description != "")
+        {
+            Description = news.Description;
+        }
+
+
+        if (news.FeatureImage != null && news.FeatureImage != "")
+        {
+            img = news.FeatureImage;
+        }
+        else
+        {
+            img = "https://finart.vn/assets/img/logo.jpg";
+        }
 
         if (CategoryType == "6")
         {
@@ -37,6 +64,70 @@
 
 }
 
+@section Head {
+
+        <meta name="description" content="@Description" />
+
+
+
+
+        <!-- Tiêu đề hiển thị -->
+        <meta property="og:title" content="@title">
+
+        <!-- Mô tả ngắn gọn -->
+        <meta property="og:description" content="@Description">
+
+        <!-- Ảnh đại diện khi chia sẻ -->
+
+
+
+    @{
+        string imageUrl = "";
+
+        if (!string.IsNullOrEmpty(news.FeatureImage))
+        {
+            imageUrl = img; // img là biến chứa URL ảnh đã xử lý trước
+        }
+        else
+        {
+            // Dùng Regex để lấy ảnh đầu tiên từ nội dung bài viết
+            var match = System.Text.RegularExpressions.Regex.Match(news.Content ?? "", "<img[^>]+src=[\"']([^\"']+)[\"']", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            if (match.Success)
+            {
+                imageUrl = match.Groups[1].Value;
+            }
+        }
+    }
+
+    @if (!string.IsNullOrEmpty(imageUrl))
+    {
+                    <meta property="og:image" content="@imageUrl" />
+    }
+
+
+
+
+
+        <!-- Link chính -->
+        <meta property="og:url" content="@url">
+
+        <!-- Xác định loại nội dung -->
+        <meta property="og:type" content="article">
+
+        <!-- (Tùy chọn) Cho Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="@title">
+        <meta name="twitter:description" content="@Description">
+
+    @if (news.FeatureImage != null && news.FeatureImage != "")
+    {
+                <meta name="twitter:image" content="@img">
+    }
+
+
+}
+
+
 
 
 <div class="area-page-title">
@@ -49,34 +140,34 @@
 
             @if (CategoryType == "10" || CategoryType == "6")
             {
-                <li class="breadcrumb-item">
-                    <a href="/danh-sach-bao-cao-nganh">Báo cáo FinArt</a>
-                </li>
+                                        <li class="breadcrumb-item">
+                                            <a href="/danh-sach-bao-cao-nganh">Báo cáo FinArt</a>
+                                        </li>
             }
 
             @if (CategoryType == "10")
             {
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="/danh-sach-bao-cao-doanh-nghiep" style="color:#fff !important">@_Header</a>
-                </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <a href="/danh-sach-bao-cao-doanh-nghiep" style="color:#fff !important">@_Header</a>
+                                        </li>
             }
             else if (CategoryType == "6")
             {
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="/danh-sach-bao-cao-nganh" style="color:#fff !important">@_Header</a>
-                </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <a href="/danh-sach-bao-cao-nganh" style="color:#fff !important">@_Header</a>
+                                        </li>
             }
             else if (CategoryType == "7")
             {
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="/danh-sach-bao-cao-ctck" style="color:#fff !important">@_Header</a>
-                </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <a href="/danh-sach-bao-cao-ctck" style="color:#fff !important">@_Header</a>
+                                        </li>
             }
             else if (CategoryType == "8")
             {
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="/danh-sach-bao-cao-vimo" style="color:#fff !important">@_Header</a>
-                </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <a href="/danh-sach-bao-cao-vimo" style="color:#fff !important">@_Header</a>
+                                        </li>
             }
 
         </ol>
@@ -94,11 +185,11 @@
 
                     @if (news.Title != null && news.Title != "")
                     {
-                        <h1>@(news.Title ?? "")</h1>
+                                                <h1>@(news.Title ?? "")</h1>
                     }
                     @if (!string.IsNullOrEmpty(news.CreateDate))
                     {
-                        <time>@news.CreateDate</time>
+                                                <time>@news.CreateDate</time>
                     }
 
                     @*    <div class="excerpt">
@@ -116,24 +207,24 @@
 
                     @if (!string.IsNullOrEmpty(news.Description))
                     {
-                        <div class="description">
+                                                <div class="description">
                             @news.Description
-                        </div>
+                                                </div>
                     }
                     @if (!string.IsNullOrEmpty(news.Content))
                     {
-                        <div class="description">
+                                                <div class="description">
                             @Html.Raw(news.Content)
-                        </div>
+                                                </div>
                     }
 
                     @if (!string.IsNullOrEmpty(news.Link))
                     {
-                        <iframe src="@(news.Link + "#navpanes=0")"
-                                width="100%"
-                                height="600px"
-                                style="border: none;">
-                        </iframe>
+                                                <iframe src="@(news.Link + "#navpanes=0")"
+                                                        width="100%"
+                                                        height="600px"
+                                                        style="border: none;">
+                                                </iframe>
                     }
 
                 </article>

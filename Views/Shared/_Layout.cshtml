@@ -7,14 +7,31 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="" />
+   
 
 
-    <meta property="og:title" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu">
+@*     <meta property="og:title" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu">
     <meta property="og:description" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu, cập nhật nhanh, chính xác và hỗ trợ ra quyết định thông minh cho Nhà đầu tư.">
     <meta property="og:url" content="https://finart.vn/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://finart.vn/assets/img/logo.jpg"> <!-- nếu có ảnh đại diện -->
+ *@
+
+
+
+    @* Render meta động nếu có @section Head *@
+    @RenderSection("Head", required: false)
+
+    @* Nếu KHÔNG có @section Head thì dùng meta mặc định *@
+    @if (!IsSectionDefined("Head"))
+    {
+        <meta name="description" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu" />
+        <meta property="og:title" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu">
+        <meta property="og:description" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu, cập nhật nhanh, chính xác và hỗ trợ ra quyết định thông minh cho Nhà đầu tư.">
+        <meta property="og:url" content="https://finart.vn/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://finart.vn/assets/img/logo.jpg">
+    }
 
 
 
@@ -201,11 +218,11 @@
             transform: translateY(0);
         }
 
-        .navbar-expand-lg .navbar-nav .dropdown-menu {
+       /*  .navbar-expand-lg .navbar-nav .dropdown-menu {
             position: absolute;
             left: inherit;
             top: 100%;
-            width: 240px;
+            width: 250px;
             margin-top: 5px;
             z-index: 100;
             background: #fff;
@@ -219,7 +236,66 @@
             -webkit-transition: all 500ms ease;
             -ms-transition: all 500ms ease;
             -o-transition: all 500ms ease;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+
         }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+            .dropdown-submenu > .dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-top: -1px;
+                display: none;
+                position: absolute;
+            }
+
+            .dropdown-submenu:hover > .dropdown-menu {
+                display: block;
+            }
+ */
+
+
+
+        /* Menu cấp 1 - căn giữa */
+        .navbar-nav > .dropdown > .dropdown-menu {
+            position: absolute;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            top: 100%;
+            width: 250px;
+            margin-top: 5px;
+            background: #fff;
+            border-top: 5px solid #26c48c;
+            border-radius: 8px;
+            z-index: 100;
+        }
+
+        /* Menu cấp 2 trở đi - căn phải */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+            .dropdown-submenu > .dropdown-menu {
+                position: absolute;
+                top: 0;
+                left: 100% !important;
+                transform: none !important;
+                display: none;
+                width: 250px;
+                background: #fff;
+                z-index: 200;
+                border-top: 5px solid #26c48c;
+            }
+
+            .dropdown-submenu:hover > .dropdown-menu {
+                display: block;
+            }
+
+
 
         .dropdown-item.active, .dropdown-item:active {
             color: red;
@@ -258,23 +334,13 @@
 
 
 
-        /* Đặt submenu bên phải */
-        .dropdown-submenu {
-            position: relative;
-        }
 
-            .dropdown-submenu > .dropdown-menu {
-                top: 0;
-                left: 100%;
-                margin-top: -1px;
-                display: none;
-                position: absolute;
-            }
 
-            /* Hiện menu cấp 3 khi hover vào menu cấp 2 */
-            .dropdown-submenu:hover > .dropdown-menu {
-                display: block;
-            }
+
+
+
+
+
 
         /* Tùy chọn: ngăn menu cấp 2 đóng khi rê vào menu cấp 3 */
         .dropdown-menu > .dropdown-submenu > a:after {
@@ -388,7 +454,7 @@
                                 <li class="dropdown-submenu menu3">
                                     <a class="dropdown-item dropdown-toggle1" href="#">Báo cáo FinArt </a>
                                     <ul class="dropdown-menu item3">
-                                        <li><a class="dropdown-item" href="/danh-sach-bao-cao-nganh">Báo cáo ngành</a></li>
+                                        <li><a class="dropdown-item" href="/danh-sach-bao-cao-nganh/1">Báo cáo ngành</a></li>
                                         <li><a class="dropdown-item" href="/danh-sach-bao-cao-doanh-nghiep">Báo cáo DN khuyến nghị</a></li>
                                     </ul>
                                 </li>
@@ -457,8 +523,8 @@
                             <p>Email: <span>finart.advisory@gmail.com</span></p>
                             </p>
                         </div>
-                    </div><div class="col-12 col-sm-2"></div>
-                    <div class="col-12 col-sm-2">
+                    </div><div class="col-12 col-sm-1"></div>
+                    <div class="col-12 col-sm-3">
                         <h5>Liên kết</h5><ul>
                             <li>
                                 <a href="/">Trang chủ</a>

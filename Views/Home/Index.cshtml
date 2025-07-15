@@ -228,8 +228,10 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="row" style="gap: 0rem;">
-                    @*  <div class="col-12 col-md-5 d-none d-md-block">
-                    </div> *@
+                     <div class="col-12 col-md-5 d-none d-md-block" style="position: relative">
+                        <div style="">   <img src="~/assets/img/x.png" style="max-width: 500px;position: absolute; top: 60px; right: 55px;" /></div>
+                     
+                    </div>
                     <div class="col-12 col-md-7 mx-auto">
                         <article>
                             <h2 class="animate a_01" style="color:#10cfc9">
@@ -288,11 +290,11 @@
                                 </table>
 
                             </ul>
-                            <div class="text_a animate a_10">
+                            <div class="text_a animate a_10 d-flex justify-content-center gap-3">
                                 <a class="btn-action bg-cyan" href="/co-phieu-tang-truong">
                                     Danh mục đầu tư dài hạn
                                 </a>
-                                <a class="btn-action bg-cyan-outline" target="_blank" href="/danh-sach-khuyen-nghi">
+                                <a class="btn-action bg-cyan-outline" href="/danh-sach-khuyen-nghi">
                                     Xem chi tiết
                                     <img src="~/assets/img/arrow-detail.png" />
                                 </a>
@@ -315,12 +317,12 @@
                     <img src="~/assets/img/arrow-up.png" />
                     Nhận định Finart
                 </h6>
-                <h2>Góc nhìn chuyên gia đồng hành cùng quyết định của bạn</h2>
+                <h2>Góc nhìn chuyên gia đồng hành cùng nhà đầu tư</h2>
             </hgroup>
 
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3 mx-auto nth-article">
-                    <article class="card-article">
+                    <article class="card-article" onclick="window.location.href='/xu-huong-thi-truong'" style="cursor: pointer;">
                         <p class="number"></p>
                         <div class="border-img">
                             <img src="~/assets/img/icon-01.png" />
@@ -332,7 +334,7 @@
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-md-3 mx-auto nth-article">
-                    <article class="card-article">
+                    <article class="card-article" onclick="window.location.href='/xu-huong-nganh'" style="cursor: pointer;">
                         <p class="number"></p>
                         <div class="border-img">
                             <img src="~/assets/img/icon-01.png" />
@@ -343,7 +345,7 @@
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-md-3 mx-auto nth-article">
-                    <article class="card-article">
+                    <article class="card-article" onclick="window.location.href='/co-phieu-dan-dat'" style="cursor: pointer;">
                         <p class="number"></p>
                         <div class="border-img">
                             <img src="~/assets/img/icon-01.png" />

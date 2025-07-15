@@ -1968,6 +1968,7 @@ footer ul {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
+    padding: 0
 }
 
     .sub-post.open {
@@ -1976,4 +1977,28 @@ footer ul {
 
 ul.sub-post li:first-child {
     margin-top: 10px;
+}
+
+
+
+.sub-post li a.active1:after {
+    background: url('../img/arrow-active.png') no-repeat !important;
+    margin-top: -5px;
+}
+
+
+.sub-post a:after {
+    background: url(../img/arrow.png) no-repeat !important;
+    margin-top: -5px;
+}
+
+
+.sub-post a {
+    background: #fff !important;
+    
+}
+
+.sub-post li a.active1 {
+    background: #10cfc9 !important;
+   
 }
