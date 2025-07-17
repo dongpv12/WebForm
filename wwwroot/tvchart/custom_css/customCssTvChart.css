@@ -85,3 +85,6 @@
         display: inline-block !important;
     }
 }
+.symbol-edit {
+    display: none
+}

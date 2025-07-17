@@ -161,9 +161,9 @@
                             <td class="text-end">{{ item?.Price_Text }}</td>
                             <td class="text-end">{{ item?.PRICE_Taget_Text }}</td>
                             <td class="text-end">{{ item?.T_Pause }}</td>
-                            <td>{{ item?.Upside }}</td>
+                            <td class="text-end">{{ item?.Upside }}</td>
 
-                            <td :class="{
+                            <td class="text-end" :class="{
                                 'highlight-green' : item?.HieuQua>
                                 0,
                                 'highlight-red': item?.HieuQua < 0,
@@ -219,7 +219,7 @@
                             <td class="text-end">{{ item?.Price_Text }}</td>
                             <td class="text-end">{{ item?.PRICE_Taget_Text }}</td>
                             <td class="text-end">{{ item?.T_Pause }}</td>
-                            <td>{{ item?.Upside }}</td>
+                            <td class="text-end">{{ item?.Upside }}</td>
                             <td>{{ item?.Note }}</td>
 
                         </tr>

@@ -73,9 +73,10 @@
 
     <script src="/js/axios.min.js"></script>
     <link href="~/assets/css/vendor.min.css" rel="stylesheet" />
-    <link href="~/assets/css/device.min.css" rel="stylesheet" />
-
+  
     <link href="~/assets/css/layout.min.css?v=@DateTime.Now.ToString("yyyyMMddHHmmss")" rel="stylesheet" />
+      <link href="~/assets/css/device.min.css" rel="stylesheet" />
+
     <link href="~/assets/css/main.css?v=@DateTime.Now.ToString("yyyyMMddHHmmss")" rel="stylesheet" />
 
 
@@ -271,7 +272,7 @@
             width: 250px;
             margin-top: 5px;
             background: #fff;
-            border-top: 5px solid #26c48c;
+            border-top: 5px solid var(--cyan);
             border-radius: 8px;
             z-index: 100;
         }
@@ -290,7 +291,7 @@
                 width: 250px;
                 background: #fff;
                 z-index: 200;
-                border-top: 5px solid #26c48c;
+                border-top: 5px solid var(--cyan);
             }
 
             .dropdown-submenu:hover > .dropdown-menu {

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using WebForm.Common;
 using WebForm.DataAccess;
 using WebForm.Helpers;
 using WebForm.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WebForm.Controllers;
 
@@ -538,26 +540,11 @@ public class HomeController : Controller
                 {
 
                     item.Current_Price = info.MatchPrice;
-                    //_matchPrice = info.MatchPrice;
-                    //_price = item.Price;
-                    //item.Current_Price_Text = (info.MatchPrice / 1000).ToNumberStringN31();
-                    //if (item.Price == 0)
-                    //{
-                    //    item.Heso = 100;
-                    //}
-                    //else
-                    //{
-                    //    item.Heso = ((_matchPrice - _price) * 100) / _price;
-                    //}
-                    //item.Heso_Text = item.Heso.ToNumberStringN31();
-
+                   
                 }
                 else
                 {
-                    // giu nguyen gia trị trong DB
-
-                    //item.Heso_Text = item.Heso.ToNumberStringN31();
-                    //item.Current_Price_Text = (item.Current_Price / 1000).ToNumberStringN31();
+                   
                 }
 
                 if (item != null && item.DoanhThu == 0)
@@ -595,7 +582,8 @@ public class HomeController : Controller
                 }
                 else if (item != null)
                 {
-                    item.HieuQua = (item.Current_Price - item.Price) * 100 / item.Price;
+                    item.HieuQua = Math.Ceiling(((item.Current_Price - item.Price) * 100 / item.Price) * 10) / 10;
+
                 }
             }
 
@@ -635,9 +623,9 @@ public class HomeController : Controller
                 T_Pause = (x.T_Pause / 1000).ToNumberStringN31(),
                 LoiNhuan = x.LoiNhuan.ToNumberStringN31(),
                 DoanhThu = x.DoanhThu.ToNumberStringN31(),
-                PE = x.PE.ToNumberStringN31(),
-                Upside = x.Upside.ToNumberStringN31(),
-                Price_Position_Text = (x.Price_Position).ToNumberStringN31(),
+                PE = (Math.Ceiling((x.PE) * 10) / 10).ToNumberStringN31(),
+                Upside = (Math.Ceiling((x.Upside) * 10) / 10).ToNumberStringN31(),
+                Price_Position_Text = (Math.Ceiling((x.Price_Position) * 10) / 10).ToNumberStringN31(),
                 IsSpecial = x.IsSpecial,
                 Note = x.Note,
 
@@ -659,7 +647,7 @@ public class HomeController : Controller
 
     [HttpGet]
     [Route("tt-co-phieu/{matp}")]
-    public IActionResult GetStocksCode(string matp)
+    public async Task<ActionResult> GetStocksCode(string matp)
     {
         try
         {
@@ -673,45 +661,48 @@ public class HomeController : Controller
 
             StockMemInfo info = StockMem.GetBySymbol(_Symbol.Symbol);
             _Symbol.Price_Text = _Symbol.Price.ToNumberStringN31();
-            if (info != null)
+            
+            if (info != null && _Symbol != null)
             {
-
-                _Symbol.Current_Price = info.MatchPrice;
-                _Symbol.Current_Price_Text = info.MatchPrice.ToNumberStringN31(); ;
-                if (_Symbol.Price == 0)
+                if (_Symbol.Status == "2")
                 {
-                    _Symbol.Heso = 100;
+                    _Symbol.Current_Price = info.MatchPrice;
+
                 }
                 else
                 {
-                    _Symbol.Heso = (info.MatchPrice - _Symbol.Price) / _Symbol.Price;
+                    _Symbol.Current_Price = info.MatchPrice;
+                    _Symbol.Current_Price_Text = info.MatchPrice.ToNumberStringN31(); ;
+                    if (_Symbol.Price == 0)
+                    {
+                        _Symbol.Heso = 100;
+                    }
+                    else
+                    {
+
+                        _Symbol.Heso = Math.Ceiling(((info.MatchPrice - _Symbol.Price) * 100 / _Symbol.Price) * 10) / 10;
+                    }
+                    _Symbol.Heso_Text = _Symbol.Heso.ToNumberStringN31();
+
                 }
-
-
-                _Symbol.Heso_Text = _Symbol.Heso.ToNumberStringN31();
-
-
 
             }
             else
             {
                 _Symbol.Heso_Text = "0";
             }
-
+            
 
 
             var stock = new
             {
                 Id = _Symbol.Id,
                 Symbol = _Symbol.Symbol,
-                Name = _Symbol.Name,
-                Price = _Symbol.Price,
-                Price_Text = _Symbol.Price_Text,
-                Current_Price = _Symbol.Current_Price,
-                Current_Price_Text = _Symbol.Current_Price_Text,
                 Heso_Text = _Symbol.Heso_Text,
-                Status_Text = _Symbol.Status_Text,
-                Status = _Symbol.Status
+               
+                CurrentPrice = (_Symbol.Current_Price/1000).ToNumberStringN31(),
+               
+
             };
 
             return Ok(stock);
@@ -742,15 +733,23 @@ public class HomeController : Controller
             List<Symbol_Notify_Info> listSymbol = DataMemory.GetAllSymbol();
             Symbol_Notify_Info _info = listSymbol.Where(x => x.Symbol.ToUpper() == matp.ToUpper()).FirstOrDefault();
 
-            StockAnalysis stockAnalysis = await Analysis_Symbol.AnalyzeStockDataAsync(matp);
-            if (stockAnalysis != null)
-            {
-                ViewBag.StockAnalysis = stockAnalysis;
-            }
 
-            ViewBag.MaTP = matp;
-            ViewBag.Info = _info;
-            return View();
+            if (_info != null) {
+                StockAnalysis stockAnalysis = await Analysis_Symbol.AnalyzeStockDataAsync(matp);
+                if (stockAnalysis != null)
+                {
+                    ViewBag.StockAnalysis = stockAnalysis;
+                }
+
+                ViewBag.MaTP = matp;
+                ViewBag.Info = _info;
+                return View();
+            }
+            else
+            {
+                return View();
+            }
+            
         }
         catch (Exception e)
         {

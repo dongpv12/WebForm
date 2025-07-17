@@ -381,11 +381,12 @@
 	.list-grid{
 		width:100%;
 	}
-	
-	.list-grid li{
-		font-size:14px;
-		background:#cdfbf9;
-	}
+
+		.list-grid li {
+			font-size: 14px;
+			background: #255c29;
+			color: #fff;
+		}
 	
 	.list-grid li span{
 		float:none;

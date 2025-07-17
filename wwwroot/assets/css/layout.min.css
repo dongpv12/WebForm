@@ -25,7 +25,7 @@
     --title: #16315e;
     --border: #d0d0d0;
     --green: #26c48c;
-    --cyan: #10cfc9;
+    --cyan: #2e7d32;
     --white: #ffffff;
     --font: "LexendDeca", Roboto, Arial, sans-serif;
     --font_b: "LexendDeca_B", Roboto, Arial, sans-serif;
@@ -832,7 +832,7 @@ body.offcanvas-active {
         }
 
 .list-grid li {
-    background: linear-gradient(to right, #cdfbf9 0%, #cdfbf9 61%, #f0ffff 51%, #f0ffff 100%);
+    background: linear-gradient(to right, #e7e7e7 0%, #e3f1e4 61%, #255c29 51%, #255c29 100%);
     position: relative;
     margin-bottom: 5px;
     padding: 17px 20px 17px 40px;
@@ -841,7 +841,7 @@ body.offcanvas-active {
 
     .list-grid li span {
         font-family: var(--font_b);
-        color: var(--title);
+        color: var(--white);
     }
 
     .list-grid li:after {
@@ -1999,6 +1999,5 @@ ul.sub-post li:first-child {
 }
 
 .sub-post li a.active1 {
-    background: #10cfc9 !important;
-   
+    background: #2e7d32 !important;
 }
