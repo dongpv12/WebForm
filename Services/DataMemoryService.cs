@@ -74,10 +74,14 @@ public class DataMemoryService : IHostedService
                         if (_Symbol_WS_Info != null && _Symbol_WS_Info.Symbol != null && _Symbol_WS_Info.Symbol != "")
                         {
                             // update de lai trong mem cua DataMemory
-                            Symbol_Notify_Info _Symbol_Notify_Info = DataMemory.c_dicSymbol.ContainsKey(_Symbol_WS_Info.Symbol) ? DataMemory.c_dicSymbol[_Symbol_WS_Info.Symbol] : null;
-                            if (_Symbol_Notify_Info != null)
+                            Symbol_Notify_Info _Symbol_mem = DataMemory.c_dicSymbol.ContainsKey(_Symbol_WS_Info.Symbol) ? DataMemory.c_dicSymbol[_Symbol_WS_Info.Symbol] : null;
+                            if (_Symbol_mem != null)
                             {
-                                _Symbol_Notify_Info.Current_Price = _Symbol_WS_Info.Current_Price;
+                                if (_Symbol_WS_Info.Current_Price != _Symbol_mem.Current_Price)
+                                {
+                                    Logger.Log.Debug("Symbol " + _Symbol_mem.Symbol + " Current_Price " + _Symbol_WS_Info.Current_Price + " Total message in queue " + StockMem.c_queueMessage.Count);
+                                }
+                                _Symbol_mem.Current_Price = _Symbol_WS_Info.Current_Price;
 
                                 // chi xu ly cac ma cua he thong finart
                                 if (StockMem.c_dicStocks.ContainsKey(_Symbol_WS_Info.Symbol) == false)
@@ -97,7 +101,7 @@ public class DataMemoryService : IHostedService
                                     };
 
                                     // xem co phai symbol thuoc finart khai bao khong
-                                    if (_Symbol_Notify_Info != null)
+                                    if (_Symbol_mem != null)
                                     {
                                         stockMemInfo.Is_FinArt = true;
                                     }
@@ -121,7 +125,7 @@ public class DataMemoryService : IHostedService
                                     stockMemInfo.TotalTradedValueNM = _Symbol_WS_Info.TotalValue;
                                     stockMemInfo.MatchPrice = _Symbol_WS_Info.Current_Price;
 
-                                    if (_Symbol_Notify_Info != null)
+                                    if (_Symbol_mem != null)
                                     {
                                         stockMemInfo.Is_FinArt = true;
                                     }
