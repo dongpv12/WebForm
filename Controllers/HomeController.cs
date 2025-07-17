@@ -629,7 +629,7 @@ public class HomeController : Controller
                 Status = x.Status,
                 HieuQua = x.HieuQua.ToNumberStringN31() + "%",
                 HieuQua_Text = x.HieuQua.ToNumberStringN31(),
-                Current_Price_Text = (x.Current_Price/1000).ToNumberStringN31(),
+                Current_Price_Text = (x.Current_Price / 1000).ToNumberStringN31(),
                 PRICE_Exp_Text = (x.F_PRICE_Exp / 1000).ToNumberStringN31() + " - " + (x.T_PRICE_Exp / 1000).ToNumberStringN31(),
                 PRICE_Taget_Text = (x.F_PRICE_Target / 1000).ToNumberStringN31(),
                 T_Pause = (x.T_Pause / 1000).ToNumberStringN31(),
@@ -671,50 +671,54 @@ public class HomeController : Controller
             // danh sách cổ phiếu
             Symbol_Notify_Info _Symbol = DataMemory.GetAllSymbol().Where(x => x.Symbol.ToUpper() == matp.ToUpper()).FirstOrDefault();
 
-            StockMemInfo info = StockMem.GetBySymbol(_Symbol.Symbol);
-            _Symbol.Price_Text = _Symbol.Price.ToNumberStringN31();
-            if (info != null)
+            if (_Symbol != null)
             {
-
-                _Symbol.Current_Price = info.MatchPrice;
-                _Symbol.Current_Price_Text = info.MatchPrice.ToNumberStringN31(); ;
-                if (_Symbol.Price == 0)
+                StockMemInfo info = StockMem.GetBySymbol(_Symbol.Symbol);
+                _Symbol.Price_Text = _Symbol.Price.ToNumberStringN31();
+                if (info != null)
                 {
-                    _Symbol.Heso = 100;
+
+                    _Symbol.Current_Price = info.MatchPrice;
+                    _Symbol.Current_Price_Text = info.MatchPrice.ToNumberStringN31(); ;
+                    if (_Symbol.Price == 0)
+                    {
+                        _Symbol.Heso = 100;
+                    }
+                    else
+                    {
+                        _Symbol.Heso = (info.MatchPrice - _Symbol.Price) / _Symbol.Price;
+                    }
+
+
+                    _Symbol.Heso_Text = _Symbol.Heso.ToNumberStringN31();
+
+
+
                 }
                 else
                 {
-                    _Symbol.Heso = (info.MatchPrice - _Symbol.Price) / _Symbol.Price;
+                    _Symbol.Heso_Text = "0";
                 }
+                var stock = new
+                {
+                    Id = _Symbol.Id,
+                    Symbol = _Symbol.Symbol,
+                    Name = _Symbol.Name,
+                    Price = _Symbol.Price,
+                    Price_Text = _Symbol.Price_Text,
+                    Current_Price = _Symbol.Current_Price,
+                    Current_Price_Text = _Symbol.Current_Price_Text,
+                    Heso_Text = _Symbol.Heso_Text,
+                    Status_Text = _Symbol.Status_Text,
+                    Status = _Symbol.Status
+                };
 
-
-                _Symbol.Heso_Text = _Symbol.Heso.ToNumberStringN31();
-
-
-
+                return Ok(stock);
             }
             else
             {
-                _Symbol.Heso_Text = "0";
+                return null;
             }
-
-
-
-            var stock = new
-            {
-                Id = _Symbol.Id,
-                Symbol = _Symbol.Symbol,
-                Name = _Symbol.Name,
-                Price = _Symbol.Price,
-                Price_Text = _Symbol.Price_Text,
-                Current_Price = _Symbol.Current_Price,
-                Current_Price_Text = _Symbol.Current_Price_Text,
-                Heso_Text = _Symbol.Heso_Text,
-                Status_Text = _Symbol.Status_Text,
-                Status = _Symbol.Status
-            };
-
-            return Ok(stock);
         }
         catch (Exception e)
         {

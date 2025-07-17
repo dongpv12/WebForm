@@ -93,11 +93,11 @@
 
                 <div class="row mb-2">
                     <div class="col-sm-5 fw-semibold text-muted">Thay đổi giá 20 ngày:</div>
-                    <div class="col-sm-7">@(stockAnalysis.Change20Days.ToString("##0.##") ?? "")</div>
+                    <div class="col-sm-7">@(stockAnalysis.Change20Days.ToString("##0.##") ?? "")%</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-5 fw-semibold text-muted">RSI:</div>
-                    <div class="col-sm-7">@(stockAnalysis.RSI.ToString("##0.##") + " - " + stockAnalysis.RSISignal)</div>
+                    <div class="col-sm-7">@(stockAnalysis.RSI.ToString("##0.##") + " -> " + stockAnalysis.RSISignal)</div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-5 fw-semibold text-muted">MACD:</div>
