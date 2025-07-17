@@ -54,7 +54,7 @@ namespace WebForm
                 {
                     quote = new Quote();
                     quote.Date = DateTime.Now.Date;
-                    quote.Close = (decimal)Current_Price / 1000;
+                    quote.Close = (decimal)Current_Price;
                     quote.Open = _StockMemInfo.OpenPrice / 1000;
                     quote.High = _StockMemInfo.HighestPrice / 1000;
                     quote.Low = _StockMemInfo.LowestPrice / 1000;
@@ -133,16 +133,16 @@ namespace WebForm
 
                 // Thông tin cơ bản
                 analysis.CurrentPrice = Current_Price;
-                analysis.Change20Days = Math.Round((Current_Price - ((double)recentData.Last().Close * 1000)) / ((double)recentData.Last().Close * 1000) * 100, 2);
+                analysis.Change20Days = Math.Round((Current_Price - ((double)recentData.Last().Close)) / ((double)recentData.Last().Close) * 100, 2);
 
                 // Xác định xu hướng
-                if (Current_Price / 1000 > MA200 && MA20 > MA50)
+                if (Current_Price > MA200 && MA20 > MA50)
                     analysis.Trend = "TĂNG MẠNH";
-                else if (Current_Price / 1000 > MA200)
+                else if (Current_Price > MA200)
                     analysis.Trend = "TĂNG";
-                else if (Current_Price / 1000 < MA200 && MA20 < MA50)
+                else if (Current_Price < MA200 && MA20 < MA50)
                     analysis.Trend = "GIẢM MẠNH";
-                else if (Current_Price / 1000 < MA200)
+                else if (Current_Price < MA200)
                     analysis.Trend = "GIẢM";
                 else
                     analysis.Trend = "ĐI NGANG";
@@ -168,9 +168,9 @@ namespace WebForm
                     analysis.MACDCrossSignal = "KHÔNG CÓ TÍN HIỆU MACD MỚI";
 
                 // Phân tích Bollinger Bands
-                if (Current_Price / 1000 > BollingerUpper)
+                if (Current_Price > BollingerUpper)
                     analysis.BollingerSignal = "VÙNG QUÁ MUA - Có thể điều chỉnh giảm";
-                else if (Current_Price / 1000 < BollingerLower)
+                else if (Current_Price < BollingerLower)
                     analysis.BollingerSignal = "VÙNG QUÁ BÁN - Có thể phục hồi tăng";
                 else
                     analysis.BollingerSignal = "NẰM TRONG BIÊN ĐỘ BOLLINGER";
