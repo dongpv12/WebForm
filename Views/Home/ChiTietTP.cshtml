@@ -113,8 +113,8 @@ else
                         <div class="info-box shadow p-4 mb-4">
                             <h4 class="section-title">PHÂN TÍCH KỸ THUẬT</h4>
                             <p><strong>Giá hiện tại: </strong> {{ stocks.CurrentPrice }}</p>
-                            <p><strong>Thay đổi giá 20 ngày:</strong> @(stockAnalysis.Change20Days.ToString("##0.##") ?? "")</p>
-                            <p><strong>RSI:</strong> @(stockAnalysis.RSI.ToString("##0.##") + " - " + stockAnalysis.RSISignal)</p>
+                            <p><strong>Thay đổi giá 20 ngày:</strong> @(stockAnalysis.Change20Days.ToString("##0.##") ?? "")%</p>
+                            <p><strong>RSI:</strong> @(stockAnalysis.RSI.ToString("##0.##") + " -> " + stockAnalysis.RSISignal)</p>
                             <p><strong>MACD:</strong> @(stockAnalysis.MACDCrossSignal)</p>
                             <p><strong>Bollinger Bands:</strong> @(stockAnalysis.BollingerSignal)</p>
                             <p><strong>Biến động giá:</strong> @(stockAnalysis.Volatility.ToString("##0.##"))%</p>
