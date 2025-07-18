@@ -104,9 +104,12 @@ namespace WebForm
                 string _accountFile = System.IO.Path.Combine(ConfigInfo.ContentRootPath, "Data", "Symbol_Info.json");
                 string jsonString = File.ReadAllText(_accountFile);
                 List<StockMemInfo> _lstAccount = JsonConvert.DeserializeObject<List<StockMemInfo>>(jsonString);
-                foreach (var item in _lstAccount)
+                if (_lstAccount != null)
                 {
-                    c_dicStocks[item.Symbol] = item;
+                    foreach (var item in _lstAccount)
+                    {
+                        c_dicStocks[item.Symbol] = item;
+                    }
                 }
 
                 Logger.Log.Info("Done Read SymbolFile count " + c_dicStocks.Count);
