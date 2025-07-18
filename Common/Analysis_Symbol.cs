@@ -1,6 +1,7 @@
 ﻿using MathNet.Numerics.Statistics;
 using Skender.Stock.Indicators;
 using System.Data;
+using System.IO.Pipelines;
 using WebForm.Common;
 using WebForm.DataAccess;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -147,6 +148,9 @@ namespace WebForm
                 else
                     analysis.Trend = "ĐI NGANG";
 
+                var trend = DetermineTrends(Current_Price, MA20, MA50, MA200);
+                analysis.Trend = trend.ShortTerm + ", " + trend.MidTerm + ", " + trend.LongTerm;
+
                 // Phân tích RSI
                 analysis.RSI = RSI;
                 if (RSI > 70)
@@ -249,5 +253,33 @@ namespace WebForm
             return result;
         }
 
+        private static TrendResult DetermineTrends(double currentPrice, double ma20, double ma50, double ma200)
+        {
+            var result = new TrendResult();
+
+            // Ngắn hạn
+            result.ShortTerm = currentPrice > ma20 ? "Tăng ngắn hạn" :
+                               currentPrice < ma20 ? "Giảm ngắn hạn" :
+                               "Trung lập ngắn hạn";
+
+            // Trung hạn
+            result.MidTerm = ma20 > ma50 ? "Tăng trung hạn" :
+                             ma20 < ma50 ? "Giảm trung hạn" :
+                             "Trung lập trung hạn";
+
+            // Dài hạn
+            result.LongTerm = ma50 > ma200 ? "Tăng dài hạn" :
+                              ma50 < ma200 ? "Giảm dài hạn" :
+                              "Trung lập dài hạn";
+
+            return result;
+        }
+    }
+
+    public class TrendResult
+    {
+        public string ShortTerm { get; set; }
+        public string MidTerm { get; set; }
+        public string LongTerm { get; set; }
     }
 }

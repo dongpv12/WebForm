@@ -244,85 +244,90 @@ public class DataMemoryService : IHostedService
                             if (_symbol != "")
                             {
                                 // nếu có trong dữ liệu của quản trị thì xử lý
-                                Symbol_Notify_Info _Symbol_Notify_Info = DataMemory.c_dicSymbol.ContainsKey(_symbol) ? DataMemory.c_dicSymbol[_symbol] : null;
-                                if (_Symbol_Notify_Info != null)
+                                Symbol_Notify_Info _Symbol_mem = DataMemory.c_dicSymbol.ContainsKey(_symbol) ? DataMemory.c_dicSymbol[_symbol] : null;
+                                if (_Symbol_mem != null)
                                 {
                                     Symbol_WS_Info _Symbol_WS_Info = Utils.Init_Symbol_FromSocket(item_ck);
+
+                                    if (_Symbol_WS_Info.Current_Price != _Symbol_mem.Current_Price)
+                                    {
+                                        Logger.Log.Debug("Symbol " + _Symbol_mem.Symbol + " Current_Price " + _Symbol_WS_Info.Current_Price + " Total message in queue " + StockMem.c_queueMessage.Count);
+                                    }
 
                                     if (_Symbol_WS_Info != null && _Symbol_WS_Info.Symbol != null && _Symbol_WS_Info.Symbol != "")
                                     {
                                         if (_Symbol_WS_Info.Current_Price > 0)
                                         {
-                                            _Symbol_Notify_Info.Current_Price = _Symbol_WS_Info.Current_Price;
-                                            _Symbol_Notify_Info.Close = _Symbol_WS_Info.Current_Price;
-                                            if (_Symbol_Notify_Info.Low < _Symbol_WS_Info.Current_Price)
+                                            _Symbol_mem.Current_Price = _Symbol_WS_Info.Current_Price;
+                                            _Symbol_mem.Close = _Symbol_WS_Info.Current_Price;
+                                            if (_Symbol_mem.Low < _Symbol_WS_Info.Current_Price)
                                             {
-                                                _Symbol_Notify_Info.Low = _Symbol_WS_Info.Current_Price;
+                                                _Symbol_mem.Low = _Symbol_WS_Info.Current_Price;
                                             }
 
-                                            if (_Symbol_Notify_Info.Hight < _Symbol_WS_Info.Current_Price)
+                                            if (_Symbol_mem.Hight < _Symbol_WS_Info.Current_Price)
                                             {
-                                                _Symbol_Notify_Info.Hight = _Symbol_WS_Info.Current_Price;
+                                                _Symbol_mem.Hight = _Symbol_WS_Info.Current_Price;
                                             }
                                         }
 
                                         if (_Symbol_WS_Info.Match_Qtty > 0)
                                         {
-                                            _Symbol_Notify_Info.Match_Qtty = _Symbol_WS_Info.Match_Qtty;
-                                            if (_Symbol_Notify_Info.Open_Qtty <= 0)
+                                            _Symbol_mem.Match_Qtty = _Symbol_WS_Info.Match_Qtty;
+                                            if (_Symbol_mem.Open_Qtty <= 0)
                                             {
-                                                _Symbol_Notify_Info.Open_Qtty = _Symbol_WS_Info.Match_Qtty;
+                                                _Symbol_mem.Open_Qtty = _Symbol_WS_Info.Match_Qtty;
                                             }
                                         }
 
                                         if (_Symbol_WS_Info.Volume > 0)
                                         {
-                                            _Symbol_Notify_Info.Volume = _Symbol_WS_Info.Volume;
+                                            _Symbol_mem.Volume = _Symbol_WS_Info.Volume;
                                         }
                                         if (_Symbol_WS_Info.TotalValue > 0)
                                         {
-                                            _Symbol_Notify_Info.TotalValue = _Symbol_WS_Info.TotalValue;
+                                            _Symbol_mem.TotalValue = _Symbol_WS_Info.TotalValue;
                                         }
                                         if (_Symbol_WS_Info.Open > 0)
                                         {
-                                            _Symbol_Notify_Info.Open = _Symbol_WS_Info.Open;
+                                            _Symbol_mem.Open = _Symbol_WS_Info.Open;
                                         }
                                         if (_Symbol_WS_Info.Name != null && _Symbol_WS_Info.Name != "")
                                         {
-                                            _Symbol_Notify_Info.Name = _Symbol_WS_Info.Name;
+                                            _Symbol_mem.Name = _Symbol_WS_Info.Name;
                                         }
 
                                         if (StockMem.c_dicStocks.ContainsKey(_Symbol_WS_Info.Symbol) == false)
                                         {
                                             StockMemInfo stockMemInfo = new StockMemInfo
                                             {
-                                                Symbol = _Symbol_Notify_Info.Symbol,
-                                                SymbolName = _Symbol_Notify_Info.Name,
-                                                MarketCode = _Symbol_Notify_Info.MarketCode,
-                                                OpenPrice = _Symbol_Notify_Info.Open,
-                                                ClosePrice = _Symbol_Notify_Info.Close,
-                                                HighestPrice = _Symbol_Notify_Info.Hight,
-                                                LowestPrice = _Symbol_Notify_Info.Low,
-                                                TotalTradedQttyNM = _Symbol_Notify_Info.Volume,
-                                                TotalTradedValueNM = _Symbol_Notify_Info.TotalValue,
-                                                MatchPrice = _Symbol_Notify_Info.Current_Price
+                                                Symbol = _Symbol_mem.Symbol,
+                                                SymbolName = _Symbol_mem.Name,
+                                                MarketCode = _Symbol_mem.MarketCode,
+                                                OpenPrice = _Symbol_mem.Open,
+                                                ClosePrice = _Symbol_mem.Close,
+                                                HighestPrice = _Symbol_mem.Hight,
+                                                LowestPrice = _Symbol_mem.Low,
+                                                TotalTradedQttyNM = _Symbol_mem.Volume,
+                                                TotalTradedValueNM = _Symbol_mem.TotalValue,
+                                                MatchPrice = _Symbol_mem.Current_Price
                                             };
 
-                                            StockMem.c_dicStocks[_Symbol_Notify_Info.Symbol] = stockMemInfo;
+                                            StockMem.c_dicStocks[_Symbol_mem.Symbol] = stockMemInfo;
                                         }
                                         else
                                         {
-                                            StockMemInfo stockMemInfo = StockMem.c_dicStocks[_Symbol_Notify_Info.Symbol];
-                                            stockMemInfo.SymbolName = _Symbol_Notify_Info.Name;
-                                            stockMemInfo.MarketCode = _Symbol_Notify_Info.MarketCode;
-                                            stockMemInfo.OpenPrice = _Symbol_Notify_Info.Open;
-                                            stockMemInfo.ClosePrice = _Symbol_Notify_Info.Close;
-                                            stockMemInfo.HighestPrice = _Symbol_Notify_Info.Hight;
-                                            stockMemInfo.LowestPrice = _Symbol_Notify_Info.Low;
-                                            stockMemInfo.TotalTradedQttyNM = _Symbol_Notify_Info.Volume;
-                                            stockMemInfo.TotalTradedValueNM = _Symbol_Notify_Info.TotalValue;
-                                            stockMemInfo.MatchPrice = _Symbol_Notify_Info.Current_Price;
-                                            StockMem.c_dicStocks[_Symbol_Notify_Info.Symbol] = stockMemInfo;
+                                            StockMemInfo stockMemInfo = StockMem.c_dicStocks[_Symbol_mem.Symbol];
+                                            stockMemInfo.SymbolName = _Symbol_mem.Name;
+                                            stockMemInfo.MarketCode = _Symbol_mem.MarketCode;
+                                            stockMemInfo.OpenPrice = _Symbol_mem.Open;
+                                            stockMemInfo.ClosePrice = _Symbol_mem.Close;
+                                            stockMemInfo.HighestPrice = _Symbol_mem.Hight;
+                                            stockMemInfo.LowestPrice = _Symbol_mem.Low;
+                                            stockMemInfo.TotalTradedQttyNM = _Symbol_mem.Volume;
+                                            stockMemInfo.TotalTradedValueNM = _Symbol_mem.TotalValue;
+                                            stockMemInfo.MatchPrice = _Symbol_mem.Current_Price;
+                                            StockMem.c_dicStocks[_Symbol_mem.Symbol] = stockMemInfo;
                                         }
 
                                         // update vào bảng mem dữ liệu trong ngày
@@ -330,29 +335,16 @@ public class DataMemoryService : IHostedService
                                         {
                                             TradeTime = DateTime.Now,
                                             TimestampUTC = Utils.DateTimeToTimeStampMillisecond(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, 0).ToUniversalTime()),
-                                            Symbol = _Symbol_Notify_Info.Symbol,
-                                            OpenPrice = _Symbol_Notify_Info.Open,
-                                            OpenQtty = _Symbol_Notify_Info.Open_Qtty,
-                                            HighestPrice = _Symbol_Notify_Info.Hight,
-                                            LowestPrice = _Symbol_Notify_Info.Low,
-                                            ClosePrice = _Symbol_Notify_Info.Close,
+                                            Symbol = _Symbol_mem.Symbol,
+                                            OpenPrice = _Symbol_mem.Open,
+                                            OpenQtty = _Symbol_mem.Open_Qtty,
+                                            HighestPrice = _Symbol_mem.Hight,
+                                            LowestPrice = _Symbol_mem.Low,
+                                            ClosePrice = _Symbol_mem.Close,
                                             CloseQtty = 0,
-                                            TotalTradedQtty = _Symbol_Notify_Info.Volume,
-                                            TotalTradedValue = _Symbol_Notify_Info.TotalValue,
-                                        });
-
-                                        // update vao DB  
-                                        try
-                                        {
-                                            //Symbol_Notify_Info info = new Symbol_Notify_Info();
-                                            //info.Symbol = _Symbol_Notify_Info.Symbol;
-                                            //info.Current_Price = _Symbol_Notify_Info.Current_Price;
-                                            //_ck = _da.UpdateCurrenPrice(info);
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Logger.Log.Error(ex.ToString());
-                                        }
+                                            TotalTradedQtty = _Symbol_mem.Volume,
+                                            TotalTradedValue = _Symbol_mem.TotalValue,
+                                        }); 
                                     }
                                 }
                             }

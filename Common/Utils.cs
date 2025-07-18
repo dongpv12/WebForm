@@ -324,17 +324,17 @@ namespace WebForm
                     }
 
                     // giá khớp gần nhất
-                    if (_arr_Properties[0] == "16" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    if (_arr_Properties[0] == "16" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
                     {
                         _Info.Current_Price = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
                     // thay đổi giá
-                    if (_arr_Properties[0] == "17" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    if (_arr_Properties[0] == "17" && _arr_Properties[1] != "" && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
                     {
                         _Info.ChangePrice = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
                     // % thay đổi giá
-                    if (_arr_Properties[0] == "18" && _arr_Properties[1] != "" && (_arr_Properties[2] == "1" || _arr_Properties[2] == "5") && _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
+                    if (_arr_Properties[0] == "18" && _arr_Properties[1] != ""&& _arr_Properties[1] != "ATO" && _arr_Properties[1] != "ATC")
                     {
                         _Info.ChangePricePercent = Convert.ToDecimal(_arr_Properties[1]) * 1000;
                     }
