@@ -1784,7 +1784,7 @@ footer {
 }
 
     footer .container:first-child {
-        background: url('images/map.png?v=1.0') no-repeat center right;
+       /* background: url('images/map.png?v=1.0') no-repeat center right;*/
     }
 
 .footer-logo img {

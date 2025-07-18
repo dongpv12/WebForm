@@ -151,8 +151,8 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    [Route("chi-tiet-bao-cao/{id}/{slug?}")]
-    public ActionResult ChitietBaoCao(string id, string slug = "")
+    [Route("chi-tiet-bao-cao/{id}")]
+    public ActionResult ChitietBaoCao(string id)
     {
         try
         {
@@ -163,7 +163,7 @@ public class HomeController : Controller
         }
         catch (Exception e)
         {
-            Logger.Log.Error(e.ToString());
+            Logger.Log.Error("log chi tiet bao cao id =" + id + " " + e.ToString());
             return null;
         }
     }
