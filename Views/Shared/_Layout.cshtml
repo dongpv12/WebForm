@@ -25,12 +25,12 @@
     @* Nếu KHÔNG có @section Head thì dùng meta mặc định *@
     @if (!IsSectionDefined("Head"))
     {
-            <meta name="description" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu" />
-            <meta property="og:title" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu">
-            <meta property="og:description" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu, cập nhật nhanh, chính xác và hỗ trợ ra quyết định thông minh cho Nhà đầu tư.">
-            <meta property="og:url" content="https://finart.vn/">
-            <meta property="og:type" content="website">
-                <meta property="og:image" content="https://finart.vn/assets/img/logo1.jpg">
+        <meta name="description" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu" />
+        <meta property="og:title" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu">
+        <meta property="og:description" content="FinArt – Nền tảng phân tích tài chính, chứng khoán và dữ liệu đầu tư chuyên sâu, cập nhật nhanh, chính xác và hỗ trợ ra quyết định thông minh cho Nhà đầu tư.">
+        <meta property="og:url" content="https://finart.vn/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://finart.vn/assets/img/logo1.jpg">
     }
 
 
@@ -50,10 +50,11 @@
     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
-  @*   <link href="https://fonts.googleapis.com" rel="preconnect">
+    @*     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin> *@
-    <link href="~/assets/css/css2.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link href="~/fontawesome/css/all.min.css" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -71,7 +72,7 @@
     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <link href="~/assets/css/vendor.min.css?v=@DateTime.Now.ToString("yyyyMMddHHmmss")" rel="stylesheet" />
-  
+
     <link href="~/assets/css/layout.min.css?v=@DateTime.Now.ToString("yyyyMMddHHmmss")" rel="stylesheet" />
     <link href="~/assets/css/device.min.css?v=@DateTime.Now.ToString("yyyyMMddHHmmss")" rel="stylesheet" />
 
@@ -185,15 +186,15 @@
             cursor: pointer;
             right: 0px;
             top: 15px;
-            position: absolute;
+            /*    position: absolute; */
             padding: 0 !important;
             z-index: 1;
         }
 
         .spanicon_hien {
             cursor: pointer;
-            right: 10px;
-            top: 15px;
+            left: 164px;
+            top: 9px;
             position: absolute;
             padding: 0 !important;
             z-index: 1;
@@ -219,45 +220,45 @@
             transform: translateY(0);
         }
 
-       /*  .navbar-expand-lg .navbar-nav .dropdown-menu {
-            position: absolute;
-            left: inherit;
-            top: 100%;
-            width: 250px;
-            margin-top: 5px;
-            z-index: 100;
-            background: #fff;
-            padding: 10px 0px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
-            border-radius: 8px;
-            border: 1px solid #fff;
-            border-top: 5px solid #26c48c !important;
-            transition: all 500ms ease;
-            -moz-transition: all 500ms ease;
-            -webkit-transition: all 500ms ease;
-            -ms-transition: all 500ms ease;
-            -o-transition: all 500ms ease;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
+        /*  .navbar-expand-lg .navbar-nav .dropdown-menu {
+                    position: absolute;
+                    left: inherit;
+                    top: 100%;
+                    width: 250px;
+                    margin-top: 5px;
+                    z-index: 100;
+                    background: #fff;
+                    padding: 10px 0px;
+                    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+                    border-radius: 8px;
+                    border: 1px solid #fff;
+                    border-top: 5px solid #26c48c !important;
+                    transition: all 500ms ease;
+                    -moz-transition: all 500ms ease;
+                    -webkit-transition: all 500ms ease;
+                    -ms-transition: all 500ms ease;
+                    -o-transition: all 500ms ease;
+                    left: 50% !important;
+                    transform: translateX(-50%) !important;
 
-        }
+                }
 
-        .dropdown-submenu {
-            position: relative;
-        }
+                .dropdown-submenu {
+                    position: relative;
+                }
 
-            .dropdown-submenu > .dropdown-menu {
-                top: 0;
-                left: 100%;
-                margin-top: -1px;
-                display: none;
-                position: absolute;
-            }
+                    .dropdown-submenu > .dropdown-menu {
+                        top: 0;
+                        left: 100%;
+                        margin-top: -1px;
+                        display: none;
+                        position: absolute;
+                    }
 
-            .dropdown-submenu:hover > .dropdown-menu {
-                display: block;
-            }
- */
+                    .dropdown-submenu:hover > .dropdown-menu {
+                        display: block;
+                    }
+         */
 
 
 
@@ -348,14 +349,15 @@
             content: " ▶";
             float: right;
         }
-        .item3{
+
+        .item3 {
             left: 240px !important;
             top: 0px !important;
         }
 
-      /*   .menu3 .dropdown-toggle::after {
-            display: none !important;
-        } */
+        /*   .menu3 .dropdown-toggle::after {
+                    display: none !important;
+                } */
 
         .menu3 .dropdown-toggle1::after {
             font-family: "Font Awesome 5 Free" !important; /* hoặc "Font Awesome 6 Free" nếu bạn dùng v6 */
@@ -367,6 +369,11 @@
         }
 
 
+
+        #f_search {
+            position: absolute;
+        }
+
     </style>
 
 
@@ -375,20 +382,21 @@
         <header id="header" class="animate a_01">
             <span class="screen-darken"></span>
             <a class="logo-mobile" href="/">
-                <img src="~/assets/img/logo1.jpg" />
+              
+                <img src="~/assets/img/logo.png" />
             </a><div class="float-end onlyMobile">
                 <button id="btn-menu" data-trigger="navbar_main" class="d-lg-none" type="button">
                     <span></span><span></span><span></span>
                 </button>
             </div>
-            <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg">
+            <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg" style="">
                 <div class="container container_full">
                     <div class="offcanvas-header">
                         <a class="logo-brand" href="/">
-                            <img src="~/assets/img/logo1.jpg" />
+                            <img src="~/assets/img/logo.png" />
                         </a> <button class="btn-close float-end">✕</button>
                     </div><a class="navbar-brand" href="/">
-                        <img src="~/assets/img/logo1.jpg" />
+                        <img src="~/assets/img/logo.png" />
                     </a>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item ">
@@ -446,7 +454,7 @@
 
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Báo cáo phân tích 
+                                Báo cáo phân tích
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/danh-sach-bao-cao-vimo">Báo cáo Vĩ mô</a></li>
@@ -467,7 +475,7 @@
 
                         <li class="nav-item "><a class="nav-link " href="/danh-sach-tin-tuc-chung-khoan">Tin nổi bật</a></li>
 
-                        <li style="position: relative; min-width: 20px; height: 44px;">
+                        @* <li style="position: relative; min-width: 20px; height: 44px;">
 
 
                             <span class="iconsearch spanicon_an" onclick="toggleSearch()" style="cursor: pointer;">
@@ -486,11 +494,40 @@
                         </span>
                         <span class="dang-ky" style="margin-top: 13px;">
                             <a href="/admin/dang-nhap">Đăng ký</a>
-                        </span>
+                        </span> *@
 
 
                     </ul>
+
+
                 </div>
+
+                <div id="f_search">
+                    <div class="d-flex align-items-center gap-0 flex-wrap pe-3" style="position: relative">
+
+                        <span class="iconsearch spanicon_an" onclick="toggleSearch()" style="cursor: pointer;">
+                            <i class="fa fa-search text-success" id="iconseach_change"></i>
+                        </span>
+
+
+                        <form id="searchForm" class="search-form position-relative me-3 d-none d-lg-block hidden" style="margin: 0 !important;">
+                            <input id="searchInput" class="form-control searchtext" type="text" placeholder="Search..." style="height: 30px; font-size: 13px;    border-radius: 15px;">
+
+                        </form>
+
+
+                     
+
+
+                        <span class="dang-nhap" style="">
+                            <a href="/admin/dang-nhap" style="padding: 0;font-weight: 300;">Đăng nhập</a>
+                        </span>
+                        <span class="dang-ky" style="">
+                            <a href="/admin/dang-nhap">Đăng ký</a>
+                        </span>
+                    </div>
+                </div>
+
             </nav>
         </header>
 
@@ -516,7 +553,7 @@
                     <div class="col-12 col-sm-5">
                         <div class="footer-logo">
                             <a href="/">
-                                <img src="~/assets/img/logo1.jpg" />
+                                <img src="~/assets/img/logo.png" />
                             </a>
                             <p>
                             <p>41 Ngô Quyền, Hoàn Kiếm, Hà Nội</p>
@@ -675,6 +712,13 @@
         });
 
 
+    </script>
+
+    <script>
+        function toggleSearch1() {
+          const searchBox = document.getElementById('search-box');
+          searchBox.classList.toggle('hidden');
+        }
     </script>
 
 

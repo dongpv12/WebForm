@@ -5,8 +5,8 @@
 		max-width:1100px;	
 	}
 	.container_full {
-		max-width: 1400px !important;
-		margin-right: 0
+		max-width: 1100px !important;
+		/*margin-right: 0*/
 	}
 }
 
@@ -96,13 +96,17 @@
 
     #navbar_main .nav-item ul li {
         width: calc(100% / 2);
-        float: left;
+        /*float: left;*/
     }
 
-    #navbar_main .nav-item ul {
-        width: 100%;
-        padding-left: 0;
-    }
+	#navbar_main .nav-item .item3 {
+		left: 90% !important;
+	}
+
+	#navbar_main .nav-item ul {
+		width: 100%;
+		padding-left: 0;
+	}
 
     #header {
         padding-left: 15px !important;
@@ -126,7 +130,7 @@
     #navbar_main .navbar-nav .nav-item .nav-link:after {
         left: -2px;
         bottom: 26px;
-        width: 20px;
+        width: 13px;
         border-radius: 0;
     }
 
@@ -543,3 +547,60 @@
 		padding:45px 20px;
 	}
 }
+
+
+/* 1. Ẩn f_search ở màn hình rất nhỏ */
+@media (max-width: 1450px) {
+	#f_search {
+		display: none;
+	}
+}
+
+@media (min-width: 1451px) {
+	#navbar_main {
+		position: relative;
+	}
+
+	.contArt {
+		padding-right: 30px
+	}
+}
+
+/* 2. Màn hình từ 1300px đến 1499px */
+@media (min-width: 1451px) and (max-width: 1599px) {
+	#f_search {
+		display: block;
+		right: 20px;
+	}
+
+
+
+	.iconsearch {
+		display: none;
+	}
+}
+
+/* 3. Màn hình từ 1500px đến 1699px */
+@media (min-width: 1600px) and (max-width: 1699px) {
+	#f_search {
+		display: block;
+		right: 20px;
+	}
+}
+
+/* 4. Màn hình từ 1700px trở lên */
+
+
+@media (min-width: 1700px) and (max-width: 1800px) {
+	#f_search {
+		display: block;
+		right: 50px;
+	}
+}
+@media (min-width: 1801px) {
+	#f_search {
+		display: block;
+		right: 100px;
+	}
+}
+
