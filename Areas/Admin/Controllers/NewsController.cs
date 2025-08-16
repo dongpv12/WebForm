@@ -32,6 +32,8 @@ namespace WebForm.Areas.Admin.Controllers
             return View("~/Areas/Admin/Views/News/List.cshtml", SearchNews(request));
         }
 
+
+
         [HttpGet]
         public ActionResult Create()
         {

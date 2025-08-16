@@ -544,7 +544,7 @@ public class HomeController : Controller
                 }
                 else
                 {
-
+                    item.Current_Price = item.T_PRICE_Target;
                 }
 
                 if (item != null && item.DoanhThu == 0)
@@ -573,7 +573,7 @@ public class HomeController : Controller
                 }
                 else if (item != null)
                 {
-                    item.Upside = (item.T_PRICE_Target - item.Price) * 100 / item.Price;
+                    item.Upside = (item.F_PRICE_Target - item.Price) * 100 / item.Price;
                 }
 
                 if (info != null && item.Price == 0)
@@ -592,8 +592,18 @@ public class HomeController : Controller
 
 
 
+            //listSymbol = listSymbol
+            //    .Where(x => x.Status != "2" || ((DateTime.Now.Date - x.Date_Pause.Date).Days <= 7))
+            //    .OrderBy(x => x.Status == "2" ? 1 : 0)
+            //    .ThenByDescending(x =>
+            //        !string.IsNullOrWhiteSpace(x.Open_Position_Date)
+            //            ? DateTime.ParseExact(x.Open_Position_Date, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+            //            : DateTime.MinValue
+            //    )
+            //    .ToList();
+
+
             listSymbol = listSymbol
-                .Where(x => x.Status != "2" || ((DateTime.Now.Date - x.Date_Pause.Date).Days <= 7))
                 .OrderBy(x => x.Status == "2" ? 1 : 0)
                 .ThenByDescending(x =>
                     !string.IsNullOrWhiteSpace(x.Open_Position_Date)
@@ -601,6 +611,8 @@ public class HomeController : Controller
                         : DateTime.MinValue
                 )
                 .ToList();
+
+            
 
 
             var stocks = listSymbol.Select(x => new
