@@ -295,6 +295,7 @@ body.offcanvas-active {
 #navbar_main .nav-link {
     color: var(--title);
     font-family: var(--font_b);
+    font-size: 15px;
 }
 
 .navbar-nav .nav-item a {
@@ -360,6 +361,7 @@ body.offcanvas-active {
 
 .dropdown .dropdown-menu li .dropdown-item {
     padding: 12px 20px;
+    font-size: 15px;
 }
 
 /* ===================== MAIN ===================== */

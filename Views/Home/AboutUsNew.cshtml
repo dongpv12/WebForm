@@ -12,13 +12,17 @@
 
 }
 
-<!-- Page Title -->
-<div class="page-title accent-background">
-    <div class="container position-relative">
-        <h1>Về chúng tôi</h1>
-
+<div class="area-page-title">
+    <div class="container">
+        <h1 class="animate a_01">Về chúng tôi</h1>
+        <ol class="breadcrumb animate a_02">
+            <li class="breadcrumb-item">
+                <a href="/">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Về chúng tôi</li>
+        </ol>
     </div>
-</div><!-- End Page Title -->
+</div>
 <!-- Service Details Section -->
 <section id="service-details" class="service-details section">
 
@@ -27,7 +31,7 @@
         <div class="row gy-4">
 
 
-            <div class="col-lg-8" >
+            <div class="col-12">
 
                 @if (news != null)
                 {
@@ -47,12 +51,7 @@
              
             </div>
 
-            <div class="col-lg-4">
-                @Html.Partial("NewsOtherTab", "9")
-            </div>
-
-
-
+          
 
 
         </div>

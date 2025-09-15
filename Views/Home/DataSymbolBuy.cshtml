@@ -1,0 +1,74 @@
+﻿@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@using WebForm.Models;
+@using Common;
+@using System.Globalization;
+
+
+@{
+    List<Symbol_Notify_Info> listSorted = new List<Symbol_Notify_Info>();
+    if (ViewBag.ListSorted != null)
+    {
+        listSorted = ViewBag.ListSorted;
+    }
+}
+
+<table class=" table-bordered text-center align-middle cptd  table-striped table-hover">
+
+    <thead class="text-white">
+
+
+        <tr>
+            <th class="text-center align-middle  headerth" style="color:#fff">Mã CP</th>
+            <th class="hidden-mobile text-center align-middle  headerth" style="color:#fff">Ngày mua</th>
+            <th class="hidden-mobile text-center align-middle headerth" style="color:#fff">Giá mua</th>
+            <th class="text-center align-middle headerth" style="color:#fff">Ngày chốt</th>
+            <th class="text-center align-middle  headerth" style="color:#fff">Giá chốt</th>
+            <th class="text-center align-middle  headerth" style="color:#fff">Số ngày nắm giữ</th>
+            <th class="text-center align-middle  headerth" style="color:#fff">% Lãi/Lỗ</th>
+            <th class="hidden-mobile text-center align-middle  headerth" style="color:#fff">Ghi chú</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @if (listSorted != null && listSorted.Count > 0)
+        {
+            foreach (var item in listSorted)
+            {
+                <tr>
+                    <td>
+                        <a href="/chi-tiet-co-phieu/@item.Symbol" class="text-decoration-none fw-semibold" style="color: #16315e !important; font-family: LexendDeca_B;">
+                            @item.Symbol
+                        </a>
+                    </td>
+                    <td class="hidden-mobile text-center"> @item.Open_Position_Date </td>
+                    <td class="hidden-mobile text-end"> @((item.Price / 1000).ToNumberStringN31()) </td>
+                    <td class="text-center"> @item.Close_Position_Date</td>
+                    <td class="text-end"> @((item.Sell_Price / 1000).ToNumberStringN31()) </td>
+
+                    <td class="text-end"> @item.Number_Date</td>
+                    <td class="text-end">
+                        @(item.Price == 0
+                            ? 0
+                            : Math.Round((item.Sell_Price - item.Price) * 100 / item.Price, 2))%
+                    </td>
+                    <td class="hidden-mobile"> @item.Ghichu </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" style="text-align:center">Không có dữ liệu</td>
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+

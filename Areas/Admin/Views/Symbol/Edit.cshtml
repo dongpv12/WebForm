@@ -76,6 +76,13 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Ngày đóng vị thế</label>
+        <div class="col-sm-10">
+            <input type="text" class=" form-control datepublic" id="Close_Position_Date" value="@Model.Close_Position_Date" />
+        </div>
+    </div>
+
 
     <div class="form-group row" id="f_txtIssue" >
         <label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (từ)</label>
@@ -163,11 +170,19 @@
         </div>
     </div>
 
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Ghi chú (nếu có)</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtGhichu" maxlength="1000" value="@Model.Ghichu" />
+        </div>
+    </div>
+
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">&nbsp;</label>
         <div class="col-sm-10">
             <input type="button" class="btn btn-primary" id="btnCreate" value="Lưu lại" onclick="return createNews()" />
-            <input type="button" class="btn" id="btnCancel" value="Hủy" />
+            <input type="button" class="btn" id="btnCancel" value="Hủy" onclick="window.location.href='/Symbol/List'" />
         </div>
     </div>
 </div>
@@ -216,6 +231,12 @@
                 datepublic = "";
             }
 
+        var Close_Position_Date = $("#Close_Position_Date").val().trim();
+
+        if (Close_Position_Date == "__/__/____") {
+            Close_Position_Date = "";
+        }
+
         var request = {
             id: $('#txtId').val(),
             Symbol: $('#txtSymbol').val().trim(),
@@ -232,8 +253,10 @@
             IsSpecial : isSpecial,
             Price : $("#txtPrice").val().replace(/,/g, "")  || '0',
             Sell_Price : $("#txtSellPrice").val().replace(/,/g, "")  || '0',
-             Open_Position_Date : datepublic,
-             Note : $('#txtNote').val().trim(),
+            Open_Position_Date : datepublic,
+            Note : $('#txtNote').val().trim(),
+            Close_Position_Date : Close_Position_Date,
+            Ghichu : $('#txtGhichu').val().trim(),
         };
         lockSubmit = true;
         axios.post("/Symbol/Edit", request).then(function (response) {

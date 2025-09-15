@@ -12,7 +12,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[18];
+                var spParameter = new SqlParameter[20];
 
                 #region Set param
 
@@ -150,6 +150,24 @@ namespace WebForm.DataAccess
                 spParameter[16] = parameter;
 
 
+                parameter = new SqlParameter("@Ghichu", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Ghichu
+                };
+
+                spParameter[17] = parameter;
+
+
+                parameter = new SqlParameter("@Close_Position_Date", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = request.Close_Position_Date
+                };
+
+                spParameter[18] = parameter;
+
+
 
 
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
@@ -157,14 +175,14 @@ namespace WebForm.DataAccess
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[17] = parameter;
+                spParameter[19] = parameter;
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_INSERT",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[17].Value);
+                return Convert.ToDecimal(spParameter[19].Value);
             }
             catch (Exception ex)
             {
@@ -206,7 +224,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[19];
+                var spParameter = new SqlParameter[21];
 
                 #region Set param
 
@@ -354,19 +372,43 @@ namespace WebForm.DataAccess
 
 
 
+
+                parameter = new SqlParameter("@Ghichu", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Ghichu
+                };
+
+                spParameter[18] = parameter;
+
+
+                parameter = new SqlParameter("@Close_Position_Date", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Close_Position_Date
+                };
+
+                spParameter[19] = parameter;
+
+
+
+
                 parameter = new SqlParameter("@P_Return", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[18] = parameter;
+                spParameter[20] = parameter;
+
+
+
 
                 #endregion
 
                 SqlHelper.ExecuteNonQuery(ConfigInfo.ConnectString, CommandType.StoredProcedure, "PROC_SYM_UPDATE",
                     spParameter);
 
-                return Convert.ToDecimal(spParameter[18].Value);
+                return Convert.ToDecimal(spParameter[20].Value);
             }
             catch (Exception ex)
             {
@@ -432,7 +474,7 @@ namespace WebForm.DataAccess
         {
             try
             {
-                var spParameter = new SqlParameter[4];
+                var spParameter = new SqlParameter[5];
 
                 #region Set param
 
@@ -459,6 +501,13 @@ namespace WebForm.DataAccess
                 };
                 spParameter[2] = parameter;
 
+                parameter = new SqlParameter("@P_STATUS", SqlDbType.NVarChar)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = model.Status
+                };
+                spParameter[3] = parameter;
+
 
 
                 parameter = new SqlParameter("@P_TOTAL", SqlDbType.Int)
@@ -466,14 +515,14 @@ namespace WebForm.DataAccess
                     Direction = ParameterDirection.Output,
                     Value = -1
                 };
-                spParameter[3] = parameter;
+                spParameter[4] = parameter;
 
                 #endregion
 
                 var ds = SqlHelper.ExecuteDataset(ConfigInfo.ConnectString, CommandType.StoredProcedure,
                     "PROC_SYMBOL_SEARCH", spParameter);
 
-                pTotal = Convert.ToInt32(spParameter[3].Value);
+                pTotal = Convert.ToInt32(spParameter[4].Value);
 
                 return ds;
             }

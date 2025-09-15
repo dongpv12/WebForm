@@ -28,10 +28,30 @@ namespace WebForm.Areas.Admin.Controllers
                 OrderBy = "CreateDate",
                 OrderByType = "DESC"
             };
-
+            ViewBag.Type = 1; // tin tức
             return View("~/Areas/Admin/Views/News/List.cshtml", SearchNews(request));
         }
 
+
+        [HttpGet]
+        public ActionResult Report()
+        {
+            var user = this.HttpContext.CurrentUser();
+            if (user == null)
+            {
+                return Redirect("/admin/dang-nhap");
+            }
+            var request = new SearchNewsRequest
+            {
+                CurrentPage = 1,
+                Start = 1,
+                End = ConfigInfo.RecordOnPage,
+                OrderBy = "CreateDate",
+                OrderByType = "DESC"
+            };
+            ViewBag.Type = 2; // Báo cáo
+            return View("~/Areas/Admin/Views/News/List.cshtml", SearchNews(request));
+        }
 
 
         [HttpGet]

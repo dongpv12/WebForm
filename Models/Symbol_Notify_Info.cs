@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -245,6 +246,36 @@ namespace WebForm.Models
         public decimal Upside { get; set; }
         public decimal HieuQua { get; set; }
 
+
+        public string Close_Position_Date { get; set; }
+
+        public string Close_Position_Date_Text { get; set; }
+
+        public string Ghichu { get; set; }
+
+
+
+        public int Number_Date
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Open_Position_Date) || string.IsNullOrWhiteSpace(Close_Position_Date))
+                    return 0;
+
+                DateTime openDate, closeDate;
+                string format = "dd/MM/yyyy";
+                var provider = CultureInfo.InvariantCulture;
+
+                bool ok1 = DateTime.TryParseExact(Open_Position_Date, format, provider, DateTimeStyles.None, out openDate);
+                bool ok2 = DateTime.TryParseExact(Close_Position_Date, format, provider, DateTimeStyles.None, out closeDate);
+
+                if (!ok1 || !ok2)
+                    return 0; // nếu sai format thì trả về 0
+
+                return (closeDate - openDate).Days;
+            }
+        }
+
     }
 
     public class SearchSymbolRequest
@@ -255,6 +286,10 @@ namespace WebForm.Models
         public string OrderBy { get; set; }
         public string OrderByType { get; set; }
         public string Code { get; set; }
+        public string Status { get; set; }
+
+        public string From_Date { get; set; }
+        public string To_Date { get; set; }
     }
 
     public class ListSymbol

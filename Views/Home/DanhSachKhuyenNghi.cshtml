@@ -29,7 +29,7 @@
         border: 1px solid #999;
         padding: 6px 8px;
         vertical-align: middle;
-        word-wrap: break-word;
+        /* word-wrap: break-word; */
     }
 
     .section-header {
@@ -91,8 +91,50 @@
         padding: 3px 10px;
         border-radius: 16px;
         font-size: 14px;
-        background: #007c77;
+         background: #007c77;
         color: #fff;
+    }
+
+
+    .status_text_1 {
+       
+        font-size: 13px;
+        /* background: #027c00; */
+        color: #027c00;
+    }
+
+    .status_text_2 {
+        font-size: 13px;
+        /* background: #e57b03; */
+        color: #e57b03;
+    }
+
+    .status_text_3 {
+        font-size: 13px;
+        /* background: #007c77; */
+        color: #007c77;
+    }
+
+
+
+    @@media screen and (max-width: 768px) {
+        .hidden-mobile {
+            display: none;
+        }
+
+        .show-mobile {
+            display: revert-layer;
+        }
+    }
+
+    @@media screen and (min-width: 769px) {
+        .hidden-mobile {
+            display: revert-layer;
+        }
+
+        .show-mobile {
+            display: none;
+        }
     }
 </style>
 
@@ -118,33 +160,32 @@
                 <div class="col-12">
 
                     <table>
-                        @*  <colgroup>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                    </colgroup> *@
-                        <tr>
-                            <th colspan="9" class="section-header" style="padding: 12px;">DANH MỤC KHUYẾN NGHỊ NGẮN HẠN</th>
+                        <!-- Hiện trên desktop -->
+                        <tr class="hidden-mobile">
+                            <th colspan="9" class="section-header" style="padding:12px;">
+                                DANH MỤC KHUYẾN NGHỊ NGẮN HẠN
+                            </th>
+                        </tr>
+
+                        <!-- Hiện trên mobile -->
+                        <tr class="show-mobile">
+                            <th colspan="5" class="section-header" style="padding:12px;">
+                                DANH MỤC KHUYẾN NGHỊ NGẮN HẠN
+                            </th>
                         </tr>
                         <tr>
-                            <th class="column-header">Ngày mở vị thế</th>
+                            <th class="hidden-mobile column-header">Ngày mở vị thế</th>
                             <th class="column-header">MÃ</th>
-                            <th class="column-header">Giá hiện tại / Giá đóng vị thế<br>(1.000đ)</th>
                             <th class="column-header">Giá mua<br>(1.000đ)</th>
-                            <th class="column-header">Giá mục tiêu<br>(1.000đ)</th>
-                            <th class="column-header">Giá dừng lỗ<br>(1.000đ)</th>
-                            <th class="column-header"> Upside kỳ vọng (%)</th>
+                            <th class="column-header">Giá hiện tại<br>(1.000đ)</th>
+                            <th class="hidden-mobile column-header">Giá mục tiêu<br>(1.000đ)</th>
+                            <th class="hidden-mobile column-header">Giá dừng lỗ<br>(1.000đ)</th>
+                            <th class="hidden-mobile column-header"> Upside kỳ vọng (%)</th>
                             <th class="column-header">Hiệu quả đầu tư (%)</th>
-                            <th class="column-header">Cập nhật vị thế/trạng thái</th>
+                            <th class="column-header">Cập nhật vị thế / trạng thái</th>
                         </tr>
                         <tr v-for="(item, index) in paddedStocks" :key="index">
-                            <td>{{ item?.Open_Position_Date }}</td>
+                            <td class="hidden-mobile">{{ item?.Open_Position_Date }}</td>
                             <td>
 
                                 <a v-if="item?.Symbol" :href="`/chi-tiet-co-phieu/${item.Symbol}`" style="color: #16315e !important; font-family: LexendDeca_B;">
@@ -154,14 +195,14 @@
 
                             </td>
 
-                         
 
 
-                            <td class="text-end">{{ item?.Current_Price_Text }}</td>
                             <td class="text-end">{{ item?.Price_Text }}</td>
-                            <td class="text-end">{{ item?.PRICE_Taget_Text }}</td>
-                            <td class="text-end">{{ item?.T_Pause }}</td>
-                            <td class="text-end">{{ item?.Upside }}</td>
+                            <td class="text-end">{{ item?.Current_Price_Text }}</td>
+                          
+                            <td class="hidden-mobile text-end">{{ item?.PRICE_Taget_Text }}</td>
+                            <td class="hidden-mobile text-end">{{ item?.T_Pause }}</td>
+                            <td class="hidden-mobile text-end">{{ item?.Upside }}</td>
 
                             <td class="text-end" :class="{
                                 'highlight-green' : item?.HieuQua>
@@ -173,7 +214,7 @@
                             </td>
 
 
-                            <td class="">
+                            <td class="hidden-mobile">
                                 <span :class="{
                                   'status_1' : item?.Status == '1',
                                   'status_2' : item?.Status == '2',
@@ -184,6 +225,16 @@
 
                             </td>
 
+                            <td class="show-mobile">
+                                <span :class="{
+                                  'status_text_1' : item?.Status == '1',
+                                  'status_text_2' : item?.Status == '2',
+                                   'status_text_3': item?.Status == '3'
+                                }">
+                                    {{ item?.Status_Text == 'Theo dõi giải ngân' ? 'Theo dõi' : item?.Status_Text }}
+                                </span>
+
+                            </td>
 
 
 
@@ -246,7 +297,8 @@
 
         // Tạo mảng luôn đủ 5 dòng
         const paddedStocks = computed(() => {
-          const filled = [...stocks.value]
+          const filtered = stocks.value.filter(item => item?.IsSpecial === 'N')
+          const filled = [...filtered]
           while (filled.length < 10) {
             filled.push(null) // hoặc {} nếu muốn tránh undefined
           }

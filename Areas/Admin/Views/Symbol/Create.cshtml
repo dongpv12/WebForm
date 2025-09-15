@@ -1,17 +1,17 @@
 ﻿@using WebForm.Common
 @using WebForm.Models;
 @{
-	ViewBag.Title = "Tạo mới";
-	Layout = "_Layout_Admin";
+    ViewBag.Title = "Tạo mới";
+    Layout = "_Layout_Admin";
 
-	List<Allcode_Info> status = DataMemory.GetAllcodeByName("SYMBOL", "STATUS");
+    List<Allcode_Info> status = DataMemory.GetAllcodeByName("SYMBOL", "STATUS");
 
 
 }
 <style>
-	.displaynone {
-		display: none;
-	}
+    .displaynone {
+        display: none;
+    }
 </style>
 <link href="~/datetimepicker/jquery.datetimepicker.min.css" rel="stylesheet" />
 <script src="~/datetimepicker/jquery.datetimepicker.full.js"></script>
@@ -20,244 +20,267 @@
 
 
 
-	<div class="form-group row" id="f_txtSymbol">
-		<label for="txtTitle" class="col-sm-2 col-form-label">Mã cổ phiếu</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtSymbol" maxlength="100" />
-		</div>
-	</div>
+    <div class="form-group row" id="f_txtSymbol">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Mã cổ phiếu</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtSymbol" maxlength="100" />
+        </div>
+    </div>
 
-	<div class="form-group row" id="f_txtSymbolName">
-		<label for="txtTitle" class="col-sm-2 col-form-label">Tên cổ phiếu</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtSymbolName" maxlength="1000" />
-		</div>
-	</div>
+    <div class="form-group row" id="f_txtSymbolName">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Tên cổ phiếu</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtSymbolName" maxlength="1000" />
+        </div>
+    </div>
 
-	<div class="form-group row" id="f_txtIssue">
-		<label for="txtTitle" class="col-sm-2 col-form-label">Tên Doanh nghiệp</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtIssue" maxlength="1000" />
-		</div>
-	</div>
+    <div class="form-group row" id="f_txtIssue">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Tên Doanh nghiệp</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtIssue" maxlength="1000" />
+        </div>
+    </div>
 
-	<div class="form-group row">
-		<label for="txtType" class="col-sm-2 col-form-label">Trạng thái</label>
-		<div class="col-sm-10">
-			<select class="form-control" id="txtStatus" >
-				@foreach (var item in status)
-				{
-					<option value="@item.CdValue">@item.CdContent</option>
-				}
-			</select>
-		</div>
-	</div>
-
-
-	@* // ngày mở vị thế : Open Position Date *@
-	<div class="form-group row">
-		<label for="txtTitle" class="col-sm-2 col-form-label">Ngày mở vị thế</label>
-		<div class="col-sm-10">
-			<input type="text"  class=" form-control datepublic" id="datepublic" />
-		</div>
-	</div>
-	
-
-	<div class="form-group row">
-		<label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (từ)</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtF_PRICE_Exp" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (đến)</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtT_PRICE_Exp" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtF_PRICE_Target" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row" >
-		<label for="txtTitle" class="col-sm-2 col-form-label">Giá đóng vị thế</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtT_PRICE_Target" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row" >
-		<label for="txtTitle" class="col-sm-2 col-form-label">Giá dừng lỗ</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtT_Pause" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row" >
-		<label for="txtTitle" class="col-sm-2 col-form-label">Earning Trung bình 4 quý gần nhất</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtDoanhThu" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row" >
-		<label for="txtTitle" class="col-sm-2 col-form-label">Tăng trưởng Lợi nhuận (%)</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtLoinhuan" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row" >
-		<label for="txtTitle" class="col-sm-2 col-form-label">Giá mua</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtPrice" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
-
-	<div class="form-group row" >
-		<label for="txtTitle" class="col-sm-2 col-form-label">Giá bán</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtSellPrice" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
-		</div>
-	</div>
+    <div class="form-group row">
+        <label for="txtType" class="col-sm-2 col-form-label">Trạng thái</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="txtStatus">
+                @foreach (var item in status)
+                {
+                    <option value="@item.CdValue">@item.CdContent</option>
+                }
+            </select>
+        </div>
+    </div>
 
 
-	<div class="form-group row" >
-		<label for="txtTitle" class="col-sm-2 col-form-label">Khuyến nghị</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="txtNote" maxlength="1000" />
-		</div>
-	</div>
+    @* // ngày mở vị thế : Open Position Date *@
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Ngày mở vị thế</label>
+        <div class="col-sm-10">
+            <input type="text" class=" form-control datepublic" id="datepublic" />
+        </div>
+    </div>
 
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">&nbsp;</label>
-		<div class="col-sm-10">
-			<input type="checkbox" id="cbxSpecial" value="">  <label class="checkbox-inline">Theo dõi</label>
-		</div>
-	</div>
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Ngày đóng vị thế</label>
+        <div class="col-sm-10">
+            <input type="text" class=" form-control datepublic" id="Close_Position_Date" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (từ)</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtF_PRICE_Exp" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Vùng mua dự kiến (đến)</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtT_PRICE_Exp" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Giá mục tiêu</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtF_PRICE_Target" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Giá đóng vị thế</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtT_PRICE_Target" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Giá dừng lỗ</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtT_Pause" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Earning Trung bình 4 quý gần nhất</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtDoanhThu" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Tăng trưởng Lợi nhuận (%)</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtLoinhuan" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Giá mua</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtPrice" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Giá bán</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtSellPrice" maxlength="20" onkeyup="jsFormatFloatNumber(this, 3)" />
+        </div>
+    </div>
 
 
-	
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Khuyến nghị</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtNote" maxlength="1000" />
+        </div>
+    </div>
 
-	
-	<div class="form-group row">
-		<label class="col-sm-2 col-form-label">&nbsp;</label>
-		<div class="col-sm-10">
-			<input type="button" class="btn btn-primary" id="btnCreate" value="Thêm mới" onclick="return CreateNews()" />
-			<input type="button" class="btn" id="btnCancel" value="Hủy" />
-		</div>
-	</div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">&nbsp;</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="cbxSpecial" value="">  <label class="checkbox-inline">Theo dõi</label>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label for="txtTitle" class="col-sm-2 col-form-label">Ghi chú (nếu có)</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtGhichu" maxlength="1000" />
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">&nbsp;</label>
+        <div class="col-sm-10">
+            <input type="button" class="btn btn-primary" id="btnCreate" value="Thêm mới" onclick="return CreateNews()" />
+            <input type="button" class="btn" id="btnCancel" value="Hủy" onclick="window.location.href='/Symbol/List'" />
+        </div>
+    </div>
 </div>
 <div id="browseImageContainer"></div>
 <script>
 
-	 $(document).ready(function () {
-
-	
-		$.datetimepicker.setLocale('vi');
-		$('.datepublic').datetimepicker({
-			format: 'd/m/Y',
-			formatDate: 'd/m/Y',
-			timepicker: false,
-			mask: '39/19/9999',
-			validateOnBlur: true,
-		});
-	})
+     $(document).ready(function () {
 
 
-
-	var lockSubmit = false;
-	
-
-	function CreateNews() {
-		var isSpecial = 'N';
-		if ($('#cbxSpecial').is(':checked')) {
-			isSpecial = 'Y';
-		}
-		if (lockSubmit) {
-			return;
-		}
-		lockSubmit = true;
-
-		var title = $('#txtSymbol').val();
-		if(title == null || title == ""){
-			alert("Mã cổ phiếu không được để trống");
-			$('#txtSymbol').focus();
-			return;
-		}
+        $.datetimepicker.setLocale('vi');
+        $('.datepublic').datetimepicker({
+            format: 'd/m/Y',
+            formatDate: 'd/m/Y',
+            timepicker: false,
+            mask: '39/19/9999',
+            validateOnBlur: true,
+        });
+    })
 
 
-		var datepublic = $("#datepublic").val().trim();
 
-			if (datepublic == "__/__/____") {
-				datepublic = "";
-			}
-			
-
-		var request = {
-			
-			 Symbol: $('#txtSymbol').val().trim(),
-			 Name: $('#txtSymbolName').val().trim(),
-			 Issue: $('#txtIssue').val().trim(),
-			 Status : $("#txtStatus").val(),
-
-			 F_PRICE_Exp : $("#txtF_PRICE_Exp").val().replace(/,/g, "") || '0',
-			 T_PRICE_Exp : $("#txtT_PRICE_Exp").val().replace(/,/g, "") || '0',
-
-			 F_PRICE_Target : $("#txtF_PRICE_Target").val().replace(/,/g, "") || '0',
+    var lockSubmit = false;
 
 
-			 T_PRICE_Target : $("#txtT_PRICE_Target").val().replace(/,/g, "") || '0',
-			 T_Pause : $("#txtT_Pause").val().replace(/,/g, "") || '0',
-			 DoanhThu : $("#txtDoanhThu").val().replace(/,/g, "") || '0',
-			 LoiNhuan : $("#txtLoinhuan").val().replace(/,/g, "") || '0',
-			 IsSpecial : isSpecial,
-			 Price : $("#txtPrice").val().replace(/,/g, "") || '0',
+    function CreateNews() {
+        var isSpecial = 'N';
+        if ($('#cbxSpecial').is(':checked')) {
+            isSpecial = 'Y';
+        }
+        if (lockSubmit) {
+            return;
+        }
+        lockSubmit = true;
 
-			 Sell_Price : $("#txtSellPrice").val().replace(/,/g, "") || '0',
+        var title = $('#txtSymbol').val();
+        if(title == null || title == ""){
+            alert("Mã cổ phiếu không được để trống");
+            $('#txtSymbol').focus();
+            return;
+        }
 
-			 Open_Position_Date : datepublic,
-			 Note : $('#txtNote').val().trim(),
-		};
 
-		axios.post("/Symbol/DoCreate", request).then(function (response) {
-			var data = response.data;
-			if (data.Status) {
-				swal({
-					title: "Thành công",
-					text: "Tạo cổ phiếu thành công",
-					icon: "success",
-					buttons: true
-				}).then((value) => {
-					window.location = "/Symbol/List";
-				});
-			} else {
-				swal({
-					title: "Lỗi",
-					text: data.Message,
-					icon: "warning",
-					buttons: true
-				});
-			}
-			lockSubmit = false;
-		}).catch(error => {
-			swal({
-				title: "Lỗi",
-				text: "Vui lòng thử lại vào lúc khác",
-				icon: "warning",
-				buttons: true
-			});
-			lockSubmit = false;
-		});
-	}
+        var datepublic = $("#datepublic").val().trim();
 
-	
+            if (datepublic == "__/__/____") {
+                datepublic = "";
+            }
 
-	
+        var Close_Position_Date = $("#Close_Position_Date").val().trim();
+
+        if (Close_Position_Date == "__/__/____") {
+            Close_Position_Date = "";
+        }
+
+
+
+
+        var request = {
+
+             Symbol: $('#txtSymbol').val().trim(),
+             Name: $('#txtSymbolName').val().trim(),
+             Issue: $('#txtIssue').val().trim(),
+             Status : $("#txtStatus").val(),
+
+             F_PRICE_Exp : $("#txtF_PRICE_Exp").val().replace(/,/g, "") || '0',
+             T_PRICE_Exp : $("#txtT_PRICE_Exp").val().replace(/,/g, "") || '0',
+
+             F_PRICE_Target : $("#txtF_PRICE_Target").val().replace(/,/g, "") || '0',
+
+
+             T_PRICE_Target : $("#txtT_PRICE_Target").val().replace(/,/g, "") || '0',
+             T_Pause : $("#txtT_Pause").val().replace(/,/g, "") || '0',
+             DoanhThu : $("#txtDoanhThu").val().replace(/,/g, "") || '0',
+             LoiNhuan : $("#txtLoinhuan").val().replace(/,/g, "") || '0',
+             IsSpecial : isSpecial,
+             Price : $("#txtPrice").val().replace(/,/g, "") || '0',
+
+             Sell_Price : $("#txtSellPrice").val().replace(/,/g, "") || '0',
+
+             Open_Position_Date : datepublic,
+             Note : $('#txtNote').val().trim(),
+             Close_Position_Date : Close_Position_Date,
+             Ghichu : $('#txtGhichu').val().trim(),
+        };
+
+        axios.post("/Symbol/DoCreate", request).then(function (response) {
+            var data = response.data;
+            if (data.Status) {
+                swal({
+                    title: "Thành công",
+                    text: "Tạo cổ phiếu thành công",
+                    icon: "success",
+                    buttons: true
+                }).then((value) => {
+                    window.location = "/Symbol/List";
+                });
+            } else {
+                swal({
+                    title: "Lỗi",
+                    text: data.Message,
+                    icon: "warning",
+                    buttons: true
+                });
+            }
+            lockSubmit = false;
+        }).catch(error => {
+            swal({
+                title: "Lỗi",
+                text: "Vui lòng thử lại vào lúc khác",
+                icon: "warning",
+                buttons: true
+            });
+            lockSubmit = false;
+        });
+    }
+
+
+
+
 </script>
 

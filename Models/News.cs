@@ -76,6 +76,8 @@ namespace WebForm.Models
     }
 
 
+
+
     public class PortalSearchNews
     {
         public int CurrentPage { get; set; }

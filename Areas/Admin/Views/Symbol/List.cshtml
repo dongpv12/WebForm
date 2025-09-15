@@ -5,7 +5,10 @@
 @{
     ViewBag.Title = "Danh sách cổ phiếu";
     Layout = "_Layout_Admin";
-    List<Allcode_Info> typeNewsSearch = DataMemory.GetAllcodeByName("SYMBOL", "STATUS");
+    List<Allcode_Info> status = DataMemory.GetAllcodeByName("SYMBOL", "STATUS");
+
+
+
 }
 <style>
     .div-search-text {
@@ -32,7 +35,17 @@
             <label>Từ khóa</label>
             <input id="txtSearch" type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm" />
         </div>
-       
+
+        <div class="div-search-text">
+            <label>Trạng thái</label>
+            <select class="form-control" id="txtStatusSearch">
+                <option value="">--Tất cả--</option>
+                @foreach (var item in status)
+                {
+                    <option value="@item.CdValue">@item.CdContent</option>
+                }
+            </select>
+        </div>
 
         <input type="button" value="Tìm kiếm" id="btnSearchNews" class="btn btn-search" onclick="page(1);" />
 
@@ -59,7 +72,8 @@
             var recordOnPage = $('#txtRecordOnPage').val();
             var totalPage = $('#txtTotalPage').val();
             var Code = $('#txtSearch').val();
-            
+            var status = $("#txtStatusSearch").val();
+
             var start = 1;
             var end = recordOnPage;
             if (index === 'next') {
@@ -77,7 +91,8 @@
                 currentPage: index,
                 start: start,
                 end: end,
-                Code: Code
+                Code: Code,
+                Status: status
             };
 
             axios.post("/Symbol/Search", request).then(function (response) {

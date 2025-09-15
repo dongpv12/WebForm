@@ -9,50 +9,59 @@ namespace WebForm.Controllers
 
 
         [HttpPost("upload")]
-        public async Task<IActionResult> Upload(IFormFile upload, string CKEditorFuncNum, string CKEditor, string langCode, string type)
+        public async Task<IActionResult> Upload(List<IFormFile> upload, string CKEditorFuncNum, string CKEditor, string langCode, string type)
         {
-            if (upload != null && upload.Length > 0)
+
+            if (upload == null || upload.Count == 0)
             {
-                // Đường dẫn thư mục wwwroot/ImgUpload
-                var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "ImgUpload");
-                if (!Directory.Exists(uploadPath))
+                return Content("<script>alert('Chưa chọn file hoặc file không hợp lệ'); window.close();</script>", "text/html");
+            }
+
+            foreach (var uploadItem in upload)
+            {
+
+                if (uploadItem != null && uploadItem.Length > 0)
                 {
-                    Directory.CreateDirectory(uploadPath);
-                }
+                    // Đường dẫn thư mục wwwroot/ImgUpload
+                    var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "ImgUpload");
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
 
 
-                var originalFileName = Path.GetFileNameWithoutExtension(upload.FileName);
-                var extension = Path.GetExtension(upload.FileName);
-                var timestamp = DateTime.Now.ToString("ddMMyyHHmmss"); // ngày + giờ chính xác hơn
+                    var originalFileName = Path.GetFileNameWithoutExtension(uploadItem.FileName);
+                    var extension = Path.GetExtension(uploadItem.FileName);
+                    var timestamp = DateTime.Now.ToString("ddMMyyHHmmss"); // ngày + giờ chính xác hơn
 
-                var fileName = $"{originalFileName}_{timestamp}{extension}";
+                    var fileName = $"{originalFileName}_{timestamp}{extension}";
 
-                // Tạo tên file an toàn
-                var filePath = Path.Combine(uploadPath, fileName);
+                    // Tạo tên file an toàn
+                    var filePath = Path.Combine(uploadPath, fileName);
 
-                // Lưu file vào wwwroot/ImgUpload
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await upload.CopyToAsync(stream);
-                }
+                    // Lưu file vào wwwroot/ImgUpload
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await uploadItem.CopyToAsync(stream);
+                    }
 
-                // Tạo URL truy cập ảnh
-                var fileUrl = Url.Content("~/ImgUpload/" + fileName);
+                    // Tạo URL truy cập ảnh
+                    var fileUrl = Url.Content("~/ImgUpload/" + fileName);
 
-                // Gọi hàm CKEditor để chèn ảnh
-                var script = $@"<script>
+                    // Gọi hàm CKEditor để chèn ảnh
+                    var script = $@"<script>
                                 window.opener.CKEDITOR.tools.callFunction({CKEditorFuncNum}, '{fileUrl}');
                                 window.close();
                             </script>";
 
 
-                //string output = string.Format("<html><body><script>window.parent.CKEDITOR.tools.callFunction({0}, \"{1}\", \"{2}\");</script></body></html>", CKEditorFuncNum, fileUrl, "");
-                //return Content(output);
+                    //string output = string.Format("<html><body><script>window.parent.CKEDITOR.tools.callFunction({0}, \"{1}\", \"{2}\");</script></body></html>", CKEditorFuncNum, fileUrl, "");
+                    //return Content(output);
 
-                return Content("<script>alert('Tải file lên thành công'); window.close();</script>", "text/html");
+                    //return Content("<script>alert('Tải file lên thành công'); window.close();</script>", "text/html");
+                }
             }
-
-            return Content("<script>alert('Chưa chọn file hoặc file không hợp lệ'); window.close();</script>", "text/html");
+            return Content("<script>alert('Tải file lên thành công'); window.close();</script>", "text/html");
         }
 
 
@@ -133,39 +142,48 @@ namespace WebForm.Controllers
 
 
         [HttpPost("uploadImage")]
-        public async Task<IActionResult> uploadImage(IFormFile upload)
+        public async Task<IActionResult> uploadImage(List<IFormFile> upload)
         {
-            if (upload != null && upload.Length > 0)
+            if (upload == null || upload.Count == 0)
             {
-                // Đường dẫn thư mục wwwroot/ImgUpload
-                var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "ImgUpload");
-                if (!Directory.Exists(uploadPath))
-                {
-                    Directory.CreateDirectory(uploadPath);
-                }
-
-                var originalFileName = Path.GetFileNameWithoutExtension(upload.FileName);
-                var extension = Path.GetExtension(upload.FileName);
-                var timestamp = DateTime.Now.ToString("ddMMyyHHmmss"); // ngày + giờ chính xác hơn
-
-                var fileName = $"{originalFileName}_{timestamp}{extension}";
-
-                // Tạo tên file an toàn
-                var filePath = Path.Combine(uploadPath, fileName);
-
-                // Lưu file vào wwwroot/ImgUpload
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await upload.CopyToAsync(stream);
-                }
-
-                // Tạo URL truy cập ảnh
-                var fileUrl = Url.Content("~/ImgUpload/" + fileName);
-
-                return Content("<script>alert('Tải file lên thành công'); window.close();</script>", "text/html");
+                return Content("<script>alert('Chưa chọn file hoặc file không hợp lệ'); window.close();</script>", "text/html");
             }
 
-            return Content("<script>alert('Chưa chọn file hoặc file không hợp lệ'); window.close();</script>", "text/html");
+            foreach (var uploadItem in upload)
+            {
+
+                if (uploadItem != null && uploadItem.Length > 0)
+                {
+                    // Đường dẫn thư mục wwwroot/ImgUpload
+                    var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "ImgUpload");
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+
+                    var originalFileName = Path.GetFileNameWithoutExtension(uploadItem.FileName);
+                    var extension = Path.GetExtension(uploadItem.FileName);
+                    var timestamp = DateTime.Now.ToString("ddMMyyHHmmss"); // ngày + giờ chính xác hơn
+
+                    var fileName = $"{originalFileName}_{timestamp}{extension}";
+
+                    // Tạo tên file an toàn
+                    var filePath = Path.Combine(uploadPath, fileName);
+
+                    // Lưu file vào wwwroot/ImgUpload
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await uploadItem.CopyToAsync(stream);
+                    }
+
+                    // Tạo URL truy cập ảnh
+                    var fileUrl = Url.Content("~/ImgUpload/" + fileName);
+
+                   
+                }
+            }
+            return Content("<script>alert('Tải file lên thành công'); window.close();</script>", "text/html");
+            //return Content("<script>alert('Chưa chọn file hoặc file không hợp lệ'); window.close();</script>", "text/html");
         }
 
     }

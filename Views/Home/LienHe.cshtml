@@ -1,0 +1,98 @@
+﻿@using WebForm.Common;
+@using System.Data;
+@using System.Diagnostics;
+@using Microsoft.AspNetCore.Mvc;
+@using WebForm.Helpers;
+@using WebForm.Models;
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var news = DataMemory.c_lstNew.Where(x => x.CategoryType == "9").FirstOrDefault();
+
+}
+
+<div class="area-page-title">
+    <div class="container">
+        <h1 class="animate a_01">Liên hệ</h1>
+        <ol class="breadcrumb animate a_02">
+            <li class="breadcrumb-item">
+                <a href="/">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+        </ol>
+    </div>
+</div>
+
+<div class="area-content-page">
+    <div class="container">
+        <div class="information">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-3 d-flex">
+                        <article>
+                            <img src="https://timetradingfx.com/output/images/icon-19.png?v=1.0&quot;" alt="icon">
+                            <h6>Liên hệ  </h6> <p> Hãy gọi cho chúng tôi </p> <div class="text-a">
+                                <p style="font-weight: bold; color:#2e7d32">0989.048.431 (Ms. Mai) </p>
+                                <p style="font-weight: bold; color:#2e7d32"> 0936.366.321 (Ms. Ngọc)</p>
+                            </div>
+                        </article>
+                    </div> <div class="col-12 col-md-3 d-flex">
+                        <article>
+                            <img src="https://timetradingfx.com/output/images/icon-20.png?v=1.0&quot;" alt="icon">
+                            <h6>Chat với chúng tôi</h6> <p> Trò chuyện trực tiếp với chuyên gia </p>
+                            <div class="text-a"> <a href="https://zalo.me/0989048431" target="_blank" " style="color: #fff !important">Chat Zalo</a> </div>
+                        </article>
+                    </div> <div class="col-12 col-md-6 d-flex">
+                        <article>
+                            <h6>Email Contact</h6> <p>
+                                finart.advisory@gmail.com
+                            </p> <h6>Giờ làm việc </h6> <p>Thứ 2 - Thứ 6: Từ 8h00 đến 17h30</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* <div class="container">
+            <form action="https://timetradingfx.com/contact/send" id="contact" method="post" accept-charset="utf-8">
+                <input type="hidden" name="_token" value="5r5ZBCC2C8MRcrruerd0d9gavUbGDbziC7RxlFfs" autocomplete="off">
+                <hgroup class="title-group">
+                    <h6><img src="https://timetradingfx.com/output/images/arrow-up.png&quot;" alt="arrow"> Send Message</h6>
+                    <h2>Drop a line, Stay in touch</h2>
+                    <h5>Please do not hesitate to contact us by sending a message.</h5>
+                </hgroup> <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <div class="form-group">
+                            <label>
+                                <img src="https://timetradingfx.com/output/images/icon-user.png?v=1.0&quot;" alt="icon-user"> Your Name <span class="text-danger">(*)</span>
+                            </label> <input type="text" name="contact_user" value="" minlength="3" maxlength="30" class="form-control" placeholder="Enter your name" required="" fdprocessedid="hbdkf">
+                        </div> <div class="form-group">
+                            <label>
+                                <img src="https://timetradingfx.com/output/images/icon-email.png?v=1.0&quot;" alt="icon-email"> Your Email
+                                <span class="text-danger">(*)</span>
+                            </label> <input type="email" name="contact_email" value="" minlength="5" maxlength="30" class="form-control" placeholder="Enter your email" required="" fdprocessedid="e113h9"> <div class="form-text">We'll never share your email with anyone else.</div>
+                        </div> <div class="form-group"> <label><img src="https://timetradingfx.com/output/images/icon-phone.png?v=1.0&quot;" alt="icon-phone"> Your Phone</label> <input type="text" name="contact_phone" value="" maxlength="11" class="form-control" placeholder="Enter your phone" fdprocessedid="zsqqpp"> <div class="form-text">Your Phone (optional)</div> </div>
+                    </div> <div class="col-12 col-sm-8">
+                        <div class="form-group">
+                            <label>
+                                <img src="https://timetradingfx.com/output/images/icon-comment.png?v=1.0&quot;" alt="icon-title"> Title <span class="text-danger">(*)</span>
+                            </label>
+                            <input type="text" name="contact_title" value="" minlength="5" maxlength="150" class="form-control" placeholder="Enter your title" required="" fdprocessedid="jkjhca">
+                        </div>
+                        <div class="form-group">
+                            <label><img src="https://timetradingfx.com/output/images/icon-text.png?v=1.0&quot;" alt="icon-text"> Message <span class="text-danger">(*)</span></label>
+                            <textarea name="contact_body" cols="40" rows="7" class="form-control" minlength="5" maxlength="1500" placeholder="Enter your content" spellcheck="false" required=""></textarea>
+                        </div>  <div id="captcha-code" class="form-group mb-4">
+                            <label>Captcha</label>
+                            <img src="captcha/8Rv3X3x3.png" alt="Captcha Image">
+                            <input type="text" class="form-control mt-2" placeholder="Enter captcha" name="contact_recaptcha" required="" fdprocessedid="2klndh">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn-action bg-cyan" fdprocessedid="ui7jjp">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div> *@
+    </div>
+</div>

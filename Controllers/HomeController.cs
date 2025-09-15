@@ -1,10 +1,17 @@
 ﻿using Common;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO.Pipelines;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WebForm.Common;
 using WebForm.DataAccess;
@@ -23,9 +30,12 @@ public class HomeController : Controller
     private readonly PageDA _pageDa = new PageDA();
     private readonly ColorWarehouseDA _colorWarehouseDa = new ColorWarehouseDA();
 
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IWebHostEnvironment _env;
+
+    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment env)
     {
         _logger = logger;
+        _env = env;
     }
 
     public async Task<IActionResult> IndexAsync()
@@ -547,7 +557,7 @@ public class HomeController : Controller
                     item.Current_Price = item.T_PRICE_Target;
                 }
 
-                if (item != null && item.DoanhThu == 0)
+                if (item.DoanhThu == 0)
                 {
                     item.PE = 0;
                 }
@@ -556,7 +566,7 @@ public class HomeController : Controller
                     item.PE = item.Current_Price / item.DoanhThu;
                 }
 
-                if (item != null && item.T_PRICE_Target == 0)
+                if (item.T_PRICE_Target == 0)
                 {
                     item.Price_Position = 0;
                 }
@@ -567,7 +577,7 @@ public class HomeController : Controller
 
 
 
-                if (info != null && item.Price == 0)
+                if (item.Price == 0)
                 {
                     item.Upside = 0;
                 }
@@ -576,7 +586,7 @@ public class HomeController : Controller
                     item.Upside = (item.F_PRICE_Target - item.Price) * 100 / item.Price;
                 }
 
-                if (info != null && item.Price == 0)
+                if (item.Price == 0)
                 {
                     item.HieuQua = 0;
                 }
@@ -612,7 +622,7 @@ public class HomeController : Controller
                 )
                 .ToList();
 
-            
+
 
 
             var stocks = listSymbol.Select(x => new
@@ -821,11 +831,56 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet]
+    [Route("lien-he")]
+    public ActionResult LienHe()
+    {
+        return View();
+    }
+
 
     [HttpGet]
     [Route("co-phieu-tang-truong")]
     public ActionResult CophieuTangTruong()
     {
+        return View();
+    }
+
+    [HttpGet]
+    [Route("co-phieu-da-chot")]
+    public ActionResult CophieuDaChot()
+    {
+        List<Symbol_Notify_Info> _Symbol = DataMemory.GetAllSymbol().Where(x => x.Status == "2").ToList();
+
+        try
+        {
+
+
+            var listSorted = _Symbol.OrderByDescending(x =>
+            {
+                if (string.IsNullOrWhiteSpace(x.Close_Position_Date))
+                    return DateTime.MaxValue; // cho xuống cuối nếu null hoặc trống
+
+                DateTime date;
+                bool ok = DateTime.TryParseExact(
+                x.Close_Position_Date,
+                "dd/MM/yyyy",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out date
+            );
+
+                return ok ? date : DateTime.MaxValue; // nếu sai định dạng thì cho xuống cuối
+            }).ToList();
+
+
+            ViewBag.ListSorted = listSorted;
+        }
+        catch (Exception ex)
+        {
+            ViewBag.ListSorted = _Symbol;
+            Logger.Log.Error(ex.ToString());
+        }
         return View();
     }
 
@@ -843,6 +898,274 @@ public class HomeController : Controller
             Logger.Log.Error(ex.ToString());
         }
         return View();
+    }
+
+
+
+
+
+    [HttpPost]
+    public ActionResult SearchCoPhieu([FromBody] SearchSymbolRequest request)
+    {
+        try
+        {
+
+            var format = "dd/MM/yyyy";
+            var culture = CultureInfo.InvariantCulture;
+
+            List<Symbol_Notify_Info> _Symbol = DataMemory.GetAllSymbol().Where(x => x.Status == "2").ToList();
+
+            if (request.Code != null && request.Code != "")
+            {
+
+                _Symbol = _Symbol
+                            .Where(x => !string.IsNullOrEmpty(x.Symbol)
+                                        && x.Symbol.ToUpper().Contains(request.Code.ToUpper()))
+                            .ToList();
+            }
+
+            if (request.To_Date != null && request.To_Date != "")
+            {
+                DateTime toDate;
+                bool ok = DateTime.TryParseExact(request.To_Date, format, culture, DateTimeStyles.None, out toDate);
+
+                if (ok)
+                {
+                    _Symbol = _Symbol
+                        .Where(x =>
+                        {
+                            DateTime closeDate;
+                            return DateTime.TryParseExact(x.Close_Position_Date, format, culture, DateTimeStyles.None, out closeDate)
+                                   && closeDate.Date <= toDate.Date;
+                        })
+                        .ToList();
+                }
+                else
+                {
+                    // nếu To_Date không hợp lệ => không lọc hoặc xử lý theo nhu cầu
+                }
+            }
+
+            if (request.From_Date != null && request.From_Date != "")
+            {
+                DateTime fromDate;
+                bool ok = DateTime.TryParseExact(request.From_Date, format, culture, DateTimeStyles.None, out fromDate);
+
+                if (ok)
+                {
+                    _Symbol = _Symbol
+                        .Where(x =>
+                        {
+                            DateTime closeDate;
+                            return DateTime.TryParseExact(x.Close_Position_Date, format, culture, DateTimeStyles.None, out closeDate)
+                                   && closeDate.Date >= fromDate.Date;
+                        })
+                        .ToList();
+                }
+                else
+                {
+                    // nếu To_Date không hợp lệ => không lọc hoặc xử lý theo nhu cầu
+                }
+            }
+
+
+            var listSorted = _Symbol.OrderByDescending(x =>
+            {
+                if (string.IsNullOrWhiteSpace(x.Close_Position_Date))
+                    return DateTime.MaxValue; // cho xuống cuối nếu null hoặc trống
+
+                DateTime date;
+                bool ok = DateTime.TryParseExact(
+                x.Close_Position_Date,
+                "dd/MM/yyyy",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out date
+            );
+
+                return ok ? date : DateTime.MaxValue; // nếu sai định dạng thì cho xuống cuối
+            }).ToList();
+
+
+            ViewBag.ListSorted = listSorted;
+
+            return PartialView("DataSymbolBuy");
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
+    }
+
+
+
+    [HttpPost]
+    public ActionResult ExportCoPhieu([FromBody] SearchSymbolRequest request)
+    {
+        try
+        {
+
+            var format = "dd/MM/yyyy";
+            var culture = CultureInfo.InvariantCulture;
+
+            List<Symbol_Notify_Info> _Symbol = DataMemory.GetAllSymbol().Where(x => x.Status == "2").ToList();
+
+            if (request.Code != null && request.Code != "")
+            {
+
+                _Symbol = _Symbol
+                            .Where(x => !string.IsNullOrEmpty(x.Symbol)
+                                        && x.Symbol.ToUpper().Contains(request.Code.ToUpper()))
+                            .ToList();
+            }
+
+            if (request.To_Date != null && request.To_Date != "")
+            {
+                DateTime toDate;
+                bool ok = DateTime.TryParseExact(request.To_Date, format, culture, DateTimeStyles.None, out toDate);
+
+                if (ok)
+                {
+                    _Symbol = _Symbol
+                        .Where(x =>
+                        {
+                            DateTime closeDate;
+                            return DateTime.TryParseExact(x.Close_Position_Date, format, culture, DateTimeStyles.None, out closeDate)
+                                   && closeDate.Date <= toDate.Date;
+                        })
+                        .ToList();
+                }
+                else
+                {
+                    // nếu To_Date không hợp lệ => không lọc hoặc xử lý theo nhu cầu
+                }
+            }
+
+            if (request.From_Date != null && request.From_Date != "")
+            {
+                DateTime fromDate;
+                bool ok = DateTime.TryParseExact(request.From_Date, format, culture, DateTimeStyles.None, out fromDate);
+
+                if (ok)
+                {
+                    _Symbol = _Symbol
+                        .Where(x =>
+                        {
+                            DateTime closeDate;
+                            return DateTime.TryParseExact(x.Close_Position_Date, format, culture, DateTimeStyles.None, out closeDate)
+                                   && closeDate.Date >= fromDate.Date;
+                        })
+                        .ToList();
+                }
+                else
+                {
+                    // nếu To_Date không hợp lệ => không lọc hoặc xử lý theo nhu cầu
+                }
+            }
+
+            List<Symbol_Notify_Info> _Symbol_Search = new List<Symbol_Notify_Info>();
+
+            foreach (var item in _Symbol)
+            {
+
+                Symbol_Notify_Info _info = new Symbol_Notify_Info();
+                _info.Symbol = item.Symbol;
+                _info.Open_Position_Date = item.Open_Position_Date;
+                _info.Close_Position_Date = item.Close_Position_Date;
+                _info.Ghichu = item.Ghichu;
+
+               
+                _info.Price = item.Price / 1000;
+                _info.Sell_Price = item.Sell_Price / 1000;
+
+
+                if (item.Price == 0)
+                {
+                    _info.Heso = 0;
+                }
+                else
+                {
+                    _info.Heso = Math.Round((item.Sell_Price - item.Price) * 100 / item.Price, 2);
+                }
+
+                _Symbol_Search.Add(_info);
+
+            }
+
+
+            var listSorted = _Symbol_Search.OrderByDescending(x =>
+            {
+                if (string.IsNullOrWhiteSpace(x.Close_Position_Date))
+                    return DateTime.MaxValue; // cho xuống cuối nếu null hoặc trống
+
+                DateTime date;
+                bool ok = DateTime.TryParseExact(
+                x.Close_Position_Date,
+                "dd/MM/yyyy",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out date
+            );
+
+                return ok ? date : DateTime.MaxValue; // nếu sai định dạng thì cho xuống cuối
+            }).ToList();
+
+
+
+
+            DataSet _ds = new DataSet();
+
+            DataTable _data = new DataTable();
+
+            _data = CBO1<Symbol_Notify_Info>.ConvertToDataTable(listSorted);
+
+            _data.TableName = "DT";
+
+            // Thêm DataTable vào DataSet
+            _ds.Tables.Add(_data);
+
+
+            FlexCel.Report.FlexCelReport flcReport = new FlexCel.Report.FlexCelReport();
+
+            string templateFilePath = Path.Combine(_env.ContentRootPath + "/wwwroot/Content/ExportTemplate/") + "DanhsachCophieu.xlsx";
+            //string exportedFileName = DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "_ThongTinCongBo" + ".xlsx";
+            string exportedFileName = $"DanhSachCoPhieu" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".xlsx";
+
+            string exportedFilePath = Path.Combine(_env.ContentRootPath + "/wwwroot/Content/Export/") + exportedFileName;
+            int is_err = -1;
+            string c_err = string.Empty;
+            if (_ds != null && _ds.Tables.Count > 0 && _ds.Tables[0].Rows.Count > 0)
+            {
+                _ds.Tables[0].TableName = "DT";
+                ExportDataHelpers.SetValueExportByDataTable(ref flcReport, _ds);
+                is_err = ExportDataHelpers.ExportExcel(flcReport, templateFilePath, exportedFilePath, ref c_err);
+                if (is_err == 0) // ko co loi
+                {
+                    return Json(new { success = 1, filePath = exportedFileName });
+                }
+            }
+
+            c_err = "Không có dữ liệu để kết xuất!";
+            return Json(new { success = -3, c_err = c_err });
+
+
+        }
+        catch (Exception e)
+        {
+            Logger.Log.Error(e.ToString());
+            return null;
+        }
+    }
+
+    [Route("download/{filename}"), HttpGet]
+    public FileResult DownloadFileTemp(string filename)
+    {
+        IFileProvider provider = new PhysicalFileProvider(_env.ContentRootPath + "/wwwroot/Content/Export/");
+        IFileInfo fileInfo = provider.GetFileInfo(filename);
+        var readStream = fileInfo.CreateReadStream();
+        var mimeType = "application/vnd.ms-excel";
+        return File(readStream, mimeType, filename);
     }
 
 }

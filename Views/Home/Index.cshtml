@@ -254,6 +254,7 @@
                                 <table class="stock-table">
                                     <thead>
                                         <tr>
+                                            <th>Ngày mở vị thế</th>
                                             <th>Mã</th>
                                             <th>Giá mua<br>(1.000đ)</th>
                                             <th>Giá hiện tại<br>(1.000đ)</th>
@@ -276,6 +277,7 @@
                                         <tr v-for="(item, index) in paddedStocks" :key="index">
                                             @* <td>{{ item?.Symbol || '&nbsp;' }}</td> *@
 
+                                            <td>{{ item?.Open_Position_Date || ' ' }}</td>
                                             <td>
                                                 <a v-if="item?.Symbol" :href="`/chi-tiet-co-phieu/${item.Symbol}`" style="color: #fff !important">
                                                     {{ item.Symbol }}
@@ -596,7 +598,9 @@
 
         // Tạo mảng luôn đủ 5 dòng
         const paddedStocks = computed(() => {
-          const filled = [...stocks.value]
+                // lọc bỏ những phần tử có Status = 2
+          const filtered = stocks.value.filter(s => s?.Status !="2" && s?.IsSpecial == "N")
+          const filled = [...filtered]
           while (filled.length < 5) {
             filled.push(null) // hoặc {} nếu muốn tránh undefined
           }

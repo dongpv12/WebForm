@@ -79,7 +79,7 @@ namespace WebForm.Areas.Admin.Controllers
 
           
 
-            if (list.Count(x => x.Symbol.ToUpper() == model.Symbol.ToUpper()) > 0)
+            if (list.Count(x => x.Status != "2" && x.Symbol.ToUpper() == model.Symbol.ToUpper()) > 0)
             {
                 return Json(new
                 {
@@ -128,7 +128,7 @@ namespace WebForm.Areas.Admin.Controllers
         {
 
             List<Symbol_Notify_Info> list = DataMemory.GetAllSymbol();
-            if (list.Count(x => x.Symbol.ToUpper() == request.Symbol.ToUpper() && x.Id != request.Id) > 0)
+            if (list.Count(x => x.Status != "2" && x.Symbol.ToUpper() == request.Symbol.ToUpper() && x.Id != request.Id) > 0)
             {
                 return Json(new
                 {
