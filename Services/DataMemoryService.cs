@@ -153,6 +153,14 @@ public class DataMemoryService : IHostedService
                                     TotalTradedValue = _Symbol_WS_Info.TotalValue,
                                 });
                             }
+                            else
+                            {
+                                Logger.Log.Debug("_Symbol_mem null " + _Notify_WebSocket_Info.data);
+                            }
+                        }
+                        else
+                        {
+                            Logger.Log.Debug("Symbol WS Info null " + _Notify_WebSocket_Info.data);
                         }
 
                         // Nếu đã qua ít nhất 1 phút từ lần ghi trước đó
