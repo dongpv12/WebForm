@@ -2841,6 +2841,12 @@ a, a:hover, a:active, a:link, a:visited {
     margin-left: 7px;
 }
 
+
+article * {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
 /*.symbol-edit{
     display: none
 }

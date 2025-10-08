@@ -254,7 +254,7 @@
                                 <table class="stock-table">
                                     <thead>
                                         <tr>
-                                            <th>Ngày mở vị thế</th>
+                                            <th class="d-none d-md-table-cell">Ngày mở vị thế</th>
                                             <th>Mã</th>
                                             <th>Giá mua<br>(1.000đ)</th>
                                             <th>Giá hiện tại<br>(1.000đ)</th>
@@ -277,7 +277,7 @@
                                         <tr v-for="(item, index) in paddedStocks" :key="index">
                                             @* <td>{{ item?.Symbol || '&nbsp;' }}</td> *@
 
-                                            <td>{{ item?.Open_Position_Date || ' ' }}</td>
+                                            <td class="d-none d-md-table-cell">{{ item?.Open_Position_Date || ' ' }}</td>
                                             <td>
                                                 <a v-if="item?.Symbol" :href="`/chi-tiet-co-phieu/${item.Symbol}`" style="color: #fff !important">
                                                     {{ item.Symbol }}
